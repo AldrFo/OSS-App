@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ОСС</string>
+    <string name="dashboard">АФИША</string>
+    <string name="news">НОВОСТИ</string>
+    <string name="profile">ПРОФИЛЬ</string>
+    <string name="tasks">ЗАДАНИЯ</string>
+    <string name="others">ДРУГОЕ</string>
+    <string name="agree">НАЧАТЬ</string>
+    <string name="finish">ЗАВЕРШИТЬ</string>
+    <string name="dismiss">ОТКАЗАТЬСЯ</string>
+    <string name="changeReport">РЕДАКТИРОВАТЬ ОТЧЕТ</string>
+    <string name="finishLabel">Задание будет отправлено на проверку</string>
+    <string name="finishText">Рекомендуем добавить фотоотчет о выполненной работе. Отчет также можно добавить позднее во вкладке "На проверке" (или не добавлять вовсе)</string>
+    <string name="withReport">Отправить на проверку с отчетом</string>
+    <string name="noReport">Отправить на проверку без отчета</string>
+    <string name="declineLabel">Задание будет отменено</string>
+    <string name="declineNormalText">Задание будет отменено без штрафа. Его можно будет взять повторно на вкладке "Новые задания".</string>
+    <string name="declineNormalButton">Отказаться</string>
+    <string name="declinePenaltyText">Администратор может отменить штраф, если сочтет причину отмены уважительной. Причину отмены можно указать сейчас или поздлее на вкладке "На проверке".</string>
+    <string name="declinePenaltyReason">Отказаться с указанием причины отмены</string>
+    <string name="declinePenaltyNoReason">Отказаться без указания причины отмены</string>
+    <string name="editReportCommentLabel">Комментарий</string>
+    <string name="editReportTextBoxHint">Введите ваш комментарий</string>
+    <string name="editReportImageLabel">Фотография</string>
+    <string name="editReportImageText">Подойдет селфи на фоне сделанной работы или справка от врача в случае отмены</string>
+    <string name="editReportAttachButton">Выбрать фото</string>
+    <string name="editReportButton">Прикрепить отчет</string>
+    <string name="gallery">Выбрать фото из галереи</string>
+    <string name="camera">Сделать фотографию</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dashboardUrl">http://cy37212.tmweb.ru/Android/afisha.php</string>
+    <string name="newsUrl">http://cy37212.tmweb.ru/Android/news.php</string>
+    <string name="authUrl">http://cy37212.tmweb.ru/Android/auth.php</string>
+    <string name="regUrl">http://cy37212.tmweb.ru/lk.php?quit=1</string>
+    <string name="shopUrl">http://cy37212.tmweb.ru/shop.php</string>
+    <string name="lkUrl">http://cy37212.tmweb.ru/Android/lk.php</string>
+    <string name="getTasksUrl">http://cy37212.tmweb.ru/Android/get_tasks.php</string>
+    <string name="takeTaskUrl">http://cy37212.tmweb.ru/Android/take_task.php</string>
+    <string name="confirmTaskUrl">http://cy37212.tmweb.ru/Android/confirm_task.php</string>
+    <string name="editReportUrl">http://cy37212.tmweb.ru/Android/edit_report.php</string>
+    <string name="declineTaskUrl">http://cy37212.tmweb.ru/Android/refuse_task.php</string>
+    <string name="imagesNewsUrl">http://cy37212.tmweb.ru/images/news/</string>
+    <string name="imagesDashboardUrl">http://cy37212.tmweb.ru/images/afisha/</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arrayProfileTasksList">
+        <item>Выполняемые</item>
+        <item>На проверке</item>
+        <item>Завершённые</item>
+        <item>Отклоненные</item>
+    </string-array>
+</resources>

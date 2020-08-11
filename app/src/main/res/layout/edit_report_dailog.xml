@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/editReportCommentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/editReportCommentLabel"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editReportTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editReportCommentLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:autofillHints="false"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/editReportTextBoxHint"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/editReportImageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editReportTextBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/editReportImageLabel"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/editReportImageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editReportImageLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/editReportImageText"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/editReportImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/editReportImageText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/editReportAttachImage"
+        android:layout_width="wrap_content"
+        android:layout_height="35sp"
+        android:layout_below="@id/editReportImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/editReportAttachButton"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/editReportButton"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:layout_below="@id/editReportAttachImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editReportButton" />
+</RelativeLayout>

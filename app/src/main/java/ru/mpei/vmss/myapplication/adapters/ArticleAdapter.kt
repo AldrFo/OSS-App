@@ -13,7 +13,7 @@ import ru.mpei.vmss.myapplication.R
 import ru.mpei.vmss.myapplication.pojo.Article
 
 class ArticleAdapter(private val context: Context, private var elements: List<Article>, private val onArticleClickListener: OnArticleClickListener) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
-    private val inflater: LayoutInflater
+    private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = inflater.inflate(R.layout.article_element, parent, false)
         return ViewHolder(view)
@@ -33,13 +33,11 @@ class ArticleAdapter(private val context: Context, private var elements: List<Ar
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val thumbnail: ImageView
-        val articleTitle: TextView
+        val thumbnail: ImageView = view.findViewById(R.id.articleElementImage)
+        val articleTitle: TextView = view.findViewById(R.id.articleElementText)
 
         init {
-            thumbnail = view.findViewById(R.id.articleElementImage)
-            articleTitle = view.findViewById(R.id.articleElementText)
-            view.setOnClickListener { v: View? ->
+            view.setOnClickListener {
                 val article = elements[layoutPosition]
                 onArticleClickListener.onClickListener(article)
             }
@@ -55,7 +53,4 @@ class ArticleAdapter(private val context: Context, private var elements: List<Ar
         fun onClickListener(article: Article?)
     }
 
-    init {
-        inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    }
 }

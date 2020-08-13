@@ -1,18 +1,14 @@
 package ru.mpei.vmss.myapplication.fragments
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
@@ -26,6 +22,7 @@ import ru.mpei.vmss.myapplication.activities.ArticleActivity
 import ru.mpei.vmss.myapplication.adapters.ArticleAdapter
 import ru.mpei.vmss.myapplication.adapters.ArticleAdapter.OnArticleClickListener
 import ru.mpei.vmss.myapplication.pojo.Article
+import kotlinx.android.synthetic.main.fragment_articles.*
 import java.util.*
 
 class Articles : Fragment {
@@ -36,7 +33,7 @@ class Articles : Fragment {
     private var prefix: String? = null
     private var type = 0
 
-    constructor() {}
+    constructor()
     constructor(type: Int) {
         this.type = type
     }
@@ -53,39 +50,29 @@ class Articles : Fragment {
             header = requireContext().getString(R.string.news)
             prefix = requireContext().getString(R.string.imagesNewsUrl)
         }
-        val rootView = inflater.inflate(R.layout.fragment_articles, container, false)
-        val title = rootView.findViewById<TextView>(R.id.articlesHeader)
-        title.text = header
-        val list: RecyclerView = rootView.findViewById(R.id.articlesList)
+        articlesHeader.text = header
         val layoutManager = LinearLayoutManager(context)
-        list.layoutManager = layoutManager
+        articlesList.layoutManager = layoutManager
         adapter = ArticleAdapter(activity!!.applicationContext, dataList, object : OnArticleClickListener {
             override fun onClickListener(article: Article?) {
                 val intent = Intent(context, ArticleActivity::class.java)
                 if (article != null) {
                     intent.putExtra("head", article.title)
-                }
-                if (article != null) {
                     intent.putExtra("date", article.date)
-                }
-                if (article != null) {
                     intent.putExtra("content", article.content)
-                }
-                if (article != null) {
                     intent.putExtra("imageUrl", article.imageUrl)
                 }
                 startActivity(intent)
             }
         })
-        list.adapter = adapter
+        articlesList.adapter = adapter
         updateList()
-        val refresher: SwipeRefreshLayout = rootView.findViewById(R.id.articlesRefresher)
-        refresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
-        refresher.setOnRefreshListener {
+        articlesRefresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
+        articlesRefresher.setOnRefreshListener {
             updateList()
-            refresher.isRefreshing = false
+            articlesRefresher.isRefreshing = false
         }
-        return rootView
+        return inflater.inflate(R.layout.fragment_articles, container, false)
     }
 
     private fun updateList() {
@@ -107,7 +94,7 @@ class Articles : Fragment {
             }
             adapter!!.setArticles(dataList)
         },
-                Response.ErrorListener { error: VolleyError? -> Toast.makeText(context, "Connection error", Toast.LENGTH_LONG).show() })
+                Response.ErrorListener { _: VolleyError? -> Toast.makeText(context, "Connection error", Toast.LENGTH_LONG).show() })
         val requestQueue = Volley.newRequestQueue(context)
         requestQueue.add(request)
     }

@@ -20,6 +20,10 @@ import ru.mpei.vmss.myapplication.pojo.Task
 
 class TasksAdapter(private val context: Context, private val elements: MutableList<Task>) : BaseExpandableListAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+    init{
+    }
+
     override fun getGroupCount(): Int {
         return elements.size
     }
@@ -80,7 +84,7 @@ class TasksAdapter(private val context: Context, private val elements: MutableLi
         val availableEndTime = view.findViewById<TextView>(R.id.availableEndText)
         availableEndTime.text = "Конец: " + getTasksElement(groupPosition).endDate
         val availableRefuseBefore = view.findViewById<TextView>(R.id.availableCommentText)
-        availableRefuseBefore.text = "От задания можно отказаться не позднее, чем: " + getTasksElement(groupPosition).refuse_info
+        availableRefuseBefore.text = "От задания можно отказаться не позднее, чем: " + getTasksElement(groupPosition).refuseInfo
         view.findViewById<View>(R.id.availableAgreeButton).setOnClickListener { v: View? ->
             if (User.isAuth) {
                 try {

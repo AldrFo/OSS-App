@@ -14,22 +14,28 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import android.widget.ExpandableListView.OnGroupExpandListener
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.FileProvider
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.activity_tasks.*
+import kotlinx.android.synthetic.main.checking_tasks_element_child.*
+import kotlinx.android.synthetic.main.decline_penalty_dialog.*
+import kotlinx.android.synthetic.main.edit_report_dailog.*
+import kotlinx.android.synthetic.main.finish_dialog.*
+import kotlinx.android.synthetic.main.finished_tasks_element_child.*
+import kotlinx.android.synthetic.main.taken_tasks_element_child.*
+import kotlinx.android.synthetic.main.tasks_element.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import ru.mpei.vmss.myapplication.BuildConfig
 import ru.mpei.vmss.myapplication.R
 import ru.mpei.vmss.myapplication.fragments.User
 import ru.mpei.vmss.myapplication.pojo.Task
@@ -38,16 +44,16 @@ import java.io.IOException
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.jvm.Throws
 
 class TasksActivity : AppCompatActivity() {
     private lateinit var context: Context
-    private var adapter: specialAdapter? = null
+    private var adapter: SpecialAdapter? = null
     private val dataList: MutableList<Task> = ArrayList()
     private var type = 0
     private lateinit var editReportImage: ImageView
     private var currentPhotoPath: String? = null
     private var dialog: AlertDialog? = null
-    private lateinit var list: ExpandableListView
     private val TAKE_PHOTO = 0
     private val CHOOSE_PHOTO = 1
     private val TASKS_IN_PROCESS = 0
@@ -63,29 +69,29 @@ class TasksActivity : AppCompatActivity() {
         type = intent.getLongExtra("type", 0).toInt()
         val mToolbar = findViewById<Toolbar>(R.id.tasksTypeToolbar)
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
-        mToolbar.setNavigationOnClickListener { view: View? -> finish() }
-        list = findViewById(R.id.tasksTypeList)
-        list.setOnGroupExpandListener(OnGroupExpandListener { groupPosition: Int ->
+        mToolbar.setNavigationOnClickListener { finish() }
+
+        tasksTypeList.setOnGroupExpandListener { groupPosition: Int ->
             for (g in 0 until adapter!!.groupCount) {
                 if (g != groupPosition) {
-                    list.collapseGroup(g)
+                    tasksTypeList.collapseGroup(g)
                 }
             }
-        })
+        }
         when (type) {
             TASKS_IN_PROCESS -> mToolbar.title = "ВЫПОЛНЯЕМЫЕ ЗАДАНИЯ"
             TASKS_IN_CHECK -> mToolbar.title = "ЗАДАНИЯ НА ПРОВЕРКЕ"
             TASKS_FINISHED -> mToolbar.title = "ЗАВЕРШЕННЫЕ ЗАДАНИЯ"
             TASKS_DECLINED -> mToolbar.title = "ОТКЛОНЕННЫЕ ЗАДАНИЯ"
         }
-        adapter = specialAdapter(context, dataList, type)
-        list.setAdapter(adapter)
+        adapter = SpecialAdapter(context, dataList, type)
+        tasksTypeList.setAdapter(adapter)
         updateList(type)
-        val refresher = findViewById<SwipeRefreshLayout>(R.id.tasksTypeRefresher)
-        refresher.setColorSchemeColors(context.getColor(R.color.bgBottomNavigation))
-        refresher.setOnRefreshListener {
+
+        tasksTypeRefresher.setColorSchemeColors(context.getColor(R.color.bgBottomNavigation))
+        tasksTypeRefresher.setOnRefreshListener {
             updateList(type)
-            refresher.isRefreshing = false
+            tasksTypeRefresher.isRefreshing = false
         }
     }
 
@@ -134,7 +140,7 @@ class TasksActivity : AppCompatActivity() {
             }
             adapter!!.notifyDataSetChanged()
         },
-                Response.ErrorListener { error: VolleyError? -> Toast.makeText(context, "Ошибка соединения", Toast.LENGTH_LONG).show() })
+                Response.ErrorListener { Toast.makeText(context, "Ошибка соединения", Toast.LENGTH_LONG).show() })
         val requestQueue = Volley.newRequestQueue(context)
         requestQueue.add(request)
     }
@@ -144,9 +150,7 @@ class TasksActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this@TasksActivity)
         when (type) {
             "finish" -> {
-                val finishView = layoutInflater.inflate(R.layout.finish_dialog, null)
-                val finishWithReport = finishView.findViewById<Button>(R.id.withReport)
-                finishWithReport.setOnClickListener { v: View? ->
+                withReport.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
@@ -155,10 +159,10 @@ class TasksActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
-                            context!!.getString(R.string.confirmTaskUrl),
+                            context.getString(R.string.confirmTaskUrl),
                             body,
-                            Response.Listener { response: JSONArray? -> },
-                            Response.ErrorListener { error: VolleyError? -> })
+                            Response.Listener { },
+                            Response.ErrorListener { })
                     val requestQueue = Volley.newRequestQueue(context)
                     requestQueue.add(request)
                     dialog!!.cancel()
@@ -166,8 +170,7 @@ class TasksActivity : AppCompatActivity() {
                     updateList(TASKS_IN_PROCESS)
                     showDialog("editReport", task)
                 }
-                val finishNoReport = finishView.findViewById<Button>(R.id.noReport)
-                finishNoReport.setOnClickListener { v: View? ->
+                noReport.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
@@ -176,22 +179,20 @@ class TasksActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
-                            context!!.getString(R.string.confirmTaskUrl),
+                            context.getString(R.string.confirmTaskUrl),
                             body,
-                            Response.Listener { response: JSONArray? -> },
-                            Response.ErrorListener { error: VolleyError? -> })
+                            Response.Listener { },
+                            Response.ErrorListener { })
                     val requestQueue = Volley.newRequestQueue(context)
                     requestQueue.add(request)
                     dialog!!.cancel()
                     closeAll()
                     updateList(TASKS_IN_PROCESS)
                 }
-                builder.setView(finishView)
+                builder.setView(layoutInflater.inflate(R.layout.finish_dialog, null))
             }
             "refuseNormal" -> {
-                val refuseNormalView = layoutInflater.inflate(R.layout.decline_normal_dialog, null)
-                val refuseNormal = refuseNormalView.findViewById<Button>(R.id.declineNormalButton)
-                refuseNormal.setOnClickListener { v: View? ->
+                declinePenalty.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
@@ -200,23 +201,20 @@ class TasksActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
-                            context!!.getString(R.string.declineTaskUrl),
+                            context.getString(R.string.declineTaskUrl),
                             body,
-                            Response.Listener { response: JSONArray? -> },
-                            Response.ErrorListener { error: VolleyError? -> })
+                            Response.Listener { },
+                            Response.ErrorListener { })
                     val requestQueue = Volley.newRequestQueue(context)
                     requestQueue.add(request)
                     dialog!!.cancel()
                     closeAll()
                     updateList(TASKS_IN_PROCESS)
                 }
-                builder.setView(refuseNormalView)
+                builder.setView(layoutInflater.inflate(R.layout.decline_normal_dialog, null))
             }
             "refusePenalty" -> {
-                val refusePenaltyView = layoutInflater.inflate(R.layout.decline_penalty_dialog, null)
-                val penalty = refusePenaltyView.findViewById<TextView>(R.id.declinePenalty)
-                val refuseWithReason = refusePenaltyView.findViewById<Button>(R.id.declinePenaltyReason)
-                refuseWithReason.setOnClickListener { v: View? ->
+                declinePenaltyReason.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
@@ -225,10 +223,10 @@ class TasksActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
-                            context!!.getString(R.string.declineTaskUrl),
+                            context.getString(R.string.declineTaskUrl),
                             body,
-                            Response.Listener { response: JSONArray? -> },
-                            Response.ErrorListener { error: VolleyError? -> })
+                            Response.Listener { },
+                            Response.ErrorListener { })
                     val requestQueue = Volley.newRequestQueue(context)
                     requestQueue.add(request)
                     dialog!!.cancel()
@@ -236,8 +234,7 @@ class TasksActivity : AppCompatActivity() {
                     updateList(TASKS_IN_PROCESS)
                     showDialog("editReport", task)
                 }
-                val refuseNoReason = refusePenaltyView.findViewById<Button>(R.id.declinePenaltyNoReason)
-                refuseNoReason.setOnClickListener { v: View? ->
+                declinePenaltyNoReason.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
@@ -246,27 +243,23 @@ class TasksActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
-                            context!!.getString(R.string.declineTaskUrl),
+                            context.getString(R.string.declineTaskUrl),
                             body,
-                            Response.Listener { response: JSONArray? -> },
-                            Response.ErrorListener { error: VolleyError? -> })
+                            Response.Listener { },
+                            Response.ErrorListener { })
                     val requestQueue = Volley.newRequestQueue(context)
                     requestQueue.add(request)
                     dialog!!.cancel()
                     closeAll()
                     updateList(TASKS_IN_PROCESS)
                 }
-                penalty.text = "Со счета будет вычтен штраф " + task.penalty + " баллов"
-                builder.setView(refusePenaltyView)
+                declinePenalty.text = "Со счета будет вычтен штраф " + task.penalty + " баллов"
+                builder.setView(layoutInflater.inflate(R.layout.decline_penalty_dialog, null))
             }
             "editReport" -> {
-                val editView = layoutInflater.inflate(R.layout.edit_report_dailog, null)
-                editReportImage = editView.findViewById(R.id.editReportImage)
-                editReportImage.setVisibility(View.GONE)
-                val comment = editView.findViewById<TextView>(R.id.editReportTextBox)
-                val chooseAttachType = editView.findViewById<Button>(R.id.editReportAttachImage)
-                chooseAttachType.setOnClickListener { v: View? ->
-                    val p = PopupMenu(this@TasksActivity, chooseAttachType)
+                editReportImage.visibility = View.GONE
+                editReportAttachImage.setOnClickListener {
+                    val p = PopupMenu(this@TasksActivity, editReportAttachImage)
                     p.menuInflater.inflate(R.menu.choose_image_type_popup, p.menu)
                     p.setOnMenuItemClickListener { item: MenuItem ->
                         if (item.title == "Сделать фотографию") {
@@ -299,29 +292,28 @@ class TasksActivity : AppCompatActivity() {
                     }
                     p.show()
                 }
-                val editReport = editView.findViewById<Button>(R.id.editReportButton)
-                editReport.setOnClickListener { v: View? ->
+                editReportButton.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
                         body.put("task_id", task.id)
-                        body.put("comment", comment.text)
+                        body.put("comment", editReportTextBox.text)
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
-                    if (editReportImage.getDrawable() == null) {
+                    if (editReportImage.drawable == null) {
                         Toast.makeText(context, "no", Toast.LENGTH_SHORT).show()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
-                            context!!.getString(R.string.editReportUrl),
+                            context.getString(R.string.editReportUrl),
                             body,
-                            Response.Listener { response: JSONArray? -> },
-                            Response.ErrorListener { error: VolleyError? -> })
+                            Response.Listener { },
+                            Response.ErrorListener { })
                     val requestQueue = Volley.newRequestQueue(context)
                     requestQueue.add(request)
                     dialog!!.cancel()
                 }
-                builder.setView(editView)
+                builder.setView(layoutInflater.inflate(R.layout.edit_report_dailog, null))
             }
         }
         dialog = builder.create()
@@ -332,13 +324,13 @@ class TasksActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent)
         when (requestCode) {
             TAKE_PHOTO -> if (resultCode == Activity.RESULT_OK) {
-                editReportImage!!.visibility = View.VISIBLE
-                editReportImage!!.setImageURI(Uri.parse(currentPhotoPath))
+                editReportImage.visibility = View.VISIBLE
+                editReportImage.setImageURI(Uri.parse(currentPhotoPath))
             }
             CHOOSE_PHOTO -> if (resultCode == Activity.RESULT_OK) {
                 val selectedImage = imageReturnedIntent!!.data
-                editReportImage!!.visibility = View.VISIBLE
-                editReportImage!!.setImageURI(selectedImage)
+                editReportImage.visibility = View.VISIBLE
+                editReportImage.setImageURI(selectedImage)
             }
         }
     }
@@ -362,13 +354,12 @@ class TasksActivity : AppCompatActivity() {
 
     private fun closeAll() {
         for (g in 0 until adapter!!.groupCount) {
-            list!!.collapseGroup(g)
+            tasksTypeList.collapseGroup(g)
         }
     }
 
-    internal inner class specialAdapter(context: Context?, private val elements: List<Task>, type: Int) : BaseExpandableListAdapter() {
-        private val inflater: LayoutInflater
-        private val type: Int
+    internal inner class SpecialAdapter(context: Context?, private val elements: List<Task>, private val type: Int) : BaseExpandableListAdapter() {
+        private val inflater: LayoutInflater = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         override fun getGroupCount(): Int {
             return elements.size
         }
@@ -403,11 +394,11 @@ class TasksActivity : AppCompatActivity() {
             if (view == null) {
                 view = inflater.inflate(R.layout.tasks_element, parent, false)
             }
-            val taskNameText = view.findViewById<TextView>(R.id.taskNameText)
+
             taskNameText.text = getTasksElement(groupPosition).taskName
-            val taskPriceText = view.findViewById<TextView>(R.id.taskPriceText)
+
             taskPriceText.text = getTasksElement(groupPosition).price + " б."
-            val taskLocationText = view.findViewById<TextView>(R.id.taskLocationText)
+
             taskLocationText.text = "Место: " + getTasksElement(groupPosition).location
             return view
         }
@@ -424,25 +415,27 @@ class TasksActivity : AppCompatActivity() {
                     if (view == null) {
                         view = inflater.inflate(R.layout.taken_tasks_element_child, parent, false)
                     }
-                    val takenDescription = view.findViewById<TextView>(R.id.takenDescriptionText)
-                    takenDescription.text = getTasksElement(groupPosition).taskDescription
-                    val takenBeginTime = view.findViewById<TextView>(R.id.takenBeginText)
-                    takenBeginTime.text = "Начало: " + getTasksElement(groupPosition).startDate
-                    val takenEndTime = view.findViewById<TextView>(R.id.takenEndText)
-                    takenEndTime.text = "Конец: " + getTasksElement(groupPosition).endDate
-                    val takenRefuseBefore = view.findViewById<TextView>(R.id.takenCommentText)
-                    takenRefuseBefore.text = "От задания можно отказаться не позднее, чем: " + getTasksElement(groupPosition).refuse_info
-                    val finishBtn = view.findViewById<Button>(R.id.takenFinishButton)
-                    finishBtn.setOnClickListener { v: View? -> showDialog("finish", getTasksElement(groupPosition)) }
-                    val declineBtn = view.findViewById<Button>(R.id.takenDeclineButton)
-                    declineBtn.setOnClickListener { v: View? ->
+
+                    takenDescriptionText.text = getTasksElement(groupPosition).taskDescription
+
+                    takenBeginText.text = "Начало: " + getTasksElement(groupPosition).startDate
+
+                    takenEndText.text = "Конец: " + getTasksElement(groupPosition).endDate
+
+                    takenCommentText.text = "От задания можно отказаться не позднее, чем: " + getTasksElement(groupPosition).refuseInfo
+
+                    takenFinishButton.setOnClickListener { showDialog("finish", getTasksElement(groupPosition)) }
+
+                    takenDeclineButton.setOnClickListener {
                         var time: Date? = null
                         try {
-                            time = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(getTasksElement(groupPosition).refuse_info)
+                            time = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(getTasksElement(groupPosition).refuseInfo)
                         } catch (e: ParseException) {
                             e.printStackTrace()
                         }
-                        assert(time != null)
+                        if (BuildConfig.DEBUG && time == null) {
+                            error("Assertion failed")
+                        }
                         if (0 >= time!!.time - Date().time + 30000) {
                             showDialog("refusePenalty", getTasksElement(groupPosition))
                         } else {
@@ -454,19 +447,19 @@ class TasksActivity : AppCompatActivity() {
                     if (view == null) {
                         view = inflater.inflate(R.layout.checking_tasks_element_child, parent, false)
                     }
-                    val checkingStatus = view.findViewById<TextView>(R.id.checkingStatusText)
-                    checkingStatus.text = "Статус: " + getTasksElement(groupPosition).status
-                    val changeTime = view.findViewById<TextView>(R.id.checkingChangeTimeText)
-                    changeTime.text = "Отредактировать отчет можно до: " + getTasksElement(groupPosition).changeBefore
-                    val editReportBtn = view.findViewById<Button>(R.id.checkingAgreeButton)
-                    editReportBtn.setOnClickListener { v: View? -> showDialog("editReport", getTasksElement(groupPosition)) }
+
+                    checkingStatusText.text = "Статус: " + getTasksElement(groupPosition).status
+
+                    checkingChangeTimeText.text = "Отредактировать отчет можно до: " + getTasksElement(groupPosition).changeBefore
+
+                    checkingAgreeButton.setOnClickListener { showDialog("editReport", getTasksElement(groupPosition)) }
                 }
                 else -> {
                     if (view == null) {
                         view = inflater.inflate(R.layout.finished_tasks_element_child, parent, false)
                     }
-                    val description = view.findViewById<TextView>(R.id.finishedDescriptionText)
-                    description.text = getTasksElement(groupPosition).taskDescription
+
+                    finishedDescriptionText.text = getTasksElement(groupPosition).taskDescription
                 }
             }
             return view
@@ -476,9 +469,5 @@ class TasksActivity : AppCompatActivity() {
             return false
         }
 
-        init {
-            inflater = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            this.type = type
-        }
     }
 }

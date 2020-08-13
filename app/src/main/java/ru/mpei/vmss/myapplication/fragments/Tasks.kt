@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ExpandableListView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.fragment_tasks.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -30,25 +29,22 @@ class Tasks : Fragment() {
     @RequiresApi(api = Build.VERSION_CODES.M)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val rootView = inflater.inflate(R.layout.fragment_tasks, container, false)
-        val list = rootView.findViewById<ExpandableListView>(R.id.tasksList)
         adapter = TasksAdapter(requireContext(), dataList)
-        list.setAdapter(adapter)
-        list.setOnGroupExpandListener { groupPosition: Int ->
+        tasksList.setAdapter(adapter)
+        tasksList.setOnGroupExpandListener { groupPosition: Int ->
             for (g in 0 until adapter!!.groupCount) {
                 if (g != groupPosition) {
-                    list.collapseGroup(g)
+                    tasksList.collapseGroup(g)
                 }
             }
         }
         updateList()
-        val refresher: SwipeRefreshLayout = rootView.findViewById(R.id.tasksRefresher)
-        refresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
-        refresher.setOnRefreshListener {
+        tasksRefresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
+        tasksRefresher.setOnRefreshListener {
             updateList()
-            refresher.isRefreshing = false
+            tasksRefresher.isRefreshing = false
         }
-        return rootView
+        return inflater.inflate(R.layout.fragment_tasks, container, false)
     }
 
     fun updateList() {

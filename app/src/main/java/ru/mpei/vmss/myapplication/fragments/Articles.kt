@@ -2,11 +2,13 @@ package ru.mpei.vmss.myapplication.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
@@ -29,7 +31,7 @@ class Articles : Fragment {
     private var adapter: ArticleAdapter? = null
     private val dataList: MutableList<Article> = ArrayList()
     private var url: String? = null
-    private var header: String? = null
+    private lateinit var header: String
     private var prefix: String? = null
     private var type = 0
 
@@ -41,6 +43,13 @@ class Articles : Fragment {
     @SuppressLint("NewApi")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        return inflater.inflate(R.layout.fragment_articles, container, false)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         if (type == 0) {
             url = requireContext().getString(R.string.dashboardUrl)
             header = requireContext().getString(R.string.dashboard)
@@ -72,7 +81,6 @@ class Articles : Fragment {
             updateList()
             articlesRefresher.isRefreshing = false
         }
-        return inflater.inflate(R.layout.fragment_articles, container, false)
     }
 
     private fun updateList() {

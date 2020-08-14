@@ -23,6 +23,11 @@ import java.util.*
 class Login : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         enterButton.setOnClickListener {
             if (Objects.requireNonNull(loginEmail.text).toString().trim { it <= ' ' }.isEmpty() || Objects.requireNonNull(loginPassword.text).toString().trim { it <= ' ' }.isEmpty()) {
                 Toast.makeText(context, "Проверьте заполнение полей", Toast.LENGTH_LONG).show()
@@ -54,6 +59,5 @@ class Login : Fragment() {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(requireContext().getString(R.string.regUrl)))
             startActivity(browserIntent)
         }
-        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 }

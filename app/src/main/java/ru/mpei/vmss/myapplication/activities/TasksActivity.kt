@@ -61,7 +61,7 @@ class TasksActivity : AppCompatActivity() {
     private val TASKS_FINISHED = 2
     private val TASKS_DECLINED = 3
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tasks)
@@ -145,7 +145,7 @@ class TasksActivity : AppCompatActivity() {
         requestQueue.add(request)
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "InflateParams")
     fun showDialog(type: String?, task: Task) {
         val builder = AlertDialog.Builder(this@TasksActivity)
         when (type) {
@@ -389,11 +389,8 @@ class TasksActivity : AppCompatActivity() {
         }
 
         @SuppressLint("SetTextI18n")
-        override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View, parent: ViewGroup): View {
-            var view = convertView
-            if (view == null) {
-                view = inflater.inflate(R.layout.tasks_element, parent, false)
-            }
+        override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup): View? {
+            val view = inflater.inflate(R.layout.tasks_element, parent, false)
 
             taskNameText.text = getTasksElement(groupPosition).taskName
 
@@ -408,7 +405,7 @@ class TasksActivity : AppCompatActivity() {
         }
 
         @SuppressLint("SetTextI18n", "SimpleDateFormat")
-        override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View, parent: ViewGroup): View {
+        override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup): View? {
             var view = convertView
             when (this.type) {
                 TASKS_IN_PROCESS -> {

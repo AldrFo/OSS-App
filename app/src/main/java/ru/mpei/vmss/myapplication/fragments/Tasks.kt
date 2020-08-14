@@ -29,6 +29,13 @@ class Tasks : Fragment() {
     @RequiresApi(api = Build.VERSION_CODES.M)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_tasks, container, false)
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         adapter = TasksAdapter(requireContext(), dataList)
         tasksList.setAdapter(adapter)
         tasksList.setOnGroupExpandListener { groupPosition: Int ->
@@ -44,7 +51,6 @@ class Tasks : Fragment() {
             updateList()
             tasksRefresher.isRefreshing = false
         }
-        return inflater.inflate(R.layout.fragment_tasks, container, false)
     }
 
     fun updateList() {
@@ -80,7 +86,7 @@ class Tasks : Fragment() {
             }
             adapter!!.notifyDataSetChanged()
         },
-                Response.ErrorListener { error: VolleyError? -> Toast.makeText(requireContext(), "Ошибка соединения", Toast.LENGTH_LONG).show() })
+                Response.ErrorListener { Toast.makeText(requireContext(), "Ошибка соединения", Toast.LENGTH_LONG).show() })
         val requestQueue = Volley.newRequestQueue(requireContext())
         requestQueue.add(request)
     }

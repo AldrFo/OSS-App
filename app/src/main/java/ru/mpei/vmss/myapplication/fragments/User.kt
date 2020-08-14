@@ -11,10 +11,14 @@ import ru.mpei.vmss.myapplication.R
 class User : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_user, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         Companion.fragmentManager = activity!!.supportFragmentManager
         fragmentManager!!.beginTransaction().add(R.id.container, Login()).commit()
         updateLayout()
-        return inflater.inflate(R.layout.fragment_user, container, false)
     }
 
     companion object {

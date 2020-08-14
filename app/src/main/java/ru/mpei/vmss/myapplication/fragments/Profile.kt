@@ -41,6 +41,11 @@ class Profile : Fragment {
     @SuppressLint("ResourceType")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_profile, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         getUserData(profileName, profileCoins)
         profileExitButton.setOnClickListener {
             MainActivity.MyAdapter.tasksFragment.updateList()
@@ -56,7 +61,6 @@ class Profile : Fragment {
             intent.putExtra("type", id)
             startActivity(intent)
         }
-        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     private fun getUserData(name: TextView, capital: TextView) {
@@ -73,7 +77,7 @@ class Profile : Fragment {
                             userCapital = response.optString("capital")
                             updateInfo(name, capital)
                         } else {
-                            Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "error", Toast.LENGTH_SHORT).show()
                         }
                     },
                     Response.ErrorListener { Toast.makeText(context, "Возникла проблема, попробуйте позже", Toast.LENGTH_SHORT).show() })

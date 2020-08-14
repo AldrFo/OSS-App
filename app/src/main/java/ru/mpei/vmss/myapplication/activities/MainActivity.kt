@@ -29,11 +29,17 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        val supportFragmentManger = supportFragmentManager
-        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
+
+        setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelected)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+        val supportFragmentManger = supportFragmentManager
+
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
+
         val adapter = MyAdapter(supportFragmentManger)
 
         view_pager.adapter = adapter

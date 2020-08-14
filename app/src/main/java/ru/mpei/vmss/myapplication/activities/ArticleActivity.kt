@@ -14,6 +14,7 @@ import ru.mpei.vmss.myapplication.R
 class ArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_article)
 
         articleToolbar.title = intent.getStringExtra("head")
         articleToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)

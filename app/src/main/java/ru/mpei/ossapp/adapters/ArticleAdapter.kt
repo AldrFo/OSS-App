@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.adapters
+package ru.mpei.ossapp.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.pojo.Article
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.pojo.Article
 
 class ArticleAdapter(private val context: Context, private var elements: List<Article>, private val onArticleClickListener: OnArticleClickListener) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.fragments
+package ru.mpei.ossapp.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -19,10 +19,10 @@ import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.json.JSONException
 import org.json.JSONObject
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.activities.MainActivity
-import ru.mpei.vmss.myapplication.activities.MainActivity.Companion.deleteData
-import ru.mpei.vmss.myapplication.activities.TasksActivity
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.activities.MainActivity
+import ru.mpei.ossapp.activities.MainActivity.Companion.deleteData
+import ru.mpei.ossapp.activities.TasksActivity
 
 class Profile : Fragment {
     private var hashPass: String? = null

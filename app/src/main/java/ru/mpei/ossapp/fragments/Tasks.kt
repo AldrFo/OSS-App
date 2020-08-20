@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.fragments
+package ru.mpei.ossapp.fragments
 
 import android.os.Build
 import android.os.Bundle
@@ -17,9 +17,9 @@ import kotlinx.android.synthetic.main.fragment_tasks.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.adapters.TasksAdapter
-import ru.mpei.vmss.myapplication.pojo.Task
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.adapters.TasksAdapter
+import ru.mpei.ossapp.pojo.Task
 import java.util.*
 
 class Tasks : Fragment() {

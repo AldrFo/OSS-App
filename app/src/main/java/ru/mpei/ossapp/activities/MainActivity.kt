@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.activities
+package ru.mpei.ossapp.activities
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -16,11 +16,11 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.fragments.Articles
-import ru.mpei.vmss.myapplication.fragments.Others
-import ru.mpei.vmss.myapplication.fragments.Tasks
-import ru.mpei.vmss.myapplication.fragments.User
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.fragments.Articles
+import ru.mpei.ossapp.fragments.Others
+import ru.mpei.ossapp.fragments.Tasks
+import ru.mpei.ossapp.fragments.User
 
 class MainActivity : AppCompatActivity() {
     private var prevMenuItem: MenuItem? = null

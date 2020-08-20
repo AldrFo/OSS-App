@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication;
+package ru.mpei.ossapp;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.adapters
+package ru.mpei.ossapp.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -14,9 +14,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.fragments.User
-import ru.mpei.vmss.myapplication.pojo.Task
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.fragments.User
+import ru.mpei.ossapp.pojo.Task
 
 class TasksAdapter(private val context: Context, private val elements: MutableList<Task>) : BaseExpandableListAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

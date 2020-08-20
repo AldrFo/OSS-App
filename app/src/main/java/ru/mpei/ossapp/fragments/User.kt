@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.fragments
+package ru.mpei.ossapp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import ru.mpei.vmss.myapplication.R
+import ru.mpei.ossapp.R
 
 class User : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

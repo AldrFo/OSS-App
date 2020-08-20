@@ -1,15 +1,11 @@
-package ru.mpei.vmss.myapplication.activities
+package ru.mpei.ossapp.activities
 
 import android.os.Bundle
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.activity_article.*
-import ru.mpei.vmss.myapplication.R
+import ru.mpei.ossapp.R
 
 class ArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

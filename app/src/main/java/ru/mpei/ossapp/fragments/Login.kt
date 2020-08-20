@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.fragments
+package ru.mpei.ossapp.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -14,9 +14,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.activities.MainActivity
-import ru.mpei.vmss.myapplication.activities.MainActivity.Companion.hideKeyboard
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.activities.MainActivity
+import ru.mpei.ossapp.activities.MainActivity.Companion.hideKeyboard
 import kotlinx.android.synthetic.main.fragment_login.*
 import java.util.*
 

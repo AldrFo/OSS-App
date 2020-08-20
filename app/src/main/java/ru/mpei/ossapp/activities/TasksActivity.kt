@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.activities
+package ru.mpei.ossapp.activities
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -35,10 +35,10 @@ import kotlinx.android.synthetic.main.tasks_element.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import ru.mpei.vmss.myapplication.BuildConfig
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.fragments.User
-import ru.mpei.vmss.myapplication.pojo.Task
+import ru.mpei.ossapp.BuildConfig
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.fragments.User
+import ru.mpei.ossapp.pojo.Task
 import java.io.File
 import java.io.IOException
 import java.text.ParseException

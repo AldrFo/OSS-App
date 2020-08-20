@@ -1,4 +1,4 @@
-package ru.mpei.vmss.myapplication.fragments
+package ru.mpei.ossapp.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -17,11 +17,11 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import ru.mpei.vmss.myapplication.R
-import ru.mpei.vmss.myapplication.activities.ArticleActivity
-import ru.mpei.vmss.myapplication.adapters.ArticleAdapter
-import ru.mpei.vmss.myapplication.adapters.ArticleAdapter.OnArticleClickListener
-import ru.mpei.vmss.myapplication.pojo.Article
+import ru.mpei.ossapp.R
+import ru.mpei.ossapp.activities.ArticleActivity
+import ru.mpei.ossapp.adapters.ArticleAdapter
+import ru.mpei.ossapp.adapters.ArticleAdapter.OnArticleClickListener
+import ru.mpei.ossapp.pojo.Article
 import kotlinx.android.synthetic.main.fragment_articles.*
 import java.util.*
 

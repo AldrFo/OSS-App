@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':common_adapter', ':common_android', ':common_annotations', ':common_mvi', ':common_kotlin', ':common_navigation', ':common_network', ':common_di'
 rootProject.name='OSS'

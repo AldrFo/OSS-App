@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    tools:context=".activities.TasksActivity">
+    tools:context="ru.mpei.ossapp.activities.TasksActivity">
 
     <TextView
         android:id="@+id/takenDescriptionText"

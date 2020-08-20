@@ -38,7 +38,7 @@ android {
 
 dependencies {
     coreLibraryDesugaring desugaring
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation kotlinStdLib
 
     implementation squareup.retrofit
     implementation squareup.retrofit_rxJava2

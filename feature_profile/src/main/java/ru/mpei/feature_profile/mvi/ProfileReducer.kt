@@ -6,7 +6,7 @@ import kekmech.ru.common_mvi.Result
 typealias ProfileResult = Result<ProfileState, ProfileEffect, ProfileAction>
 
 class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, ProfileAction>{
-    override fun reduce(event: ProfileEvent, state: ProfileState): Result<ProfileState, ProfileEffect, ProfileAction> {
+    override fun reduce(event: ProfileEvent, state: ProfileState): ProfileResult {
         TODO("Not yet implemented")
     }
 }

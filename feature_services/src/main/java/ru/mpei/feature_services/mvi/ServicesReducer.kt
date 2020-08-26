@@ -5,8 +5,9 @@ import kekmech.ru.common_mvi.Result
 
 typealias ServicesResult = Result<ServicesState, ServicesEffect, ServicesAction>
 
-class ServicesReducer : BaseReducer<ServicesState, ServicesEvent, ServicesEffect, ServicesAction>{
-    override fun reduce(event: ServicesEvent, state:ServicesState): Result<ServicesState, ServicesEffect, ServicesAction> {
+class ServicesReducer : BaseReducer<ServicesState, ServicesEvent,ServicesEffect, ServicesAction> {
+
+    override fun reduce(event: ServicesEvent, state: ServicesState): ServicesResult {
         TODO("Not yet implemented")
     }
 }

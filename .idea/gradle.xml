@@ -22,8 +22,10 @@
             <option value="$PROJECT_DIR$/common_network" />
             <option value="$PROJECT_DIR$/domain_events" />
             <option value="$PROJECT_DIR$/domain_news" />
+            <option value="$PROJECT_DIR$/domain_profile" />
             <option value="$PROJECT_DIR$/feature_events" />
             <option value="$PROJECT_DIR$/feature_news" />
+            <option value="$PROJECT_DIR$/feature_profile" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

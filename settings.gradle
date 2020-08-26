@@ -1,3 +1,5 @@
+include ':domain_store'
+include ':feature_store'
 include ':domain_profile'
 include ':feature_profile'
 include ':domain_events'

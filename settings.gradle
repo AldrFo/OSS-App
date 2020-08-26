@@ -1,3 +1,5 @@
+include ':domain_services'
+include ':feature_services'
 include ':domain_store'
 include ':feature_store'
 include ':domain_profile'

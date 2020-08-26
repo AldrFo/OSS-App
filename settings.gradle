@@ -1,3 +1,5 @@
+include ':domain_events'
+include ':feature_events'
 include ':domain_news'
 include ':feature_news'
 include ':app', ':common_adapter', ':common_android', ':common_annotations', ':common_mvi', ':common_kotlin', ':common_navigation', ':common_network', ':common_di'

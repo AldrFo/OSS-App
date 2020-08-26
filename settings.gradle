@@ -1,3 +1,5 @@
+include ':domain_onboarding'
+include ':feature_onboarding'
 include ':domain_services'
 include ':feature_services'
 include ':domain_store'

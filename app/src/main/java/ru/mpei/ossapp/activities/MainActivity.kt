@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -33,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         val supportFragmentManger = supportFragmentManager
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelected)
+        setContentView(R.layout.activity_main)
+
         val adapter = MyAdapter(supportFragmentManger)
 
         view_pager.adapter = adapter
@@ -53,7 +55,11 @@ class MainActivity : AppCompatActivity() {
 
             override fun onPageScrollStateChanged(state: Int) {}
         })
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelected)
     }
+
+
 
     override fun onPause() {
         super.onPause()

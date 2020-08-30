@@ -16,9 +16,10 @@ import org.json.JSONException
 import org.json.JSONObject
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.fragments.User
+import ru.mpei.ossapp.pojo.Article
 import ru.mpei.ossapp.pojo.Task
 
-class TasksAdapter(private val context: Context, private val elements: MutableList<Task>) : BaseExpandableListAdapter() {
+class TasksAdapter(private val context: Context, private var elements: MutableList<Task>) : BaseExpandableListAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     init{
@@ -110,6 +111,12 @@ class TasksAdapter(private val context: Context, private val elements: MutableLi
 
     override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean {
         return false
+    }
+
+    fun updateList(list: MutableList<Task>){
+        elements.clear()
+        elements = list
+        notifyDataSetChanged()
     }
 
 }

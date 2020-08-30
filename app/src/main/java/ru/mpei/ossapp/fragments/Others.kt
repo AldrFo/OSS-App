@@ -14,10 +14,15 @@ class Others : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
+        return inflater.inflate(R.layout.fragment_others, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val items = initList()
         val adapter = ArrayAdapter(activity!!.applicationContext, android.R.layout.simple_list_item_1, items)
         othersList!!.adapter = adapter
-        return inflater.inflate(R.layout.fragment_others, container, false)
     }
 
     private fun initList(): List<String> {

@@ -32,26 +32,29 @@ import kotlinx.android.synthetic.main.finish_dialog.*
 import kotlinx.android.synthetic.main.finished_tasks_element_child.*
 import kotlinx.android.synthetic.main.taken_tasks_element_child.*
 import kotlinx.android.synthetic.main.tasks_element.*
-import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import ru.mpei.ossapp.BuildConfig
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.fragments.User
+import ru.mpei.ossapp.http.HttpRequests
 import ru.mpei.ossapp.pojo.Task
 import java.io.File
 import java.io.IOException
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.jvm.Throws
 
 class TasksActivity : AppCompatActivity() {
     private lateinit var context: Context
     private var adapter: SpecialAdapter? = null
-    private val dataList: MutableList<Task> = ArrayList()
+    private var dataList: MutableList<Task> = ArrayList()
     private var type = 0
-    private lateinit var editReportImage: ImageView
+    //private lateinit var editReportImage: ImageView
     private var currentPhotoPath: String? = null
     private var dialog: AlertDialog? = null
     private val TAKE_PHOTO = 0
@@ -64,7 +67,9 @@ class TasksActivity : AppCompatActivity() {
     @RequiresApi(api = Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_tasks)
+
         context = Objects.requireNonNull(applicationContext)
         type = intent.getLongExtra("type", 0).toInt()
         val mToolbar = findViewById<Toolbar>(R.id.tasksTypeToolbar)
@@ -97,52 +102,31 @@ class TasksActivity : AppCompatActivity() {
 
     private fun updateList(type: Int) {
         dataList.clear()
-        val body = JSONObject()
-        try {
-            body.put("id", User.userId)
-            when (type) {
-                1 -> body.put("type", "inCheck")
-                2 -> body.put("type", "accepted")
-                3 -> body.put("type", "refused")
-                else -> body.put("type", "taken")
+
+        val retrofit = Retrofit.Builder()
+                .baseUrl("http://cy37212.tmweb.ru")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+        val httpRequests = retrofit.create(HttpRequests::class.java)
+
+        httpRequests.getTasks(User.userId, when (type) {
+            1 -> "inCheck"
+            2 -> "accepted"
+            3 -> "refused"
+            else ->"taken"
+        }).enqueue(object : Callback<MutableList<Task>>{
+            override fun onResponse(call: Call<MutableList<Task>>, response: retrofit2.Response<MutableList<Task>>) {
+                response.body()?.let { adapter!!.updateList(it) }
+                Toast.makeText(context, dataList.size.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, tasksTypeList.adapter.count.toString(), Toast.LENGTH_SHORT).show()
             }
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-        val request = JsonArrayRequest(Request.Method.POST,
-                context.getString(R.string.getTasksUrl), body, Response.Listener { response: JSONArray ->
-            for (i in 0 until response.length()) {
-                var obj: JSONObject
-                var line: Task
-                try {
-                    obj = response.getJSONObject(i)
-                    line = Task(obj.getString("description_short"),
-                            obj.getString("description_full"),
-                            obj.getString("place"),
-                            obj.getString("reward"),
-                            obj.getString("start"),
-                            obj.getString("end"),
-                            obj.getString("refuse_before"))
-                    if (type == 1) {
-                        if (obj.getString("status") == "onchecking") {
-                            line.status = "Проверка выполнения"
-                        } else {
-                            line.status = "Проверка штрафа"
-                        }
-                        line.changeBefore = obj.getString("changeBefore")
-                    }
-                    line.id = obj.getString("id_task")
-                    line.penalty = obj.getString("penalty")
-                    dataList.add(line)
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
+
+            override fun onFailure(call: Call<MutableList<Task>>, t: Throwable) {
+                Toast.makeText(context, "Ошибка соединения:" + t.localizedMessage, Toast.LENGTH_LONG).show()
             }
-            adapter!!.notifyDataSetChanged()
-        },
-                Response.ErrorListener { Toast.makeText(context, "Ошибка соединения", Toast.LENGTH_LONG).show() })
-        val requestQueue = Volley.newRequestQueue(context)
-        requestQueue.add(request)
+        })
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -257,8 +241,11 @@ class TasksActivity : AppCompatActivity() {
                 builder.setView(layoutInflater.inflate(R.layout.decline_penalty_dialog, null))
             }
             "editReport" -> {
-                editReportImage.visibility = View.GONE
-                editReportAttachImage.setOnClickListener {
+                val mDialogView = LayoutInflater.from(this).inflate(R.layout.edit_report_dailog, null)
+                builder.setView(mDialogView)
+                dialog = builder.show()
+                dialog!!.editReportImage.visibility = View.GONE
+                dialog!!.editReportAttachImage.setOnClickListener {
                     val p = PopupMenu(this@TasksActivity, editReportAttachImage)
                     p.menuInflater.inflate(R.menu.choose_image_type_popup, p.menu)
                     p.setOnMenuItemClickListener { item: MenuItem ->
@@ -292,16 +279,16 @@ class TasksActivity : AppCompatActivity() {
                     }
                     p.show()
                 }
-                editReportButton.setOnClickListener {
+                dialog!!.editReportButton.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
                         body.put("task_id", task.id)
-                        body.put("comment", editReportTextBox.text)
+                        body.put("comment", dialog!!.editReportTextBox.text)
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
-                    if (editReportImage.drawable == null) {
+                    if (dialog!!.editReportImage.drawable == null) {
                         Toast.makeText(context, "no", Toast.LENGTH_SHORT).show()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
@@ -313,11 +300,8 @@ class TasksActivity : AppCompatActivity() {
                     requestQueue.add(request)
                     dialog!!.cancel()
                 }
-                builder.setView(layoutInflater.inflate(R.layout.edit_report_dailog, null))
             }
         }
-        dialog = builder.create()
-        dialog!!.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, imageReturnedIntent: Intent?) {
@@ -358,7 +342,7 @@ class TasksActivity : AppCompatActivity() {
         }
     }
 
-    internal inner class SpecialAdapter(context: Context?, private val elements: List<Task>, private val type: Int) : BaseExpandableListAdapter() {
+    internal inner class SpecialAdapter(context: Context?, private var elements: MutableList<Task>, private val type: Int) : BaseExpandableListAdapter() {
         private val inflater: LayoutInflater = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         override fun getGroupCount(): Int {
             return elements.size
@@ -389,17 +373,17 @@ class TasksActivity : AppCompatActivity() {
         }
 
         @SuppressLint("SetTextI18n")
-        override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View, parent: ViewGroup): View {
+        override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup): View {
             var view = convertView
             if (view == null) {
                 view = inflater.inflate(R.layout.tasks_element, parent, false)
             }
 
-            taskNameText.text = getTasksElement(groupPosition).taskName
+            view!!.findViewById<TextView>(R.id.taskNameText).text = getTasksElement(groupPosition).taskName
 
-            taskPriceText.text = getTasksElement(groupPosition).price + " б."
+            view.findViewById<TextView>(R.id.taskPriceText).text = getTasksElement(groupPosition).price + " б."
 
-            taskLocationText.text = "Место: " + getTasksElement(groupPosition).location
+            view.findViewById<TextView>(R.id.taskLocationText).text = "Место: " + getTasksElement(groupPosition).location
             return view
         }
 
@@ -408,7 +392,7 @@ class TasksActivity : AppCompatActivity() {
         }
 
         @SuppressLint("SetTextI18n", "SimpleDateFormat")
-        override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View, parent: ViewGroup): View {
+        override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup): View {
             var view = convertView
             when (this.type) {
                 TASKS_IN_PROCESS -> {
@@ -416,17 +400,17 @@ class TasksActivity : AppCompatActivity() {
                         view = inflater.inflate(R.layout.taken_tasks_element_child, parent, false)
                     }
 
-                    takenDescriptionText.text = getTasksElement(groupPosition).taskDescription
+                    view!!.findViewById<TextView>(R.id.takenDescriptionText).text = getTasksElement(groupPosition).taskDescription
 
-                    takenBeginText.text = "Начало: " + getTasksElement(groupPosition).startDate
+                    view.findViewById<TextView>(R.id.takenBeginText).text = "Начало: " + getTasksElement(groupPosition).startDate
 
-                    takenEndText.text = "Конец: " + getTasksElement(groupPosition).endDate
+                    view.findViewById<TextView>(R.id.takenEndText).text = "Конец: " + getTasksElement(groupPosition).endDate
 
-                    takenCommentText.text = "От задания можно отказаться не позднее, чем: " + getTasksElement(groupPosition).refuseInfo
+                    view.findViewById<TextView>(R.id.takenCommentText).text = "От задания можно отказаться не позднее, чем: " + getTasksElement(groupPosition).refuseInfo
 
-                    takenFinishButton.setOnClickListener { showDialog("finish", getTasksElement(groupPosition)) }
+                    view.findViewById<Button>(R.id.takenFinishButton).setOnClickListener { showDialog("finish", getTasksElement(groupPosition)) }
 
-                    takenDeclineButton.setOnClickListener {
+                    view.findViewById<Button>(R.id.takenDeclineButton).setOnClickListener {
                         var time: Date? = null
                         try {
                             time = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(getTasksElement(groupPosition).refuseInfo)
@@ -448,25 +432,31 @@ class TasksActivity : AppCompatActivity() {
                         view = inflater.inflate(R.layout.checking_tasks_element_child, parent, false)
                     }
 
-                    checkingStatusText.text = "Статус: " + getTasksElement(groupPosition).status
+                    view!!.findViewById<TextView>(R.id.checkingStatusText).text = "Статус: " + getTasksElement(groupPosition).status
 
-                    checkingChangeTimeText.text = "Отредактировать отчет можно до: " + getTasksElement(groupPosition).changeBefore
+                    view.findViewById<TextView>(R.id.checkingChangeTimeText).text = "Отредактировать отчет можно до: " + getTasksElement(groupPosition).changeBefore
 
-                    checkingAgreeButton.setOnClickListener { showDialog("editReport", getTasksElement(groupPosition)) }
+                    view.findViewById<Button>(R.id.checkingAgreeButton).setOnClickListener { showDialog("editReport", getTasksElement(groupPosition)) }
                 }
                 else -> {
                     if (view == null) {
                         view = inflater.inflate(R.layout.finished_tasks_element_child, parent, false)
                     }
 
-                    finishedDescriptionText.text = getTasksElement(groupPosition).taskDescription
+                    view!!.findViewById<TextView>(R.id.finishedDescriptionText).text = getTasksElement(groupPosition).taskDescription
                 }
             }
-            return view
+            return view!!
         }
 
         override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean {
             return false
+        }
+
+        fun updateList(list: MutableList<Task>){
+            elements.clear()
+            elements = list
+            notifyDataSetChanged()
         }
 
     }

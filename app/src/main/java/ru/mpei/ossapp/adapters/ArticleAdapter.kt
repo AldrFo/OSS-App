@@ -6,14 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.pojo.Article
 
-class ArticleAdapter(private val context: Context, private var elements: List<Article>, private val onArticleClickListener: OnArticleClickListener) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
+class ArticleAdapter(private val context: Context, private var elements: MutableList<Article>, private val onArticleClickListener: OnArticleClickListener, private val prefix: String) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
+
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = inflater.inflate(R.layout.article_element, parent, false)
         return ViewHolder(view)
@@ -22,10 +25,10 @@ class ArticleAdapter(private val context: Context, private var elements: List<Ar
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article = elements[position]
         Glide.with(context)
-                .load(article.imageUrl)
+                .load(prefix + article.imageSrc)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.thumbnail)
-        holder.articleTitle.text = article.title
+        holder.articleTitle.text = article.name
     }
 
     override fun getItemCount(): Int {
@@ -44,13 +47,13 @@ class ArticleAdapter(private val context: Context, private var elements: List<Ar
         }
     }
 
-    fun setArticles(articles: Collection<Article>) {
-        elements = articles as List<Article>
-        notifyDataSetChanged()
-    }
-
     interface OnArticleClickListener {
         fun onClickListener(article: Article?)
     }
 
+    fun updateList(list: MutableList<Article>){
+        elements.clear()
+        elements = list
+        notifyDataSetChanged()
+    }
 }

@@ -2,35 +2,35 @@ package ru.mpei.ossapp.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.Volley
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
+import kotlinx.android.synthetic.main.fragment_articles.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.activities.ArticleActivity
 import ru.mpei.ossapp.adapters.ArticleAdapter
 import ru.mpei.ossapp.adapters.ArticleAdapter.OnArticleClickListener
+import ru.mpei.ossapp.http.HttpRequests
 import ru.mpei.ossapp.pojo.Article
-import kotlinx.android.synthetic.main.fragment_articles.*
 import java.util.*
 
 class Articles : Fragment {
-    private var adapter: ArticleAdapter? = null
-    private val dataList: MutableList<Article> = ArrayList()
+    private lateinit var adapter: ArticleAdapter
+    private var dataList: MutableList<Article> = ArrayList()
     private var url: String? = null
     private var header: String? = null
-    private var prefix: String? = null
+    private lateinit var prefix: String
     private var type = 0
 
     constructor()
@@ -41,6 +41,8 @@ class Articles : Fragment {
     @SuppressLint("NewApi")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        val inf = inflater.inflate(R.layout.fragment_articles, container, false)
         if (type == 0) {
             url = requireContext().getString(R.string.dashboardUrl)
             header = requireContext().getString(R.string.dashboard)
@@ -50,6 +52,13 @@ class Articles : Fragment {
             header = requireContext().getString(R.string.news)
             prefix = requireContext().getString(R.string.imagesNewsUrl)
         }
+        return inf
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         articlesHeader.text = header
         val layoutManager = LinearLayoutManager(context)
         articlesList.layoutManager = layoutManager
@@ -57,45 +66,47 @@ class Articles : Fragment {
             override fun onClickListener(article: Article?) {
                 val intent = Intent(context, ArticleActivity::class.java)
                 if (article != null) {
-                    intent.putExtra("head", article.title)
-                    intent.putExtra("date", article.date)
+                    intent.putExtra("head", article.name)
+                    intent.putExtra("date", article.chislo + " " + article.month + " " + article.hour)
                     intent.putExtra("content", article.content)
-                    intent.putExtra("imageUrl", article.imageUrl)
+                    intent.putExtra("imageUrl", prefix + article.imageSrc)
+                    Toast.makeText(context, prefix + article.imageSrc, Toast.LENGTH_SHORT).show()
                 }
                 startActivity(intent)
             }
-        })
+        }, prefix)
+
         articlesList.adapter = adapter
+
         updateList()
         articlesRefresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
         articlesRefresher.setOnRefreshListener {
             updateList()
             articlesRefresher.isRefreshing = false
         }
-        return inflater.inflate(R.layout.fragment_articles, container, false)
     }
 
     private fun updateList() {
-        dataList.clear()
-        val request = JsonArrayRequest(Request.Method.GET,
-                url, Response.Listener { response: JSONArray ->
-            for (i in 0 until response.length()) {
-                var obj: JSONObject
-                try {
-                    obj = response.getJSONObject(i)
-                    dataList.add(Article(obj.getString("name"),
-                            obj.getString("content"),
-                            obj.getString("chislo") + " " + obj.getString("month") + " в " + obj.getString("hour"),
-                            null,
-                            prefix + obj.getString("image_src")))
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
+
+        val retrofit = Retrofit.Builder()
+                .baseUrl("http://cy37212.tmweb.ru")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+        val httpRequests = retrofit.create(HttpRequests::class.java)
+
+        val request = if (type == 0) httpRequests.getEvents() else httpRequests.getNews()
+
+        request.enqueue(object : Callback<MutableList<Article>> {
+            override fun onResponse(call: Call<MutableList<Article>>, response: Response<MutableList<Article>>) {
+                dataList = response.body()!!
+                adapter.updateList(dataList)
             }
-            adapter!!.setArticles(dataList)
-        },
-                Response.ErrorListener { _: VolleyError? -> Toast.makeText(context, "Connection error", Toast.LENGTH_LONG).show() })
-        val requestQueue = Volley.newRequestQueue(context)
-        requestQueue.add(request)
+
+            override fun onFailure(call: Call<MutableList<Article>>, t: Throwable) {
+                Toast.makeText(context, "Unable to get data from server", Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 }

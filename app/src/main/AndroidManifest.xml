@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
+        android:name=".App"
         tools:targetApi="m">
         <activity
             android:screenOrientation="portrait"
@@ -25,7 +26,7 @@
             android:name="ru.mpei.ossapp.activities.TasksActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="ru.mpei.ossapp.activities.MainActivity"
+            android:name="ru.mpei.ossapp.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden">
             <intent-filter>

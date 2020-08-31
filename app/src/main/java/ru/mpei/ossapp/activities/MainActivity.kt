@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -16,7 +15,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.fragments.Articles
 import ru.mpei.ossapp.fragments.Others
@@ -89,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                 view_pager.currentItem = 3
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_others -> {
+            R.id.navigation_services -> {
                 view_pager.currentItem = 4
                 return@OnNavigationItemSelectedListener true
             }

@@ -3,9 +3,11 @@ package ru.mpei.ossapp
 import android.app.Application
 import kekmech.ru.common_di.modules
 import kekmech.ru.common_navigation.di.NavigationModule
+import kekmech.ru.common_network.di.NetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import ru.mpei.feature_news.di.NewsModule
 import ru.mpei.ossapp.di.AppModule
 import ru.mpei.ossapp.ui.main.di.MainScreenModule
 
@@ -24,7 +26,9 @@ class App : Application() {
         modules(listOf(
             AppModule,
             NavigationModule,
-            MainScreenModule
+            MainScreenModule,
+            NetworkModule,
+            NewsModule
         ))
     }
 

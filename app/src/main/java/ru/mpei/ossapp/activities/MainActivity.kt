@@ -36,25 +36,25 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = MyAdapter(supportFragmentManger)
 
-        view_pager.adapter = adapter
-        view_pager.offscreenPageLimit = 5
-        view_pager.currentItem = 0
-
-        view_pager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                hideKeyboard(activity)
-            }
-
-            override fun onPageSelected(position: Int) {
-                if (prevMenuItem != null) prevMenuItem!!.isChecked = false else navigation.menu.getItem(0).isChecked = false
-                navigation.menu.getItem(position).isChecked = true
-                prevMenuItem = navigation.menu.getItem(position)
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {}
-        })
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelected)
+//        view_pager.adapter = adapter
+//        view_pager.offscreenPageLimit = 5
+//        view_pager.currentItem = 0
+//
+//        view_pager.addOnPageChangeListener(object : OnPageChangeListener {
+//            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+//                hideKeyboard(activity)
+//            }
+//
+//            override fun onPageSelected(position: Int) {
+//                if (prevMenuItem != null) prevMenuItem!!.isChecked = false else navigation.menu.getItem(0).isChecked = false
+//                navigation.menu.getItem(position).isChecked = true
+//                prevMenuItem = navigation.menu.getItem(position)
+//            }
+//
+//            override fun onPageScrollStateChanged(state: Int) {}
+//        })
+//
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelected)
     }
 
 
@@ -71,26 +71,26 @@ class MainActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelected = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
         when (menuItem.itemId) {
-            R.id.navigation_dashboard -> {
-                view_pager.currentItem = 0
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_news -> {
-                view_pager.currentItem = 1
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_profile -> {
-                view_pager.currentItem = 2
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_tasks -> {
-                view_pager.currentItem = 3
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_services -> {
-                view_pager.currentItem = 4
-                return@OnNavigationItemSelectedListener true
-            }
+//            R.id.navigation_dashboard -> {
+//                view_pager.currentItem = 0
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.navigation_news -> {
+//                view_pager.currentItem = 1
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.navigation_profile -> {
+//                view_pager.currentItem = 2
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.navigation_tasks -> {
+//                view_pager.currentItem = 3
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.navigation_services -> {
+//                view_pager.currentItem = 4
+//                return@OnNavigationItemSelectedListener true
+//            }
         }
         false
     }

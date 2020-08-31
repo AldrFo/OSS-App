@@ -1,14 +1,13 @@
 package ru.mpei.domain_news
 
 import io.reactivex.Single
-import kekmech.ru.common_network.EmptyRequestBody
-import retrofit2.http.Body
-import retrofit2.http.POST
+import kekmech.ru.common_annotations.EndpointUrl
+import retrofit2.http.GET
+import ru.mpei.domain_news.dto.NewsItem
 
+@EndpointUrl("http://cy37212.tmweb.ru/")
 interface NewsApi {
 
-    @POST("http://cy37212.tmweb.ru/Android/news.php")
-    fun get(
-        @Body body: EmptyRequestBody = EmptyRequestBody
-    ): Single<List<Any>>
+    @GET("Android/news.php")
+    fun get(): Single<List<NewsItem>>
 }

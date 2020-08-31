@@ -25,13 +25,9 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_tasks.*
-import kotlinx.android.synthetic.main.checking_tasks_element_child.*
 import kotlinx.android.synthetic.main.decline_penalty_dialog.*
 import kotlinx.android.synthetic.main.edit_report_dailog.*
 import kotlinx.android.synthetic.main.finish_dialog.*
-import kotlinx.android.synthetic.main.finished_tasks_element_child.*
-import kotlinx.android.synthetic.main.taken_tasks_element_child.*
-import kotlinx.android.synthetic.main.tasks_element.*
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
@@ -246,7 +242,7 @@ class TasksActivity : AppCompatActivity() {
                 dialog = builder.show()
                 dialog!!.editReportImage.visibility = View.GONE
                 dialog!!.editReportAttachImage.setOnClickListener {
-                    val p = PopupMenu(this@TasksActivity, editReportAttachImage)
+                    val p = PopupMenu(this@TasksActivity, findViewById(R.id.editReportAttachImage))
                     p.menuInflater.inflate(R.menu.choose_image_type_popup, p.menu)
                     p.setOnMenuItemClickListener { item: MenuItem ->
                         if (item.title == "Сделать фотографию") {

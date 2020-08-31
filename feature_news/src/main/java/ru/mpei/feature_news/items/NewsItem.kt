@@ -12,6 +12,7 @@ import ru.mpei.feature_news.R
 interface NewsViewHolder {
     fun setName(name: String)
     fun setDate(chislo: String, month: String, hour: String)
+    fun setOnClickListener(onClick: () -> Unit)
 }
 
 class NewsViewHolderImpl(
@@ -25,19 +26,26 @@ class NewsViewHolderImpl(
     override fun setName(name: String) {
         containerView.findViewById<TextView>(R.id.articleElementText).setText(name)
     }
+
+    override fun setOnClickListener(onClick: () -> Unit) {
+        containerView.setOnClickListener { onClick() }
+    }
 }
 
-class NewsItemBinder : BaseItemBinder<NewsViewHolder, NewsItem>() {
+class NewsItemBinder(
+    private val onClick: (NewsItem) -> Unit
+) : BaseItemBinder<NewsViewHolder, NewsItem>() {
 
     override fun bind(vh: NewsViewHolder, model: NewsItem, position: Int) {
         vh.setDate(model.chislo, model.month, model.hour)
         vh.setName(model.name)
+        vh.setOnClickListener { onClick(model) }
     }
 }
 
-class NewsAdapterItem : AdapterItem<NewsViewHolder, NewsItem>(
+class NewsAdapterItem(onClick: (NewsItem) -> Unit) : AdapterItem<NewsViewHolder, NewsItem>(
     isType = { it is NewsItem },
     layoutRes = R.layout.item_article,
-    itemBinder = NewsItemBinder(),
+    itemBinder = NewsItemBinder(onClick),
     viewHolderGenerator = ::NewsViewHolderImpl
 )

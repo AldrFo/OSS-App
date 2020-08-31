@@ -36,6 +36,8 @@ class NewsFragment : BaseFragment<NewsEvent, NewsEffect, NewsState, NewsFeature>
     }
 
     private fun createAdapter() = BaseAdapter(
-        NewsAdapterItem()
+        NewsAdapterItem { newsItem ->
+            println("You clicked on $newsItem")
+        }
     )
 }

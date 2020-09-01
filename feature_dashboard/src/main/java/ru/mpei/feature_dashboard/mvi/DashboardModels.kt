@@ -16,11 +16,14 @@ sealed class DashboardEvent {
         object System {
             object Init : Wish()
         }
+
+        object OnSwipeRefresh : Wish()
+        // data class OnSwipeRefresh(kek: Boolean) : Wish()
     }
 
-    sealed class Dashboard : DashboardEvent() {
-        data class DashboardListLoaded(val listOfItems: List<NewsItem>) : Dashboard()
-        data class DashboardListLoadError(val throwable: Throwable) : Dashboard()
+    sealed class News : DashboardEvent() {
+        data class NewsListLoaded(val listOfItems: List<NewsItem>) : News()
+        data class NewsListLoadError(val throwable: Throwable) : News()
     }
 }
 

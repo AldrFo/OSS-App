@@ -10,6 +10,6 @@ class DashboardActor(
 
     override fun execute(action: DashboardAction): Observable<DashboardEvent> = when (action) {
         is DashboardAction.LoadDashboardList -> newsRepository.observeNews()
-             .mapEvents(DashboardEvent.Dashboard::DashboardListLoaded, DashboardEvent.Dashboard::DashboardListLoadError)
+             .mapEvents(DashboardEvent.News::NewsListLoaded, DashboardEvent.News::NewsListLoadError)
     }
 }

@@ -36,6 +36,7 @@ dependencies {
     implementation androidx.coreKtx
     implementation androidx.appcompat
     implementation androidx.recyclerview
+    implementation androidx.viewpager2
     testImplementation tests.junit
 
     implementation rx.java
@@ -50,6 +51,7 @@ dependencies {
     implementation squareup.retrofit
     implementation squareup.retrofit_rxJava2
     implementation squareup.retrofit_gson
+    implementation squareup.picasso
 
     implementation project(path: ':domain_news')
 

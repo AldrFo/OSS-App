@@ -1,5 +1,7 @@
 package ru.mpei.domain_news.dto
 
+import com.google.gson.annotations.SerializedName
+
 data class NewsItem(
         var id: String = "",
         var name: String = "",
@@ -7,6 +9,6 @@ data class NewsItem(
         var month: String = "",
         var hour: String = "",
         var content: String = "",
-        // @SerializedName("image_src")
+        @SerializedName("image_src")
         var imageUrl: String = ""
 )

@@ -26,12 +26,13 @@
             <option value="$PROJECT_DIR$/domain_profile" />
             <option value="$PROJECT_DIR$/domain_services" />
             <option value="$PROJECT_DIR$/domain_store" />
-            <option value="$PROJECT_DIR$/feature_events" />
-            <option value="$PROJECT_DIR$/feature_news" />
+            <option value="$PROJECT_DIR$/domain_tasks" />
+            <option value="$PROJECT_DIR$/feature_dashboard" />
             <option value="$PROJECT_DIR$/feature_onboarding" />
             <option value="$PROJECT_DIR$/feature_profile" />
             <option value="$PROJECT_DIR$/feature_services" />
             <option value="$PROJECT_DIR$/feature_store" />
+            <option value="$PROJECT_DIR$/feature_tasks" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

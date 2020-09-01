@@ -53,6 +53,7 @@ dependencies {
     implementation rx.kotlin
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.gms:play-services-plus:17.0.0'
+    implementation project(path: ':feature_tasks')
     testImplementation 'junit:junit:4.13'
     implementation 'com.android.volley:dc-volley:1.1.0'
     compile 'com.github.bumptech.glide:glide:4.11.0'
@@ -68,8 +69,7 @@ dependencies {
     implementation project(path: ':common_di')
     implementation project(path: ':common_network')
 
-    implementation project(path: ':feature_news')
-    implementation project(path: ':feature_events')
+    implementation project(path: ':feature_dashboard')
     implementation project(path: ':feature_profile')
     implementation project(path: ':feature_services')
 }

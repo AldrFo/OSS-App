@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kekmech.ru.common_navigation.BottomTab
-import ru.mpei.feature_events.EventsFragment
-import ru.mpei.feature_news.NewsFragment
+import ru.mpe.feature_tasks.TasksFragment
+import ru.mpei.feature_dashboard.DashboardFragment
 import ru.mpei.feature_profile.ProfileFragment
 import ru.mpei.feature_services.ServicesFragment
 import ru.mpei.ossapp.R
@@ -86,9 +86,9 @@ class BottomBarController(
     }
 
     private fun createTabFragment(tab: BottomTab): Fragment = when (tab) {
-        BottomTab.DASHBOARD -> NewsFragment()
+        BottomTab.DASHBOARD -> DashboardFragment()
         BottomTab.PROFILE -> ProfileFragment()
-        BottomTab.TASKS -> EventsFragment()
+        BottomTab.TASKS ->  TasksFragment()
         BottomTab.SERVICES -> ServicesFragment()
     }
 }

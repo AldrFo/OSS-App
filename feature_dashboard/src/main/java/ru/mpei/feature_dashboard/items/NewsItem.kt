@@ -23,8 +23,8 @@ class NewsViewHolderImpl(
 
     override fun setImage(url: String) {
         Picasso.get()
-                .load("http://cy37212.tmweb.ru/images/news/$url")
-                .into(containerView.findViewById<ImageView>(R.id.articleElementImage))
+            .load(url)
+            .into(containerView.findViewById<ImageView>(R.id.articleElementImage))
     }
 
     override fun setName(name: String) {

@@ -9,5 +9,8 @@ import ru.mpei.domain_news.dto.NewsItem
 interface NewsApi {
 
     @GET("Android/news.php")
-    fun get(): Single<List<NewsItem>>
+    fun getNews(): Single<List<NewsItem>>
+
+    @GET("Android/afisha.php")
+    fun getEvents(): Single<List<NewsItem>>
 }

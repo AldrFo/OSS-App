@@ -7,5 +7,6 @@ class NewsRepository(
     private val newsApi: NewsApi
 ) {
 
-    fun observeNews(): Single<List<NewsItem>> = newsApi.get()
+    fun observeNews(): Single<List<NewsItem>> = newsApi.getNews()
+    fun observeEvents(): Single<List<NewsItem>> = newsApi.getEvents()
 }

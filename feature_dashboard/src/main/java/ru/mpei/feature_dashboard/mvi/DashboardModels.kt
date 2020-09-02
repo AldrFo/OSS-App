@@ -7,7 +7,8 @@ typealias DashboardFeature = Feature<DashboardState, DashboardEvent, DashboardEf
 
 data class DashboardState(
     val isLoading: Boolean = false,
-    val listOfItems: List<NewsItem> = emptyList()
+    val newsList: List<NewsItem> = emptyList(),
+    val eventsList: List<NewsItem> = emptyList()
 )
 
 sealed class DashboardEvent {
@@ -18,12 +19,17 @@ sealed class DashboardEvent {
         }
 
         object OnSwipeRefresh : Wish()
+        object GetEvents : Wish()
+        object GetNews : Wish()
         // data class OnSwipeRefresh(kek: Boolean) : Wish()
     }
 
     sealed class News : DashboardEvent() {
         data class NewsListLoaded(val listOfItems: List<NewsItem>) : News()
         data class NewsListLoadError(val throwable: Throwable) : News()
+
+        data class EventsListLoaded(val listOfItems: List<NewsItem>) : News()
+        data class EventsListLoadError(val throwable: Throwable) : News()
     }
 }
 
@@ -32,5 +38,6 @@ sealed class DashboardEffect {
 }
 
 sealed class DashboardAction {
-    object LoadDashboardList : DashboardAction()
+    object LoadNewsList : DashboardAction()
+    object LoadEventsList : DashboardAction()
 }

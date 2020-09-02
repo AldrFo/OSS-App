@@ -55,6 +55,7 @@ class DashboardNewsAdapterItem(
     itemBinder = DashboardItemBinder(adapter),
     viewHolderGenerator = ::DashboardViewHolderImpl
 )
+
 class DashboardEventsAdapterItem(
     private val adapter: BaseAdapter
 ): AdapterItem<DashboardViewHolder, DashboardItem>(

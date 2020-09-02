@@ -18,10 +18,20 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
         is News.NewsListLoaded -> Result(
             state = state.copy(
                 isLoading = false,
-                listOfItems = event.listOfItems
+                newsList = event.listOfItems
             )
         )
         is News.NewsListLoadError -> Result(
+            state = state.copy(isLoading = false)
+        )
+
+        is News.EventsListLoaded -> Result(
+            state = state.copy(
+                isLoading = false,
+                eventsList = event.listOfItems
+            )
+        )
+        is News.EventsListLoadError -> Result(
             state = state.copy(isLoading = false)
         )
     }
@@ -29,10 +39,18 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
     private fun processWish(event: Wish, state: DashboardState): Result<DashboardState, DashboardEffect, DashboardAction> = when (event) {
         is Wish.System.Init -> Result(
             state = state.copy(isLoading = true),
-            action = DashboardAction.LoadDashboardList
+            action = DashboardAction.LoadNewsList
         )
         is Wish.OnSwipeRefresh -> Result(
             state = state.copy()
+        )
+        is Wish.GetEvents -> Result(
+            state = state.copy(isLoading = true),
+            action = DashboardAction.LoadEventsList
+        )
+        is Wish.GetNews -> Result(
+                state = state.copy(isLoading = true),
+                action = DashboardAction.LoadNewsList
         )
     }
 }

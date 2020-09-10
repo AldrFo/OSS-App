@@ -31,7 +31,6 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     private val dashboardFeatureFactory: DashboardFeatureFactory by inject()
     override fun createFeature(): DashboardFeature = dashboardFeatureFactory.create()
 
-
     private val router: Router by inject()
 
     override var layoutId = R.layout.fragment_dashboard

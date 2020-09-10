@@ -22,7 +22,6 @@ data class DashboardItem(
 }
 
 interface DashboardViewHolder {
-
     fun update(newAdapter: BaseAdapter)
 }
 

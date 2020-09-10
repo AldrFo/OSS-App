@@ -5,16 +5,16 @@ import kekmech.ru.common_mvi.Result
 import ru.mpei.feature_dashboard.mvi.DashboardEvent.News
 import ru.mpei.feature_dashboard.mvi.DashboardEvent.Wish
 
-typealias RefactorResult = Result<DashboardState, DashboardEffect, DashboardAction>
+typealias DashboardResult = Result<DashboardState, DashboardEffect, DashboardAction>
 
 class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEffect, DashboardAction> {
 
-    override fun reduce(event: DashboardEvent, state: DashboardState): RefactorResult = when (event) {
+    override fun reduce(event: DashboardEvent, state: DashboardState): DashboardResult = when (event) {
         is Wish -> processWish(event, state)
         is News -> processItems(event, state)
     }
 
-    private fun processItems(event: News, state: DashboardState): Result<DashboardState, DashboardEffect, DashboardAction> = when (event) {
+    private fun processItems(event: News, state: DashboardState): DashboardResult = when (event) {
         is News.NewsListLoaded -> Result(
             state = state.copy(
                 isLoading = false,
@@ -36,7 +36,7 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
         )
     }
 
-    private fun processWish(event: Wish, state: DashboardState): Result<DashboardState, DashboardEffect, DashboardAction> = when (event) {
+    private fun processWish(event: Wish, state: DashboardState): DashboardResult = when (event) {
         is Wish.System.Init -> Result(
             state = state.copy(isLoading = true),
             action = DashboardAction.LoadNewsList

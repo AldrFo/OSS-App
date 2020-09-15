@@ -6,5 +6,5 @@ import ru.mpei.domain_tasks.dto.TasksItem
 class TasksRepository(
     private val tasksApi: TasksApi
 ){
-    fun observeTasks(): Single<List<TasksItem>> = tasksApi.get()
+    fun observeTasks(id: String, type: String): Single<List<TasksItem>> = tasksApi.get(id, type)
 }

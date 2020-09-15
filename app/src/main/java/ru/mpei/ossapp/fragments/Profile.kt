@@ -69,8 +69,8 @@ class Profile : Fragment {
             val body = JSONObject()
             body.put("id", userId)
             body.put("pass", hashPass)
-            val request = JsonObjectRequest(Request.Method.POST, context!!.getString(R.string.lkUrl), body,
-                    Response.Listener { response: JSONObject ->
+            val request = JsonObjectRequest(Request.Method.POST, requireContext().getString(R.string.lkUrl), body,
+                    { response: JSONObject ->
                         val result = response.optBoolean("error")
                         if (!result) {
                             userName = response.optString("name")
@@ -80,7 +80,7 @@ class Profile : Fragment {
                         } else {
                         }
                     },
-                    Response.ErrorListener { Toast.makeText(context, "Возникла проблема, попробуйте позже", Toast.LENGTH_SHORT).show() })
+                    { Toast.makeText(context, "Возникла проблема, попробуйте позже", Toast.LENGTH_SHORT).show() })
             val requestQueue = Volley.newRequestQueue(context)
             requestQueue.add(request)
         } catch (e: JSONException) {

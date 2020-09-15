@@ -12,14 +12,14 @@ class TasksReducer : BaseReducer<TasksState, TasksEvent, TasksEffect, TasksActio
         is News -> processItems(event, state)
     }
 
-    private fun processWish(event: TasksEvent, state: TasksState): TasksResult = when (event) {
+    private fun processWish(event: Wish, state: TasksState): TasksResult = when (event) {
         is Wish.System.Init -> Result(
             state = state.copy(isLoading = true),
             action = TasksAction.LoadTasksList
         )
     }
 
-    private fun processItems(event: TasksEvent, state: TasksState): TasksResult = when (event) {
+    private fun processItems(event: News, state: TasksState): TasksResult = when (event) {
         is News.TasksLoaded -> Result(
                 state.copy(
                         isLoading = false,

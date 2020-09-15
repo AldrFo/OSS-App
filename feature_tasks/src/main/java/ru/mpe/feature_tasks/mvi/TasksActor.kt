@@ -8,7 +8,7 @@ class TasksActor(
         private val tasksRepository: TasksRepository
 ) : Actor<TasksAction, TasksEvent> {
     override fun execute(action: TasksAction): Observable<TasksEvent> = when(action){
-        is TasksAction.LoadTasksList -> tasksRepository.observeTasks()
+        is TasksAction.LoadTasksList -> tasksRepository.observeTasks("0", "available")
                 .mapEvents(TasksEvent.News::TasksLoaded, TasksEvent.News::TasksLoadError)
     }
 }

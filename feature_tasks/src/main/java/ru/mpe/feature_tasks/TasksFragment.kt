@@ -18,8 +18,6 @@ class TasksFragment() : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksF
     private val tasksFeatureFactory: TasksFeatureFactory by inject()
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
 
-    private val router: Router by inject()
-
     override var layoutId: Int = R.layout.fragment_tasks
 
     private val tasksAdapter: BaseAdapter by fastLazy { createAdapter() }

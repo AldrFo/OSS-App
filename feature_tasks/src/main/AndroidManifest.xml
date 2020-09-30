@@ -1,5 +1,2 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.mpe.feature_tasks">
-
-    /
+<manifest package="ru.mpei.feature_tasks">
 </manifest>

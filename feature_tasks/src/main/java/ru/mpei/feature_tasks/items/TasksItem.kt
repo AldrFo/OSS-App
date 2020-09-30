@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseItemBinder
 import kotlinx.android.extensions.LayoutContainer
-import ru.mpe.feature_tasks.R
 import ru.mpei.domain_tasks.dto.TasksItem
+import ru.mpei.feature_tasks.R
 
 interface TasksViewHolder{
     fun setName(name: String);

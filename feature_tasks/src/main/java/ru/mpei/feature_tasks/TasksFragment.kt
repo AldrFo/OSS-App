@@ -2,20 +2,21 @@ package ru.mpei.feature_tasks
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kotlinx.android.synthetic.main.fragment_tasks.*
 import org.koin.android.ext.android.inject
-import ru.mpe.feature_tasks.R
 import ru.mpei.feature_tasks.items.TasksAdapterItem
 import ru.mpei.feature_tasks.mvi.*
-import ru.mpei.feature_tasks.mvi.TasksEvent.*
+import ru.mpei.feature_tasks.mvi.TasksEvent.Wish
 
-class TasksFragment() : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFeature>(){
+class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFeature>(){
     override val initEvent: TasksEvent get() = Wish.System.Init
 
     private val tasksFeatureFactory: TasksFeatureFactory by inject()
+
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
 
     override var layoutId: Int = R.layout.fragment_tasks
@@ -24,6 +25,7 @@ class TasksFragment() : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksF
 
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         tasksRecyclerView.adapter = tasksAdapter
+        tasksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun render(state: TasksState) {

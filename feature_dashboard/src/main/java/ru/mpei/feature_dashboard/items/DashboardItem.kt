@@ -7,6 +7,7 @@ import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_adapter.BaseItemBinder
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_dashboard.*
 import ru.mpei.feature_dashboard.R
 import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_EVENTS_ITEM
 import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_NEWS_ITEM
@@ -30,7 +31,7 @@ class DashboardViewHolderImpl(
 ): RecyclerView.ViewHolder(containerView), DashboardViewHolder, LayoutContainer {
 
     override fun update(newAdapter: BaseAdapter) {
-        containerView.findViewById<RecyclerView>(R.id.recyclerView).apply {
+        recyclerView.apply {
             if (layoutManager == null) layoutManager = LinearLayoutManager(context)
             if (adapter == null) adapter = newAdapter
         }
@@ -47,19 +48,21 @@ class DashboardItemBinder(
 }
 
 class DashboardNewsAdapterItem(
-    private val adapter: BaseAdapter
+    adapter: BaseAdapter
 ): AdapterItem<DashboardViewHolder, DashboardItem>(
     isType = { it is DashboardItem && it.id == ID_NEWS_ITEM },
     layoutRes = R.layout.item_dashboard,
     itemBinder = DashboardItemBinder(adapter),
-    viewHolderGenerator = ::DashboardViewHolderImpl
+    viewHolderGenerator = ::DashboardViewHolderImpl,
+    areItemsTheSame = { a, b -> a.id == b.id }
 )
 
 class DashboardEventsAdapterItem(
-    private val adapter: BaseAdapter
+    adapter: BaseAdapter
 ): AdapterItem<DashboardViewHolder, DashboardItem>(
     isType = { it is DashboardItem && it.id == ID_EVENTS_ITEM },
     layoutRes = R.layout.item_dashboard,
     itemBinder = DashboardItemBinder(adapter),
-    viewHolderGenerator = ::DashboardViewHolderImpl
+    viewHolderGenerator = ::DashboardViewHolderImpl,
+    areItemsTheSame = { a, b -> a.id == b.id }
 )

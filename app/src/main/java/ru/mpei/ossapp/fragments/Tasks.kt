@@ -13,7 +13,7 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.fragment_tasks.*
+import kotlinx.android.synthetic.main.fragment_tasks_2.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -30,7 +30,7 @@ class Tasks : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_tasks, container, false)
+        return inflater.inflate(R.layout.fragment_tasks_2, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

@@ -1,13 +1,13 @@
-package ru.mpe.feature_tasks.mvi
+package ru.mpei.feature_tasks.mvi
 
 import kekmech.ru.common_mvi.BaseReducer
 import kekmech.ru.common_mvi.Result
-import ru.mpe.feature_tasks.mvi.TasksEvent.*
+import ru.mpei.feature_tasks.mvi.TasksEvent.*
 
 typealias TasksResult = Result<TasksState, TasksEffect, TasksAction>
 
 class TasksReducer : BaseReducer<TasksState, TasksEvent, TasksEffect, TasksAction> {
-    override fun reduce(event: TasksEvent, state: TasksState):TasksResult = when(event) {
+    override fun reduce(event: TasksEvent, state: TasksState): TasksResult = when(event) {
         is Wish -> processWish(event, state)
         is News -> processItems(event, state)
     }

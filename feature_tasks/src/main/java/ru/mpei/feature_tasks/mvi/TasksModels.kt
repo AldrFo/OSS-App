@@ -1,4 +1,4 @@
-package ru.mpe.feature_tasks.mvi
+package ru.mpei.feature_tasks.mvi
 
 import kekmech.ru.common_mvi.Feature
 import ru.mpei.domain_tasks.dto.TasksItem

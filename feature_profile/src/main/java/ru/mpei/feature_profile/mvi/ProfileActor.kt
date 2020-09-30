@@ -2,8 +2,11 @@ package ru.mpei.feature_profile.mvi
 
 import io.reactivex.Observable
 import kekmech.ru.common_mvi.Actor
+import ru.mpei.vmss.domain_profile.ProfileRepository
 
-class ProfileActor : Actor<ProfileAction, ProfileEvent>{
+class ProfileActor(
+        private val profileRepository: ProfileRepository
+) : Actor<ProfileAction, ProfileEvent>{
     override fun execute(action: ProfileAction): Observable<ProfileEvent> {
         TODO("Not yet implemented")
     }

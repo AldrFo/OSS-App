@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kekmech.ru.common_navigation.BottomTab
-import ru.mpe.feature_tasks.TasksFragment
+import ru.mpei.feature_tasks.TasksFragment
 import ru.mpei.feature_dashboard.DashboardFragment
 import ru.mpei.feature_profile.ProfileFragment
 import ru.mpei.feature_services.ServicesFragment

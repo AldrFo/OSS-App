@@ -1,4 +1,4 @@
-package ru.mpe.feature_tasks.mvi
+package ru.mpei.feature_tasks.mvi
 
 import io.reactivex.Observable
 import kekmech.ru.common_mvi.Actor

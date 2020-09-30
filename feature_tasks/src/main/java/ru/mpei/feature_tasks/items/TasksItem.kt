@@ -1,4 +1,4 @@
-package ru.mpe.feature_tasks.items
+package ru.mpei.feature_tasks.items
 
 import android.view.View
 import android.widget.TextView

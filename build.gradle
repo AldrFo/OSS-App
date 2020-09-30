@@ -17,7 +17,7 @@ buildscript {
                 swiperefreshlayout  : "1.0.0",
                 fragmentktx         : "1.2.4",
                 retrofit            : '2.9.0',
-                okhttp              : '4.8.1'
+                okhttp              : '4.9.0'
         ]
 
         kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"

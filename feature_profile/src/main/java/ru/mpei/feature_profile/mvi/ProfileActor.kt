@@ -2,7 +2,7 @@ package ru.mpei.feature_profile.mvi
 
 import io.reactivex.Observable
 import kekmech.ru.common_mvi.Actor
-import ru.mpei.vmss.domain_profile.ProfileRepository
+import ru.mpei.domain_profile.ProfileRepository
 
 class ProfileActor(
         private val profileRepository: ProfileRepository

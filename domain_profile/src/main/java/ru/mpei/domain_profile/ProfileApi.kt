@@ -1,4 +1,4 @@
-package ru.mpei.vmss.domain_profile
+package ru.mpei.domain_profile
 
 import io.reactivex.Single
 import kekmech.ru.common_network.EmptyRequestBody

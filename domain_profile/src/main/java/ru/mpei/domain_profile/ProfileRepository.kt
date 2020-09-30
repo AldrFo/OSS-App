@@ -1,4 +1,4 @@
-package ru.mpei.vmss.domain_profile
+package ru.mpei.domain_profile
 
 class ProfileRepository (
         private val profileApi: ProfileApi

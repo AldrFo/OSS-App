@@ -13,10 +13,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile_2.*
 import org.json.JSONException
 import org.json.JSONObject
 import ru.mpei.ossapp.R
@@ -42,7 +41,7 @@ class Profile : Fragment {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_profile_2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

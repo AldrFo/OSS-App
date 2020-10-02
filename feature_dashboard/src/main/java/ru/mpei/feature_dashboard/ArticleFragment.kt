@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_article.*
+import ru.mpei.domain_news.dto.NewsItem
 
 class ArticleFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -17,14 +18,16 @@ class ArticleFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        articleHeader.text = arguments?.getString("head")
+        val it: NewsItem = arguments?.get("data") as NewsItem
 
-        articleDate.text = arguments?.getString("date")
+        articleHeader.text = it.name
 
-        articleText.text = arguments?.getString("content")
+        articleDate.text = "${it.hour} ${it.chislo} ${it.month}"
+
+        articleText.text = it.content
 
         Picasso.get()
-                .load(arguments?.getString("imageUrl"))
+                .load(it.imageUrl)
                 .into(articleImage)
     }
 }

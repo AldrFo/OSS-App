@@ -55,10 +55,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     private fun createAdapter() = BaseAdapter(
         NewsAdapterItem {
             val bundle = Bundle()
-            bundle.putString("head", it.name)
-            bundle.putString("date", it.hour + " " + it.chislo + " " + it.month)
-            bundle.putString("content", it.content)
-            bundle.putString("imageUrl", it.imageUrl)
+            bundle.putSerializable("data", it)
             val fragment = ArticleFragment()
             fragment.arguments = bundle
             router.executeCommand( AddScreenForward { fragment })

@@ -17,14 +17,14 @@ import org.json.JSONObject
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.activities.MainActivity
 import ru.mpei.ossapp.activities.MainActivity.Companion.hideKeyboard
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login_2.*
 import java.util.*
 
 class Login : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_login_2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -13,9 +13,13 @@ dependencies {
 
     implementation timber
 
+    implementation koin.core
+    implementation koin.android
+
     implementation squareup.retrofit
     implementation squareup.retrofit_rxJava2
     implementation squareup.retrofit_gson
 
+    implementation project(path: ':common_di')
     implementation project(path: ':common_network')
 }

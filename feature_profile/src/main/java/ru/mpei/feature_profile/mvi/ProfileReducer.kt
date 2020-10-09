@@ -17,22 +17,43 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
         is News.ProfileDataLoaded -> Result(
             state = state.copy(
                 isLoading = false,
-                profileData = event.data
+                profileData = event.data,
             )
         )
         is News.ProfileDataLoadError -> Result(
-            state = state.copy(isLoading = false)
+            state = state.copy(isLoading = false),
+            effect = ProfileEffect.ShowError(event.throwable)
+        )
+        is News.LogInSuccess -> Result(
+            state = state.copy(
+                isLoading = false,
+                params = event.params
+            ),
+            effect = ProfileEffect.LogIn(event.params)
+        )
+        is News.LogInFailed -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.ShowError(event.throwable)
         )
     }
 
     private fun processWish(event: Wish, state: ProfileState): ProfileResult = when (event) {
-        is Wish.System.Init -> Result(
+        is Wish.System.InitProfile -> Result(
             state = state.copy(isLoading = true),
-            action = ProfileAction.LoadProfileData
+            action = ProfileAction.LoadProfileData(event.id, event.pass)
+        )
+        is Wish.System.InitLogin -> Result(
+            state = state
         )
         is Wish.RefreshProfileData -> Result(
             state = state.copy(isLoading = true),
-            action = ProfileAction.LoadProfileData
+            action = ProfileAction.LoadProfileData(event.id, event.pass)
+        )
+        is Wish.LogIn -> Result(
+            state = state.copy(isLoading = true),
+            action = ProfileAction.LogIn(event.email, event.password)
         )
     }
 }

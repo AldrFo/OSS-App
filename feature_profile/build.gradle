@@ -4,6 +4,7 @@ dependencies {
     implementation kotlinStdLib
     implementation androidx.coreKtx
     implementation androidx.appcompat
+    implementation project(path: ':common_navigation')
     testImplementation tests.junit
 
     implementation rx.java

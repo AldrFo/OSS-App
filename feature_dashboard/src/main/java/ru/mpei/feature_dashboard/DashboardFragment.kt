@@ -2,6 +2,7 @@ package ru.mpei.feature_dashboard
 
 import android.os.Bundle
 import android.view.View
+import com.google.android.material.tabs.TabLayoutMediator
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
@@ -41,6 +42,9 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
 
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         dashboardViewPager.adapter = viewPagerAdapter
+        TabLayoutMediator(dashboardViewPagerTabLayout, dashboardViewPager) { tab, position ->
+            tab.text =  if(position == 0) "Афиша" else "Новости"
+        }.attach()
     }
 
     override fun render(state: DashboardState) {

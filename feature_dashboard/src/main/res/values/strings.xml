@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_blue">#F2F3F8</color>
+    <color name="mpei_blue">#4B56A0</color>
+    <color name="mpei_white">#FFFFFF</color>
+    <string name="dashboard_lenta">Лента</string>
+    <string name="dashboard_afisha">Афиша</string>
+    <string name="dashboard_news">Новости</string>
+</resources>

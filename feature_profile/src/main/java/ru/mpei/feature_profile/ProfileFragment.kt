@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kekmech.ru.common_mvi.ui.BaseFragment
+import kekmech.ru.common_navigation.Router
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_profile.dto.ParamsItem
 import ru.mpei.feature_profile.mvi.*
@@ -20,6 +22,7 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     private val APP_PREFERENCES_ID = "userId"
 
     private val mSettings: SharedPreferences by inject()
+    private val router: Router by inject()
 
     override val initEvent: ProfileEvent get() = when( mSettings.getBoolean(APP_PREFERENCES_FLAG, false)){
         true -> {
@@ -55,6 +58,10 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     }
 
     override fun render(state: ProfileState) {
+        if (mSettings.getBoolean(APP_PREFERENCES_FLAG, false)){
+            profileName.text = state.profileData.name + " " + state.profileData.surname
+            profileCoins.text = state.profileData.capital.toString()
+        }
     }
 
     override fun handleEffect(effect: ProfileEffect) = when(effect) {

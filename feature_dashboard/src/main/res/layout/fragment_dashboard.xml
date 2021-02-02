@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/bg_blue">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/dashboardViewPager"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:fontFamily="@font/nunito"
+        android:gravity="center_horizontal"
+        android:text="@string/dashboard_lenta"
+        android:textColor="@color/mpei_blue"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/shape_list"
+        android:backgroundTint="@color/mpei_white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_selector_oval"
+            android:shape="oval"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="10sp">
+
+            <TextView
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_afisha"
+                android:padding="10sp"
+                android:textSize="18sp"
+                android:gravity="center_horizontal"
+                style="@style/dashboard_selector_selected"/>
+
+            <TextView
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="@string/dashboard_news"
+                android:padding="10sp"
+                android:textSize="18sp"
+                android:gravity="center_horizontal"
+                style="@style/dashboard_selector_unselected"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/dashboardViewPagerTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/dashboardViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </LinearLayout>

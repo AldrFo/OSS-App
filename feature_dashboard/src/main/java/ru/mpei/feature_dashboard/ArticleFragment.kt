@@ -20,14 +20,20 @@ class ArticleFragment : Fragment(){
 
         val it: NewsItem = arguments?.get("data") as NewsItem
 
-        articleHeader.text = it.name
+        fragment_article_toolbar.title = it.name
+        fragment_article_toolbar.setNavigationIcon(R.drawable.ic_arrow_back_mpei_blue_24dp)
 
-        articleDate.text = "${it.hour} ${it.chislo} ${it.month}"
+        fragment_article_date.text = it.chislo
+        fragment_article_month.text = it.month
+        fragment_article_time.text = it.hour
 
-        articleText.text = it.content
+        fragment_article_name.text = it.name
+        fragment_article_description.text = it.describtion
+
+        fragment_article_text.text = it.content
 
         Picasso.get()
                 .load(it.imageUrl)
-                .into(articleImage)
+                .into(fragment_article_image)
     }
 }

@@ -2,6 +2,8 @@ package ru.mpei.feature_dashboard
 
 import android.os.Bundle
 import android.view.View
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_kotlin.fastLazy
@@ -42,9 +44,9 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
 
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         dashboardViewPager.adapter = viewPagerAdapter
-        TabLayoutMediator(dashboardViewPagerTabLayout, dashboardViewPager) { tab, position ->
+        /*TabLayoutMediator(dashboardViewPagerTabLayout, dashboardViewPager) { tab, position ->
             tab.text =  if(position == 0) "Афиша" else "Новости"
-        }.attach()
+        }.attach()*/
     }
 
     override fun render(state: DashboardState) {
@@ -62,7 +64,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
             bundle.putSerializable("data", it)
             val fragment = ArticleFragment()
             fragment.arguments = bundle
-            router.executeCommand( AddScreenForward { fragment })
+            router.executeCommand(AddScreenForward { fragment })
         }
     )
 }

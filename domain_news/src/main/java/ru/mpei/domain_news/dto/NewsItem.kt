@@ -9,6 +9,7 @@ data class NewsItem(
     var chislo: String = "",
     var month: String = "",
     var hour: String = "",
+    var describtion: String = "",
     var content: String = "",
     @SerializedName("image_src")
     var imageUrl: String = ""

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@color/bg_blue">
@@ -9,12 +10,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10sp"
-        android:paddingBottom="10sp"
         android:fontFamily="@font/nunito"
         android:gravity="center_horizontal"
         android:text="@string/dashboard_lenta"
         android:textColor="@color/mpei_blue"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="16sp"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -26,15 +27,18 @@
         android:backgroundTint="@color/mpei_white">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_selector_oval"
-            android:shape="oval"
             android:layout_marginTop="20sp"
-            android:layout_marginBottom="10sp">
+            android:layout_marginBottom="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginLeft="20sp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="180sp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/dashboard_afisha"
                 android:padding="10sp"
@@ -43,7 +47,8 @@
                 style="@style/dashboard_selector_selected"/>
 
             <TextView
-                android:layout_width="180sp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/dashboard_news"
                 android:padding="10sp"
@@ -53,10 +58,14 @@
 
         </LinearLayout>
 
-        <com.google.android.material.tabs.TabLayout
+        <!--<com.google.android.material.tabs.TabLayout
             android:id="@+id/dashboardViewPagerTabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="360sp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:tabIndicatorHeight="0dp"
+            android:background="@drawable/shape_selector_oval"
+            android:soundEffectsEnabled="false"/>-->
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/dashboardViewPager"

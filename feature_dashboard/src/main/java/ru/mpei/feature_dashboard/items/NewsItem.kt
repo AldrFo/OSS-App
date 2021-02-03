@@ -1,10 +1,8 @@
 package ru.mpei.feature_dashboard.items
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseItemBinder
 import kotlinx.android.extensions.LayoutContainer
@@ -12,8 +10,9 @@ import ru.mpei.domain_news.dto.NewsItem
 import ru.mpei.feature_dashboard.R
 
 interface NewsViewHolder {
+    fun setDate(chislo: String, month: String, hour: String)
     fun setName(name: String)
-    fun setImage(url: String)
+    fun setText(text: String)
     fun setOnClickListener(onClick: () -> Unit)
 }
 
@@ -21,14 +20,19 @@ class NewsViewHolderImpl(
         override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), NewsViewHolder, LayoutContainer {
 
-    override fun setImage(url: String) {
-        Picasso.get()
-            .load(url)
-            .into(containerView.findViewById<ImageView>(R.id.articleElementImage))
+    override fun setDate(chislo: String, month: String, hour: String) {
+        containerView.findViewById<TextView>(R.id.item_article_date).text = chislo.trim(' ')
+        containerView.findViewById<TextView>(R.id.item_article_month).text = month.trim(' ')
+        containerView.findViewById<TextView>(R.id.item_article_time).text = hour.trim(' ')
+    }
+    override fun setText(text: String) {
+        /*var newText = text
+        if (text.length > 100) newText = text.substring(0, 97) + "..."*/
+        containerView.findViewById<TextView>(R.id.item_article_text).text = text
     }
 
     override fun setName(name: String) {
-        containerView.findViewById<TextView>(R.id.articleElementText).text = name
+        containerView.findViewById<TextView>(R.id.item_article_name).text = name
     }
 
     override fun setOnClickListener(onClick: () -> Unit) {
@@ -42,7 +46,8 @@ class NewsItemBinder(
 
     override fun bind(vh: NewsViewHolder, model: NewsItem, position: Int) {
         vh.setName(model.name)
-        vh.setImage(model.imageUrl)
+        vh.setDate(model.chislo, model.month, model.hour)
+        vh.setText(model.describtion)
         vh.setOnClickListener { onClick(model) }
     }
 }

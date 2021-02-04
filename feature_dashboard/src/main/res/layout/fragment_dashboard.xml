@@ -10,12 +10,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="16sp"
+        android:fontFamily="@font/nunito_semibold"
         android:gravity="center_horizontal"
         android:text="@string/dashboard_lenta"
         android:textColor="@color/mpei_blue"
-        android:layout_marginTop="16sp"
-        android:layout_marginBottom="16sp"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -37,24 +37,26 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/dashboard_selector_selected"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/dashboard_afisha"
-                android:padding="10sp"
-                android:textSize="18sp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito"
                 android:gravity="center_horizontal"
-                style="@style/dashboard_selector_selected"/>
+                android:padding="10sp"
+                android:text="@string/dashboard_afisha"
+                android:textSize="18sp" />
 
             <TextView
+                style="@style/dashboard_selector_unselected"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/dashboard_news"
-                android:padding="10sp"
-                android:textSize="18sp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito"
                 android:gravity="center_horizontal"
-                style="@style/dashboard_selector_unselected"/>
+                android:padding="10sp"
+                android:text="@string/dashboard_news"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -70,7 +72,8 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/dashboardViewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
 
     </LinearLayout>
 

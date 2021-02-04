@@ -4,7 +4,8 @@
 
     <corners
         android:radius="5dp" />
-
     <solid android:color="@color/mpei_white" />
+
+    <!--android:background="?android:attr/selectableItemBackground"-->
 
 </shape>

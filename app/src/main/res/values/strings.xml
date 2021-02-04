@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">ОСС</string>
-    <string name="dashboard">АФИША</string>
-    <string name="news">НОВОСТИ</string>
-    <string name="profile">ПРОФИЛЬ</string>
-    <string name="tasks">ЗАДАНИЯ</string>
-    <string name="others">ДРУГОЕ</string>
+    <string name="dashboard">Лента</string>
+    <string name="profile">Профиль</string>
+    <string name="tasks">Задания</string>
+    <string name="services">Сервисы</string>
     <string name="agree">НАЧАТЬ</string>
     <string name="finish">ЗАВЕРШИТЬ</string>
     <string name="dismiss">ОТКАЗАТЬСЯ</string>

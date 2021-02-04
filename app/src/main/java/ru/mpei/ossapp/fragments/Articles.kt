@@ -49,7 +49,7 @@ class Articles : Fragment {
             prefix = requireContext().getString(R.string.imagesDashboardUrl)
         } else if (type == 1) {
             url = requireContext().getString(R.string.newsUrl)
-            header = requireContext().getString(R.string.news)
+            /*header = requireContext().getString(R.string.news)*/
             prefix = requireContext().getString(R.string.imagesNewsUrl)
         }
         return inf

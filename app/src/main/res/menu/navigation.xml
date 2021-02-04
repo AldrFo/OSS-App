@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/dashboard_icon"
+        android:icon="@drawable/ic_events"
         android:title="@string/dashboard" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/profile_icon"
+        android:icon="@drawable/ic_user"
         android:title="@string/profile" />
 
     <item
         android:id="@+id/navigation_tasks"
-        android:icon="@drawable/tasks_icon"
+        android:icon="@drawable/ic_tasks"
         android:title="@string/tasks" />
 
     <item
         android:id="@+id/navigation_services"
-        android:icon="@drawable/others_icon"
-        android:title="@string/others" />
+        android:icon="@drawable/ic_services"
+        android:title="@string/services" />
 
 </menu>

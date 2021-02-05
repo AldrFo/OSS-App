@@ -9,4 +9,6 @@ class NewsRepository(
 
     fun observeNews(): Single<List<NewsItem>> = newsApi.getNews()
     fun observeEvents(): Single<List<NewsItem>> = newsApi.getEvents()
+    fun changeSelector(position: Int): Int { return position}
+
 }

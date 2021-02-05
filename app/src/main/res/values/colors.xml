@@ -3,6 +3,7 @@
     <color name="bgBottomNavigation">#fe485a</color>
     <color name="bg_blue">#F2F3F8</color>
     <color name="mpei_blue">#4B56A0</color>
+    <color name="mpei_blue_60light">#3C4B56A0</color>
     <color name="mpei_white">#FFFFFF</color>
     <color name="dark_blue_text">#222843</color>
 </resources>

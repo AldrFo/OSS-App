@@ -21,6 +21,7 @@ sealed class DashboardEvent {
         object OnSwipeRefresh : Wish()
         object GetEvents : Wish()
         object GetNews : Wish()
+        data class OnPageChange(val position: Int): Wish()
         // data class OnSwipeRefresh(kek: Boolean) : Wish()
     }
 
@@ -30,14 +31,19 @@ sealed class DashboardEvent {
 
         data class EventsListLoaded(val listOfItems: List<NewsItem>) : News()
         data class EventsListLoadError(val throwable: Throwable) : News()
+
+        data class SelectorChanged(val position: Int) : News()
+        data class SelectorChangeError(val throwable: Throwable) : News()
     }
 }
 
 sealed class DashboardEffect {
     data class ShowError(val throwable: Throwable) : DashboardEffect()
+    data class ChangeSelector(val position: Int) : DashboardEffect()
 }
 
 sealed class DashboardAction {
     object LoadNewsList : DashboardAction()
     object LoadEventsList : DashboardAction()
+    data class ChangeSelector(val position: Int): DashboardAction()
 }

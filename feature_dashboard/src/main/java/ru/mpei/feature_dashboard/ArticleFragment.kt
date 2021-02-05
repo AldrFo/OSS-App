@@ -26,10 +26,10 @@ class ArticleFragment : Fragment(){
 
         val it: NewsItem = arguments?.get("data") as NewsItem
 
-        fragment_article_toolbar_text.text = it.name
-
         fragment_article_toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         fragment_article_toolbar.setNavigationOnClickListener { router.executeCommand( ClearBackStack() ) }
+
+        fragment_article_toolbar_text.text = it.name
 
         fragment_article_date.text = it.chislo
         fragment_article_month.text = it.month

@@ -2,6 +2,9 @@ package ru.mpei.feature_dashboard
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
@@ -44,9 +47,13 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
 
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         dashboardViewPager.adapter = viewPagerAdapter
-        /*TabLayoutMediator(dashboardViewPagerTabLayout, dashboardViewPager) { tab, position ->
-            tab.text =  if(position == 0) "Афиша" else "Новости"
-        }.attach()*/
+
+        dashboardViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                feature.accept(Wish.OnPageChange(position))
+            }
+        })
     }
 
     override fun render(state: DashboardState) {
@@ -56,6 +63,14 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
 
     override fun handleEffect(effect: DashboardEffect) = when(effect) {
         is DashboardEffect.ShowError -> Unit
+
+        is DashboardEffect.ChangeSelector -> {
+            if (effect.position == 0) {
+                Toast.makeText(context, "0", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun createAdapter() = BaseAdapter(

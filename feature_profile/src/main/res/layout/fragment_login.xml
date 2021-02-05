@@ -1,56 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.mpei.feature_profile.ProfileFragment">
+    tools:context="ru.mpei.feature_profile.ProfileFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/bg_blue">
 
-    <ImageView
-        android:id="@+id/loginLogo"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mpei_blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_semibold"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/enter"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@mipmap/ic_logo_foreground"
-        tools:ignore="ContentDescription" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/shape_list"
+        android:backgroundTint="@color/mpei_white">
 
-    <EditText
-        android:id="@+id/loginEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:inputType="textEmailAddress"
-        android:layout_margin="10dp"
-        android:layout_below="@+id/loginLogo"
-        android:layout_centerHorizontal="true"
-        android:hint="Почта" />
+        <ImageView
+            android:id="@+id/loginLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/ic_logo_foreground"
+            tools:ignore="ContentDescription"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal"/>
 
-    <EditText
-        android:id="@+id/loginPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:inputType="textPassword"
-        android:layout_margin="10dp"
-        android:layout_below="@+id/loginEmail"
-        android:layout_centerHorizontal="true"
-        android:hint="Пароль" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="@string/oss"
+            android:textColor="@color/mpei_blue"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal" />
 
-    <Button
-        android:id="@+id/enterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loginPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:text="Войти" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="@string/mail"
+            android:textColor="@color/dark_blue_text"
+            android:layout_marginLeft="24dp"
+            android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/enterButton"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:text="Регистрация" />
+        <EditText
+            android:id="@+id/loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_edittext"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/dark_blue_text"
+            android:textColorHint="@color/dark_gray_hints"
+            android:hint="@string/email_example"
+            android:ems="15"
+            android:inputType="textEmailAddress"
+            android:textCursorDrawable="@null" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="@string/password"
+            android:textColor="@color/dark_blue_text"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="24dp"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_edittext"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/dark_blue_text"
+            android:textColorHint="@color/dark_gray_hints"
+            android:hint="@string/password_hint"
+            android:ems="15"
+            android:inputType="textPassword"
+            android:textCursorDrawable="@null" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="27dp"
+            android:paddingLeft="8dp"
+            android:textColor="@color/dark_blue_text"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/remember_me"
+            android:button="@drawable/checkbox_selector" />
+
+        <Button
+            android:id="@+id/enterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Войти" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Регистрация" />
+
+    </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -31,9 +31,6 @@ sealed class DashboardEvent {
 
         data class EventsListLoaded(val listOfItems: List<NewsItem>) : News()
         data class EventsListLoadError(val throwable: Throwable) : News()
-
-        data class SelectorChanged(val position: Int) : News()
-        data class SelectorChangeError(val throwable: Throwable) : News()
     }
 }
 

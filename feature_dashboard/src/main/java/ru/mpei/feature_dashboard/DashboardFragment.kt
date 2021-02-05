@@ -67,6 +67,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
         is DashboardEffect.ChangeSelector -> {
             if (effect.position == 0) {
                 Toast.makeText(context, "0", Toast.LENGTH_SHORT).show()
+
             } else {
                 Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
             }

@@ -13,7 +13,5 @@ class DashboardActor(
                 .mapEvents(DashboardEvent.News::NewsListLoaded, DashboardEvent.News::NewsListLoadError)
         is DashboardAction.LoadEventsList -> newsRepository.observeEvents()
                 .mapEvents(DashboardEvent.News::EventsListLoaded, DashboardEvent.News::EventsListLoadError)
-        is DashboardAction.ChangeSelector -> newsRepository.observeEvents()
-                .mapEvents(DashboardEvent.News::SelectorChanged, DashboardEvent.News::SelectorChangeError)
     }
 }

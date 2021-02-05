@@ -34,14 +34,6 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
         is News.EventsListLoadError -> Result(
             state = state.copy(isLoading = false)
         )
-
-        is News.SelectorChanged -> Result(
-            state = state.copy(),
-            effect = DashboardEffect.ChangeSelector(event.position)
-        )
-        is News.SelectorChangeError -> Result(
-            state = state.copy()
-        )
     }
 
     private fun processWish(event: Wish, state: DashboardState): DashboardResult = when (event) {

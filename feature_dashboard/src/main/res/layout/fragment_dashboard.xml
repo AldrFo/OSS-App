@@ -62,15 +62,6 @@
 
         </LinearLayout>
 
-        <!--<com.google.android.material.tabs.TabLayout
-            android:id="@+id/dashboardViewPagerTabLayout"
-            android:layout_width="360sp"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            app:tabIndicatorHeight="0dp"
-            android:background="@drawable/shape_selector_oval"
-            android:soundEffectsEnabled="false"/>-->
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/dashboardViewPager"
             android:layout_width="match_parent"

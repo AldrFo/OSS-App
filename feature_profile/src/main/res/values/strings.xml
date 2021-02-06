@@ -8,4 +8,17 @@
     <string name="password_hint">Минимум 6 символов</string>
     <string name="password">Пароль</string>
     <string name="remember_me">Запомнить меня</string>
+    <string name="forgotten_password"><u>Забыли пароль?</u></string>
+    <string name="no_account">Еще нет аккаунта? </string>
+    <string name="register"><u>Зарегистрируйся!</u></string>
+    <string name="error_mail">Почтоваый адрес введен неверно</string>
+    <string name="error_password">Введите больше 6 символов</string>
+    <string name="registration_title">Регистрация</string>
+    <string name="name">Имя</string>
+    <string name="ivan">Иван</string>
+    <string name="surname">Фамилия</string>
+    <string name="ivanov">Иванов</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="have_account">Уже зарегистрированы? </string>
+    <string name="login"><u>Войти</u></string>
 </resources>

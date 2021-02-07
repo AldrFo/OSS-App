@@ -7,4 +7,5 @@
     <color name="light_gray_divider">#D8DAE2</color>
     <color name="dark_gray_hints">#C6C6CC</color>
     <color name="link">#4642F9</color>
+    <color name="gray_blue">#F4F4F6</color>
 </resources>

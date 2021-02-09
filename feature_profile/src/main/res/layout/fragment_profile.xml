@@ -156,7 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/shape_button"
+            android:background="@drawable/ripple_blue_button"
             android:text="@string/spend_points"
             android:textColor="@color/mpei_white"
             android:textSize="18sp"

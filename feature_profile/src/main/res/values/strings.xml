@@ -36,4 +36,5 @@
     <string name="refuse_date"><b>Можно отказаться: </b>123456</string>
     <string name="send_for_check">Отправить на проверку</string>
     <string name="refuse_task">Отказаться от задания</string>
+    <string name="my_comment">Мой комментарий</string>
 </resources>

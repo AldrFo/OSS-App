@@ -8,4 +8,6 @@
     <color name="dark_gray_hints">#C6C6CC</color>
     <color name="link">#4642F9</color>
     <color name="gray_blue">#F4F4F6</color>
+    <color name="mpei_blue_dark">#af4B56A0</color>
+    <color name="mpei_white_dark">#afFFFFFF</color>
 </resources>

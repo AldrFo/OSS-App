@@ -19,15 +19,15 @@ class TasksViewHolderImpl(
         override val containerView: View
 ): RecyclerView.ViewHolder(containerView), TasksViewHolder, LayoutContainer {
     override fun setName(name: String) {
-        containerView.findViewById<TextView>(R.id.taskNameText).text = name
+        containerView.findViewById<TextView>(R.id.task_name).text = name
     }
 
     override fun setPrice(price: String) {
-        containerView.findViewById<TextView>(R.id.taskPriceText).text = price
+        containerView.findViewById<TextView>(R.id.task_price).text = price
     }
 
     override fun setLocation(location: String) {
-        containerView.findViewById<TextView>(R.id.taskLocationText).text = location
+        //containerView.findViewById<TextView>(R.id.taskLocationText).text = location
     }
 }
 

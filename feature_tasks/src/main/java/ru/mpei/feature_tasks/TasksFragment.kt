@@ -24,8 +24,8 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     private val tasksAdapter: BaseAdapter by fastLazy { createAdapter() }
 
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
-        tasksRecyclerView.adapter = tasksAdapter
-        tasksRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        tasks_list.adapter = tasksAdapter
+        tasks_list.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun render(state: TasksState) {

@@ -23,7 +23,6 @@ sealed class DashboardEvent {
         object GetEvents : Wish()
         object GetNews : Wish()
         data class OnPageChange(val position: Int): Wish()
-        // data class OnSwipeRefresh(kek: Boolean) : Wish()
     }
 
     sealed class News : DashboardEvent() {
@@ -37,7 +36,6 @@ sealed class DashboardEvent {
 
 sealed class DashboardEffect {
     data class ShowError(val throwable: Throwable) : DashboardEffect()
-    data class ChangeSelector(val position: Int) : DashboardEffect()
 }
 
 sealed class DashboardAction {

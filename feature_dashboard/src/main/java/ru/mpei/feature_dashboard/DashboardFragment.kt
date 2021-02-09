@@ -4,12 +4,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.google.android.material.tabs.TabLayoutMediator
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
@@ -85,15 +80,6 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
 
     override fun handleEffect(effect: DashboardEffect) = when(effect) {
         is DashboardEffect.ShowError -> Unit
-
-        is DashboardEffect.ChangeSelector -> {
-            if (effect.position == 0) {
-                Toast.makeText(context, "0", Toast.LENGTH_SHORT).show()
-
-            } else {
-                Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun createAdapter() = BaseAdapter(

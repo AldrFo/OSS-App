@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="?android:attr/colorControlHighlight">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@android:color/transparent">
     <item android:id="@android:id/mask">
-        <color android:color="@color/mpei_blue_dark" />
+        <shape android:shape="rectangle">
+            <corners android:radius="100dp" />
+            <solid android:color="@color/mpei_blue_dark" />
+        </shape>
     </item>
 
     <item android:id="@android:id/background">

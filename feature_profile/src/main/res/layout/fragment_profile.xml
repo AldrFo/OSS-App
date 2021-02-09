@@ -57,6 +57,115 @@
             android:fontFamily="@font/nunito_semibold"
             android:text="Имя Фамилия"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
+            android:textSize="14sp"
+            android:textColor="@color/dark_blue_text"
+            android:fontFamily="@font/nunito"
+            android:text="@string/my_points"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@drawable/ic_coin"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="6dp"
+            android:textColor="@color/dark_blue_text"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:text="2800"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:dividerHeight="2dp"
+            android:dividerPadding="26dp"
+            android:divider="@drawable/horizontal_separator"
+            android:layout_marginLeft="26dp">
+
+            <Button
+                android:id="@+id/in_progress_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:drawablePadding="14dp"
+                android:text="@string/in_progress"
+                android:textSize="18sp"
+                android:textColor="@color/dark_blue_text"
+                android:fontFamily="@font/nunito"
+                android:gravity="left|center_vertical"
+                android:background="@color/mpei_white"
+                android:drawableLeft="@drawable/ic_task_in_progress"/>
+
+            <Button
+                android:id="@+id/on_check_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:drawablePadding="14dp"
+                android:text="@string/on_check"
+                android:textSize="18sp"
+                android:textColor="@color/dark_blue_text"
+                android:fontFamily="@font/nunito"
+                android:gravity="left|center_vertical"
+                android:background="@color/mpei_white"
+                android:drawableLeft="@drawable/ic_task_on_review"/>
+
+            <Button
+                android:id="@+id/finished_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:drawablePadding="14dp"
+                android:text="@string/finished"
+                android:textSize="18sp"
+                android:textColor="@color/dark_blue_text"
+                android:fontFamily="@font/nunito"
+                android:gravity="left|center_vertical"
+                android:background="@color/mpei_white"
+                android:drawableLeft="@drawable/ic_task_done"/>
+
+            <Button
+                android:id="@+id/refused_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:drawablePadding="14dp"
+                android:text="@string/refused"
+                android:textSize="18sp"
+                android:textColor="@color/dark_blue_text"
+                android:fontFamily="@font/nunito"
+                android:gravity="left|center_vertical"
+                android:background="@color/mpei_white"
+                android:drawableLeft="@drawable/ic_task_cancelled"/>
+
+        </LinearLayout>
+        
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/shape_button"
+            android:text="@string/spend_points"
+            android:textColor="@color/mpei_white"
+            android:textSize="18sp"
+            android:fontFamily="@font/nunito_semibold"
+            android:paddingTop="11dp"
+            android:paddingBottom="11dp"
+            android:paddingRight="40dp"
+            android:paddingLeft="40dp"
+            android:layout_marginTop="24dp"/>
 
     </LinearLayout>
 

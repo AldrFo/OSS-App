@@ -22,4 +22,10 @@
     <string name="have_account">Уже зарегистрированы? </string>
     <string name="login"><u>Войти</u></string>
     <string name="profile">Профиль</string>
+    <string name="my_points">Мои баллы</string>
+    <string name="in_progress">Выполняемые</string>
+    <string name="on_check">На проверке</string>
+    <string name="finished">Завершенные</string>
+    <string name="refused">Отклоненные</string>
+    <string name="spend_points">Потратить баллы</string>
 </resources>

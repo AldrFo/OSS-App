@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/enter_button"
-            android:background="@drawable/enter_button"
+            android:background="@drawable/shape_button"
             android:textColor="@color/mpei_white"
             android:paddingLeft="40dp"
             android:paddingRight="40dp"

@@ -36,9 +36,9 @@
             android:layout_gravity="right" />
 
         <TextView
+            android:id="@+id/initials"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AB"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
             android:textAllCaps="true"
@@ -48,14 +48,14 @@
             android:background="@drawable/background_initials"/>
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
             android:textColor="@color/dark_blue_text"
             android:textSize="18sp"
-            android:fontFamily="@font/nunito_semibold"
-            android:text="Имя Фамилия"/>
+            android:fontFamily="@font/nunito_semibold"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,6 +68,7 @@
             android:text="@string/my_points"/>
 
         <TextView
+            android:id="@+id/capital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -76,8 +77,7 @@
             android:drawablePadding="6dp"
             android:textColor="@color/dark_blue_text"
             android:textSize="14sp"
-            android:fontFamily="@font/nunito"
-            android:text="2800"/>
+            android:fontFamily="@font/nunito"/>
 
         <LinearLayout
             android:layout_width="match_parent"

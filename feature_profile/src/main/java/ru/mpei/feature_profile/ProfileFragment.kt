@@ -59,8 +59,9 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     override fun render(state: ProfileState) {
         if (mSettings.getBoolean(APP_PREFERENCES_FLAG, false)){
-            profileName.text = state.profileData.name + " " + state.profileData.surname
-            profileCoins.text = state.profileData.capital.toString()
+            initials.text = "${state.profileData.name[0]}${state.profileData.surname[0]}"
+            name.text = "${state.profileData.name}  ${state.profileData.surname}"
+            capital.text = state.profileData.capital.toString()
         }
     }
 

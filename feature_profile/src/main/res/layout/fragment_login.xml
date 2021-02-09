@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/eye_toggle_selector"
+            app:passwordToggleDrawable="@drawable/selector_eye_toggle"
             app:passwordToggleTint="@color/link"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="24dp"
@@ -102,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
-            app:passwordToggleDrawable="@drawable/eye_toggle_selector"
+            app:passwordToggleDrawable="@drawable/selector_eye_toggle"
             app:passwordToggleTint="@color/link"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="24dp"
@@ -145,7 +145,7 @@
                 android:textSize="14sp"
                 android:fontFamily="@font/nunito"
                 android:text="@string/remember_me"
-                android:button="@drawable/checkbox_selector" />
+                android:button="@drawable/selector_checkbox" />
 
             <Space android:layout_height="0dp"
                 android:layout_weight="1"

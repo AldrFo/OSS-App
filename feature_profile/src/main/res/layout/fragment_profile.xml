@@ -87,7 +87,7 @@
             android:showDividers="middle"
             android:dividerHeight="2dp"
             android:dividerPadding="26dp"
-            android:divider="@drawable/horizontal_separator"
+            android:divider="@drawable/separator_horizontal"
             android:layout_marginLeft="26dp">
 
             <Button
@@ -102,7 +102,7 @@
                 android:textColor="@color/dark_blue_text"
                 android:fontFamily="@font/nunito"
                 android:gravity="left|center_vertical"
-                android:background="@color/mpei_white"
+                android:background="@drawable/ripple_task_button"
                 android:drawableLeft="@drawable/ic_task_in_progress"/>
 
             <Button
@@ -117,7 +117,7 @@
                 android:textColor="@color/dark_blue_text"
                 android:fontFamily="@font/nunito"
                 android:gravity="left|center_vertical"
-                android:background="@color/mpei_white"
+                android:background="@drawable/ripple_task_button"
                 android:drawableLeft="@drawable/ic_task_on_review"/>
 
             <Button
@@ -132,7 +132,7 @@
                 android:textColor="@color/dark_blue_text"
                 android:fontFamily="@font/nunito"
                 android:gravity="left|center_vertical"
-                android:background="@color/mpei_white"
+                android:background="@drawable/ripple_task_button"
                 android:drawableLeft="@drawable/ic_task_done"/>
 
             <Button
@@ -147,7 +147,7 @@
                 android:textColor="@color/dark_blue_text"
                 android:fontFamily="@font/nunito"
                 android:gravity="left|center_vertical"
-                android:background="@color/mpei_white"
+                android:background="@drawable/ripple_task_button"
                 android:drawableLeft="@drawable/ic_task_cancelled"/>
 
         </LinearLayout>

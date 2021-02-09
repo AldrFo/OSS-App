@@ -28,4 +28,12 @@
     <string name="finished">Завершенные</string>
     <string name="refused">Отклоненные</string>
     <string name="spend_points">Потратить баллы</string>
+    <string name="deadline">Сроки</string>
+    <string name="task_description">Описание задания</string>
+    <string name="place"><b>Место:</b> МЭИ, корпус, этаж кабинет</string>
+    <string name="begin_date"><b>Начало: </b>123456</string>
+    <string name="end_date"><b>Конец: </b>123456</string>
+    <string name="refuse_date"><b>Можно отказаться: </b>123456</string>
+    <string name="send_for_check">Отправить на проверку</string>
+    <string name="refuse_task">Отказаться от задания</string>
 </resources>

@@ -4,7 +4,7 @@ buildscript {
 
     ext {
         versions = [
-                kotlin              : '1.4.21',
+                kotlin              : '1.4.30',
                 gradle              : "3.6.3",
                 recyclerview        : "1.1.0",
                 constraintlayout    : '2.0.1',
@@ -30,7 +30,7 @@ buildscript {
                 coordinatorlayout   : "androidx.coordinatorlayout:coordinatorlayout:${versions.coordinatorlayout}",
                 appcompat           : "androidx.appcompat:appcompat:${versions.appcompat}",
                 recyclerview        : "androidx.recyclerview:recyclerview:${versions.recyclerview}",
-                viewpager2          :"androidx.viewpager2:viewpager2:1.1.0-alpha01",
+                viewpager2          : "androidx.viewpager2:viewpager2:1.1.0-alpha01",
                 cardview            : "androidx.cardview:cardview:${versions.cardview}",
                 swiperefreshlayout  : "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swiperefreshlayout}",
                 fragmentKtx         : "androidx.fragment:fragment-ktx:1.2.5",
@@ -82,9 +82,6 @@ buildscript {
                 okhttpLogger        : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
                 picasso             : "com.squareup.picasso:picasso:2.71828"
         ]
-
-        kotlin_version = '1.3.72'
-
         appVersionName = "1.0.0"
         appVersionCode = 1
 

@@ -3,8 +3,6 @@ apply from: "../kotlin-module.gradle"
 dependencies {
     implementation kotlinStdLib
 
-    implementation androidx.appcompat
-    implementation androidx.coreKtx
     implementation koin.core
     implementation koin.android
 }

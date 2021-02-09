@@ -8,7 +8,8 @@ typealias DashboardFeature = Feature<DashboardState, DashboardEvent, DashboardEf
 data class DashboardState(
     val isLoading: Boolean = false,
     val newsList: List<NewsItem> = emptyList(),
-    val eventsList: List<NewsItem> = emptyList()
+    val eventsList: List<NewsItem> = emptyList(),
+    val selectedPage: Int = 0
 )
 
 sealed class DashboardEvent {
@@ -42,5 +43,4 @@ sealed class DashboardEffect {
 sealed class DashboardAction {
     object LoadNewsList : DashboardAction()
     object LoadEventsList : DashboardAction()
-    data class ChangeSelector(val position: Int): DashboardAction()
 }

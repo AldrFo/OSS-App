@@ -59,6 +59,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     override fun render(state: DashboardState) {
         newsAdapter.update(state.newsList)
         eventsAdapter.update(state.eventsList)
+        dashboardViewPager.currentItem = state.selectedPage
     }
 
     override fun handleEffect(effect: DashboardEffect) = when(effect) {

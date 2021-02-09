@@ -57,8 +57,9 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
             action = DashboardAction.LoadNewsList
         )
         is Wish.OnPageChange -> Result(
-            state = state.copy(),
-            action = DashboardAction.ChangeSelector(event.position)
+            state = state.copy(
+                selectedPage = event.position
+            )
         )
     }
 }

@@ -1,5 +1,7 @@
 package ru.mpei.feature_dashboard
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -54,12 +56,31 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
                 feature.accept(Wish.OnPageChange(position))
             }
         })
+        selector_afisha.setOnClickListener { feature.accept(Wish.OnPageChange(0)) }
+        selector_news.setOnClickListener { feature.accept(Wish.OnPageChange(1)) }
     }
 
     override fun render(state: DashboardState) {
         newsAdapter.update(state.newsList)
         eventsAdapter.update(state.eventsList)
         dashboardViewPager.currentItem = state.selectedPage
+        renderTabView(state)
+    }
+
+    private fun renderTabView(state: DashboardState) {
+        val selectedColor = resources.getColor(R.color.mpei_blue)
+        val defaultColor = resources.getColor(R.color.mpei_white)
+        if (state.selectedPage == 0) {
+            selector_afisha.backgroundTintList = ColorStateList.valueOf(selectedColor)
+            selector_afisha.setTextColor(defaultColor)
+            selector_news.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+            selector_news.setTextColor(selectedColor)
+        } else {
+            selector_afisha.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+            selector_afisha.setTextColor(selectedColor)
+            selector_news.backgroundTintList = ColorStateList.valueOf(selectedColor)
+            selector_news.setTextColor(defaultColor)
+        }
     }
 
     override fun handleEffect(effect: DashboardEffect) = when(effect) {

@@ -37,4 +37,9 @@
     <string name="send_for_check">Отправить на проверку</string>
     <string name="refuse_task">Отказаться от задания</string>
     <string name="my_comment">Мой комментарий</string>
+    <string name="password_reset">Восстановление пароля</string>
+    <string name="send_request">Отправить запрос</string>
+    <string name="cancel">Отменить</string>
+    <string name="reset_password_text_blank">На почту example@mail.ru было отправлено письмо с инструкцией по восстановлению вашего пароля</string>
+    <string name="ok">Ок</string>
 </resources>

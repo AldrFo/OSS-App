@@ -27,7 +27,8 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
         is News.LogInSuccess -> Result(
             state = state.copy(
                 isLoading = false,
-                params = event.params
+                params = event.params,
+                isAuthorized = true
             ),
             effect = ProfileEffect.LogIn(event.params)
         )

@@ -9,7 +9,8 @@ typealias ProfileFeature = Feature<ProfileState, ProfileEvent, ProfileEffect>
 data class ProfileState(
     val isLoading: Boolean = false,
     val profileData: ProfileItem = ProfileItem(),
-    val params: ParamsItem = ParamsItem()
+    val params: ParamsItem = ParamsItem(),
+    val isAuthorized: Boolean = false
 )
 
 sealed class ProfileEvent{

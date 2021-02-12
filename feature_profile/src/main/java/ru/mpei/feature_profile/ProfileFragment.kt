@@ -3,6 +3,7 @@ package ru.mpei.feature_profile
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import kekmech.ru.common_mvi.ui.BaseFragment
@@ -35,20 +36,27 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     override fun createFeature(): ProfileFeature = profileFeatureFactory.create()
 
-    override var layoutId: Int = when(mSettings.getBoolean(APP_PREFERENCES_FLAG, false)) {
-        true -> R.layout.fragment_profile
-        false -> R.layout.fragment_login
-    }
+    override var layoutId: Int = R.layout.fragment_profile
 
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         when(mSettings.getBoolean(APP_PREFERENCES_FLAG, false)) {
             false -> {
                 enterButton.setOnClickListener {
-                    if (Objects.requireNonNull(loginEmail.text).toString().trim { it <= ' ' }.isEmpty() || Objects.requireNonNull(loginPassword.text).toString().trim { it <= ' ' }.isEmpty()) {
-                        Toast.makeText(context, "Проверьте заполнение полей", Toast.LENGTH_LONG).show()
-                    } else {
+                    mailInputLayout.error = "Почтовый адрес введен неверно"
+                    passwordInputLayout.error = "Введите больше 6 символов"
+
+                    mailInputLayout.isErrorEnabled = !Objects.requireNonNull(loginEmail.text).toString().isEmailValid()
+
+                    passwordInputLayout.isErrorEnabled = Objects.requireNonNull(loginPassword.text).toString().length <= 6
+
+                    if (Objects.requireNonNull(loginEmail.text).toString().isEmailValid()
+                        && Objects.requireNonNull(loginPassword.text).toString().trim { it <= ' ' }.length > 6) {
                         feature.accept(Wish.LogIn(loginEmail.text.toString(), loginPassword.text.toString()))
                     }
+                }
+                forgotten_password_text.setOnClickListener {
+                    val dialog = ProfileDialogFragment()
+                    dialog.show(requireFragmentManager(), "profileDialog")
                 }
             }
             true -> {
@@ -83,5 +91,9 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         mSettings.edit().putString(APP_PREFERENCES_ID, params.id).apply()
         mSettings.edit().putString(APP_PREFERENCES_PASS, params.pass).apply()
         mSettings.edit().putBoolean(APP_PREFERENCES_FLAG, true).apply()
+    }
+
+    private fun String.isEmailValid(): Boolean {
+        return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 }

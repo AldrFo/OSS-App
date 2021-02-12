@@ -39,7 +39,7 @@ class Login : Fragment() {
                 val body = JSONObject()
                 body.put("email", loginEmail.text.toString())
                 body.put("password", loginPassword.text.toString())
-                val request = JsonObjectRequest(Request.Method.POST, requireContext().getString(R.string.authUrl), body,
+                /*val request = JsonObjectRequest(Request.Method.POST, requireContext().getString(R.string.authUrl), body,
                         Response.Listener { response: JSONObject ->
                             val result = response.optBoolean("error")
                             if (!result) {
@@ -52,7 +52,7 @@ class Login : Fragment() {
                         },
                         Response.ErrorListener { Toast.makeText(context, "Возникла проблема, попробуйте позже", Toast.LENGTH_SHORT).show() })
                 val requestQueue = Volley.newRequestQueue(context)
-                requestQueue.add(request)
+                requestQueue.add(request)*/
             } catch (e: JSONException) {
                 e.printStackTrace()
             }

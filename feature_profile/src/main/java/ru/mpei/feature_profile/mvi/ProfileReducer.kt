@@ -2,6 +2,8 @@ package ru.mpei.feature_profile.mvi
 
 import kekmech.ru.common_mvi.BaseReducer
 import kekmech.ru.common_mvi.Result
+import ru.mpei.domain_profile.dto.ParamsItem
+import ru.mpei.domain_profile.dto.ProfileItem
 import ru.mpei.feature_profile.mvi.ProfileEvent.News
 import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
 
@@ -14,47 +16,71 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
     }
 
     private fun processItems(event: News, state: ProfileState): ProfileResult = when (event) {
-        is News.ProfileDataLoaded -> Result(
+
+        is News.Authorized -> Result(
             state = state.copy(
                 isLoading = false,
-                profileData = event.data,
+                profileData = event.profile,
+                isAuthorized = true
             )
         )
-        is News.ProfileDataLoadError -> Result(
-            state = state.copy(isLoading = false),
-            effect = ProfileEffect.ShowError(event.throwable)
+
+        is News.AuthorizationFailed -> Result(
+            state = ProfileState(),
+            effect = ProfileEffect.AuthorizationError(event.throwable)
         )
-        is News.LogInSuccess -> Result(
+
+        is News.Authenticated -> Result(
             state = state.copy(
-                isLoading = false,
-                params = event.params,
-                isAuthorized = true
+                isLoading = true,
+                paramsItem = event.paramsItem
             ),
-            effect = ProfileEffect.LogIn(event.params)
+            action = ProfileAction.Authorize(event.paramsItem.id, event.paramsItem.pass),
+            effect = ProfileEffect.SaveParams(event.paramsItem)
         )
-        is News.LogInFailed -> Result(
-            state = state.copy(
-                isLoading = false
-            ),
-            effect = ProfileEffect.ShowError(event.throwable)
+
+        is News.AuthenticationFailed -> Result(
+            state = ProfileState(),
+            effect = ProfileEffect.AuthenticationError(event.throwable)
         )
+
     }
 
     private fun processWish(event: Wish, state: ProfileState): ProfileResult = when (event) {
-        is Wish.System.InitProfile -> Result(
-            state = state.copy(isLoading = true),
-            action = ProfileAction.LoadProfileData(event.id, event.pass)
-        )
+
         is Wish.System.InitLogin -> Result(
-            state = state
+            state = ProfileState()
         )
-        is Wish.RefreshProfileData -> Result(
-            state = state.copy(isLoading = true),
-            action = ProfileAction.LoadProfileData(event.id, event.pass)
+
+        is Wish.Authorization -> Result(
+            state = state.copy(
+                isLoading = true,
+                paramsItem = ParamsItem(id = event.id, pass = event.pass)
+            ),
+            action = ProfileAction.Authorize(event.id, event.pass)
         )
-        is Wish.LogIn -> Result(
-            state = state.copy(isLoading = true),
-            action = ProfileAction.LogIn(event.email, event.password)
+
+        is Wish.ValidateFields -> Result(
+            state = state.copy(
+                paramsItem = ParamsItem(email = event.email, pass = event.pass)
+            ),
+            effect = ProfileEffect.Validate(email = event.email, pass = event.pass)
+        )
+
+        is Wish.ValidationFailed -> Result(
+            state = ProfileState()
+        )
+
+        is Wish.Authentication -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            action = ProfileAction.Authenticate(state.paramsItem.email, state.paramsItem.pass)
+        )
+
+        is Wish.Exit -> Result(
+            state = ProfileState(),
+            effect = ProfileEffect.ClearParams
         )
     }
 }

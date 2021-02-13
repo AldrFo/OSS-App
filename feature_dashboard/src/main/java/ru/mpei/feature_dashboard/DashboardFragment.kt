@@ -25,6 +25,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     override val initEvent: DashboardEvent get() = Wish.System.Init
 
     private val dashboardFeatureFactory: DashboardFeatureFactory by inject()
+
     override fun createFeature(): DashboardFeature = dashboardFeatureFactory.create()
 
     private val router: Router by inject()
@@ -59,6 +60,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
         newsAdapter.update(state.newsList)
         eventsAdapter.update(state.eventsList)
         dashboardViewPager.currentItem = state.selectedPage
+
         renderTabView(state)
     }
 
@@ -91,4 +93,5 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
             router.executeCommand(AddScreenForward { fragment })
         }
     )
+
 }

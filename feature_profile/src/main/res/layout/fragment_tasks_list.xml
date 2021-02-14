@@ -6,13 +6,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/fragment_article_toolbar"
+        android:id="@+id/fragment_tasks_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
         <TextView
-            android:id="@+id/fragment_article_toolbar_text"
+            android:id="@+id/fragment_tasks_toolbar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

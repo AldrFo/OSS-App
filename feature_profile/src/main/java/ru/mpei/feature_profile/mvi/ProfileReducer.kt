@@ -1,5 +1,6 @@
 package ru.mpei.feature_profile.mvi
 
+import android.provider.ContactsContract
 import kekmech.ru.common_mvi.BaseReducer
 import kekmech.ru.common_mvi.Result
 import ru.mpei.domain_profile.dto.ParamsItem
@@ -44,6 +45,20 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
             effect = ProfileEffect.AuthenticationError(event.throwable)
         )
 
+        is News.TasksLoaded -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.TasksLoaded(event.tasksList)
+        )
+
+        is News.TasksLoadFailed -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.TasksLoadError(event.throwable)
+        )
+
     }
 
     private fun processWish(event: Wish, state: ProfileState): ProfileResult = when (event) {
@@ -81,6 +96,13 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
         is Wish.Exit -> Result(
             state = ProfileState(),
             effect = ProfileEffect.ClearParams
+        )
+
+        is Wish.LoadTasks -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            action = ProfileAction.LoadTasks(event.type, state.paramsItem.id)
         )
     }
 }

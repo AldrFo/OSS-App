@@ -7,8 +7,9 @@ import retrofit2.Call
 import retrofit2.http.*
 import ru.mpei.domain_profile.dto.ParamsItem
 import ru.mpei.domain_profile.dto.ProfileItem
+import ru.mpei.domain_profile.dto.TaskItem
 
-@EndpointUrl("http://cy37212.tmweb.ru/")
+@EndpointUrl("http://oss-mpei.ru/")
 interface ProfileApi {
 
     @GET("Android/lk.php")
@@ -16,6 +17,9 @@ interface ProfileApi {
 
     @GET("Android/auth.php")
     fun authenticate(@Query("email") email: String, @Query("password") password: String): Single<ParamsItem>
+
+    @GET("Android/get_tasks.php")
+    fun loadTasks(@Query("type") type: String, @Query("id") id: String): Single<List<TaskItem>>
 
     @FormUrlEncoded
     @POST("Android/restore_pass.php")

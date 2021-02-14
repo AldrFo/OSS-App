@@ -1,7 +1,6 @@
 package ru.mpei.feature_profile
 
 import android.content.SharedPreferences
-import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
@@ -35,11 +34,7 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     override var layoutId: Int = R.layout.fragment_profile
 
-    override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
-    }
-
     override fun render(state: ProfileState) {
-
         if (state.isAuthorized){
             showProfile(state.profileData)
         } else {
@@ -74,6 +69,8 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
             validate(effect.email, effect.pass)
         }
+
+        else -> {}
     }
 
     private fun showLogin(){
@@ -93,14 +90,38 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     }
 
     private fun showProfile(profileData: ProfileItem){
+
         ScrollViewProfile1.visibility = View.GONE
         ScrollViewProfile2.visibility = View.VISIBLE
+
         initials.text = getString(R.string.initials).format(profileData.name[0], profileData.surname[0])
         name.text = getString(R.string.name_blank).format(profileData.name, profileData.surname)
         capital.text = profileData.capital.toString()
+
         exitButton.setOnClickListener {
             feature.accept(Wish.Exit)
         }
+
+        in_progress_btn.setOnClickListener {
+            val fragment = TasksListFragment(TasksType.PROCESS, profileData)
+            router.executeCommand( AddScreenForward {fragment} )
+        }
+
+        on_check_btn.setOnClickListener {
+            val fragment = TasksListFragment(TasksType.CHECK, profileData)
+            router.executeCommand( AddScreenForward {fragment} )
+        }
+
+        finished_btn.setOnClickListener {
+            val fragment = TasksListFragment(TasksType.FINISHED, profileData)
+            router.executeCommand( AddScreenForward {fragment} )
+        }
+
+        refused_btn.setOnClickListener {
+            val fragment = TasksListFragment(TasksType.REFUSED, profileData)
+            router.executeCommand( AddScreenForward {fragment} )
+        }
+
     }
 
     private fun saveParams(params: ParamsItem){
@@ -154,5 +175,4 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         const val AUTHORIZATION_ERROR = 0
         const val AUTHENTICATION_ERROR = 1
     }
-
 }

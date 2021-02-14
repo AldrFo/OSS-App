@@ -14,5 +14,8 @@ class ProfileActor(
 
         is ProfileAction.Authenticate -> profileRepository.authenticate(action.email, action.pass)
             .mapEvents(ProfileEvent.News::Authenticated, ProfileEvent.News::AuthenticationFailed)
+
+        is ProfileAction.LoadTasks -> profileRepository.loadTasks(action.type, action.id)
+            .mapEvents(ProfileEvent.News::TasksLoaded, ProfileEvent.News::TasksLoadFailed)
     }
 }

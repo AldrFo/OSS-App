@@ -1,6 +1,7 @@
 package ru.mpei.feature_profile.mvi
 
 import kekmech.ru.common_mvi.BaseFeature
+import ru.mpei.domain_profile.dto.ProfileItem
 
 class ProfileFeatureFactory(
         private val actor: ProfileActor
@@ -9,5 +10,13 @@ class ProfileFeatureFactory(
             initialState = ProfileState(),
             reducer = ProfileReducer(),
             actor = actor
+    ).start()
+
+    fun createTasksList(profileData: ProfileItem) : ProfileFeature = BaseFeature(
+        initialState = ProfileState(
+            profileData = profileData
+        ),
+        reducer = ProfileReducer(),
+        actor = actor
     ).start()
 }

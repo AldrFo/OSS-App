@@ -50,7 +50,6 @@ class TasksActivity : AppCompatActivity() {
     private var adapter: SpecialAdapter? = null
     private var dataList: MutableList<Task> = ArrayList()
     private var type = 0
-    //private lateinit var editReportImage: ImageView
     private var currentPhotoPath: String? = null
     private var dialog: AlertDialog? = null
     private val TAKE_PHOTO = 0

@@ -8,8 +8,6 @@ import ru.mpei.domain_profile.dto.ProfileItem
 class ProfileRepository (
         private val profileApi: ProfileApi
 ){
-    /*fun observeProfile(id: String, pass: String): Single<ProfileItem> = profileApi.get(id, pass)
-    fun login(email:String, password: String): Single<ParamsItem> = profileApi.login(email, password)*/
 
     fun authorize(id: String, pass: String): Single<ProfileItem> = profileApi.authorize(id, pass)
 

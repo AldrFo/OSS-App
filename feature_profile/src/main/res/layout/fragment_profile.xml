@@ -113,7 +113,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                app:errorContentDescription="@string/error_password"
                 app:hintEnabled="false">
 
                 <EditText
@@ -126,7 +125,6 @@
                     android:fontFamily="@font/nunito"
                     android:textColor="@color/dark_blue_text"
                     android:textColorHint="@color/dark_gray_hints"
-                    android:hint="@string/password_hint"
                     android:ems="15"
                     android:inputType="textPassword"
                     android:textCursorDrawable="@null"
@@ -143,7 +141,7 @@
                 android:layout_marginRight="24dp"
                 android:layout_marginBottom="34dp">
 
-                <CheckBox
+                <!--<CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
@@ -151,7 +149,7 @@
                     android:textSize="14sp"
                     android:fontFamily="@font/nunito"
                     android:text="@string/remember_me"
-                    android:button="@drawable/selector_checkbox" />
+                    android:button="@drawable/selector_checkbox" />-->
 
                 <Space android:layout_height="0dp"
                     android:layout_weight="1"
@@ -254,6 +252,7 @@
                 android:textColor="@color/dark_blue_text"
                 android:textSize="30sp"
                 android:fontFamily="@font/nunito_semibold"
+                android:text="@string/initials"
                 android:background="@drawable/background_initials"/>
 
             <TextView
@@ -264,6 +263,7 @@
                 android:layout_marginTop="12dp"
                 android:textColor="@color/dark_blue_text"
                 android:textSize="18sp"
+                android:text="@string/name_blank"
                 android:fontFamily="@font/nunito_semibold"/>
 
             <TextView

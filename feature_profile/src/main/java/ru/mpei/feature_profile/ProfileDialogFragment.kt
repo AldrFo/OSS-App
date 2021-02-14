@@ -42,7 +42,7 @@ class ProfileDialogFragment : DialogFragment(){
                             response.code() == 200 -> {
                                 rootView.email_send_frame.visibility = View.GONE
                                 rootView.ok_frame.visibility = View.VISIBLE
-                                rootView.popup_emailSent_message.text = getString(R.string.reset_password_text_blank).replace("example@mail.ru", rootView.resetPasswordEmail.text.toString(), true)
+                                rootView.popup_emailSent_message.text = getString(R.string.reset_password_text_blank).format(rootView.resetPasswordEmail.text.toString())
                             }
                             response.code() == 401 -> {
                                 rootView.email_input.error = "Неизвестный почтовый адрес!"

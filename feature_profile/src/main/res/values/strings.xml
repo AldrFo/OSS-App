@@ -4,15 +4,15 @@
     <string name="enter_button">Войти</string>
     <string name="oss">Объединенный студенческий совет <br /> НИУ "МЭИ"</string>
     <string name="mail">Почта</string>
-    <string name="email_example">example@mail.ru</string>
-    <string name="password_hint">Минимум 6 символов</string>
+    <string name="email_example">example@mpei.ru</string>
+    <string name="password_hint">Минимум 8 символов</string>
     <string name="password">Пароль</string>
     <string name="remember_me">Запомнить меня</string>
     <string name="forgotten_password"><u>Забыли пароль?</u></string>
     <string name="no_account">Еще нет аккаунта?</string>
     <string name="register"><u>Зарегистрируйся!</u></string>
-    <string name="error_mail">Почтоваый адрес введен неверно</string>
-    <string name="error_password">Введите больше 6 символов</string>
+    <string name="error_mail">Почтовый адрес введен неверно</string>
+    <string name="error_password">Введите не менее 8 символов</string>
     <string name="registration_title">Регистрация</string>
     <string name="name">Имя</string>
     <string name="ivan">Иван</string>
@@ -40,7 +40,7 @@
     <string name="password_reset">Восстановление пароля</string>
     <string name="send_request">Отправить запрос</string>
     <string name="cancel">Отменить</string>
-    <string name="reset_password_text_blank">На почту example@mail.ru было отправлено письмо с инструкцией по восстановлению вашего пароля</string>
+    <string name="reset_password_text_blank">На почту %1$s было отправлено письмо с инструкцией по восстановлению вашего пароля</string>
     <string name="ok">Ок</string>
     <string name="register_button">Зарегистрироваться</string>
     <string name="sex">Пол</string>
@@ -48,4 +48,6 @@
     <string name="female">Женщина</string>
     <string name="group">Группа</string>
     <string name="groupExample">Номер вашей группы МЭИ</string>
+    <string name="initials">%1$s%2$s</string>
+    <string name="name_blank">%1$s %2$s</string>
 </resources>

@@ -1,9 +1,7 @@
 package ru.mpei.feature_profile
 
-import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
@@ -17,12 +15,7 @@ import ru.mpei.domain_profile.dto.ProfileItem
 import ru.mpei.feature_profile.mvi.*
 import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
 
-@Suppress("IMPLICIT_CAST_TO_ANY")
 class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>(){
-
-    private val APP_PREFERENCES_FLAG = "isAuth"
-    private val APP_PREFERENCES_PASS = "userPass"
-    private val APP_PREFERENCES_ID = "userId"
 
     private val mSettings: SharedPreferences by inject()
     private val router: Router by inject()
@@ -62,11 +55,11 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         }
 
         is ProfileEffect.AuthorizationError -> {
-            showError(0)
+            showError(AUTHORIZATION_ERROR)
         }
 
         is ProfileEffect.AuthenticationError -> {
-            showError(1)
+            showError(AUTHENTICATION_ERROR)
         }
 
         is ProfileEffect.ClearParams -> {
@@ -91,19 +84,19 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         }
         forgotten_password_text.setOnClickListener {
             val dialog = ProfileDialogFragment()
-            dialog.show(requireFragmentManager(), "profileDialog")
+            dialog.show(parentFragmentManager, "profileDialog")
         }
         registerLink.setOnClickListener {
             val fragment = RegisterFragment()
-            router.executeCommand( AddScreenForward{ fragment })
+            router.executeCommand( AddScreenForward{ fragment } )
         }
     }
 
     private fun showProfile(profileData: ProfileItem){
         ScrollViewProfile1.visibility = View.GONE
         ScrollViewProfile2.visibility = View.VISIBLE
-        initials.text = "${profileData.name[0]}${profileData.surname[0]}"
-        name.text = "${profileData.name}  ${profileData.surname}"
+        initials.text = getString(R.string.initials).format(profileData.name[0], profileData.surname[0])
+        name.text = getString(R.string.name_blank).format(profileData.name, profileData.surname)
         capital.text = profileData.capital.toString()
         exitButton.setOnClickListener {
             feature.accept(Wish.Exit)
@@ -118,7 +111,7 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     private fun validate(email: String, pass: String){
         val isEmailValid = email.isEmailValid()
-        val isPassValid = pass.length > 6
+        val isPassValid = pass.isNotEmpty()
 
         if (!isEmailValid){
             mailInputLayout.isErrorEnabled = true
@@ -127,7 +120,7 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
         if (!isPassValid){
             passwordInputLayout.isErrorEnabled = !isPassValid
-            passwordInputLayout.error = "Введите больше 6 символов"
+            passwordInputLayout.error = "Введите пароль"
         }
 
         if (isEmailValid && isPassValid) {
@@ -142,18 +135,24 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     }
 
     private fun showError(reason: Int) {
-        val error: String = when (reason) {
+        when (reason) {
             0 -> {
-                "Ошибка авторизации - необходимо войти повторно."
+                Toast.makeText(context, "Ошибка авторизации - необходимо войти повторно.", Toast.LENGTH_LONG).show()
             }
             1 -> {
-                "Неверно введен логин или пароль."
+                Toast.makeText(context, "Неверно введен логин или пароль.", Toast.LENGTH_LONG).show()
             }
-            else -> {
-                ""
-            }
+            else -> {}
         }
-
-        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     }
+
+    companion object {
+        const val APP_PREFERENCES_FLAG = "isAuth"
+        const val APP_PREFERENCES_PASS = "userPass"
+        const val APP_PREFERENCES_ID = "userId"
+
+        const val AUTHORIZATION_ERROR = 0
+        const val AUTHENTICATION_ERROR = 1
+    }
+
 }

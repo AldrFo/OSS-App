@@ -3,7 +3,11 @@ package ru.mpei.feature_profile
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import kekmech.ru.common_adapter.BaseAdapter
+import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
+import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.ClearBackStack
 import kekmech.ru.common_navigation.Router
 import kotlinx.android.synthetic.main.fragment_tasks_list.*
@@ -16,6 +20,7 @@ class TasksListFragment(private val type: TasksType, private val profileData: Pr
 
     private  val profileFeatureFactory: ProfileFeatureFactory by inject()
     private val router: Router by inject()
+    private val adapter: BaseAdapter by fastLazy { createAdapter() }
 
     private val name = when(type) {
         TasksType.PROCESS -> "Выполняемые"
@@ -45,16 +50,17 @@ class TasksListFragment(private val type: TasksType, private val profileData: Pr
         fragment_tasks_toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         fragment_tasks_toolbar.setNavigationOnClickListener { router.executeCommand( ClearBackStack() ) }
 
+        tasks_list.adapter = adapter
+        tasks_list.layoutManager = LinearLayoutManager(requireContext())
+
     }
 
     override fun render(state: ProfileState) {
+        adapter.update(state.tasksList)
     }
 
     override fun handleEffect(effect: ProfileEffect) = when(effect) {
 
-        is ProfileEffect.TasksLoaded -> {
-            Toast.makeText(context, "Список загружен, длинна - " + effect.tasksList.size, Toast.LENGTH_SHORT).show()
-        }
 
         is ProfileEffect.TasksLoadError -> {
             Toast.makeText(context, "Возникла ошибка - попробуйте еще раз позже", Toast.LENGTH_SHORT).show()
@@ -63,4 +69,13 @@ class TasksListFragment(private val type: TasksType, private val profileData: Pr
         else -> {}
     }
 
+    private fun createAdapter() = BaseAdapter(
+        TaskAdapterItem {
+            //val bundle = Bundle()
+            //bundle.putSerializable("data", it)
+            //val fragment = TaskFragment()
+            //fragment.arguments = bundle
+            //router.executeCommand(AddScreenForward { fragment })
+        }
+    )
 }

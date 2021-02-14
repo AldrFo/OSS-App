@@ -1,6 +1,7 @@
 package ru.mpei.domain_profile.dto
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class TaskItem(
     @SerializedName("description_short")
@@ -32,4 +33,4 @@ data class TaskItem(
     var id: String? = null,
 
     var penalty: String? = null
-)
+): Serializable

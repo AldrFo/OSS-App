@@ -15,7 +15,8 @@ data class ProfileState(
     val isLoading: Boolean = false,
     val profileData: ProfileItem = ProfileItem(),
     val isAuthorized: Boolean = false,
-    val paramsItem: ParamsItem = ParamsItem()
+    val paramsItem: ParamsItem = ParamsItem(),
+    val tasksList: List<TaskItem> = emptyList()
 )
 
 sealed class ProfileEvent{
@@ -61,7 +62,6 @@ sealed class ProfileEffect{
 
     data class Validate(val email: String, val pass: String): ProfileEffect()
 
-    data class TasksLoaded(val tasksList: List<TaskItem>): ProfileEffect()
     data class TasksLoadError(val throwable: Throwable): ProfileEffect()
 }
 

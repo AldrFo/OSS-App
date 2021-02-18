@@ -10,9 +10,9 @@ import ru.mpei.domain_tasks.dto.TasksItem
 import ru.mpei.feature_tasks.R
 
 interface TasksViewHolder{
-    fun setName(name: String);
-    fun setPrice(price: String);
-    fun setLocation(location: String);
+    fun setName(name: String)
+    fun setPrice(price: String)
+    fun setOnClickListener(onClick: () -> Unit)
 }
 
 class TasksViewHolderImpl(
@@ -26,22 +26,24 @@ class TasksViewHolderImpl(
         containerView.findViewById<TextView>(R.id.task_price).text = price
     }
 
-    override fun setLocation(location: String) {
-        //containerView.findViewById<TextView>(R.id.taskLocationText).text = location
+    override fun setOnClickListener(onClick: () -> Unit) {
+        containerView.setOnClickListener { onClick() }
     }
 }
 
-class TasksItemBinder() : BaseItemBinder<TasksViewHolder, TasksItem>(){
+class TasksItemBinder(
+    private val onClick: (TasksItem) -> Unit
+) : BaseItemBinder<TasksViewHolder, TasksItem>(){
     override fun bind(vh: TasksViewHolder, model: TasksItem, position: Int) {
         vh.setName(model.taskName)
         vh.setPrice(model.price)
-        vh.setLocation(model.location)
+        vh.setOnClickListener{onClick(model)}
     }
 }
 
-class TasksAdapterItem(): AdapterItem<TasksViewHolder, TasksItem>(
+class TasksAdapterItem(onClick: (TasksItem) -> Unit): AdapterItem<TasksViewHolder, TasksItem>(
         isType = {it is TasksItem},
         layoutRes = R.layout.item_tasks,
-        itemBinder = TasksItemBinder(),
+        itemBinder = TasksItemBinder(onClick),
         viewHolderGenerator = ::TasksViewHolderImpl
 )

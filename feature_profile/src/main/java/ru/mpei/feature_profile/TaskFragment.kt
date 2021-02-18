@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_task_ended.*
 import kotlinx.android.synthetic.main.fragment_task_ended.balance_ended
 import kotlinx.android.synthetic.main.fragment_task_ended.begin_date_ended
 import kotlinx.android.synthetic.main.fragment_task_ended.end_date_ended
-import kotlinx.android.synthetic.main.fragment_task_ended.fragment_article_toolbar_text
+import kotlinx.android.synthetic.main.fragment_task_ended.fragment_task_toolbar_text
 import kotlinx.android.synthetic.main.fragment_task_ended.fragment_task_toolbar
 import kotlinx.android.synthetic.main.fragment_task_ended.place_ended
 import kotlinx.android.synthetic.main.fragment_task_ended.task_description_ended
@@ -44,7 +44,7 @@ class TaskFragment: Fragment() {
         fragment_task_toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         fragment_task_toolbar.setNavigationOnClickListener { router.executeCommand(PopUntil(TasksListFragment::class)) }
 
-        fragment_article_toolbar_text.text = it.taskName
+        fragment_task_toolbar_text.text = it.taskName
 
         when (it.status){
             "ongoing" -> initProcessTask()

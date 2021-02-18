@@ -36,7 +36,7 @@
     <string name="refuse_date">&lt;font face=”nunito_semibold“>Можно отказаться: &lt;/font>%1$s</string>
     <string name="send_for_check">Отправить на проверку</string>
     <string name="refuse_task">Отказаться от задания</string>
-    <string name="my_comment">Мой комментарий</string>
+    <string name="task_comment">Мой комментарий</string>
     <string name="password_reset">Восстановление пароля</string>
     <string name="send_request">Отправить запрос</string>
     <string name="cancel">Отменить</string>

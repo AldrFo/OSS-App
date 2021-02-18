@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
+import kekmech.ru.common_navigation.AddScreenForward
+import kekmech.ru.common_navigation.Router
 import kotlinx.android.synthetic.main.fragment_tasks.*
 import org.koin.android.ext.android.inject
 import ru.mpei.feature_tasks.items.TasksAdapterItem
@@ -16,6 +18,7 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     override val initEvent: TasksEvent get() = Wish.System.Init
 
     private val tasksFeatureFactory: TasksFeatureFactory by inject()
+    private val router: Router by inject()
 
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
 
@@ -37,6 +40,12 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     }
 
     private fun createAdapter() = BaseAdapter(
-            TasksAdapterItem()
+        TasksAdapterItem{
+            val bundle = Bundle()
+            bundle.putSerializable("availableTaskData", it)
+            val fragment = AvailableTaskFragment()
+            fragment.arguments = bundle
+            router.executeCommand(AddScreenForward { fragment })
+        }
     )
 }

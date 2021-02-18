@@ -1,6 +1,7 @@
 package ru.mpei.domain_tasks.dto
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class TasksItem(
 
@@ -33,4 +34,4 @@ data class TasksItem(
         var id: String? = null,
 
         var penalty: String? = null
-)
+): Serializable

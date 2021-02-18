@@ -16,7 +16,7 @@
         android:theme="?attr/actionBarTheme">
 
         <TextView
-            android:id="@+id/fragment_article_toolbar_text"
+            android:id="@+id/fragment_task_toolbar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -141,7 +141,7 @@
                         android:textSize="14sp"
                         android:fontFamily="@font/nunito_semibold"
                         android:layout_weight="1"
-                        android:text="@string/my_comment"/>
+                        android:text="@string/task_comment"/>
 
                     <ImageButton
                         android:id="@+id/btn_edit_check"
@@ -171,18 +171,5 @@
         </ScrollView>
 
     </androidx.cardview.widget.CardView>
-
-
-        <!--<ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="24dp"
-            android:layout_marginRight="40dp"
-            android:paddingRight="24dp"
-            android:layout_marginLeft="40dp">
-
-
-
-        </ScrollView>-->
 
 </LinearLayout>

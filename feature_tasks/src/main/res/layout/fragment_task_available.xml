@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
+    android:isScrollContainer="true"
     android:background="@color/bg_blue">
 
     <androidx.appcompat.widget.Toolbar
@@ -53,16 +54,16 @@
                 android:layout_marginRight="24dp">
 
                 <TextView
-                    android:id="@+id/task_name_ended"
+                    android:id="@+id/task_name_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/nunito_bold"
-                    android:textColor="@color/dark_blue_text"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="@color/dark_blue_text" />
 
                 <TextView
-                    android:id="@+id/balance_ended"
+                    android:id="@+id/balance_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -77,15 +78,15 @@
                     android:id="@+id/task_desc_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
                     android:layout_weight="1"
+                    android:layout_marginTop="27dp"
+                    android:textSize="14sp"
                     android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/task_description"
                     android:textColor="@color/dark_blue_text"
-                    android:textSize="14sp" />
+                    android:text="@string/task_description" />
 
                 <TextView
-                    android:id="@+id/task_description_ended"
+                    android:id="@+id/task_description_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -95,7 +96,7 @@
                     android:fontFamily="@font/nunito" />
 
                 <TextView
-                    android:id="@+id/place_ended"
+                    android:id="@+id/place_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -106,7 +107,7 @@
                     android:fontFamily="@font/nunito"/>
 
                 <TextView
-                    android:id="@+id/begin_date_ended"
+                    android:id="@+id/begin_date_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -117,7 +118,7 @@
                     android:fontFamily="@font/nunito"/>
 
                 <TextView
-                    android:id="@+id/end_date_ended"
+                    android:id="@+id/end_date_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -127,29 +128,35 @@
                     android:textColor="@color/dark_blue_text"
                     android:fontFamily="@font/nunito"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="@string/task_comment"
-                    android:textColor="@color/dark_blue_text"
-                    android:textSize="14sp" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:layout_weight="1"
+                        android:text="@string/task_comment"/>
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/task_comment_ended"
+                    android:id="@+id/task_comment_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="24dp"
                     android:textSize="12sp"
                     android:textColor="@color/dark_blue_text"
-                    android:fontFamily="@font/nunito"/>
-
+                    android:fontFamily="@font/nunito" />
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="18dp" />
-
             </LinearLayout>
 
         </ScrollView>

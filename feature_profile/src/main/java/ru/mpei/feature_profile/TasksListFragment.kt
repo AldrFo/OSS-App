@@ -1,9 +1,11 @@
 package ru.mpei.feature_profile
 
+import android.graphics.Canvas
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
@@ -13,10 +15,11 @@ import kekmech.ru.common_navigation.Router
 import kotlinx.android.synthetic.main.fragment_tasks_list.*
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_profile.dto.ProfileItem
+import ru.mpei.feature_profile.items.TaskAdapterItem
 import ru.mpei.feature_profile.mvi.*
 import ru.mpei.feature_profile.mvi.ProfileEvent.*
 
-class TasksListFragment(private val type: TasksType, private val profileData: ProfileItem) : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
+class TasksListFragment(type: TasksType, private val profileData: ProfileItem) : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
 
     private  val profileFeatureFactory: ProfileFeatureFactory by inject()
     private val router: Router by inject()
@@ -71,11 +74,13 @@ class TasksListFragment(private val type: TasksType, private val profileData: Pr
 
     private fun createAdapter() = BaseAdapter(
         TaskAdapterItem {
-            //val bundle = Bundle()
-            //bundle.putSerializable("data", it)
-            //val fragment = TaskFragment()
-            //fragment.arguments = bundle
-            //router.executeCommand(AddScreenForward { fragment })
+            val bundle = Bundle()
+            bundle.putSerializable("taskData", it)
+            val fragment = TaskFragment()
+            fragment.arguments = bundle
+            router.executeCommand(AddScreenForward { fragment })
         }
     )
+
 }
+

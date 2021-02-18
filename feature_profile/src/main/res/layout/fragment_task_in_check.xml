@@ -9,157 +9,180 @@
     android:background="@color/bg_blue">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/fragment_article_toolbar"
+        android:id="@+id/fragment_task_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+        android:theme="?attr/actionBarTheme">
+
         <TextView
             android:id="@+id/fragment_article_toolbar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="65dp"
-            android:layout_marginLeft="65dp"
             android:textColor="@color/mpei_blue"
             android:textSize="18sp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             android:fontFamily="@font/nunito_semibold"
-            android:singleLine="true"
-            android:text="Название задания йцукенгзщшгне укенг шщзхзщшг неенролд апро пршощ гпршо"/>
+            android:singleLine="true" />
+
     </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_list"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        app:cardCornerRadius="40dp"
+        android:layout_marginRight="-40dp"
+        android:layout_marginBottom="-40dp"
+        android:backgroundTint="@color/mpei_white">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="18dp">
-
-            <TextView
-                android:id="@+id/task_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18sp"
-                android:fontFamily="@font/nunito_semibold"
-                android:textColor="@color/dark_blue_text"
-                android:text="Название задания йцукенгзщшгне укенг шщзхзщшг неенролд апро пршощ гпршо" />
-
-            <TextView
-                android:id="@+id/balance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_coin"
-                android:drawablePadding="9dp"
-                android:layout_weight="1"
-                android:textColor="@color/dark_blue_text"
-                android:fontFamily="@font/nunito"
-                android:textSize="14sp"
-                android:text="2800" />
-
-            <TextView
-                android:id="@+id/task_desc_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="27dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/nunito_semibold"
-                android:textColor="@color/dark_blue_text"
-                android:text="@string/task_description" />
-
-            <TextView
-                android:id="@+id/task_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:textColor="@color/dark_blue_text"
-                android:textSize="12sp"
-                android:fontFamily="@font/nunito"
-                android:text="Идейные соображения высшего порядка, а также консультация с широким активом влечет за собой процесс внедрения и модернизации форм развития. Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке систем массового участия. Таким образом рамки и место обучения кадров представляет собой интересный эксперимент проверки позиций, занимаемых участниками в отношении поставленных задач" />
-
-            <TextView
-                android:id="@+id/place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:text="@string/place"
-                android:textSize="12sp"
-                android:textColor="@color/dark_blue_text"
-                android:fontFamily="@font/nunito"/>
-
-            <TextView
-                android:id="@+id/begin_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:text="@string/begin_date"
-                android:textColor="@color/dark_blue_text"
-                android:textSize="12sp"
-                android:fontFamily="@font/nunito"/>
-
-            <TextView
-                android:id="@+id/end_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:text="@string/end_date"
-                android:textSize="12sp"
-                android:textColor="@color/dark_blue_text"
-                android:fontFamily="@font/nunito"/>
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:clipToPadding="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="24dp">
+                android:orientation="vertical"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/task_name_check"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/dark_blue_text"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/nunito_semibold"
                     android:layout_weight="1"
-                    android:text="@string/my_comment"/>
+                    android:textSize="18sp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="@color/dark_blue_text" />
 
-                <ImageButton
-                    android:id="@+id/btn_edit"
+                <TextView
+                    android:id="@+id/balance_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:background="@color/mpei_white"
-                    app:srcCompat="@drawable/ic_edit"
-                    android:contentDescription="edit comment button" />
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="9dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito"
+                    android:textSize="14sp"
+                    app:drawableLeftCompat="@drawable/ic_coin" />
 
+                <TextView
+                    android:id="@+id/task_desc_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="27dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textColor="@color/dark_blue_text"
+                    android:text="@string/task_description" />
+
+                <TextView
+                    android:id="@+id/task_description_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/dark_blue_text"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/nunito" />
+
+                <TextView
+                    android:id="@+id/place_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:text="@string/place"
+                    android:textSize="12sp"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito"/>
+
+                <TextView
+                    android:id="@+id/begin_date_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:text="@string/begin_date"
+                    android:textColor="@color/dark_blue_text"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/nunito"/>
+
+                <TextView
+                    android:id="@+id/end_date_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:text="@string/end_date"
+                    android:textSize="12sp"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="24dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:layout_weight="1"
+                        android:text="@string/my_comment"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_edit_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:background="@color/mpei_white"
+                        app:srcCompat="@drawable/ic_edit"
+                        android:contentDescription="@string/edit_comment_button" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/task_comment_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="24dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="24dp"
-                android:textSize="12sp"
-                android:textColor="@color/dark_blue_text"
-                android:fontFamily="@font/nunito"
-                android:text="Идейные соображения высшего порядка, а также консультация с широким активом влечет за собой процесс внедрения и модернизации форм развития. Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке систем массового участия. Таким образом рамки и место обучения кадров представляет собой интересный эксперимент проверки позиций, занимаемых участниками в отношении поставленных задач"/>
+        </ScrollView>
 
-        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-    </ScrollView>
+
+        <!--<ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="24dp"
+            android:layout_marginRight="40dp"
+            android:paddingRight="24dp"
+            android:layout_marginLeft="40dp">
+
+
+
+        </ScrollView>-->
 
 </LinearLayout>

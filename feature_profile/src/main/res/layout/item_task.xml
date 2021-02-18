@@ -4,9 +4,10 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="12dp"
     android:layout_marginLeft="24dp"
     android:layout_marginRight="24dp"
+    android:layout_marginBottom="12dp"
     android:background="@drawable/ripple_item_task"
     android:elevation="7dp">
 
@@ -64,7 +65,7 @@
             android:textColor="@color/dark_blue_text"
             android:textSize="12sp"
             android:fontFamily="@font/nunito"
-            android:text="24.10.20-21.12.20"/>
+            android:text="@string/task_dates"/>
 
 
     </LinearLayout>

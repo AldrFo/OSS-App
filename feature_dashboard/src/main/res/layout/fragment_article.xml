@@ -1,177 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:isScrollContainer="true"
+    android:background="@color/bg_blue"
     tools:context="ru.mpei.feature_dashboard.ArticleFragment">
 
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragment_article_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/bg_blue">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/fragment_article_toolbar"
-            android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+        <TextView
+            android:id="@+id/fragment_article_toolbar_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
-            <TextView
-                android:id="@+id/fragment_article_toolbar_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/mpei_blue"
-                android:textSize="18sp"
-                android:fontFamily="@font/nunito"
-                />
-        </androidx.appcompat.widget.Toolbar>
+            android:layout_gravity="center"
+            android:textColor="@color/mpei_blue"
+            android:textSize="18sp"
+            android:fontFamily="@font/nunito"
+            />
+    </androidx.appcompat.widget.Toolbar>
 
-        <!--<LinearLayout
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="40dp"
+        android:layout_marginRight="-40dp"
+        android:layout_marginBottom="-40dp"
+        android:backgroundTint="@color/mpei_white">
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="text"/>
-        </LinearLayout>-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:dividerPadding="24dp"
-            android:divider="@drawable/horizontal_separator"
-            android:showDividers="middle"
-            android:background="@drawable/shape_list"
-            android:backgroundTint="@color/mpei_white">
+            android:paddingRight="40dp"
+            android:paddingBottom="40dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:divider="@drawable/vertical_separator"
-                android:showDividers="middle"
-                android:dividerPadding="13dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:orientation="vertical"
+                android:dividerPadding="24dp"
+                android:divider="@drawable/horizontal_separator"
+                android:showDividers="middle">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center_vertical|end">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:divider="@drawable/vertical_separator"
+                    android:showDividers="middle"
+                    android:dividerPadding="13dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
-                    <TextView
-                        android:id="@+id/fragment_article_date"
-                        android:layout_width="65dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_bold"
-                        android:gravity="end"
-                        android:textColor="@color/dark_blue_text"
-                        android:textSize="40sp"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center_vertical|end">
 
-                    <TextView
-                        android:id="@+id/fragment_article_month"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_semibold"
-                        android:gravity="end"
-                        android:textColor="@color/dark_blue_text"
-                        android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/fragment_article_date"
+                            android:layout_width="65dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_bold"
+                            android:gravity="end"
+                            android:textColor="@color/dark_blue_text"
+                            android:textSize="40sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/fragment_article_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:gravity="end"
-                        android:textColor="@color/dark_blue_text"
-                        android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/fragment_article_month"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:gravity="end"
+                            android:textColor="@color/dark_blue_text"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/fragment_article_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:gravity="end"
+                            android:textColor="@color/dark_blue_text"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="10sp">
+
+                        <TextView
+                            android:id="@+id/fragment_article_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:textColor="@color/dark_blue_text"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/fragment_article_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:textColor="@color/dark_blue_text"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_margin="10sp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/fragment_article_name"
+                        android:id="@+id/fragment_article_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_semibold"
-                        android:textColor="@color/dark_blue_text"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/fragment_article_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="24dp"
                         android:fontFamily="@font/nunito"
                         android:textColor="@color/dark_blue_text"
                         android:textSize="12sp" />
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="8dp"
+                        android:layout_margin="20dp">
+                        <ImageView
+                            android:id="@+id/fragment_article_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/test"
+                            tools:ignore="ContentDescription"
+                            />
+                    </androidx.cardview.widget.CardView>
+
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+        </ScrollView>
 
-                <TextView
-                    android:id="@+id/fragment_article_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="24dp"
-                    android:fontFamily="@font/nunito"
-                    android:textColor="@color/dark_blue_text"
-                    android:textSize="12sp" />
+    </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    android:layout_margin="20dp">
-                    <ImageView
-                        android:id="@+id/fragment_article_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        app:srcCompat="@drawable/test"
-                        tools:ignore="ContentDescription"
-                        />
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

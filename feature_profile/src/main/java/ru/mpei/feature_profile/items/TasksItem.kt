@@ -1,4 +1,4 @@
-package ru.mpei.feature_profile
+package ru.mpei.feature_profile.items
 
 import android.view.View
 import android.widget.TextView
@@ -7,6 +7,7 @@ import kekmech.ru.common_adapter.AdapterItem
 import kotlinx.android.extensions.LayoutContainer
 import ru.mpei.domain_profile.dto.TaskItem
 import kekmech.ru.common_adapter.BaseItemBinder
+import ru.mpei.feature_profile.R
 
 
 interface TaskViewHolder {
@@ -28,7 +29,7 @@ class TasksViewHolderImpl(
     }
 
     override fun setTaskDates(start: String, end: String) {
-        containerView.findViewById<TextView>(R.id.task_dates).text = start+" - "+end
+        containerView.findViewById<TextView>(R.id.task_dates).text = "${start.substring(0, start.length - 3)} - ${end.substring(0, end.length - 3)}"
     }
 
     override fun setOnClickListener(onClick: () -> Unit) {

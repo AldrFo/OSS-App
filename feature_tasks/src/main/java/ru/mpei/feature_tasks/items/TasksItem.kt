@@ -12,6 +12,7 @@ import ru.mpei.feature_tasks.R
 interface TasksViewHolder{
     fun setName(name: String)
     fun setPrice(price: String)
+    fun setDates(startDate: String, endDate: String)
     fun setOnClickListener(onClick: () -> Unit)
 }
 
@@ -19,11 +20,15 @@ class TasksViewHolderImpl(
         override val containerView: View
 ): RecyclerView.ViewHolder(containerView), TasksViewHolder, LayoutContainer {
     override fun setName(name: String) {
-        containerView.findViewById<TextView>(R.id.task_name).text = name
+        containerView.findViewById<TextView>(R.id.avail_name).text = name
     }
 
     override fun setPrice(price: String) {
-        containerView.findViewById<TextView>(R.id.task_price).text = price
+        containerView.findViewById<TextView>(R.id.avail_price).text = price
+    }
+
+    override fun setDates(startDate: String, endDate: String) {
+        containerView.findViewById<TextView>(R.id.avail_dates).text = "${startDate.substring(0, startDate.length-3)} - ${endDate.substring(0, endDate.length-3)}"
     }
 
     override fun setOnClickListener(onClick: () -> Unit) {
@@ -37,6 +42,7 @@ class TasksItemBinder(
     override fun bind(vh: TasksViewHolder, model: TasksItem, position: Int) {
         vh.setName(model.taskName)
         vh.setPrice(model.price)
+        vh.setDates(model.startDate, model.endDate)
         vh.setOnClickListener{onClick(model)}
     }
 }

@@ -1,12 +1,12 @@
 package ru.mpei.feature_tasks
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kekmech.ru.common_navigation.ClearBackStack
-import kekmech.ru.common_navigation.PopUntil
 import kekmech.ru.common_navigation.Router
 import kotlinx.android.synthetic.main.fragment_task_available.*
 import org.koin.android.ext.android.inject
@@ -31,6 +31,13 @@ class AvailableTaskFragment: Fragment() {
 
         fragment_task_toolbar_text.text = it.taskName
 
+        task_name_avail.text = it.taskName
+        balance_avail.text = it.price
+        task_description_avail.text = if (it.taskDescription.isEmpty()) getString(R.string.no_description) else it.taskDescription
+        place_avail.text = Html.fromHtml(getString(R.string.place, it.location))
+        begin_date_avail.text = Html.fromHtml(getString(R.string.begin_date, it.endDate.substring(0, it.endDate.length-3)))
+        end_date_avail.text = Html.fromHtml(getString(R.string.end_date, it.endDate.substring(0, it.endDate.length-3)))
+        refuse_date_avail.text = Html.fromHtml(getString(R.string.refuse_date, it.refuseInfo.substring(0, it.refuseInfo.length-3)))
     }
 
 }

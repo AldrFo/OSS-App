@@ -3,9 +3,11 @@
     <string name="tasks">Задания</string>
     <string name="deadline">Сроки</string>
     <string name="task_description">Описание задания</string>
-    <string name="place">&lt;font face=”nunito_semibold“>Место: &lt;/font>%1$s</string>
-    <string name="begin_date">&lt;font face=”nunito_semibold“>Начало: &lt;/font>%1$s</string>
-    <string name="end_date">&lt;font face=”nunito_semibold“>Конец: &lt;/font>%1$s</string>
-    <string name="refuse_date">&lt;font face=”nunito_semibold“>Можно отказаться: &lt;/font>%1$s</string>
+    <string name="place">&lt;font face=”nunito_semibold“>Место: &lt;/font>&lt;font face=”nunito“>%1$s&lt;/font></string>
+    <string name="begin_date">&lt;font face=”nunito_semibold“>Начало: &lt;/font>&lt;font face=”nunito“>%1$s&lt;/font></string>
+    <string name="end_date">&lt;font face=”nunito_semibold“>Конец: &lt;/font>&lt;font face=”nunito“>%1$s&lt;/font></string>
+    <string name="refuse_date">&lt;font face=”nunito_semibold“>Можно отказаться: &lt;/font>&lt;font face=”nunito“>%1$s&lt;/font></string>
     <string name="task_comment">Мой комментарий</string>
+    <string name="take_task">Взять задание</string>
+    <string name="no_description">Описание отсутствует</string>
 </resources>

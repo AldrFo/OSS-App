@@ -54,7 +54,7 @@
                 android:layout_marginRight="24dp">
 
                 <TextView
-                    android:id="@+id/task_name_check"
+                    android:id="@+id/task_name_avail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -63,7 +63,7 @@
                     android:textColor="@color/dark_blue_text" />
 
                 <TextView
-                    android:id="@+id/balance_check"
+                    android:id="@+id/balance_avail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -86,7 +86,7 @@
                     android:text="@string/task_description" />
 
                 <TextView
-                    android:id="@+id/task_description_check"
+                    android:id="@+id/task_description_avail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -96,7 +96,7 @@
                     android:fontFamily="@font/nunito" />
 
                 <TextView
-                    android:id="@+id/place_check"
+                    android:id="@+id/place_avail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -107,7 +107,7 @@
                     android:fontFamily="@font/nunito"/>
 
                 <TextView
-                    android:id="@+id/begin_date_check"
+                    android:id="@+id/begin_date_avail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -118,7 +118,7 @@
                     android:fontFamily="@font/nunito"/>
 
                 <TextView
-                    android:id="@+id/end_date_check"
+                    android:id="@+id/end_date_avail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -128,32 +128,35 @@
                     android:textColor="@color/dark_blue_text"
                     android:fontFamily="@font/nunito"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="24dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/dark_blue_text"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/nunito_semibold"
-                        android:layout_weight="1"
-                        android:text="@string/task_comment"/>
-
-                </LinearLayout>
-
                 <TextView
-                    android:id="@+id/task_comment_check"
-                    android:layout_width="match_parent"
+                    android:id="@+id/refuse_date_avail"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_weight="1"
+                    android:text="@string/refuse_date"
                     android:textSize="12sp"
                     android:textColor="@color/dark_blue_text"
-                    android:fontFamily="@font/nunito" />
+                    android:fontFamily="@font/nunito"/>
+
+                <Button
+                    android:id="@+id/btn_send_for_check_avail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:paddingTop="11dp"
+                    android:paddingBottom="11dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/mpei_white"
+                    android:background="@drawable/ripple_blue_button"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="@string/take_task"
+                    />
+
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="18dp" />

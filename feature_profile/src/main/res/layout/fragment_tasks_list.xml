@@ -32,6 +32,22 @@
         android:layout_marginBottom="-40dp"
         android:backgroundTint="@color/mpei_white">
 
+        <TextView
+            android:id="@+id/empty_list_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20sp"
+            android:paddingRight="40dp"
+            android:drawablePadding="7dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/mpei_blue"
+            android:drawableTop="@drawable/ic_smile"
+            android:text="@string/empty_tasks_list"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasks_list"
             android:orientation="vertical"

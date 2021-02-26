@@ -15,7 +15,6 @@ import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_NEWS_ITEM
 data class DashboardItem(
     val id: String
 ) {
-
     companion object {
         const val ID_NEWS_ITEM = "NewsItem"
         const val ID_EVENTS_ITEM = "EventsItem"

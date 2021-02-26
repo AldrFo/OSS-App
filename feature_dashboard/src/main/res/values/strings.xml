@@ -8,4 +8,6 @@
     <string name="dashboard_lenta">Лента</string>
     <string name="dashboard_afisha">Афиша</string>
     <string name="dashboard_news">Новости</string>
+    <string name="empty_afisha">Здесь скоро будет афиша событий</string>
+    <string name="empty_news">Здесь скоро будут новости</string>
 </resources>

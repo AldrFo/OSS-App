@@ -72,11 +72,15 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
             selector_afisha.setTextColor(defaultColor)
             selector_news.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
             selector_news.setTextColor(selectedColor)
+            if (state.eventsList.isEmpty()) empty_dashboard_label.visibility = View.VISIBLE else empty_dashboard_label.visibility = View.GONE
+            empty_news_label.visibility = View.GONE
         } else {
             selector_afisha.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
             selector_afisha.setTextColor(selectedColor)
             selector_news.backgroundTintList = ColorStateList.valueOf(selectedColor)
             selector_news.setTextColor(defaultColor)
+            if (state.eventsList.isEmpty()) empty_news_label.visibility = View.VISIBLE else empty_news_label.visibility = View.GONE
+            empty_dashboard_label.visibility = View.GONE
         }
     }
 

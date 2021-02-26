@@ -4,6 +4,8 @@ dependencies {
     implementation kotlinStdLib
     implementation androidx.coreKtx
     implementation androidx.appcompat
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     testImplementation tests.junit
 
     implementation rx.java
@@ -11,6 +13,9 @@ dependencies {
     implementation rx.kotlin
 
     implementation timber
+
+    implementation koin.core
+    implementation koin.android
 
     implementation project(path: ':common_di')
     implementation project(path: ':common_mvi')

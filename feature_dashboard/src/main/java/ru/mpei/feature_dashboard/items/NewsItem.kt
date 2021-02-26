@@ -26,8 +26,6 @@ class NewsViewHolderImpl(
         containerView.findViewById<TextView>(R.id.item_article_time).text = hour.trim(' ')
     }
     override fun setText(text: String) {
-        /*var newText = text
-        if (text.length > 100) newText = text.substring(0, 97) + "..."*/
         containerView.findViewById<TextView>(R.id.item_article_text).text = text
     }
 

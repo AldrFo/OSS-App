@@ -19,7 +19,7 @@ import ru.mpei.feature_profile.items.TaskAdapterItem
 import ru.mpei.feature_profile.mvi.*
 import ru.mpei.feature_profile.mvi.ProfileEvent.*
 
-class TasksListFragment(type: TasksType, private val profileData: ProfileItem) : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
+class TasksListFragment(val type: TasksType, private val profileData: ProfileItem) : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
 
     private  val profileFeatureFactory: ProfileFeatureFactory by inject()
     private val router: Router by inject()
@@ -60,6 +60,20 @@ class TasksListFragment(type: TasksType, private val profileData: ProfileItem) :
 
     override fun render(state: ProfileState) {
         adapter.update(state.tasksList)
+
+        if (state.tasksList.isEmpty()) {
+            val tType = when (type) {
+                TasksType.PROCESS -> "выполняемых"
+                TasksType.REFUSED -> "отклоненных"
+                TasksType.FINISHED -> "выполненных"
+                TasksType.CHECK -> "проверяемых"
+            }
+            empty_list_label.text = getString(R.string.empty_tasks_list).format(tType)
+            empty_list_label.visibility = View.VISIBLE
+        } else {
+            empty_list_label.visibility = View.GONE
+        }
+
     }
 
     override fun handleEffect(effect: ProfileEffect) = when(effect) {

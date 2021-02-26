@@ -12,6 +12,7 @@ import org.koin.core.context.startKoin
 import ru.mpei.feature_tasks.di.TasksModule
 import ru.mpei.feature_dashboard.di.DashboardModule
 import ru.mpei.feature_profile.di.ProfileModule
+import ru.mpei.feature_services.di.ServicesModule
 import ru.mpei.ossapp.activities.MainActivity.Companion.APP_PREFERENCES
 import ru.mpei.ossapp.di.AppModule
 import ru.mpei.ossapp.ui.main.di.MainScreenModule
@@ -36,7 +37,8 @@ class App : Application() {
             NetworkModule,
             DashboardModule,
             TasksModule,
-            ProfileModule
+            ProfileModule,
+            ServicesModule
         ))
     }
 

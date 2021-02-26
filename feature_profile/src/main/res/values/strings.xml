@@ -54,4 +54,5 @@
     <string name="no_comment"><b>Комментарий отсутствует</b></string>
     <string name="no_description"><b>Описание отсутствует</b></string>
     <string name="edit_comment_button">edit comment button</string>
+    <string name="empty_tasks_list">У вас нет %1$s задач</string>
 </resources>

@@ -10,4 +10,5 @@
     <string name="task_comment">Мой комментарий</string>
     <string name="take_task">Взять задание</string>
     <string name="no_description">Описание отсутствует</string>
+    <string name="empty_tasks_list">Заданий пока нет</string>
 </resources>

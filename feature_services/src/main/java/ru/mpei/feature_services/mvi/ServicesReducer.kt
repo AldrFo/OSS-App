@@ -8,6 +8,8 @@ typealias ServicesResult = Result<ServicesState, ServicesEffect, ServicesAction>
 class ServicesReducer : BaseReducer<ServicesState, ServicesEvent,ServicesEffect, ServicesAction> {
 
     override fun reduce(event: ServicesEvent, state: ServicesState): ServicesResult {
-        TODO("Not yet implemented")
+        return ServicesResult(
+            state = state.copy()
+        )
     }
 }

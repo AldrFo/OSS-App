@@ -33,6 +33,11 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
 
     override fun render(state: TasksState) {
         tasksAdapter.update(state.ListOfTasks)
+        if (state.ListOfTasks.isEmpty()) {
+            avail_tasks_label.visibility = View.VISIBLE
+        } else {
+            avail_tasks_label.visibility = View.GONE
+        }
     }
 
     override fun handleEffect(effect: TasksEffect) = when(effect) {

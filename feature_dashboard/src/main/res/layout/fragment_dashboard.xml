@@ -62,6 +62,34 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/empty_dashboard_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20sp"
+            android:drawablePadding="7dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/mpei_blue"
+            android:drawableTop="@drawable/ic_smile"
+            android:text="@string/empty_afisha"/>
+
+        <TextView
+            android:id="@+id/empty_news_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20sp"
+            android:drawablePadding="7dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/mpei_blue"
+            android:drawableTop="@drawable/ic_smile"
+            android:text="@string/empty_news"/>
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/dashboardViewPager"
             android:layout_width="match_parent"

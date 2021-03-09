@@ -1,0 +1,36 @@
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <bytecodeTargetLevel target=\"1.8\">\r\n      <module name=\"common_annotations\" target=\"1.7\" />\r\n    </bytecodeTargetLevel>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision c4503b6f40db668b18ece5c346ec4f27fdd9cc00)
++++ .idea/compiler.xml	(date 1615323099299)
+@@ -3,6 +3,25 @@
+   <component name="CompilerConfiguration">
+     <bytecodeTargetLevel target="1.8">
+       <module name="common_annotations" target="1.7" />
++      <module name="OSS.app" target="11" />
++      <module name="OSS.common_adapter" target="11" />
++      <module name="OSS.common_android" target="11" />
++      <module name="OSS.common_mvi" target="11" />
++      <module name="OSS.common_navigation" target="11" />
++      <module name="OSS.common_network" target="11" />
++      <module name="OSS.domain_events" target="11" />
++      <module name="OSS.domain_news" target="11" />
++      <module name="OSS.domain_onboarding" target="11" />
++      <module name="OSS.domain_profile" target="11" />
++      <module name="OSS.domain_services" target="11" />
++      <module name="OSS.domain_store" target="11" />
++      <module name="OSS.domain_tasks" target="11" />
++      <module name="OSS.feature_dashboard" target="11" />
++      <module name="OSS.feature_onboarding" target="11" />
++      <module name="OSS.feature_profile" target="11" />
++      <module name="OSS.feature_services" target="11" />
++      <module name="OSS.feature_store" target="11" />
++      <module name="OSS.feature_tasks" target="11" />
+     </bytecodeTargetLevel>
+   </component>
+ </project>
+\ No newline at end of file

@@ -1,0 +1,5 @@
+apply from: "$gradleDir/kotlin-module.gradle"
+
+dependencies {
+    implementation kotlinStdLib
+}

@@ -12,28 +12,28 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/common_adapter" />
-            <option value="$PROJECT_DIR$/common_android" />
-            <option value="$PROJECT_DIR$/common_annotations" />
-            <option value="$PROJECT_DIR$/common_di" />
-            <option value="$PROJECT_DIR$/common_kotlin" />
-            <option value="$PROJECT_DIR$/common_mvi" />
-            <option value="$PROJECT_DIR$/common_navigation" />
-            <option value="$PROJECT_DIR$/common_network" />
-            <option value="$PROJECT_DIR$/domain_events" />
-            <option value="$PROJECT_DIR$/domain_news" />
-            <option value="$PROJECT_DIR$/domain_onboarding" />
-            <option value="$PROJECT_DIR$/domain_profile" />
-            <option value="$PROJECT_DIR$/domain_services" />
-            <option value="$PROJECT_DIR$/domain_store" />
-            <option value="$PROJECT_DIR$/domain_tasks" />
-            <option value="$PROJECT_DIR$/feature_dashboard" />
-            <option value="$PROJECT_DIR$/feature_onboarding" />
-            <option value="$PROJECT_DIR$/feature_profile" />
-            <option value="$PROJECT_DIR$/feature_services" />
-            <option value="$PROJECT_DIR$/feature_store" />
-            <option value="$PROJECT_DIR$/feature_tasks" />
+            <option value="$PROJECT_DIR$/modules/app" />
+            <option value="$PROJECT_DIR$/modules/common_adapter" />
+            <option value="$PROJECT_DIR$/modules/common_android" />
+            <option value="$PROJECT_DIR$/modules/common_annotations" />
+            <option value="$PROJECT_DIR$/modules/common_di" />
+            <option value="$PROJECT_DIR$/modules/common_kotlin" />
+            <option value="$PROJECT_DIR$/modules/common_mvi" />
+            <option value="$PROJECT_DIR$/modules/common_navigation" />
+            <option value="$PROJECT_DIR$/modules/common_network" />
+            <option value="$PROJECT_DIR$/modules/domain_events" />
+            <option value="$PROJECT_DIR$/modules/domain_news" />
+            <option value="$PROJECT_DIR$/modules/domain_onboarding" />
+            <option value="$PROJECT_DIR$/modules/domain_profile" />
+            <option value="$PROJECT_DIR$/modules/domain_services" />
+            <option value="$PROJECT_DIR$/modules/domain_store" />
+            <option value="$PROJECT_DIR$/modules/domain_tasks" />
+            <option value="$PROJECT_DIR$/modules/feature_dashboard" />
+            <option value="$PROJECT_DIR$/modules/feature_onboarding" />
+            <option value="$PROJECT_DIR$/modules/feature_profile" />
+            <option value="$PROJECT_DIR$/modules/feature_services" />
+            <option value="$PROJECT_DIR$/modules/feature_store" />
+            <option value="$PROJECT_DIR$/modules/feature_tasks" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

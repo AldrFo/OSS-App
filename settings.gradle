@@ -1,15 +1,38 @@
-include ':domain_tasks'
+include ':app'
+
+// features
 include ':feature_tasks'
-include ':domain_onboarding'
+include ':feature_dashboard'
 include ':feature_onboarding'
-include ':domain_services'
 include ':feature_services'
-include ':domain_store'
 include ':feature_store'
-include ':domain_profile'
 include ':feature_profile'
+
+// domains
+include ':domain_tasks'
+include ':domain_onboarding'
+include ':domain_services'
+include ':domain_store'
+include ':domain_profile'
 include ':domain_events'
 include ':domain_news'
-include ':feature_dashboard'
-include ':app', ':common_adapter', ':common_android', ':common_annotations', ':common_mvi', ':common_kotlin', ':common_navigation', ':common_network', ':common_di'
+
+// commons
+include ':common_adapter'
+include ':common_android'
+include ':common_annotations'
+include ':common_mvi'
+include ':common_kotlin'
+include ':common_navigation'
+include ':common_network'
+include ':common_di'
+
 rootProject.name='OSS'
+
+rootProject.name = "mpeix"
+rootProject.children.each { project ->
+    String projectDirName = "modules/$project.name"
+    project.projectDir = new File(settingsDir, projectDirName)
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.isFile()
+}

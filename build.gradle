@@ -84,7 +84,7 @@ buildscript {
         ]
         appVersionName = "1.0.0"
         appVersionCode = 1
-
+        gradleDir = "$rootDir/gradle"
     }
 
     repositories {
@@ -98,10 +98,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 
 }

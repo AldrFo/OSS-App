@@ -1,7 +1,6 @@
 package ru.mpei.feature_tasks.items
 
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseItemBinder

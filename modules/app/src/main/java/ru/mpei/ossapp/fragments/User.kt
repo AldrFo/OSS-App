@@ -17,8 +17,8 @@ class User : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Companion.fragmentManager = activity!!.supportFragmentManager
-        fragmentManager!!.beginTransaction().add(R.id.container, Login()).commit()
+        Companion.fragmentManager = parentFragmentManager
+        parentFragmentManager.beginTransaction().add(R.id.container, Login()).commit()
         updateLayout()
     }
 

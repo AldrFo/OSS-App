@@ -4,15 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.subscribeBy
 import kekmech.ru.common_android.onActivityResult
+import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.BackButtonListener
 import kekmech.ru.mpeiapp.ui.main.di.MainScreenDependencies
-import kotlinx.android.synthetic.main.fragment_main.*
 import org.koin.android.ext.android.inject
 import ru.mpei.ossapp.R
+import ru.mpei.ossapp.databinding.FragmentMainBinding
 import ru.mpei.ossapp.ui.main.mvi.*
 
 class MainFragment : BaseFragment<MainScreenEvent, MainScreenEffect, MainScreenState, MainScreenFeature>(), BackButtonListener {
@@ -26,6 +26,7 @@ class MainFragment : BaseFragment<MainScreenEvent, MainScreenEffect, MainScreenS
     private var bottomBarController: BottomBarController? = null
     private var tabsSwitcherDisposable: Disposable? = null
     private val tabsSwitcher by fastLazy { dependencies.bottomTabsSwitcher }
+    private val binding by viewBinding(FragmentMainBinding::bind)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +40,13 @@ class MainFragment : BaseFragment<MainScreenEvent, MainScreenEffect, MainScreenS
         super.onViewCreatedInternal(view, savedInstanceState)
 
         val controller = bottomBarController ?: BottomBarController(this)
-        controller.init(this, bottomNavigation)
+        controller.init(this, binding.bottomNavigation)
         bottomBarController = controller
     }
 
     override fun onResume() {
         super.onResume()
-        tabsSwitcherDisposable = tabsSwitcher.observe().subscribeBy {
+        tabsSwitcherDisposable = tabsSwitcher.observe().subscribe {
             it.value?.let { tab ->
                 bottomBarController?.switchTab(tab)
                 tabsSwitcher.clearTab()

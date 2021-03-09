@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.squareup.picasso.Picasso
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.pojo.Article
 
@@ -24,10 +22,9 @@ class ArticleAdapter(private val context: Context, private var elements: Mutable
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article = elements[position]
-        Glide.with(context)
-                .load(prefix + article.imageSrc)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(holder.thumbnail)
+        Picasso.get()
+            .load(prefix + article.imageSrc)
+            .into(holder.thumbnail)
         holder.articleTitle.text = article.name
     }
 

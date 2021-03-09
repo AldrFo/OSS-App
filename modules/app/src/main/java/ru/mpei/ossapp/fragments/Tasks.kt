@@ -13,18 +13,21 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.fragment_tasks_2.*
+import kekmech.ru.common_android.viewbinding.viewBinding
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.adapters.TasksAdapter
+import ru.mpei.ossapp.databinding.FragmentTasks2Binding
 import ru.mpei.ossapp.pojo.Task
 import java.util.*
 
 class Tasks : Fragment() {
     private var adapter: TasksAdapter? = null
     private val dataList: MutableList<Task> = ArrayList()
+
+    private val binding by viewBinding(FragmentTasks2Binding::bind)
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -38,19 +41,21 @@ class Tasks : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = TasksAdapter(requireContext(), dataList)
-        tasksList.setAdapter(adapter)
-        tasksList.setOnGroupExpandListener { groupPosition: Int ->
-            for (g in 0 until adapter!!.groupCount) {
-                if (g != groupPosition) {
-                    tasksList.collapseGroup(g)
+        with(binding) {
+            tasksList.setAdapter(adapter)
+            tasksList.setOnGroupExpandListener { groupPosition: Int ->
+                for (g in 0 until adapter!!.groupCount) {
+                    if (g != groupPosition) {
+                        tasksList.collapseGroup(g)
+                    }
                 }
             }
-        }
-        updateList()
-        tasksRefresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
-        tasksRefresher.setOnRefreshListener {
             updateList()
-            tasksRefresher.isRefreshing = false
+            tasksRefresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
+            tasksRefresher.setOnRefreshListener {
+                updateList()
+                tasksRefresher.isRefreshing = false
+            }
         }
     }
 

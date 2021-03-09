@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import kotlinx.android.synthetic.main.popup_reset_password.view.*
+import kekmech.ru.common_android.viewbinding.viewBinding
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,53 +14,59 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.mpei.domain_profile.ProfileApi
+import ru.mpei.feature_profile.databinding.PopupResetPasswordBinding
 
+class ProfileDialogFragment : DialogFragment() {
 
-class ProfileDialogFragment : DialogFragment(){
+    private val binding by viewBinding(PopupResetPasswordBinding::bind)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val rootView: View = layoutInflater.inflate(R.layout.popup_reset_password, container)
-        rootView.btn_send_request.setOnClickListener {
-            rootView.email_input.error = "Почтовый адрес введен неверно"
-            if (!rootView.resetPasswordEmail.text.toString().isEmailValid()) {
-                rootView.email_input.isErrorEnabled = true
-            } else {
-                rootView.email_input.isErrorEnabled = false
+        return layoutInflater.inflate(R.layout.popup_reset_password, container)
+    }
 
-                val retrofit: Retrofit = Retrofit.Builder()
-                    .baseUrl("http://cy37212.tmweb.ru/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            btnSendRequest.setOnClickListener {
+                emailInput.error = "Почтовый адрес введен неверно"
+                if (!resetPasswordEmail.text.toString().isEmailValid()) {
+                    emailInput.isErrorEnabled = true
+                } else {
+                    emailInput.isErrorEnabled = false
 
-                val service = retrofit.create(ProfileApi::class.java)
+                    val retrofit: Retrofit = Retrofit.Builder()
+                        .baseUrl("http://cy37212.tmweb.ru/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
 
-                val call = service.restorePass(rootView.resetPasswordEmail.text.toString())
+                    val service = retrofit.create(ProfileApi::class.java)
 
-                call.enqueue(object : Callback<ResponseBody>{
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                        when {
-                            response.code() == 200 -> {
-                                rootView.email_send_frame.visibility = View.GONE
-                                rootView.ok_frame.visibility = View.VISIBLE
-                                rootView.popup_emailSent_message.text = getString(R.string.reset_password_text_blank).format(rootView.resetPasswordEmail.text.toString())
-                            }
-                            response.code() == 401 -> {
-                                rootView.email_input.error = "Неизвестный почтовый адрес!"
-                                rootView.email_input.isErrorEnabled = true
+                    val call = service.restorePass(resetPasswordEmail.text.toString())
+
+                    call.enqueue(object : Callback<ResponseBody> {
+                        override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                            when {
+                                response.code() == 200 -> {
+                                    emailSendFrame.visibility = View.GONE
+                                    okFrame.visibility = View.VISIBLE
+                                    popupEmailSentMessage.text = getString(R.string.reset_password_text_blank).format(resetPasswordEmail.text.toString())
+                                }
+                                response.code() == 401 -> {
+                                    emailInput.error = "Неизвестный почтовый адрес!"
+                                    emailInput.isErrorEnabled = true
+                                }
                             }
                         }
-                    }
 
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        rootView.email_input.error = "Проблема на сервере, попробуйте еще раз позднее"
-                        rootView.email_input.isErrorEnabled = true
-                    }
-                })
-
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            emailInput.error = "Проблема на сервере, попробуйте еще раз позднее"
+                            emailInput.isErrorEnabled = true
+                        }
+                    })
+                }
             }
+            btnCancel.setOnClickListener { dismiss() }
         }
-        rootView.btn_cancel.setOnClickListener { dismiss() }
-        return rootView
     }
 
     private fun String.isEmailValid(): Boolean {

@@ -1,14 +1,12 @@
 package ru.mpei.feature_profile.items
 
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
-import kotlinx.android.extensions.LayoutContainer
 import ru.mpei.domain_profile.dto.TaskItem
 import kekmech.ru.common_adapter.BaseItemBinder
 import ru.mpei.feature_profile.R
-
+import ru.mpei.feature_profile.databinding.ItemTaskBinding
 
 interface TaskViewHolder {
     fun setTaskName(name: String)
@@ -18,22 +16,25 @@ interface TaskViewHolder {
 }
 
 class TasksViewHolderImpl(
-    override val containerView: View
-): RecyclerView.ViewHolder(containerView), TaskViewHolder, LayoutContainer {
+    containerView: View
+): RecyclerView.ViewHolder(containerView), TaskViewHolder {
+
+    private val binding = ItemTaskBinding.bind(containerView)
+
     override fun setTaskName(name: String) {
-        containerView.findViewById<TextView>(R.id.task_name).text = name
+        binding.taskName.text = name
     }
 
     override fun setTaskPrice(price: String) {
-        containerView.findViewById<TextView>(R.id.task_price).text = price
+        binding.taskPrice.text = price
     }
 
     override fun setTaskDates(start: String, end: String) {
-        containerView.findViewById<TextView>(R.id.task_dates).text = "${start.substring(0, start.length - 3)} - ${end.substring(0, end.length - 3)}"
+        binding.taskDates.text = "${start.substring(0, start.length - 3)} - ${end.substring(0, end.length - 3)}"
     }
 
     override fun setOnClickListener(onClick: () -> Unit) {
-        containerView.setOnClickListener { onClick() }
+        binding.root.setOnClickListener { onClick() }
     }
 
 }

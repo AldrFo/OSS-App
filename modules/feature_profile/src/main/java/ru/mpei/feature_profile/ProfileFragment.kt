@@ -4,13 +4,14 @@ import android.content.SharedPreferences
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.Router
-import kotlinx.android.synthetic.main.fragment_profile.*
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_profile.dto.ParamsItem
 import ru.mpei.domain_profile.dto.ProfileItem
+import ru.mpei.feature_profile.databinding.FragmentProfileBinding
 import ru.mpei.feature_profile.mvi.*
 import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
 
@@ -18,6 +19,7 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     private val mSettings: SharedPreferences by inject()
     private val router: Router by inject()
+    private val binding by viewBinding(FragmentProfileBinding::bind)
 
     override val initEvent: ProfileEvent get() = when ( mSettings.getBoolean(APP_PREFERENCES_FLAG, false) ) {
         false -> {
@@ -59,10 +61,12 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
         is ProfileEffect.ClearParams -> {
             mSettings.edit().clear().apply()
-            loginEmail.text.clear()
-            loginPassword.text.clear()
-            mailInputLayout.isErrorEnabled = false
-            passwordInputLayout.isErrorEnabled = false
+            with(binding) {
+                loginEmail.text.clear()
+                loginPassword.text.clear()
+                mailInputLayout.isErrorEnabled = false
+                passwordInputLayout.isErrorEnabled = false
+            }
         }
 
         is ProfileEffect.Validate -> {
@@ -74,52 +78,55 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     }
 
     private fun showLogin(){
-        ScrollViewProfile2.visibility = View.GONE
-        ScrollViewProfile1.visibility = View.VISIBLE
-        enterButton.setOnClickListener {
-            feature.accept(Wish.ValidateFields(loginEmail.text.toString(), loginPassword.text.toString()))
-        }
-        forgotten_password_text.setOnClickListener {
-            val dialog = ProfileDialogFragment()
-            dialog.show(parentFragmentManager, "profileDialog")
-        }
-        registerLink.setOnClickListener {
-            val fragment = RegisterFragment()
-            router.executeCommand( AddScreenForward{ fragment } )
+        with(binding) {
+            ScrollViewProfile2.visibility = View.GONE
+            ScrollViewProfile1.visibility = View.VISIBLE
+            enterButton.setOnClickListener {
+                feature.accept(Wish.ValidateFields(loginEmail.text.toString(), loginPassword.text.toString()))
+            }
+            forgottenPasswordText.setOnClickListener {
+                val dialog = ProfileDialogFragment()
+                dialog.show(parentFragmentManager, "profileDialog")
+            }
+            registerLink.setOnClickListener {
+                val fragment = RegisterFragment()
+                router.executeCommand(AddScreenForward { fragment })
+            }
         }
     }
 
     private fun showProfile(profileData: ProfileItem){
+        with(binding) {
+            ScrollViewProfile1.visibility = View.GONE
+            ScrollViewProfile2.visibility = View.VISIBLE
 
-        ScrollViewProfile1.visibility = View.GONE
-        ScrollViewProfile2.visibility = View.VISIBLE
+            initials.text = getString(R.string.initials).format(profileData.name[0], profileData.surname[0])
+            name.text = getString(R.string.name_blank).format(profileData.name, profileData.surname)
+            capital.text = profileData.capital.toString()
 
-        initials.text = getString(R.string.initials).format(profileData.name[0], profileData.surname[0])
-        name.text = getString(R.string.name_blank).format(profileData.name, profileData.surname)
-        capital.text = profileData.capital.toString()
+            exitButton.setOnClickListener {
+                feature.accept(Wish.Exit)
+            }
 
-        exitButton.setOnClickListener {
-            feature.accept(Wish.Exit)
-        }
+            inProgressBtn.setOnClickListener {
+                val fragment = TasksListFragment(TasksType.PROCESS, profileData)
+                router.executeCommand(AddScreenForward { fragment })
+            }
 
-        in_progress_btn.setOnClickListener {
-            val fragment = TasksListFragment(TasksType.PROCESS, profileData)
-            router.executeCommand( AddScreenForward {fragment} )
-        }
+            onCheckBtn.setOnClickListener {
+                val fragment = TasksListFragment(TasksType.CHECK, profileData)
+                router.executeCommand(AddScreenForward { fragment })
+            }
 
-        on_check_btn.setOnClickListener {
-            val fragment = TasksListFragment(TasksType.CHECK, profileData)
-            router.executeCommand( AddScreenForward {fragment} )
-        }
+            finishedBtn.setOnClickListener {
+                val fragment = TasksListFragment(TasksType.FINISHED, profileData)
+                router.executeCommand(AddScreenForward { fragment })
+            }
 
-        finished_btn.setOnClickListener {
-            val fragment = TasksListFragment(TasksType.FINISHED, profileData)
-            router.executeCommand( AddScreenForward {fragment} )
-        }
-
-        refused_btn.setOnClickListener {
-            val fragment = TasksListFragment(TasksType.REFUSED, profileData)
-            router.executeCommand( AddScreenForward {fragment} )
+            refusedBtn.setOnClickListener {
+                val fragment = TasksListFragment(TasksType.REFUSED, profileData)
+                router.executeCommand(AddScreenForward { fragment })
+            }
         }
 
     }
@@ -134,12 +141,12 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         val isEmailValid = email.isEmailValid()
         val isPassValid = pass.isNotEmpty()
 
-        if (!isEmailValid){
+        if (!isEmailValid) with(binding) {
             mailInputLayout.isErrorEnabled = true
             mailInputLayout.error = "Почтовый адрес введен неверно"
         }
 
-        if (!isPassValid){
+        if (!isPassValid) with(binding) {
             passwordInputLayout.isErrorEnabled = !isPassValid
             passwordInputLayout.error = "Введите пароль"
         }

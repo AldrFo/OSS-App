@@ -52,6 +52,7 @@ dependencies {
     implementation androidx.recyclerview
     implementation androidx.constraintlayout
     implementation androidx.viewpager2
+    implementation androidx.swiperefreshlayout
     implementation google.material
     implementation timber
     implementation koin.core
@@ -62,7 +63,9 @@ dependencies {
     implementation project(path: ":domain_profile")
     implementation squareup.retrofit
     implementation squareup.retrofit_gson
+    implementation squareup.picasso
     implementation google.gson
+    implementation 'com.android.volley:dc-volley:1.1.0'
 
     implementation project(path: ":common_adapter")
     implementation project(path: ":common_android")

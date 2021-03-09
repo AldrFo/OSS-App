@@ -7,14 +7,15 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.BaseAdapter
+import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.ClearBackStack
 import kekmech.ru.common_navigation.Router
-import kotlinx.android.synthetic.main.fragment_tasks_list.*
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_profile.dto.ProfileItem
+import ru.mpei.feature_profile.databinding.FragmentTasksListBinding
 import ru.mpei.feature_profile.items.TaskAdapterItem
 import ru.mpei.feature_profile.mvi.*
 import ru.mpei.feature_profile.mvi.ProfileEvent.*
@@ -24,6 +25,7 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
     private  val profileFeatureFactory: ProfileFeatureFactory by inject()
     private val router: Router by inject()
     private val adapter: BaseAdapter by fastLazy { createAdapter() }
+    private val binding by viewBinding(FragmentTasksListBinding::bind)
 
     private val name = when(type) {
         TasksType.PROCESS -> "Выполняемые"
@@ -48,14 +50,15 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         super.onViewCreatedInternal(view, savedInstanceState)
 
-        fragment_tasks_toolbar_text.text = name
+        with(binding) {
+            fragmentTasksToolbarText.text = name
 
-        fragment_tasks_toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-        fragment_tasks_toolbar.setNavigationOnClickListener { router.executeCommand( ClearBackStack() ) }
+            fragmentTasksToolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+            fragmentTasksToolbar.setNavigationOnClickListener { router.executeCommand(ClearBackStack()) }
 
-        tasks_list.adapter = adapter
-        tasks_list.layoutManager = LinearLayoutManager(requireContext())
-
+            tasksList.adapter = adapter
+            tasksList.layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 
     override fun render(state: ProfileState) {
@@ -68,10 +71,10 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
                 TasksType.FINISHED -> "выполненных"
                 TasksType.CHECK -> "проверяемых"
             }
-            empty_list_label.text = getString(R.string.empty_tasks_list).format(tType)
-            empty_list_label.visibility = View.VISIBLE
+            binding.emptyListLabel.text = getString(R.string.empty_tasks_list).format(tType)
+            binding.emptyListLabel.visibility = View.VISIBLE
         } else {
-            empty_list_label.visibility = View.GONE
+            binding.emptyListLabel.visibility = View.GONE
         }
 
     }

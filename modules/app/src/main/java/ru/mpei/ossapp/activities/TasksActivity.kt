@@ -20,14 +20,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.FileProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.activity_tasks.*
-import kotlinx.android.synthetic.main.decline_penalty_dialog.*
-import kotlinx.android.synthetic.main.edit_report_dailog.*
-import kotlinx.android.synthetic.main.finish_dialog.*
+import kekmech.ru.common_kotlin.fastLazy
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
@@ -58,6 +56,9 @@ class TasksActivity : AppCompatActivity() {
     private val TASKS_IN_CHECK = 1
     private val TASKS_FINISHED = 2
     private val TASKS_DECLINED = 3
+
+    private val tasksTypeList: ExpandableListView by fastLazy { findViewById(R.id.tasksTypeList) }
+    private val tasksTypeRefresher: SwipeRefreshLayout by fastLazy { findViewById(R.id.tasksTypeList) }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,6 +130,7 @@ class TasksActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this@TasksActivity)
         when (type) {
             "finish" -> {
+                val withReport = findViewById<View>(R.id.withReport)
                 withReport.setOnClickListener {
                     val body = JSONObject()
                     try {
@@ -149,6 +151,7 @@ class TasksActivity : AppCompatActivity() {
                     updateList(TASKS_IN_PROCESS)
                     showDialog("editReport", task)
                 }
+                val noReport = findViewById<View>(R.id.noReport)
                 noReport.setOnClickListener {
                     val body = JSONObject()
                     try {
@@ -171,6 +174,7 @@ class TasksActivity : AppCompatActivity() {
                 builder.setView(layoutInflater.inflate(R.layout.finish_dialog, null))
             }
             "refuseNormal" -> {
+                val declinePenalty = findViewById<View>(R.id.declinePenalty)
                 declinePenalty.setOnClickListener {
                     val body = JSONObject()
                     try {
@@ -193,6 +197,7 @@ class TasksActivity : AppCompatActivity() {
                 builder.setView(layoutInflater.inflate(R.layout.decline_normal_dialog, null))
             }
             "refusePenalty" -> {
+                val declinePenaltyReason = findViewById<View>(R.id.declinePenaltyReason)
                 declinePenaltyReason.setOnClickListener {
                     val body = JSONObject()
                     try {
@@ -213,6 +218,7 @@ class TasksActivity : AppCompatActivity() {
                     updateList(TASKS_IN_PROCESS)
                     showDialog("editReport", task)
                 }
+                val declinePenaltyNoReason = findViewById<View>(R.id.declinePenaltyNoReason)
                 declinePenaltyNoReason.setOnClickListener {
                     val body = JSONObject()
                     try {
@@ -232,6 +238,7 @@ class TasksActivity : AppCompatActivity() {
                     closeAll()
                     updateList(TASKS_IN_PROCESS)
                 }
+                val declinePenalty = findViewById<TextView>(R.id.declinePenalty)
                 declinePenalty.text = "Со счета будет вычтен штраф " + task.penalty + " баллов"
                 builder.setView(layoutInflater.inflate(R.layout.decline_penalty_dialog, null))
             }
@@ -239,8 +246,11 @@ class TasksActivity : AppCompatActivity() {
                 val mDialogView = LayoutInflater.from(this).inflate(R.layout.edit_report_dailog, null)
                 builder.setView(mDialogView)
                 dialog = builder.show()
-                dialog!!.editReportImage.visibility = View.GONE
-                dialog!!.editReportAttachImage.setOnClickListener {
+                val editReportImage = findViewById<ImageView>(R.id.editReportImage)
+                val editReportAttachImage = findViewById<Button>(R.id.editReportAttachImage)
+
+                editReportImage.visibility = View.GONE
+                editReportAttachImage.setOnClickListener {
                     val p = PopupMenu(this@TasksActivity, findViewById(R.id.editReportAttachImage))
                     p.menuInflater.inflate(R.menu.choose_image_type_popup, p.menu)
                     p.setOnMenuItemClickListener { item: MenuItem ->
@@ -274,16 +284,18 @@ class TasksActivity : AppCompatActivity() {
                     }
                     p.show()
                 }
-                dialog!!.editReportButton.setOnClickListener {
+                val editReportButton = findViewById<Button>(R.id.editReportButton)
+                val editReportTextBox = findViewById<EditText>(R.id.editReportTextBox)
+                editReportButton.setOnClickListener {
                     val body = JSONObject()
                     try {
                         body.put("user_id", User.userId)
                         body.put("task_id", task.id)
-                        body.put("comment", dialog!!.editReportTextBox.text)
+                        body.put("comment", editReportTextBox.text)
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
-                    if (dialog!!.editReportImage.drawable == null) {
+                    if (editReportImage.drawable == null) {
                         Toast.makeText(context, "no", Toast.LENGTH_SHORT).show()
                     }
                     val request = JsonArrayRequest(Request.Method.POST,
@@ -301,6 +313,7 @@ class TasksActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, imageReturnedIntent: Intent?) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent)
+        val editReportImage = findViewById<ImageView>(R.id.editReportImage)
         when (requestCode) {
             TAKE_PHOTO -> if (resultCode == Activity.RESULT_OK) {
                 editReportImage.visibility = View.VISIBLE

@@ -15,13 +15,14 @@ import androidx.fragment.app.Fragment
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.fragment_profile_2.*
+import kekmech.ru.common_android.viewbinding.viewBinding
 import org.json.JSONException
 import org.json.JSONObject
 import ru.mpei.ossapp.R
 import ru.mpei.ossapp.activities.MainActivity
 import ru.mpei.ossapp.activities.MainActivity.Companion.deleteData
 import ru.mpei.ossapp.activities.TasksActivity
+import ru.mpei.ossapp.databinding.FragmentProfile2Binding
 
 class Profile : Fragment {
     private var hashPass: String? = null
@@ -29,6 +30,8 @@ class Profile : Fragment {
     private var userName: String? = null
     private var userSurname: String? = null
     private var userCapital: String? = null
+
+    private val binding by viewBinding(FragmentProfile2Binding::bind)
 
     constructor()
 
@@ -46,20 +49,22 @@ class Profile : Fragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getUserData(profileName, profileCoins)
-        profileExitButton.setOnClickListener {
-            MainActivity.MyAdapter.tasksFragment.updateList()
-            deleteData()
-            User.updateLayout()
-        }
-        profileShopButton.setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(requireContext().getString(R.string.shopUrl)))
-            startActivity(browserIntent)
-        }
-        profileTaskTypeList.onItemClickListener = OnItemClickListener { _: AdapterView<*>?, _: View?, _: Int, id: Long ->
-            val intent = Intent(context, TasksActivity::class.java)
-            intent.putExtra("type", id)
-            startActivity(intent)
+        with(binding) {
+            getUserData(profileName, profileCoins)
+            profileExitButton.setOnClickListener {
+                MainActivity.MyAdapter.tasksFragment.updateList()
+                deleteData()
+                User.updateLayout()
+            }
+            profileShopButton.setOnClickListener {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(requireContext().getString(R.string.shopUrl)))
+                startActivity(browserIntent)
+            }
+            profileTaskTypeList.onItemClickListener = OnItemClickListener { _: AdapterView<*>?, _: View?, _: Int, id: Long ->
+                val intent = Intent(context, TasksActivity::class.java)
+                intent.putExtra("type", id)
+                startActivity(intent)
+            }
         }
     }
 

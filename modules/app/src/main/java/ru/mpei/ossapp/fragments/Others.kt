@@ -6,11 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_others.*
+import kekmech.ru.common_android.viewbinding.viewBinding
 import ru.mpei.ossapp.R
+import ru.mpei.ossapp.databinding.FragmentOthersBinding
 import java.util.*
 
 class Others : Fragment() {
+
+    private val binding by viewBinding(FragmentOthersBinding::bind)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -21,8 +25,8 @@ class Others : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val items = initList()
-        val adapter = ArrayAdapter(activity!!.applicationContext, android.R.layout.simple_list_item_1, items)
-        othersList!!.adapter = adapter
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, items)
+        binding.othersList.adapter = adapter
     }
 
     private fun initList(): List<String> {

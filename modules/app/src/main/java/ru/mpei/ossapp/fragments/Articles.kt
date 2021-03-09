@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_articles.*
+import kekmech.ru.common_android.viewbinding.viewBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +21,7 @@ import ru.mpei.ossapp.R
 import ru.mpei.ossapp.activities.ArticleActivity
 import ru.mpei.ossapp.adapters.ArticleAdapter
 import ru.mpei.ossapp.adapters.ArticleAdapter.OnArticleClickListener
+import ru.mpei.ossapp.databinding.FragmentArticlesBinding
 import ru.mpei.ossapp.http.HttpRequests
 import ru.mpei.ossapp.pojo.Article
 import java.util.*
@@ -32,6 +33,8 @@ class Articles : Fragment {
     private var header: String? = null
     private lateinit var prefix: String
     private var type = 0
+
+    private val binding by viewBinding(FragmentArticlesBinding::bind)
 
     constructor()
     constructor(type: Int) {
@@ -59,10 +62,10 @@ class Articles : Fragment {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        articlesHeader.text = header
+        binding.articlesHeader.text = header
         val layoutManager = LinearLayoutManager(context)
-        articlesList.layoutManager = layoutManager
-        adapter = ArticleAdapter(activity!!.applicationContext, dataList, object : OnArticleClickListener {
+        binding.articlesList.layoutManager = layoutManager
+        adapter = ArticleAdapter(requireContext(), dataList, object : OnArticleClickListener {
             override fun onClickListener(article: Article?) {
                 val intent = Intent(context, ArticleActivity::class.java)
                 if (article != null) {
@@ -76,13 +79,13 @@ class Articles : Fragment {
             }
         }, prefix)
 
-        articlesList.adapter = adapter
+        binding.articlesList.adapter = adapter
 
         updateList()
-        articlesRefresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
-        articlesRefresher.setOnRefreshListener {
+        binding.articlesRefresher.setColorSchemeColors(requireContext().getColor(R.color.bgBottomNavigation))
+        binding.articlesRefresher.setOnRefreshListener {
             updateList()
-            articlesRefresher.isRefreshing = false
+            binding.articlesRefresher.isRefreshing = false
         }
     }
 

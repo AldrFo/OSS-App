@@ -28,8 +28,6 @@ include ':common_network'
 include ':common_di'
 
 rootProject.name='OSS'
-
-rootProject.name = "mpeix"
 rootProject.children.each { project ->
     String projectDirName = "modules/$project.name"
     project.projectDir = new File(settingsDir, projectDirName)

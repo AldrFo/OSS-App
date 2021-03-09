@@ -8,19 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
+import kekmech.ru.common_android.viewbinding.viewBinding
 import org.json.JSONException
 import org.json.JSONObject
 import ru.mpei.ossapp.R
-import ru.mpei.ossapp.activities.MainActivity
-import ru.mpei.ossapp.activities.MainActivity.Companion.hideKeyboard
-import kotlinx.android.synthetic.main.fragment_login_2.*
+import ru.mpei.ossapp.databinding.FragmentLogin2Binding
 import java.util.*
 
 class Login : Fragment() {
+
+    private val binding by viewBinding(FragmentLogin2Binding::bind)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -30,15 +28,15 @@ class Login : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        enterButton.setOnClickListener {
-            if (Objects.requireNonNull(loginEmail.text).toString().trim { it <= ' ' }.isEmpty() || Objects.requireNonNull(loginPassword.text).toString().trim { it <= ' ' }.isEmpty()) {
+        binding.enterButton.setOnClickListener {
+            if (Objects.requireNonNull(binding.loginEmail.text).toString().trim { it <= ' ' }.isEmpty() || Objects.requireNonNull(binding.loginPassword.text).toString().trim { it <= ' ' }.isEmpty()) {
                 Toast.makeText(context, "Проверьте заполнение полей", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             try {
                 val body = JSONObject()
-                body.put("email", loginEmail.text.toString())
-                body.put("password", loginPassword.text.toString())
+                body.put("email", binding.loginEmail.text.toString())
+                body.put("password", binding.loginPassword.text.toString())
                 /*val request = JsonObjectRequest(Request.Method.POST, requireContext().getString(R.string.authUrl), body,
                         Response.Listener { response: JSONObject ->
                             val result = response.optBoolean("error")
@@ -57,7 +55,7 @@ class Login : Fragment() {
                 e.printStackTrace()
             }
         }
-        registerButton.setOnClickListener {
+        binding.registerButton.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(requireContext().getString(R.string.regUrl)))
             startActivity(browserIntent)
         }

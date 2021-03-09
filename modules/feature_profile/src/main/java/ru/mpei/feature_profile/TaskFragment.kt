@@ -5,20 +5,12 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_navigation.PopUntil
 import kekmech.ru.common_navigation.Router
-import kotlinx.android.synthetic.main.fragment_task_ended.*
-import kotlinx.android.synthetic.main.fragment_task_ended.balance_ended
-import kotlinx.android.synthetic.main.fragment_task_ended.begin_date_ended
-import kotlinx.android.synthetic.main.fragment_task_ended.end_date_ended
-import kotlinx.android.synthetic.main.fragment_task_ended.fragment_task_toolbar_text
-import kotlinx.android.synthetic.main.fragment_task_ended.fragment_task_toolbar
-import kotlinx.android.synthetic.main.fragment_task_ended.place_ended
-import kotlinx.android.synthetic.main.fragment_task_ended.task_description_ended
-import kotlinx.android.synthetic.main.fragment_task_ended.task_name_ended
-import kotlinx.android.synthetic.main.fragment_task_in_check.*
-import kotlinx.android.synthetic.main.fragment_task_in_process.*
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_profile.dto.TaskItem
 
@@ -27,6 +19,32 @@ class TaskFragment: Fragment() {
     private val router: Router by inject()
 
     private lateinit var it: TaskItem
+    private val fragment_task_toolbar: Toolbar by fastLazy { requireView().findViewById(R.id.fragment_task_toolbar) }
+    private val fragment_task_toolbar_text: TextView by fastLazy { requireView().findViewById(R.id.fragment_task_toolbar_text) }
+
+    private val task_name_process: TextView by fastLazy { requireView().findViewById(R.id.task_name_process) }
+    private val balance_process: TextView by fastLazy { requireView().findViewById(R.id.balance_process) }
+    private val task_description_process: TextView by fastLazy { requireView().findViewById(R.id.task_description_process) }
+    private val place_process: TextView by fastLazy { requireView().findViewById(R.id.place_process) }
+    private val begin_date_process: TextView by fastLazy { requireView().findViewById(R.id.begin_date_process) }
+    private val end_date_process: TextView by fastLazy { requireView().findViewById(R.id.end_date_process) }
+    private val refuse_date_process: TextView by fastLazy { requireView().findViewById(R.id.refuse_date_process) }
+
+    private val task_name_check: TextView by fastLazy { requireView().findViewById(R.id.task_name_check) }
+    private val balance_check: TextView by fastLazy { requireView().findViewById(R.id.balance_check) }
+    private val task_description_check: TextView by fastLazy { requireView().findViewById(R.id.task_description_check) }
+    private val place_check: TextView by fastLazy { requireView().findViewById(R.id.place_check) }
+    private val begin_date_check: TextView by fastLazy { requireView().findViewById(R.id.begin_date_check) }
+    private val end_date_check: TextView by fastLazy { requireView().findViewById(R.id.end_date_check) }
+    private val task_comment_check: TextView by fastLazy { requireView().findViewById(R.id.task_comment_check) }
+
+    private val task_name_ended: TextView by fastLazy { requireView().findViewById(R.id.task_name_ended) }
+    private val balance_ended: TextView by fastLazy { requireView().findViewById(R.id.balance_ended) }
+    private val task_description_ended: TextView by fastLazy { requireView().findViewById(R.id.task_description_ended) }
+    private val place_ended: TextView by fastLazy { requireView().findViewById(R.id.place_ended) }
+    private val begin_date_ended: TextView by fastLazy { requireView().findViewById(R.id.begin_date_ended) }
+    private val end_date_ended: TextView by fastLazy { requireView().findViewById(R.id.end_date_ended) }
+    private val task_comment_ended: TextView by fastLazy { requireView().findViewById(R.id.task_comment_ended) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)

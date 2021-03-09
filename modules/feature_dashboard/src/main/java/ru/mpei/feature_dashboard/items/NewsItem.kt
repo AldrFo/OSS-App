@@ -5,9 +5,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseItemBinder
-import kotlinx.android.extensions.LayoutContainer
 import ru.mpei.domain_news.dto.NewsItem
 import ru.mpei.feature_dashboard.R
+import ru.mpei.feature_dashboard.databinding.ItemArticleBinding
 
 interface NewsViewHolder {
     fun setDate(chislo: String, month: String, hour: String)
@@ -17,24 +17,28 @@ interface NewsViewHolder {
 }
 
 class NewsViewHolderImpl(
-        override val containerView: View
-) : RecyclerView.ViewHolder(containerView), NewsViewHolder, LayoutContainer {
+    containerView: View
+) : RecyclerView.ViewHolder(containerView), NewsViewHolder {
+
+    private val binding = ItemArticleBinding.bind(containerView)
 
     override fun setDate(chislo: String, month: String, hour: String) {
-        containerView.findViewById<TextView>(R.id.item_article_date).text = chislo.trim(' ')
-        containerView.findViewById<TextView>(R.id.item_article_month).text = month.trim(' ')
-        containerView.findViewById<TextView>(R.id.item_article_time).text = hour.trim(' ')
+        with(binding) {
+            itemArticleDate.text = chislo.trim(' ')
+            itemArticleMonth.text = month.trim(' ')
+            itemArticleTime.text = hour.trim(' ')
+        }
     }
     override fun setText(text: String) {
-        containerView.findViewById<TextView>(R.id.item_article_text).text = text
+        binding.itemArticleText.text = text
     }
 
     override fun setName(name: String) {
-        containerView.findViewById<TextView>(R.id.item_article_name).text = name
+        binding.itemArticleName.text = name
     }
 
     override fun setOnClickListener(onClick: () -> Unit) {
-        containerView.setOnClickListener { onClick() }
+        binding.root.setOnClickListener { onClick() }
     }
 }
 

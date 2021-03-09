@@ -4,14 +4,16 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import kekmech.ru.common_adapter.BaseAdapter
+import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.Router
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.koin.android.ext.android.inject
+import ru.mpei.feature_dashboard.databinding.FragmentDashboardBinding
 import ru.mpei.feature_dashboard.items.DashboardEventsAdapterItem
 import ru.mpei.feature_dashboard.items.DashboardItem
 import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_EVENTS_ITEM
@@ -25,11 +27,8 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     override val initEvent: DashboardEvent get() = Wish.System.Init
 
     private val dashboardFeatureFactory: DashboardFeatureFactory by inject()
-
-    override fun createFeature(): DashboardFeature = dashboardFeatureFactory.create()
-
     private val router: Router by inject()
-
+    private val binding by viewBinding(FragmentDashboardBinding::bind)
     override var layoutId = R.layout.fragment_dashboard
 
     private val newsAdapter: BaseAdapter by fastLazy { createAdapter() }
@@ -43,44 +42,48 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
         }
     }
 
-    override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
-        dashboardViewPager.adapter = viewPagerAdapter
+    override fun createFeature(): DashboardFeature = dashboardFeatureFactory.create()
 
-        dashboardViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                feature.accept(Wish.OnPageChange(position))
-            }
-        })
-        selector_afisha.setOnClickListener { feature.accept(Wish.OnPageChange(0)) }
-        selector_news.setOnClickListener { feature.accept(Wish.OnPageChange(1)) }
+    override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
+        with(binding) {
+            dashboardViewPager.adapter = viewPagerAdapter
+
+            dashboardViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    feature.accept(Wish.OnPageChange(position))
+                }
+            })
+            selectorAfisha.setOnClickListener { feature.accept(Wish.OnPageChange(0)) }
+            selectorNews.setOnClickListener { feature.accept(Wish.OnPageChange(1)) }
+        }
     }
 
     override fun render(state: DashboardState) {
         newsAdapter.update(state.newsList)
         eventsAdapter.update(state.eventsList)
-        dashboardViewPager.currentItem = state.selectedPage
+        binding.dashboardViewPager.currentItem = state.selectedPage
 
         renderTabView(state)
     }
 
-    private fun renderTabView(state: DashboardState) {
+    private fun renderTabView(state: DashboardState) = with(binding) {
         val selectedColor = resources.getColor(R.color.mpei_blue)
         val defaultColor = resources.getColor(R.color.mpei_white)
         if (state.selectedPage == 0) {
-            selector_afisha.backgroundTintList = ColorStateList.valueOf(selectedColor)
-            selector_afisha.setTextColor(defaultColor)
-            selector_news.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
-            selector_news.setTextColor(selectedColor)
-            if (state.eventsList.isEmpty()) empty_dashboard_label.visibility = View.VISIBLE else empty_dashboard_label.visibility = View.GONE
-            empty_news_label.visibility = View.GONE
+            selectorAfisha.backgroundTintList = ColorStateList.valueOf(selectedColor)
+            selectorAfisha.setTextColor(defaultColor)
+            selectorNews.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+            selectorNews.setTextColor(selectedColor)
+            emptyDashboardLabel.isVisible = state.eventsList.isEmpty()
+            emptyNewsLabel.visibility = View.GONE
         } else {
-            selector_afisha.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
-            selector_afisha.setTextColor(selectedColor)
-            selector_news.backgroundTintList = ColorStateList.valueOf(selectedColor)
-            selector_news.setTextColor(defaultColor)
-            if (state.eventsList.isEmpty()) empty_news_label.visibility = View.VISIBLE else empty_news_label.visibility = View.GONE
-            empty_dashboard_label.visibility = View.GONE
+            selectorAfisha.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+            selectorAfisha.setTextColor(selectedColor)
+            selectorNews.backgroundTintList = ColorStateList.valueOf(selectedColor)
+            selectorNews.setTextColor(defaultColor)
+            emptyNewsLabel.isVisible = state.eventsList.isEmpty()
+            emptyDashboardLabel.visibility = View.GONE
         }
     }
 

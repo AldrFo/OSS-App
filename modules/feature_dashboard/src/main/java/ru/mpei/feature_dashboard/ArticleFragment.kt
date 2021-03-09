@@ -6,42 +6,42 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
+import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_navigation.ClearBackStack
 import kekmech.ru.common_navigation.Router
-import kotlinx.android.synthetic.main.fragment_article.*
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_news.dto.NewsItem
+import ru.mpei.feature_dashboard.databinding.FragmentArticleBinding
 
-class ArticleFragment : Fragment(){
+class ArticleFragment : Fragment(R.layout.fragment_article) {
 
     private val router: Router by inject()
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_article, container, false)
-    }
+    private val binding by viewBinding(FragmentArticleBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val it: NewsItem = arguments?.get("data") as NewsItem
 
-        fragment_article_toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-        fragment_article_toolbar.setNavigationOnClickListener { router.executeCommand( ClearBackStack() ) }
+        with(binding) {
+            with(fragmentArticleToolbar) {
+                setNavigationIcon(R.drawable.ic_arrow_back)
+                setNavigationOnClickListener { router.executeCommand(ClearBackStack()) }
+            }
+            fragmentArticleToolbarText.text = it.name
 
-        fragment_article_toolbar_text.text = it.name
+            fragmentArticleDate.text = it.chislo
+            fragmentArticleMonth.text = it.month
+            fragmentArticleTime.text = it.hour
 
-        fragment_article_date.text = it.chislo
-        fragment_article_month.text = it.month
-        fragment_article_time.text = it.hour
+            fragmentArticleName.text = it.name
+            fragmentArticleDescription.text = it.describtion
 
-        fragment_article_name.text = it.name
-        fragment_article_description.text = it.describtion
+            fragmentArticleText.text = it.content
 
-        fragment_article_text.text = it.content
-
-        Picasso.get()
+            Picasso.get()
                 .load(it.imageUrl)
-                .into(fragment_article_image)
+                .into(fragmentArticleImage)
+        }
     }
 }

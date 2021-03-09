@@ -8,13 +8,14 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_android.ActivityResultListener
+import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_android.withResultFor
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.Router
-import kotlinx.android.synthetic.main.fragment_tasks.*
 import org.koin.android.ext.android.inject
+import ru.mpei.feature_tasks.databinding.FragmentTasksBinding
 import ru.mpei.feature_tasks.items.TasksAdapterItem
 import ru.mpei.feature_tasks.mvi.*
 import ru.mpei.feature_tasks.mvi.TasksEvent.Wish
@@ -24,6 +25,7 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     private val tasksFeatureFactory: TasksFeatureFactory by inject()
     private val router: Router by inject()
     private val mSettings: SharedPreferences by inject()
+    private val binding by viewBinding(FragmentTasksBinding::bind)
 
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
 
@@ -34,16 +36,18 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     private val tasksAdapter: BaseAdapter by fastLazy { createAdapter() }
 
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
-        tasks_list.adapter = tasksAdapter
-        tasks_list.layoutManager = LinearLayoutManager(requireContext())
+        with(binding) {
+            tasksList.adapter = tasksAdapter
+            tasksList.layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 
     override fun render(state: TasksState) {
         tasksAdapter.update(state.ListOfTasks)
         if (state.ListOfTasks.isEmpty()) {
-            avail_tasks_label.visibility = View.VISIBLE
+            binding.availTasksLabel.visibility = View.VISIBLE
         } else {
-            avail_tasks_label.visibility = View.GONE
+            binding.availTasksLabel.visibility = View.GONE
         }
     }
 

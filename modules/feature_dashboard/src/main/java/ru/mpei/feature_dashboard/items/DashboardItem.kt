@@ -6,9 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_adapter.BaseItemBinder
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_dashboard.*
 import ru.mpei.feature_dashboard.R
+import ru.mpei.feature_dashboard.databinding.ItemDashboardBinding
 import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_EVENTS_ITEM
 import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_NEWS_ITEM
 
@@ -26,11 +25,13 @@ interface DashboardViewHolder {
 }
 
 class DashboardViewHolderImpl(
-    override val containerView: View
-): RecyclerView.ViewHolder(containerView), DashboardViewHolder, LayoutContainer {
+    containerView: View
+): RecyclerView.ViewHolder(containerView), DashboardViewHolder {
+
+    private val binding = ItemDashboardBinding.bind(containerView)
 
     override fun update(newAdapter: BaseAdapter) {
-        recyclerView.apply {
+        binding.recyclerView.apply {
             if (layoutManager == null) layoutManager = LinearLayoutManager(context)
             if (adapter == null) adapter = newAdapter
         }

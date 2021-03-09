@@ -1,0 +1,34 @@
+apply from: "../android-module.gradle"
+
+dependencies {
+    implementation kotlinStdLib
+    implementation androidx.coreKtx
+    implementation androidx.appcompat
+    implementation project(path: ':common_navigation')
+    testImplementation tests.junit
+
+    implementation rx.java
+    implementation rx.android
+    implementation rx.kotlin
+
+    implementation timber
+
+    implementation koin.core
+    implementation koin.android
+
+    implementation squareup.retrofit
+    implementation squareup.retrofit_rxJava2
+    implementation squareup.retrofit_gson
+
+    implementation 'com.google.android.material:material:1.3.0'
+
+    implementation project(path: ':domain_profile')
+
+    implementation project(path: ':common_di')
+    implementation project(path: ':common_mvi')
+    implementation project(path: ':common_android')
+    implementation project(path: ':common_kotlin')
+    implementation project(path: ':common_network')
+    implementation project(path: ':common_adapter')
+
+}

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Others">
+    tools:context="ru.mpei.ossapp.fragments.Others">
 
     <TextView
         android:id="@+id/othersHeader"
@@ -14,7 +14,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/others"
+        android:text="@string/services"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/bg_blue"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragment_tasks_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+        <TextView
+            android:id="@+id/fragment_tasks_toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/mpei_blue"
+            android:textSize="18sp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/nunito_semibold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="40dp"
+        android:layout_marginRight="-40dp"
+        android:layout_marginBottom="-40dp"
+        android:backgroundTint="@color/mpei_white">
+
+        <TextView
+            android:id="@+id/empty_list_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20sp"
+            android:paddingRight="40dp"
+            android:drawablePadding="7dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/mpei_blue"
+            android:drawableTop="@drawable/ic_smile"
+            android:text="@string/empty_tasks_list"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasks_list"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:clipChildren="true"
+            android:clipToPadding="false"
+            android:paddingTop="12dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="52dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

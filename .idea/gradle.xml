@@ -6,15 +6,38 @@
       <GradleProjectSettings>
         <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="PLATFORM" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/common_adapter" />
+            <option value="$PROJECT_DIR$/common_android" />
+            <option value="$PROJECT_DIR$/common_annotations" />
+            <option value="$PROJECT_DIR$/common_di" />
+            <option value="$PROJECT_DIR$/common_kotlin" />
+            <option value="$PROJECT_DIR$/common_mvi" />
+            <option value="$PROJECT_DIR$/common_navigation" />
+            <option value="$PROJECT_DIR$/common_network" />
+            <option value="$PROJECT_DIR$/domain_events" />
+            <option value="$PROJECT_DIR$/domain_news" />
+            <option value="$PROJECT_DIR$/domain_onboarding" />
+            <option value="$PROJECT_DIR$/domain_profile" />
+            <option value="$PROJECT_DIR$/domain_services" />
+            <option value="$PROJECT_DIR$/domain_store" />
+            <option value="$PROJECT_DIR$/domain_tasks" />
+            <option value="$PROJECT_DIR$/feature_dashboard" />
+            <option value="$PROJECT_DIR$/feature_onboarding" />
+            <option value="$PROJECT_DIR$/feature_profile" />
+            <option value="$PROJECT_DIR$/feature_services" />
+            <option value="$PROJECT_DIR$/feature_store" />
+            <option value="$PROJECT_DIR$/feature_tasks" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

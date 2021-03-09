@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="dashboard_selector_selected">
+        <item name="android:backgroundTint">@color/mpei_blue</item>
+        <item name="android:background">@drawable/shape_selector_oval</item>
+        <item name="android:textColor">@color/mpei_white</item>
+    </style>
+    <style name="dashboard_selector_unselected">
+        <item name="android:backgroundTint">@color/bg_blue</item>
+        <item name="android:background">@drawable/shape_selector_oval</item>
+        <item name="android:textColor">@color/mpei_blue</item>
+    </style>
+</resources>

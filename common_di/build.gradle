@@ -1,0 +1,8 @@
+apply from: "../kotlin-module.gradle"
+
+dependencies {
+    implementation kotlinStdLib
+
+    implementation koin.core
+    implementation koin.android
+}

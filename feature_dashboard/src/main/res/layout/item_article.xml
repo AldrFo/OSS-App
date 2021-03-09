@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:divider="@drawable/vertical_separator"
+    android:showDividers="middle"
+    android:dividerPadding="13dp"
+    android:background="@drawable/ripple_item_article"
+    android:elevation="7dp"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_vertical|end">
+
+        <TextView
+            android:id="@+id/item_article_date"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="end"
+            android:textColor="@color/dark_blue_text"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/item_article_month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="end"
+            android:textColor="@color/dark_blue_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/item_article_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:gravity="end"
+            android:textColor="@color/dark_blue_text"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10sp">
+
+        <TextView
+            android:id="@+id/item_article_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:textColor="@color/dark_blue_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/item_article_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/dark_blue_text"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

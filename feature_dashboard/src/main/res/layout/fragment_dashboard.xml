@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/bg_blue">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="16sp"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center_horizontal"
+        android:text="@string/dashboard_lenta"
+        android:textColor="@color/mpei_blue"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/shape_list"
+        android:backgroundTint="@color/mpei_white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_selector_oval"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginLeft="20sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/selector_afisha"
+                style="@style/dashboard_selector_selected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/dashboard_afisha"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/selector_news"
+                style="@style/dashboard_selector_unselected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito"
+                android:gravity="center_horizontal"
+                android:padding="10sp"
+                android:text="@string/dashboard_news"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/empty_dashboard_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20sp"
+            android:drawablePadding="7dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/mpei_blue"
+            android:drawableTop="@drawable/ic_smile"
+            android:text="@string/empty_afisha"/>
+
+        <TextView
+            android:id="@+id/empty_news_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20sp"
+            android:drawablePadding="7dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/mpei_blue"
+            android:drawableTop="@drawable/ic_smile"
+            android:text="@string/empty_news"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/dashboardViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+
+    </LinearLayout>
+
+</LinearLayout>

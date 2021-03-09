@@ -1,0 +1,21 @@
+apply from: "../android-module.gradle"
+
+dependencies {
+    implementation kotlinStdLib
+    implementation androidx.coreKtx
+    implementation androidx.appcompat
+    testImplementation tests.junit
+
+    implementation rx.java
+    implementation rx.android
+    implementation rx.kotlin
+
+    implementation timber
+
+    implementation squareup.retrofit
+    implementation squareup.retrofit_rxJava2
+    implementation squareup.retrofit_gson
+
+    implementation project(path: ':common_network')
+    implementation project(path: ':common_annotations')
+}

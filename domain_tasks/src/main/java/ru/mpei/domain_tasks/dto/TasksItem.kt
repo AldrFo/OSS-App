@@ -30,7 +30,7 @@ data class TasksItem(
 
         var changeBefore: String? = null,
 
-        @SerializedName("id_task")
+        @SerializedName("id")
         var id: String? = null,
 
         var penalty: String? = null

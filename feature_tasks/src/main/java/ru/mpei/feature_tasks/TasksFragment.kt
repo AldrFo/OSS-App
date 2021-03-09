@@ -1,9 +1,14 @@
 package ru.mpei.feature_tasks
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import kekmech.ru.common_adapter.BaseAdapter
+import kekmech.ru.common_android.ActivityResultListener
+import kekmech.ru.common_android.withResultFor
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
@@ -14,13 +19,15 @@ import ru.mpei.feature_tasks.items.TasksAdapterItem
 import ru.mpei.feature_tasks.mvi.*
 import ru.mpei.feature_tasks.mvi.TasksEvent.Wish
 
-class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFeature>(){
-    override val initEvent: TasksEvent get() = Wish.System.Init
+class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFeature>(), ActivityResultListener {
 
     private val tasksFeatureFactory: TasksFeatureFactory by inject()
     private val router: Router by inject()
+    private val mSettings: SharedPreferences by inject()
 
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
+
+    override val initEvent: TasksEvent get() = Wish.System.Init(mSettings.getString("userId","0").toString())
 
     override var layoutId: Int = R.layout.fragment_tasks
 
@@ -42,6 +49,7 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
 
     override fun handleEffect(effect: TasksEffect) = when(effect) {
         is TasksEffect.ShowError -> Unit
+        else -> Unit
     }
 
     private fun createAdapter() = BaseAdapter(
@@ -50,7 +58,15 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
             bundle.putSerializable("availableTaskData", it)
             val fragment = AvailableTaskFragment()
             fragment.arguments = bundle
-            router.executeCommand(AddScreenForward { fragment })
+            router.executeCommand(AddScreenForward { fragment/*.withResultFor(this, 12892)*/ })
         }
     )
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 404){
+            feature.accept(Wish.System.Init(mSettings.getString("userId","0").toString()))
+        }
+    }
+
 }

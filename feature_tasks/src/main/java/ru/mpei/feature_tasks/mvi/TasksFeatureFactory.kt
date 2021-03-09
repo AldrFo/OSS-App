@@ -10,4 +10,10 @@ class TasksFeatureFactory(
             reducer = TasksReducer(),
             actor = actor
     ).start()
+
+    fun createTask(): TasksFeature = BaseFeature(
+        initialState = TasksState(),
+        reducer = TasksReducer(),
+        actor = actor
+    ).start()
 }

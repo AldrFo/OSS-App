@@ -18,14 +18,6 @@
         android:name=".App"
         tools:targetApi="m">
         <activity
-            android:screenOrientation="portrait"
-            android:name="ru.mpei.ossapp.activities.ArticleActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:screenOrientation="portrait"
-            android:name="ru.mpei.ossapp.activities.TasksActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="ru.mpei.ossapp.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden">

@@ -36,4 +36,20 @@ interface ProfileApi {
         @Field("password") password: String
     ): Call<ResponseBody>
 
+    @POST("Android/edit_report.php")
+    @FormUrlEncoded
+    fun sendReport(
+        @Field("task_id") taskId: String,
+        @Field("user_id") userId: String,
+        @Field("comment") comment: String,
+        @Field("file_name") fileName: String
+    ): Single<ResponseBody>
+
+    @POST("Android/confirm_task.php")
+    @FormUrlEncoded
+    fun confirmTask(
+        @Field("task_id") taskId: String,
+        @Field("user_id") userId: String
+    ): Single<ResponseBody>
+
 }

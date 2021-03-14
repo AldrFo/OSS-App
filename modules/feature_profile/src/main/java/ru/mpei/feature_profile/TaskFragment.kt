@@ -1,21 +1,31 @@
 package ru.mpei.feature_profile
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_kotlin.fastLazy
+import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.PopUntil
 import kekmech.ru.common_navigation.Router
+import kekmech.ru.common_navigation.addScreenForward
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_profile.dto.TaskItem
+import ru.mpei.feature_profile.databinding.FragmentTaskEndedBinding
+import ru.mpei.feature_profile.databinding.FragmentTaskInCheckBinding
+import ru.mpei.feature_profile.databinding.FragmentTaskInProcessBinding
+import ru.mpei.feature_profile.databinding.FragmentTaskReportBinding
 
 class TaskFragment: Fragment() {
 
+    private val mSettings: SharedPreferences by inject()
     private val router: Router by inject()
 
     private lateinit var it: TaskItem
@@ -29,6 +39,7 @@ class TaskFragment: Fragment() {
     private val begin_date_process: TextView by fastLazy { requireView().findViewById(R.id.begin_date_process) }
     private val end_date_process: TextView by fastLazy { requireView().findViewById(R.id.end_date_process) }
     private val refuse_date_process: TextView by fastLazy { requireView().findViewById(R.id.refuse_date_process) }
+    private val btn_send_for_check_process: Button by fastLazy { requireView().findViewById(R.id.btn_send_for_check_process) }
 
     private val task_name_check: TextView by fastLazy { requireView().findViewById(R.id.task_name_check) }
     private val balance_check: TextView by fastLazy { requireView().findViewById(R.id.balance_check) }
@@ -80,6 +91,10 @@ class TaskFragment: Fragment() {
         begin_date_process.text = Html.fromHtml(getString(R.string.begin_date, it.startDate.substring(0, it.startDate.length-3)))
         end_date_process.text = Html.fromHtml(getString(R.string.end_date, it.endDate.substring(0, it.endDate.length-3)))
         refuse_date_process.text = Html.fromHtml(getString(R.string.refuse_date, it.refuseInfo.substring(0, it.refuseInfo.length-3)))
+        btn_send_for_check_process.setOnClickListener {
+            val fragment = EditReportFragment(this.it, mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!)
+            router.executeCommand( AddScreenForward { fragment } )
+        }
     }
 
     private fun initOnCheckTask(){

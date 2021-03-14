@@ -17,5 +17,11 @@ class ProfileActor(
 
         is ProfileAction.LoadTasks -> profileRepository.loadTasks(action.type, action.id)
             .mapEvents(ProfileEvent.News::TasksLoaded, ProfileEvent.News::TasksLoadFailed)
+
+        is ProfileAction.ConfirmTask -> profileRepository.confirmTask(action.taskId, action.userId)
+            .mapEvents(ProfileEvent.News::TaskConfirmed, ProfileEvent.News::TaskConfirmError)
+
+        is ProfileAction.SendReport -> profileRepository.sendReport(action.taskId, action.userId, action.comment, action.fileName)
+            .mapEvents(ProfileEvent.News::ReportSent, ProfileEvent.News::ReportSendError)
     }
 }

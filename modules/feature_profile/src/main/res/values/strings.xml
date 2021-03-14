@@ -34,7 +34,7 @@
     <string name="begin_date">&lt;font face=”nunito_semibold“>Начало: &lt;/font>%1$s</string>
     <string name="end_date">&lt;font face=”nunito_semibold“>Конец: &lt;/font>%1$s</string>
     <string name="refuse_date">&lt;font face=”nunito_semibold“>Можно отказаться: &lt;/font>%1$s</string>
-    <string name="send_for_check">Отправить на проверку</string>
+    <string name="send_for_check">Отправить с отчетом</string>
     <string name="refuse_task">Отказаться от задания</string>
     <string name="task_comment">Мой комментарий</string>
     <string name="password_reset">Восстановление пароля</string>
@@ -55,4 +55,9 @@
     <string name="no_description"><b>Описание отсутствует</b></string>
     <string name="edit_comment_button">edit comment button</string>
     <string name="empty_tasks_list">У вас нет %1$s задач</string>
+    <string name="comment">Комментарий</string>
+    <string name="enter_comment">Напишите Ваш комментарий</string>
+    <string name="photo">Фотографии</string>
+    <string name="send_no_report">Отправить без отчета</string>
+    <string name="send_with_report">Отправить с отчетом</string>
 </resources>

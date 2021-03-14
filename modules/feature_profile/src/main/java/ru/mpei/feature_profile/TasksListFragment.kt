@@ -1,11 +1,9 @@
 package ru.mpei.feature_profile
 
-import android.graphics.Canvas
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_kotlin.fastLazy
@@ -43,7 +41,7 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
         }
     )
 
-    override fun createFeature(): ProfileFeature = profileFeatureFactory.createTasksList(profileData)
+    override fun createFeature(): ProfileFeature = profileFeatureFactory.createWithData(profileData)
 
     override var layoutId: Int = R.layout.fragment_tasks_list
 

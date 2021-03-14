@@ -1,6 +1,7 @@
 package ru.mpei.ossapp
 
 import android.app.Application
+import androidx.viewbinding.BuildConfig
 import kekmech.ru.common_di.modules
 import kekmech.ru.common_navigation.di.NavigationModule
 import kekmech.ru.common_network.di.NetworkModule

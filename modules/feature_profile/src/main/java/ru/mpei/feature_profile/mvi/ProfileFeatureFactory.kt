@@ -12,7 +12,7 @@ class ProfileFeatureFactory(
             actor = actor
     ).start()
 
-    fun createTasksList(profileData: ProfileItem) : ProfileFeature = BaseFeature(
+    fun createWithData(profileData: ProfileItem) : ProfileFeature = BaseFeature(
         initialState = ProfileState(
             profileData = profileData
         ),

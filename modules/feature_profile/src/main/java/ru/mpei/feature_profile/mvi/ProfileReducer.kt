@@ -1,10 +1,8 @@
 package ru.mpei.feature_profile.mvi
 
-import android.provider.ContactsContract
 import kekmech.ru.common_mvi.BaseReducer
 import kekmech.ru.common_mvi.Result
 import ru.mpei.domain_profile.dto.ParamsItem
-import ru.mpei.domain_profile.dto.ProfileItem
 import ru.mpei.feature_profile.mvi.ProfileEvent.News
 import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
 
@@ -17,6 +15,34 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
     }
 
     private fun processItems(event: News, state: ProfileState): ProfileResult = when (event) {
+
+        is News.TaskConfirmed -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.ConfirmSuccess
+        )
+
+        is News.TaskConfirmError -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.ConfirmError(event.throwable)
+        )
+
+        is News.ReportSent -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.ReportSendSuccess
+        )
+
+        is News.ReportSendError -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.ReportSendError(event.throwable)
+        )
 
         is News.Authorized -> Result(
             state = state.copy(
@@ -65,6 +91,28 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
 
         is Wish.System.InitLogin -> Result(
             state = ProfileState()
+        )
+
+        is Wish.System.InitReport -> Result(
+            state = state.copy()
+        )
+
+        is Wish.System.InitTask -> Result(
+            state = state.copy()
+        )
+
+        is Wish.ConfirmTask -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            action = ProfileAction.ConfirmTask(body = event.body)
+        )
+
+        is Wish.SendReport -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            action = ProfileAction.SendReport(body = event.body)
         )
 
         is Wish.Authorization -> Result(

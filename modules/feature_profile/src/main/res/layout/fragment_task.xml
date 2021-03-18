@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:isScrollContainer="true"
+    android:background="@color/bg_blue">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragment_task_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:id="@+id/fragment_task_toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/mpei_blue"
+            android:textSize="18sp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:singleLine="true" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="40dp"
+        android:layout_marginRight="-40dp"
+        android:layout_marginBottom="-40dp"
+        android:backgroundTint="@color/mpei_white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="40dp"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/process_task_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp">
+
+                    <TextView
+                        android:id="@+id/task_name_process"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:textColor="@color/dark_blue_text" />
+
+                    <TextView
+                        android:id="@+id/balance_process"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="9dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"
+                        android:textSize="14sp"
+                        app:drawableLeftCompat="@drawable/ic_coin" />
+
+                    <TextView
+                        android:id="@+id/task_desc_header_process"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="27dp"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:textColor="@color/dark_blue_text"
+                        android:text="@string/task_description" />
+
+                    <TextView
+                        android:id="@+id/task_description_process"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito" />
+
+                    <TextView
+                        android:id="@+id/place_process"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/place"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:id="@+id/begin_date_process"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/begin_date"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:id="@+id/end_date_process"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/end_date"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:id="@+id/refuse_date_process"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito"
+                        android:text="@string/refuse_date" />
+
+                    <Button
+                        android:id="@+id/btn_send_for_check_process"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:paddingTop="11dp"
+                        android:paddingBottom="11dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/mpei_white"
+                        android:background="@drawable/ripple_blue_button"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="@string/send_for_check"
+                        />
+
+                    <Button
+                        android:id="@+id/btn_refuse_task_process"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="18dp"
+                        android:paddingTop="11dp"
+                        android:paddingBottom="11dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/mpei_blue"
+                        android:background="@drawable/ripple_outline_button"
+                        android:textSize="18sp"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="@string/refuse_task" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="18dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/check_task_layout"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp">
+
+                    <TextView
+                        android:id="@+id/task_name_check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:textColor="@color/dark_blue_text" />
+
+                    <TextView
+                        android:id="@+id/balance_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="9dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"
+                        android:textSize="14sp"
+                        app:drawableLeftCompat="@drawable/ic_coin" />
+
+                    <TextView
+                        android:id="@+id/task_desc_header_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="27dp"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:textColor="@color/dark_blue_text"
+                        android:text="@string/task_description" />
+
+                    <TextView
+                        android:id="@+id/task_description_check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito" />
+
+                    <TextView
+                        android:id="@+id/place_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/place"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:id="@+id/begin_date_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/begin_date"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:id="@+id/end_date_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/end_date"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="24dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_blue_text"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:layout_weight="1"
+                            android:text="@string/task_comment"/>
+
+                        <ImageButton
+                            android:id="@+id/btn_edit_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@color/mpei_white"
+                            app:srcCompat="@drawable/ic_edit"
+                            android:contentDescription="@string/edit_comment_button" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/task_comment_check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="24dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="18dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ended_task_layout"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp">
+
+                    <TextView
+                        android:id="@+id/task_name_ended"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nunito_bold"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/balance_ended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="9dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"
+                        android:textSize="14sp"
+                        app:drawableLeftCompat="@drawable/ic_coin" />
+
+                    <TextView
+                        android:id="@+id/task_desc_header_ended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="27dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="@string/task_description"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/task_description_ended"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito" />
+
+                    <TextView
+                        android:id="@+id/place_ended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/place"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:id="@+id/begin_date_ended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/begin_date"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:id="@+id/end_date_ended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/end_date"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="@string/task_comment"
+                        android:textColor="@color/dark_blue_text"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/task_comment_ended"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/dark_blue_text"
+                        android:fontFamily="@font/nunito"/>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="18dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

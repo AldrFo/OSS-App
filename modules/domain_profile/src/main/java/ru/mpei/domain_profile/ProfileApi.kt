@@ -5,9 +5,7 @@ import kekmech.ru.common_annotations.EndpointUrl
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
-import ru.mpei.domain_profile.dto.ParamsItem
-import ru.mpei.domain_profile.dto.ProfileItem
-import ru.mpei.domain_profile.dto.TaskItem
+import ru.mpei.domain_profile.dto.*
 
 @EndpointUrl("http://oss-mpei.ru/")
 interface ProfileApi {
@@ -35,5 +33,15 @@ interface ProfileApi {
         @Field("group") group: String,
         @Field("password") password: String
     ): Call<ResponseBody>
+
+    @POST("Android/edit_report.php")
+    fun sendReport(
+        @Body body: ReportItem
+    ): Single<ResponseBody>
+
+    @POST("Android/confirm_task.php")
+    fun confirmTask(
+        @Body body: ConfirmItem
+    ): Single<ResponseBody>
 
 }

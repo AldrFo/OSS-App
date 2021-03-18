@@ -79,7 +79,6 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
 
     override fun handleEffect(effect: ProfileEffect) = when(effect) {
 
-
         is ProfileEffect.TasksLoadError -> {
             Toast.makeText(context, "Возникла ошибка - попробуйте еще раз позже", Toast.LENGTH_SHORT).show()
         }

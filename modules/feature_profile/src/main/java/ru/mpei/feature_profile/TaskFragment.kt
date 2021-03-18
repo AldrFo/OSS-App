@@ -1,119 +1,112 @@
 package ru.mpei.feature_profile
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import kekmech.ru.common_android.viewbinding.viewBinding
-import kekmech.ru.common_kotlin.fastLazy
+import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.PopUntil
 import kekmech.ru.common_navigation.Router
-import kekmech.ru.common_navigation.addScreenForward
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_profile.dto.TaskItem
-import ru.mpei.feature_profile.databinding.FragmentTaskEndedBinding
-import ru.mpei.feature_profile.databinding.FragmentTaskInCheckBinding
-import ru.mpei.feature_profile.databinding.FragmentTaskInProcessBinding
-import ru.mpei.feature_profile.databinding.FragmentTaskReportBinding
+import ru.mpei.feature_profile.databinding.FragmentTaskBinding
+import ru.mpei.feature_profile.mvi.*
+import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
 
-class TaskFragment: Fragment() {
+class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
 
-    private val mSettings: SharedPreferences by inject()
+    //    private val mSettings: SharedPreferences by inject()
+    private val profileFeatureFactory: ProfileFeatureFactory by inject()
     private val router: Router by inject()
+    private val binding by viewBinding(FragmentTaskBinding::bind)
+    override var layoutId: Int = R.layout.fragment_task
 
-    private lateinit var it: TaskItem
-    private val fragment_task_toolbar: Toolbar by fastLazy { requireView().findViewById(R.id.fragment_task_toolbar) }
-    private val fragment_task_toolbar_text: TextView by fastLazy { requireView().findViewById(R.id.fragment_task_toolbar_text) }
+    override val initEvent: ProfileEvent = Wish.System.InitTask
 
-    private val task_name_process: TextView by fastLazy { requireView().findViewById(R.id.task_name_process) }
-    private val balance_process: TextView by fastLazy { requireView().findViewById(R.id.balance_process) }
-    private val task_description_process: TextView by fastLazy { requireView().findViewById(R.id.task_description_process) }
-    private val place_process: TextView by fastLazy { requireView().findViewById(R.id.place_process) }
-    private val begin_date_process: TextView by fastLazy { requireView().findViewById(R.id.begin_date_process) }
-    private val end_date_process: TextView by fastLazy { requireView().findViewById(R.id.end_date_process) }
-    private val refuse_date_process: TextView by fastLazy { requireView().findViewById(R.id.refuse_date_process) }
-    private val btn_send_for_check_process: Button by fastLazy { requireView().findViewById(R.id.btn_send_for_check_process) }
+    override fun createFeature(): ProfileFeature = profileFeatureFactory.create()
 
-    private val task_name_check: TextView by fastLazy { requireView().findViewById(R.id.task_name_check) }
-    private val balance_check: TextView by fastLazy { requireView().findViewById(R.id.balance_check) }
-    private val task_description_check: TextView by fastLazy { requireView().findViewById(R.id.task_description_check) }
-    private val place_check: TextView by fastLazy { requireView().findViewById(R.id.place_check) }
-    private val begin_date_check: TextView by fastLazy { requireView().findViewById(R.id.begin_date_check) }
-    private val end_date_check: TextView by fastLazy { requireView().findViewById(R.id.end_date_check) }
-    private val task_comment_check: TextView by fastLazy { requireView().findViewById(R.id.task_comment_check) }
+    private lateinit var task: TaskItem
 
-    private val task_name_ended: TextView by fastLazy { requireView().findViewById(R.id.task_name_ended) }
-    private val balance_ended: TextView by fastLazy { requireView().findViewById(R.id.balance_ended) }
-    private val task_description_ended: TextView by fastLazy { requireView().findViewById(R.id.task_description_ended) }
-    private val place_ended: TextView by fastLazy { requireView().findViewById(R.id.place_ended) }
-    private val begin_date_ended: TextView by fastLazy { requireView().findViewById(R.id.begin_date_ended) }
-    private val end_date_ended: TextView by fastLazy { requireView().findViewById(R.id.end_date_ended) }
-    private val task_comment_ended: TextView by fastLazy { requireView().findViewById(R.id.task_comment_ended) }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        it = arguments?.get("taskData") as TaskItem
-        return when (it.status){
-            "ongoing" -> inflater.inflate(R.layout.fragment_task_in_process, container, false)
-            "onchecking", "penalization" -> inflater.inflate(R.layout.fragment_task_in_check, container, false)
-            else  -> inflater.inflate(R.layout.fragment_task_ended, container, false)
+    override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
+        task = arguments?.get("taskData") as TaskItem
+        with(binding) {
+            when (task.status) {
+                "ongoing" -> {
+                    processTaskLayout.visibility = View.VISIBLE
+                    checkTaskLayout.visibility = View.GONE
+                    endedTaskLayout.visibility = View.GONE
+                }
+                "onchecking", "penalization" -> {
+                    processTaskLayout.visibility = View.GONE
+                    checkTaskLayout.visibility = View.VISIBLE
+                    endedTaskLayout.visibility = View.GONE
+                }
+                else -> {
+                    processTaskLayout.visibility = View.GONE
+                    checkTaskLayout.visibility = View.GONE
+                    endedTaskLayout.visibility = View.VISIBLE
+                }
+            }
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        fragment_task_toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-        fragment_task_toolbar.setNavigationOnClickListener { router.executeCommand(PopUntil(TasksListFragment::class)) }
+    override fun render(state: ProfileState) {
+        binding.fragmentTaskToolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+        binding.fragmentTaskToolbar.setNavigationOnClickListener { router.executeCommand(PopUntil(TasksListFragment::class)) }
 
-        fragment_task_toolbar_text.text = it.taskName
-
-        when (it.status){
-            "ongoing" -> initProcessTask()
-            "onchecking", "penalization" -> initOnCheckTask()
-            else  -> initEndedTask()
-        }
-
-    }
-
-    private fun initProcessTask(){
-        task_name_process.text = it.taskName
-        balance_process.text = it.price
-        task_description_process.text = if (it.taskDescription.isEmpty()) getString(R.string.no_description) else it.taskDescription
-        place_process.text = Html.fromHtml(getString(R.string.place, it.location))
-        begin_date_process.text = Html.fromHtml(getString(R.string.begin_date, it.startDate.substring(0, it.startDate.length-3)))
-        end_date_process.text = Html.fromHtml(getString(R.string.end_date, it.endDate.substring(0, it.endDate.length-3)))
-        refuse_date_process.text = Html.fromHtml(getString(R.string.refuse_date, it.refuseInfo.substring(0, it.refuseInfo.length-3)))
-        btn_send_for_check_process.setOnClickListener {
-            val fragment = EditReportFragment(this.it, mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!)
-            router.executeCommand( AddScreenForward { fragment } )
+        binding.fragmentTaskToolbarText.text = task.taskName
+        if (task.status == "ongoing") {
+            initProcessTask()
+        } else if (task.status == "onchecking" || task.status == "penilization") {
+            initOnCheckTask()
+        } else {
+            initEndedTask()
         }
     }
 
-    private fun initOnCheckTask(){
-        task_name_check.text = it.taskName
-        balance_check.text = it.price
-        task_description_check.text = if (it.taskDescription.isEmpty()) getString(R.string.no_description) else it.taskDescription
-        place_check.text = Html.fromHtml(getString(R.string.place, it.location))
-        begin_date_check.text = Html.fromHtml(getString(R.string.begin_date, it.startDate.substring(0, it.startDate.length-3)))
-        end_date_check.text = Html.fromHtml(getString(R.string.end_date, it.endDate.substring(0, it.endDate.length-3)))
-        task_comment_check.text = if (it.comment.isEmpty()) getString(R.string.no_comment) else it.comment
+    private fun initProcessTask() {
+        with(binding) {
+            taskNameProcess.text = task.taskName
+            balanceProcess.text = task.price
+            taskDescriptionProcess.text = if (task.taskDescription.isEmpty()) getString(R.string.no_description) else task.taskDescription
+            placeProcess.text = Html.fromHtml(getString(R.string.place, task.location))
+            beginDateProcess.text = Html.fromHtml(getString(R.string.begin_date, task.startDate.substring(0, task.startDate.length - 3)))
+            endDateProcess.text = Html.fromHtml(getString(R.string.end_date, task.endDate.substring(0, task.endDate.length - 3)))
+            refuseDateProcess.text = Html.fromHtml(getString(R.string.refuse_date, task.refuseInfo.substring(0, task.refuseInfo.length - 3)))
+            btnSendForCheckProcess.setOnClickListener {
+                val fragment = EditReportFragment(task.id, task.taskName, ReportType.NEW)
+                router.executeCommand(AddScreenForward { fragment })
+            }
+        }
     }
 
-    private fun initEndedTask(){
-        task_name_ended.text = it.taskName
-        balance_ended.text = it.price
-        task_description_ended.text = if (it.taskDescription.isEmpty()) getString(R.string.no_description) else it.taskDescription
-        place_ended.text = Html.fromHtml(getString(R.string.place, it.location))
-        begin_date_ended.text = Html.fromHtml(getString(R.string.begin_date, it.startDate.substring(0, it.startDate.length-3)))
-        end_date_ended.text = Html.fromHtml(getString(R.string.end_date, it.endDate.substring(0, it.endDate.length-3)))
-        task_comment_ended.text = if (it.comment.isEmpty()) getString(R.string.no_comment) else it.comment
+    private fun initOnCheckTask() {
+        with(binding) {
+            taskNameCheck.text = task.taskName
+            balanceCheck.text = task.price
+            taskDescriptionCheck.text = if (task.taskDescription.isEmpty()) getString(R.string.no_description) else task.taskDescription
+            placeCheck.text = Html.fromHtml(getString(R.string.place, task.location))
+            beginDateCheck.text = Html.fromHtml(getString(R.string.begin_date, task.startDate.substring(0, task.startDate.length - 3)))
+            endDateCheck.text = Html.fromHtml(getString(R.string.end_date, task.endDate.substring(0, task.endDate.length - 3)))
+            taskCommentCheck.text = if (task.comment.isEmpty()) getString(R.string.no_comment) else task.comment
+            btnEditCheck.setOnClickListener {
+                val fragment = EditReportFragment(task.id, task.taskName, ReportType.EDIT)
+                router.executeCommand(AddScreenForward { fragment })
+            }
+        }
+    }
+
+    private fun initEndedTask() {
+        with(binding) {
+            taskNameEnded.text = task.taskName
+            balanceEnded.text = task.price
+            taskDescriptionEnded.text = if (task.taskDescription.isEmpty()) getString(R.string.no_description) else task.taskDescription
+            placeEnded.text = Html.fromHtml(getString(R.string.place, task.location))
+            beginDateEnded.text = Html.fromHtml(getString(R.string.begin_date, task.startDate.substring(0, task.startDate.length - 3)))
+            endDateEnded.text = Html.fromHtml(getString(R.string.end_date, task.endDate.substring(0, task.endDate.length - 3)))
+            taskCommentEnded.text = if (task.comment.isEmpty()) getString(R.string.no_comment) else task.comment
+        }
     }
 }

@@ -2,14 +2,16 @@ package ru.mpei.feature_profile.mvi
 
 import kekmech.ru.common_mvi.Feature
 import okhttp3.ResponseBody
-import ru.mpei.domain_profile.dto.ParamsItem
-import ru.mpei.domain_profile.dto.ProfileItem
-import ru.mpei.domain_profile.dto.TaskItem
+import ru.mpei.domain_profile.dto.*
 
 typealias ProfileFeature = Feature<ProfileState, ProfileEvent, ProfileEffect>
 
 enum class TasksType {
     PROCESS, CHECK, REFUSED, FINISHED
+}
+
+enum class ReportType {
+    NEW, EDIT
 }
 
 data class ProfileState(
@@ -26,6 +28,7 @@ sealed class ProfileEvent{
         object System{
             object InitLogin: Wish()
             object InitReport: Wish()
+            object InitTask: Wish()
         }
 
         data class Authorization(val id: String, val pass: String): Wish()
@@ -39,8 +42,8 @@ sealed class ProfileEvent{
 
         data class LoadTasks(val type: String): Wish()
 
-        data class ConfirmTask(val taskId: String, val userId: String): Wish()
-        data class SendReport(val comment: String, val userId: String, val taskId: String, val fileName: String): Wish()
+        data class ConfirmTask(val body: ConfirmItem): Wish()
+        data class SendReport(val body: ReportItem): Wish()
 
     }
 
@@ -86,6 +89,6 @@ sealed class ProfileAction {
     data class Authorize(val id: String, val pass: String): ProfileAction()
     data class Authenticate(val email: String, val pass: String): ProfileAction()
     data class LoadTasks(val type: String,  val id: String): ProfileAction()
-    data class ConfirmTask(val userId: String, val taskId: String): ProfileAction()
-    data class SendReport(val userId: String, val taskId: String, val comment: String, val fileName: String): ProfileAction()
+    data class ConfirmTask(val body: ConfirmItem): ProfileAction()
+    data class SendReport(val body: ReportItem): ProfileAction()
 }

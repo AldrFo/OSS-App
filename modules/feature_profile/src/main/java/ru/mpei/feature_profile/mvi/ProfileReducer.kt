@@ -97,18 +97,22 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
             state = state.copy()
         )
 
+        is Wish.System.InitTask -> Result(
+            state = state.copy()
+        )
+
         is Wish.ConfirmTask -> Result(
             state = state.copy(
                 isLoading = true
             ),
-            action = ProfileAction.ConfirmTask(taskId = event.taskId, userId = event.userId)
+            action = ProfileAction.ConfirmTask(body = event.body)
         )
 
         is Wish.SendReport -> Result(
             state = state.copy(
                 isLoading = true
             ),
-            action = ProfileAction.SendReport(taskId = event.taskId, userId = event.userId, comment = event.comment, fileName = event.fileName)
+            action = ProfileAction.SendReport(body = event.body)
         )
 
         is Wish.Authorization -> Result(

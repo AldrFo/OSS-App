@@ -106,7 +106,7 @@
                     android:layout_weight="1"/>
 
                 <Button
-                    android:id="@+id/btn_send_report"
+                    android:id="@+id/btn_send_with_report"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -131,6 +131,24 @@
                     android:layout_marginTop="12dp"
                     android:text="@string/send_no_report"
                     android:textColor="@color/mpei_blue"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:textAllCaps="false"
+                    android:paddingTop="11dp"
+                    android:paddingBottom="11dp"
+                    android:paddingLeft="59dp"
+                    android:paddingRight="59dp"/>
+
+                <Button
+                    android:id="@+id/btn_send_report"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/send_report"
+                    android:textColor="@color/mpei_white"
                     android:textSize="18sp"
                     android:fontFamily="@font/nunito_semibold"
                     android:textAllCaps="false"

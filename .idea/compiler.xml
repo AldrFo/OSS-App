@@ -3,6 +3,44 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="common_annotations" target="1.7" />
+      <module name="mpeix.app" target="11" />
+      <module name="mpeix.common_adapter" target="11" />
+      <module name="mpeix.common_android" target="11" />
+      <module name="mpeix.common_mvi" target="11" />
+      <module name="mpeix.common_navigation" target="11" />
+      <module name="mpeix.common_network" target="11" />
+      <module name="mpeix.domain_events" target="11" />
+      <module name="mpeix.domain_news" target="11" />
+      <module name="mpeix.domain_onboarding" target="11" />
+      <module name="mpeix.domain_profile" target="11" />
+      <module name="mpeix.domain_services" target="11" />
+      <module name="mpeix.domain_store" target="11" />
+      <module name="mpeix.domain_tasks" target="11" />
+      <module name="mpeix.feature_dashboard" target="11" />
+      <module name="mpeix.feature_onboarding" target="11" />
+      <module name="mpeix.feature_profile" target="11" />
+      <module name="mpeix.feature_services" target="11" />
+      <module name="mpeix.feature_store" target="11" />
+      <module name="mpeix.feature_tasks" target="11" />
+      <module name="OSS.app" target="11" />
+      <module name="OSS.common_adapter" target="11" />
+      <module name="OSS.common_android" target="11" />
+      <module name="OSS.common_mvi" target="11" />
+      <module name="OSS.common_navigation" target="11" />
+      <module name="OSS.common_network" target="11" />
+      <module name="OSS.domain_events" target="11" />
+      <module name="OSS.domain_news" target="11" />
+      <module name="OSS.domain_onboarding" target="11" />
+      <module name="OSS.domain_profile" target="11" />
+      <module name="OSS.domain_services" target="11" />
+      <module name="OSS.domain_store" target="11" />
+      <module name="OSS.domain_tasks" target="11" />
+      <module name="OSS.feature_dashboard" target="11" />
+      <module name="OSS.feature_onboarding" target="11" />
+      <module name="OSS.feature_profile" target="11" />
+      <module name="OSS.feature_services" target="11" />
+      <module name="OSS.feature_store" target="11" />
+      <module name="OSS.feature_tasks" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

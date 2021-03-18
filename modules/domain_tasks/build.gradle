@@ -1,0 +1,31 @@
+apply from: "$gradleDir/android-module.gradle"
+
+dependencies {
+    implementation kotlinStdLib
+    implementation androidx.coreKtx
+    implementation androidx.appcompat
+    implementation androidx.recyclerview
+    implementation project(path: ':common_annotations')
+    testImplementation tests.junit
+
+    implementation rx.java
+    implementation rx.android
+    implementation rx.kotlin
+
+    implementation timber
+
+    implementation koin.core
+    implementation koin.android
+
+    implementation squareup.retrofit
+    implementation squareup.retrofit_rxJava2
+    implementation squareup.retrofit_gson
+
+    implementation project(path: ':common_di')
+    implementation project(path: ':common_mvi')
+    implementation project(path: ':common_android')
+    implementation project(path: ':common_adapter')
+    implementation project(path: ':common_kotlin')
+    implementation project(path: ':common_navigation')
+    implementation project(path: ':common_network')
+}

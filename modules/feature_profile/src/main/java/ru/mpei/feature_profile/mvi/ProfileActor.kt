@@ -23,5 +23,8 @@ class ProfileActor(
 
         is ProfileAction.SendReport -> profileRepository.sendReport(action.body)
             .mapEvents(ProfileEvent.News::ReportSent, ProfileEvent.News::ReportSendError)
+
+        is ProfileAction.RefuseTask -> profileRepository.refuseTask(action.body)
+            .mapEvents(ProfileEvent.News::TaskRefused, ProfileEvent.News::TaskRefuseError)
     }
 }

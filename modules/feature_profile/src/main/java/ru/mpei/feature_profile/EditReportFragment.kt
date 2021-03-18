@@ -3,13 +3,15 @@ package ru.mpei.feature_profile
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.PopUntil
 import kekmech.ru.common_navigation.Router
 import org.koin.android.ext.android.inject
-import ru.mpei.domain_profile.dto.ConfirmItem
+import ru.mpei.domain_profile.dto.ConfirmRefuseItem
 import ru.mpei.domain_profile.dto.ReportItem
 import ru.mpei.feature_profile.databinding.FragmentTaskReportBinding
 import ru.mpei.feature_profile.mvi.*
@@ -37,7 +39,7 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
                     btnSendReport.visibility = View.GONE
 
                     btnSendNoReport.setOnClickListener {
-                        val body = ConfirmItem(task_id = taskId, user_id = mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!)
+                        val body = ConfirmRefuseItem(task_id = taskId, user_id = mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!)
                         feature.accept(Wish.ConfirmTask(body))
                     }
                     btnSendWithReport.setOnClickListener {
@@ -65,6 +67,9 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
         binding.fragmentTaskReportToolbar.setNavigationOnClickListener { router.executeCommand(PopUntil(TaskFragment::class)) }
 
         binding.fragmentTaskReportToolbarText.text = taskName
+
+        binding.btnAddPhotoImage.setOnClickListener {
+        }
     }
 
     override fun render(state: ProfileState) {

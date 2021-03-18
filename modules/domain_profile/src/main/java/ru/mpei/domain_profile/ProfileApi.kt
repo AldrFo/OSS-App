@@ -41,7 +41,11 @@ interface ProfileApi {
 
     @POST("Android/confirm_task.php")
     fun confirmTask(
-        @Body body: ConfirmItem
+        @Body body: ConfirmRefuseItem
     ): Single<ResponseBody>
 
+    @POST("/Android/refuse_task.php")
+    fun refuseTask(
+        @Body body: ConfirmRefuseItem
+    ): Single<ResponseBody>
 }

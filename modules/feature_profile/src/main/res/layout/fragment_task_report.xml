@@ -96,9 +96,30 @@
                     android:text="@string/photo"/>
 
                 <TableLayout
+                    android:id="@+id/add_photo_table"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+                    <TableRow
+                        android:id="@+id/add_photo_row"
+                        android:layout_width="match_parent">
+                        <LinearLayout
+                            android:id="@+id/btn_add_photo_image"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:paddingRight="19.2dp"
+                            android:paddingBottom="22.2dp"
+                            android:paddingLeft="24dp"
+                            android:paddingTop="25dp"
+                            android:background="@drawable/shape_add_photo">
+                            <ImageView
+                                android:src="@drawable/ic_add_photo"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"/>
+                        </LinearLayout>
+                    </TableRow>
+                </TableLayout>
 
                 <Space
                     android:layout_width="0dp"

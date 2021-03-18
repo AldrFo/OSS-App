@@ -14,7 +14,9 @@ class ProfileRepository (
 
     fun loadTasks(type: String, id: String): Single<List<TaskItem>> = profileApi.loadTasks(type, id)
 
-    fun confirmTask(body: ConfirmItem): Single<ResponseBody> = profileApi.confirmTask(body = body)
+    fun confirmTask(body: ConfirmRefuseItem): Single<ResponseBody> = profileApi.confirmTask(body = body)
 
     fun sendReport(body: ReportItem): Single<ResponseBody> = profileApi.sendReport(body = body)
+
+    fun refuseTask(body: ConfirmRefuseItem): Single<ResponseBody> = profileApi.refuseTask(body = body)
 }

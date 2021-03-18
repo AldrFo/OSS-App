@@ -16,6 +16,20 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
 
     private fun processItems(event: News, state: ProfileState): ProfileResult = when (event) {
 
+        is News.TaskRefused -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.RefuseSuccess
+        )
+
+        is News.TaskRefuseError -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.RefuseError(event.throwable)
+        )
+
         is News.TaskConfirmed -> Result(
             state = state.copy(
                 isLoading = false
@@ -106,6 +120,13 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
                 isLoading = true
             ),
             action = ProfileAction.ConfirmTask(body = event.body)
+        )
+
+        is Wish.RefuseTask -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            action = ProfileAction.RefuseTask(event.body)
         )
 
         is Wish.SendReport -> Result(

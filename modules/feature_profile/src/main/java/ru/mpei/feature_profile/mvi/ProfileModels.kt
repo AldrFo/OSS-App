@@ -19,7 +19,8 @@ data class ProfileState(
     val profileData: ProfileItem = ProfileItem(),
     val isAuthorized: Boolean = false,
     val paramsItem: ParamsItem = ParamsItem(),
-    val tasksList: List<TaskItem> = emptyList()
+    val tasksList: List<TaskItem> = emptyList(),
+    val takePhoto: Boolean = false
 )
 
 sealed class ProfileEvent{
@@ -46,6 +47,8 @@ sealed class ProfileEvent{
         data class SendReport(val body: ReportItem): Wish()
 
         data class RefuseTask(val body: ConfirmRefuseItem): Wish()
+
+        object AddPhoto: Wish()
     }
 
     sealed class News : ProfileEvent() {
@@ -90,6 +93,8 @@ sealed class ProfileEffect{
 
     object RefuseSuccess: ProfileEffect()
     data class RefuseError(val throwable: Throwable): ProfileEffect()
+
+    object AddPhoto: ProfileEffect()
 }
 
 sealed class ProfileAction {

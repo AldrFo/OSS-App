@@ -96,7 +96,6 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     }
 
     private fun showProfile(profileData: ProfileItem){
-        Toast.makeText(context, "this", Toast.LENGTH_SHORT).show()
         with(binding) {
             ScrollViewProfile1.visibility = View.GONE
             ScrollViewProfile2.visibility = View.VISIBLE

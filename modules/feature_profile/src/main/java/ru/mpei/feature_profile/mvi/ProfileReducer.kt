@@ -115,6 +115,11 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
             state = state.copy()
         )
 
+        is Wish.AddPhoto -> Result(
+            state = state.copy(),
+            effect = ProfileEffect.AddPhoto
+        )
+
         is Wish.ConfirmTask -> Result(
             state = state.copy(
                 isLoading = true

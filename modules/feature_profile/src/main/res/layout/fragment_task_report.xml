@@ -95,32 +95,47 @@
                     android:fontFamily="@font/nunito"
                     android:text="@string/photo"/>
 
-                <TableLayout
-                    android:id="@+id/add_photo_table"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/btn_add_photo_image"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:paddingRight="19.2dp"
+                    android:paddingBottom="22.2dp"
+                    android:paddingLeft="24dp"
+                    android:paddingTop="25dp"
+                    android:background="@drawable/shape_add_photo">
+
+                    <ImageView
+                        android:src="@drawable/ic_add_photo"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"/>
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/report_image_card"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:orientation="vertical">
-                    <TableRow
-                        android:id="@+id/add_photo_row"
-                        android:layout_width="match_parent">
-                        <LinearLayout
-                            android:id="@+id/btn_add_photo_image"
+                    app:cardCornerRadius="6dp"
+                    android:visibility="gone">
+                    <RelativeLayout
+                        android:layout_width="70dp"
+                        android:layout_height="70dp">
+                        <ImageView
+                            android:id="@+id/report_image"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:paddingRight="19.2dp"
-                            android:paddingBottom="22.2dp"
-                            android:paddingLeft="24dp"
-                            android:paddingTop="25dp"
-                            android:background="@drawable/shape_add_photo">
-                            <ImageView
-                                android:src="@drawable/ic_add_photo"
-                                android:layout_height="wrap_content"
-                                android:layout_width="wrap_content"/>
-                        </LinearLayout>
-                    </TableRow>
-                </TableLayout>
-
+                            android:scaleType="centerCrop"/>
+                        <ImageView
+                            android:id="@+id/remove_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_cancelled"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="0dp"

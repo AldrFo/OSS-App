@@ -108,7 +108,6 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
     }
 
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, imageReturnedIntent: Intent?) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent)
         when (requestCode) {

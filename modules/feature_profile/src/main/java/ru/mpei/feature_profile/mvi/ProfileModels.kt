@@ -86,6 +86,7 @@ sealed class ProfileEffect{
 
     data class Validate(val email: String, val pass: String): ProfileEffect()
 
+    object TasksLoaded: ProfileEffect()
     data class TasksLoadError(val throwable: Throwable): ProfileEffect()
 
     object ConfirmSuccess: ProfileEffect()

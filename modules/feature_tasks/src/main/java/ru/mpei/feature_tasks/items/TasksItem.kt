@@ -30,7 +30,7 @@ class TasksViewHolderImpl(
     }
 
     override fun setDates(startDate: String, endDate: String) {
-        binding.availPrice.text = "${startDate.substring(0, startDate.length-3)} - ${endDate.substring(0, endDate.length-3)}"
+        binding.availDates.text = "${startDate.substring(0, startDate.length-3)} - ${endDate.substring(0, endDate.length-3)}"
     }
 
     override fun setOnClickListener(onClick: () -> Unit) {

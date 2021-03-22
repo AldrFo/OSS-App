@@ -19,20 +19,24 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
             state = state.copy(
                 isLoading = false,
                 newsList = event.listOfItems
-            )
+            ),
+            effect = DashboardEffect.NewsListLoaded
         )
         is News.NewsListLoadError -> Result(
-            state = state.copy(isLoading = false)
+            state = state.copy(isLoading = false),
+            effect = DashboardEffect.ShowError(event.throwable)
         )
 
         is News.EventsListLoaded -> Result(
             state = state.copy(
                 isLoading = false,
                 eventsList = event.listOfItems
-            )
+            ),
+            effect = DashboardEffect.EventsListLoaded
         )
         is News.EventsListLoadError -> Result(
-            state = state.copy(isLoading = false)
+            state = state.copy(isLoading = false),
+            effect = DashboardEffect.ShowError(event.throwable)
         )
     }
 
@@ -44,9 +48,6 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
                 DashboardAction.LoadNewsList,
                 DashboardAction.LoadEventsList
             )
-        )
-        is Wish.OnSwipeRefresh -> Result(
-            state = state.copy()
         )
         is Wish.GetEvents -> Result(
             state = state.copy(isLoading = true),

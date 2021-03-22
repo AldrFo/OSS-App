@@ -3,13 +3,11 @@ package ru.mpei.feature_tasks
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_android.ActivityResultListener
 import kekmech.ru.common_android.viewbinding.viewBinding
-import kekmech.ru.common_android.withResultFor
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
@@ -39,6 +37,11 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
         with(binding) {
             tasksList.adapter = tasksAdapter
             tasksList.layoutManager = LinearLayoutManager(requireContext())
+
+            swipeRefresh.setColorSchemeResources(R.color.mpei_blue)
+            swipeRefresh.setOnRefreshListener {
+                feature.accept(initEvent)
+            }
         }
     }
 
@@ -52,6 +55,10 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     }
 
     override fun handleEffect(effect: TasksEffect) = when(effect) {
+        is TasksEffect.TasksLoaded -> {
+            binding.swipeRefresh.isRefreshing = false
+        }
+
         is TasksEffect.ShowError -> Unit
         else -> Unit
     }

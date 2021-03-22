@@ -19,7 +19,6 @@ buildscript {
                 retrofit            : '2.9.0',
                 okhttp              : '4.9.0'
         ]
-
         kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
         kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
         kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}"

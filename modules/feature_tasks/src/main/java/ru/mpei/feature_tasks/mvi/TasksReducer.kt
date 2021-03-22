@@ -30,10 +30,11 @@ class TasksReducer : BaseReducer<TasksState, TasksEvent, TasksEffect, TasksActio
 
     private fun processItems(event: News, state: TasksState): TasksResult = when (event) {
         is News.TasksLoaded -> Result(
-                state.copy(
-                        isLoading = false,
-                        ListOfTasks = event.ListOfTasks
-                )
+            state.copy(
+                    isLoading = false,
+                    ListOfTasks = event.ListOfTasks
+            ),
+            effect = TasksEffect.TasksLoaded
         )
         is News.TasksLoadError -> Result(
                 state = state.copy(isLoading = false)

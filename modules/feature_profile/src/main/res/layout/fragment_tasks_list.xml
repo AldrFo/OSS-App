@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="40dp"
-        android:layout_marginRight="-40dp"
+        android:layout_marginEnd="-40dp"
         android:layout_marginBottom="-40dp"
         android:backgroundTint="@color/mpei_white">
 
@@ -48,17 +48,25 @@
             android:drawableTop="@drawable/ic_smile"
             android:text="@string/empty_tasks_list"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tasks_list"
-            android:orientation="vertical"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:clipChildren="true"
-            android:clipToPadding="false"
-            android:paddingTop="12dp"
-            android:paddingRight="40dp"
-            android:paddingBottom="52dp"/>
+            android:layout_marginEnd="40dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tasks_list"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:clipChildren="true"
+                android:clipToPadding="false"
+                android:paddingTop="12dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="52dp"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.cardview.widget.CardView>
 

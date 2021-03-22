@@ -89,7 +89,8 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
             state = state.copy(
                 isLoading = false,
                 tasksList = event.tasksList
-            )
+            ),
+            effect = ProfileEffect.TasksLoaded
         )
 
         is News.TasksLoadFailed -> Result(

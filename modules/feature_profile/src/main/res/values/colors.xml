@@ -11,4 +11,5 @@
     <color name="mpei_blue_dark">#af4B56A0</color>
     <color name="mpei_white_dark">#afFFFFFF</color>
     <color name="error">#F94258</color>
+    <color name="mpei_light_gray">#F7F7F7</color>
 </resources>

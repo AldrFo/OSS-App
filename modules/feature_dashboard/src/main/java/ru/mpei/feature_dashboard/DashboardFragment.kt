@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import kekmech.ru.common_adapter.BaseAdapter
@@ -31,14 +32,16 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     private val binding by viewBinding(FragmentDashboardBinding::bind)
     override var layoutId = R.layout.fragment_dashboard
 
+    private var listPos: Int = 0
+
     private val newsAdapter: BaseAdapter by fastLazy { createAdapter() }
     private val eventsAdapter: BaseAdapter by fastLazy { createAdapter() }
     private val viewPagerAdapter by fastLazy {
         BaseAdapter(
-            DashboardNewsAdapterItem(newsAdapter),
-            DashboardEventsAdapterItem(eventsAdapter)
+            DashboardEventsAdapterItem(eventsAdapter),
+            DashboardNewsAdapterItem(newsAdapter)
         ).apply {
-            update(listOf(DashboardItem(id = ID_NEWS_ITEM), DashboardItem(id = ID_EVENTS_ITEM)))
+            update(listOf(DashboardItem(id = ID_EVENTS_ITEM), DashboardItem(id = ID_NEWS_ITEM)))
         }
     }
 
@@ -52,10 +55,20 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     feature.accept(Wish.OnPageChange(position))
+                    listPos = position
                 }
             })
             selectorAfisha.setOnClickListener { feature.accept(Wish.OnPageChange(0)) }
             selectorNews.setOnClickListener { feature.accept(Wish.OnPageChange(1)) }
+
+            swipeRefresh.setColorSchemeResources(R.color.mpei_blue)
+            swipeRefresh.setOnRefreshListener {
+                if (listPos == 0) {
+                    feature.accept(Wish.GetEvents)
+                } else {
+                    feature.accept(Wish.GetNews)
+                }
+            }
         }
     }
 
@@ -88,7 +101,9 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     }
 
     override fun handleEffect(effect: DashboardEffect) = when(effect) {
-        is DashboardEffect.ShowError -> Unit
+        is DashboardEffect.NewsListLoaded -> binding.swipeRefresh.isRefreshing = false
+        is DashboardEffect.EventsListLoaded -> binding.swipeRefresh.isRefreshing = false
+        is DashboardEffect.ShowError -> Toast.makeText(context, "Возникла проблема: "+effect.throwable.localizedMessage, Toast.LENGTH_SHORT).show()
     }
 
     private fun createAdapter() = BaseAdapter(

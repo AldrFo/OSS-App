@@ -6,6 +6,7 @@ dependencies {
     implementation androidx.appcompat
     implementation androidx.recyclerview
     implementation androidx.constraintlayout
+    implementation androidx.swiperefreshlayout
     implementation androidx.viewpager2
     implementation 'androidx.cardview:cardview:1.0.0'
     testImplementation tests.junit

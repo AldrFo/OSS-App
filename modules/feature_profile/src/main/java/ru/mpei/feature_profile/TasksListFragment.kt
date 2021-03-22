@@ -56,6 +56,18 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
 
             tasksList.adapter = adapter
             tasksList.layoutManager = LinearLayoutManager(requireContext())
+
+            swipeRefresh.setColorSchemeColors(resources.getColor(R.color.mpei_blue))
+            swipeRefresh.setOnRefreshListener {
+                feature.accept(Wish.LoadTasks(
+                    when(type){
+                        TasksType.PROCESS -> "taken"
+                        TasksType.CHECK -> "inCheck"
+                        TasksType.FINISHED -> "accepted"
+                        TasksType.REFUSED -> "refused"
+                    }
+                ))
+            }
         }
     }
 
@@ -78,6 +90,10 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
     }
 
     override fun handleEffect(effect: ProfileEffect) = when(effect) {
+
+        is ProfileEffect.TasksLoaded -> {
+            binding.swipeRefresh.isRefreshing = false
+        }
 
         is ProfileEffect.TasksLoadError -> {
             Toast.makeText(context, "Возникла ошибка - попробуйте еще раз позже", Toast.LENGTH_SHORT).show()

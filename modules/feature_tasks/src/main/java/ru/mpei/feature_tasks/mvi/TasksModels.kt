@@ -34,6 +34,7 @@ sealed class TasksEvent{
 sealed class TasksEffect{
     data class ShowError(val throwable: Throwable): TasksEffect()
     object TaskTaken: TasksEffect()
+    object TasksLoaded: TasksEffect()
 }
 
 sealed class TasksAction{

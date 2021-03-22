@@ -120,6 +120,11 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
             effect = ProfileEffect.AddPhoto
         )
 
+        is Wish.OpenShop -> Result(
+            state = state.copy(),
+            effect = ProfileEffect.OpenShop
+        )
+
         is Wish.ConfirmTask -> Result(
             state = state.copy(
                 isLoading = true

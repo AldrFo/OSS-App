@@ -135,7 +135,7 @@
                     android:fontFamily="@font/nunito"
                     android:textColor="@color/dark_blue_text"
                     android:textColorHint="@color/dark_gray_hints"
-                    android:hint="@string/email_example"
+                    android:hint="@string/register_email_example"
                     android:ems="15"
                     android:inputType="textEmailAddress"
                     android:textCursorDrawable="@null"
@@ -166,15 +166,17 @@
                     android:id="@+id/radioMale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:buttonTint="@drawable/radio_color"
+                    android:layout_marginEnd="30dp"
+                    android:paddingStart="10dp"
+                    android:button="@drawable/radio_color"
                     android:text="@string/male" />
 
                 <RadioButton
                     android:id="@+id/radioFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="@drawable/radio_color"
+                    android:button="@drawable/radio_color"
+                    android:paddingStart="10dp"
                     android:text="@string/female" />
 
             </RadioGroup>

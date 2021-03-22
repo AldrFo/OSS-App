@@ -50,6 +50,8 @@ sealed class ProfileEvent{
         data class RefuseTask(val body: ConfirmRefuseItem): Wish()
 
         object AddPhoto: Wish()
+
+        object OpenShop: Wish()
     }
 
     sealed class News : ProfileEvent() {
@@ -96,6 +98,8 @@ sealed class ProfileEffect{
     data class RefuseError(val throwable: Throwable): ProfileEffect()
 
     object AddPhoto: ProfileEffect()
+
+    object OpenShop: ProfileEffect()
 }
 
 sealed class ProfileAction {

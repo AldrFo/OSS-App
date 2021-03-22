@@ -14,6 +14,8 @@ import kekmech.ru.common_navigation.BackButtonListener
 import org.koin.android.ext.android.inject
 import ru.mpei.domain_tasks.dto.TakeTaskItem
 import ru.mpei.domain_tasks.dto.TasksItem
+import ru.mpei.feature_tasks.TasksFragment.Companion.APP_PREFERENCES_FLAG
+import ru.mpei.feature_tasks.TasksFragment.Companion.APP_PREFERENCES_ID
 import ru.mpei.feature_tasks.databinding.FragmentTaskAvailableBinding
 import ru.mpei.feature_tasks.mvi.*
 import ru.mpei.feature_tasks.mvi.TasksEvent.Wish
@@ -50,7 +52,11 @@ class AvailableTaskFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, 
             refuseDateAvail.text = Html.fromHtml(getString(R.string.refuse_date, item.refuseInfo.substring(0, item.refuseInfo.length - 3)))
 
             btnTakeTaskAvail.setOnClickListener {
-                feature.accept(Wish.TakeTask(TakeTaskItem(mSettings.getString("userId", "").toString(), item.id.toString())))
+                if ( mSettings.getBoolean(APP_PREFERENCES_FLAG, false) ) {
+                    feature.accept(Wish.TakeTask(TakeTaskItem(mSettings.getString(APP_PREFERENCES_ID, "").toString(), item.id.toString())))
+                } else {
+                    Toast.makeText(context, "Чтобы взять задание сначала необходимо авторизоваться!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

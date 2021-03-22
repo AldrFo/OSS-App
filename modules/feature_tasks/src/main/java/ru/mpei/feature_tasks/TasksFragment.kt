@@ -29,7 +29,7 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
 
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
 
-    override val initEvent: TasksEvent get() = Wish.System.Init(mSettings.getString("userId","0").toString())
+    override val initEvent: TasksEvent get() = Wish.System.Init(mSettings.getString(APP_PREFERENCES_ID,"0").toString())
 
     override var layoutId: Int = R.layout.fragment_tasks
 
@@ -69,8 +69,17 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 404){
-            feature.accept(Wish.System.Init(mSettings.getString("userId","0").toString()))
+            feature.accept(Wish.System.Init(mSettings.getString(APP_PREFERENCES_ID,"0").toString()))
         }
+    }
+
+    companion object {
+        const val APP_PREFERENCES_FLAG = "isAuth"
+        const val APP_PREFERENCES_PASS = "userPass"
+        const val APP_PREFERENCES_ID = "userId"
+
+        const val AUTHORIZATION_ERROR = 0
+        const val AUTHENTICATION_ERROR = 1
     }
 
 }

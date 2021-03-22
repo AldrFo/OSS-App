@@ -1,6 +1,8 @@
 package ru.mpei.feature_profile
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
@@ -14,6 +16,7 @@ import ru.mpei.domain_profile.dto.ProfileItem
 import ru.mpei.feature_profile.databinding.FragmentProfileBinding
 import ru.mpei.feature_profile.mvi.*
 import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
+
 
 class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>(){
 
@@ -46,6 +49,11 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     }
 
     override fun handleEffect(effect: ProfileEffect) = when(effect) {
+
+        is ProfileEffect.OpenShop -> {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://oss-mpei.ru/shop.php"))
+            startActivity(browserIntent)
+        }
 
         is ProfileEffect.SaveParams -> {
             saveParams(effect.paramsItem)
@@ -126,6 +134,10 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             refusedBtn.setOnClickListener {
                 val fragment = TasksListFragment(TasksType.REFUSED, profileData)
                 router.executeCommand(AddScreenForward { fragment })
+            }
+
+            btnOpenShop.setOnClickListener {
+                feature.accept( Wish.OpenShop )
             }
         }
 

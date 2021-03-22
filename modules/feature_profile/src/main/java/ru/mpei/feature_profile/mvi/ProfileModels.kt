@@ -1,6 +1,7 @@
 package ru.mpei.feature_profile.mvi
 
 import kekmech.ru.common_mvi.Feature
+import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import ru.mpei.domain_profile.dto.*
 
@@ -19,7 +20,8 @@ data class ProfileState(
     val profileData: ProfileItem = ProfileItem(),
     val isAuthorized: Boolean = false,
     val paramsItem: ParamsItem = ParamsItem(),
-    val tasksList: List<TaskItem> = emptyList()
+    val tasksList: List<TaskItem> = emptyList(),
+    val takePhoto: Boolean = false
 )
 
 sealed class ProfileEvent{
@@ -42,9 +44,12 @@ sealed class ProfileEvent{
 
         data class LoadTasks(val type: String): Wish()
 
-        data class ConfirmTask(val body: ConfirmItem): Wish()
-        data class SendReport(val body: ReportItem): Wish()
+        data class ConfirmTask(val body: ConfirmRefuseItem): Wish()
+        data class SendReport(val body: ReportItem, val imageBody: MultipartBody.Part?): Wish()
 
+        data class RefuseTask(val body: ConfirmRefuseItem): Wish()
+
+        object AddPhoto: Wish()
     }
 
     sealed class News : ProfileEvent() {
@@ -63,6 +68,9 @@ sealed class ProfileEvent{
 
         data class ReportSent(val obj: ResponseBody): News()
         data class ReportSendError(val throwable: Throwable): News()
+
+        data class TaskRefused(val obj: ResponseBody): News()
+        data class TaskRefuseError(val throwable: Throwable): News()
     }
 
 }
@@ -83,12 +91,18 @@ sealed class ProfileEffect{
 
     object ReportSendSuccess: ProfileEffect()
     data class ReportSendError(val throwable: Throwable): ProfileEffect()
+
+    object RefuseSuccess: ProfileEffect()
+    data class RefuseError(val throwable: Throwable): ProfileEffect()
+
+    object AddPhoto: ProfileEffect()
 }
 
 sealed class ProfileAction {
     data class Authorize(val id: String, val pass: String): ProfileAction()
     data class Authenticate(val email: String, val pass: String): ProfileAction()
     data class LoadTasks(val type: String,  val id: String): ProfileAction()
-    data class ConfirmTask(val body: ConfirmItem): ProfileAction()
-    data class SendReport(val body: ReportItem): ProfileAction()
+    data class ConfirmTask(val body: ConfirmRefuseItem): ProfileAction()
+    data class SendReport(val body: ReportItem, val imageBody: MultipartBody.Part?): ProfileAction()
+    data class RefuseTask(val body: ConfirmRefuseItem): ProfileAction()
 }

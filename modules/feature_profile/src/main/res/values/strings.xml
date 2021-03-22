@@ -61,4 +61,6 @@
     <string name="send_no_report">Отправить без отчета</string>
     <string name="send_with_report">Отправить с отчетом</string>
     <string name="send_report">Отправить отчет</string>
+    <string name="gallery">Из галереи</string>
+    <string name="camera">Сделать снимок</string>
 </resources>

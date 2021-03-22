@@ -1,14 +1,17 @@
 package ru.mpei.feature_profile
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Html
 import android.view.View
+import android.widget.Toast
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.PopUntil
 import kekmech.ru.common_navigation.Router
 import org.koin.android.ext.android.inject
+import ru.mpei.domain_profile.dto.ConfirmRefuseItem
 import ru.mpei.domain_profile.dto.TaskItem
 import ru.mpei.feature_profile.databinding.FragmentTaskBinding
 import ru.mpei.feature_profile.mvi.*
@@ -19,6 +22,7 @@ class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, Pro
     //    private val mSettings: SharedPreferences by inject()
     private val profileFeatureFactory: ProfileFeatureFactory by inject()
     private val router: Router by inject()
+    private val mSettings: SharedPreferences by inject()
     private val binding by viewBinding(FragmentTaskBinding::bind)
     override var layoutId: Int = R.layout.fragment_task
 
@@ -66,6 +70,16 @@ class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, Pro
         }
     }
 
+    override fun handleEffect(effect: ProfileEffect) = when (effect){
+        is ProfileEffect.RefuseSuccess -> {
+            router.executeCommand( PopUntil(TasksListFragment::class) )
+        }
+        is ProfileEffect.RefuseError -> {
+            Toast.makeText(context, "Не удалось отказаться от задания - попробуйте еще раз позднее", Toast.LENGTH_SHORT).show()
+        }
+        else -> {}
+    }
+
     private fun initProcessTask() {
         with(binding) {
             taskNameProcess.text = task.taskName
@@ -78,6 +92,10 @@ class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, Pro
             btnSendForCheckProcess.setOnClickListener {
                 val fragment = EditReportFragment(task.id, task.taskName, ReportType.NEW)
                 router.executeCommand(AddScreenForward { fragment })
+            }
+            btnRefuseTaskProcess.setOnClickListener {
+                val body = ConfirmRefuseItem(task_id = task.id, user_id = mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!)
+                feature.accept(Wish.RefuseTask(body))
             }
         }
     }

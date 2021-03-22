@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.mpei.feature_profile">
-
-<application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<application android:requestLegacyExternalStorage="true">
     <provider
         android:name="androidx.core.content.FileProvider"
         android:authorities="ru.mpei.ossapp.myapplication.fileprovider"

@@ -138,7 +138,7 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
             state = state.copy(
                 isLoading = true
             ),
-            action = ProfileAction.SendReport(body = event.body)
+            action = ProfileAction.SendReport(body = event.body, imageBody = event.imageBody)
         )
 
         is Wish.Authorization -> Result(

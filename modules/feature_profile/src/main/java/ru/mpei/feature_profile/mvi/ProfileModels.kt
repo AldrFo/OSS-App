@@ -1,6 +1,7 @@
 package ru.mpei.feature_profile.mvi
 
 import kekmech.ru.common_mvi.Feature
+import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import ru.mpei.domain_profile.dto.*
 
@@ -44,7 +45,7 @@ sealed class ProfileEvent{
         data class LoadTasks(val type: String): Wish()
 
         data class ConfirmTask(val body: ConfirmRefuseItem): Wish()
-        data class SendReport(val body: ReportItem): Wish()
+        data class SendReport(val body: ReportItem, val imageBody: MultipartBody.Part?): Wish()
 
         data class RefuseTask(val body: ConfirmRefuseItem): Wish()
 
@@ -102,6 +103,6 @@ sealed class ProfileAction {
     data class Authenticate(val email: String, val pass: String): ProfileAction()
     data class LoadTasks(val type: String,  val id: String): ProfileAction()
     data class ConfirmTask(val body: ConfirmRefuseItem): ProfileAction()
-    data class SendReport(val body: ReportItem): ProfileAction()
+    data class SendReport(val body: ReportItem, val imageBody: MultipartBody.Part?): ProfileAction()
     data class RefuseTask(val body: ConfirmRefuseItem): ProfileAction()
 }

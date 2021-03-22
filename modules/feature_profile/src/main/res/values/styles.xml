@@ -4,4 +4,10 @@
         <item name="colorControlNormal">@color/dark_blue_text</item>
         <item name="colorControlActivated">@color/dark_blue_text</item>
     </style>
+
+    <style name="radio_button" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="colorControlActivated">@android:color/holo_red_light</item>
+        //black is the color of the normal state
+        <item name="colorControlNormal">@android:color/black</item>
+    </style>
 </resources>

@@ -1,11 +1,13 @@
 package ru.mpei.feature_profile
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
-import android.database.Cursor
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -13,6 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_mvi.ui.BaseFragment
@@ -66,7 +69,6 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
                         feature.accept(Wish.ConfirmTask(body))
                     }
                     btnSendWithReport.setOnClickListener {
-
                         val body: ReportItem = if (image != null) {
                             ReportItem(comment = fragmentTaskReportComment.text.toString(), user_id = mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!, task_id = taskId, file_name = image!!.name)
                         } else {
@@ -117,6 +119,7 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
         binding.fragmentTaskReportToolbarText.text = taskName
 
         binding.btnAddPhotoImage.setOnClickListener {
+
             feature.accept(Wish.AddPhoto)
         }
     }
@@ -152,7 +155,6 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
                     binding.btnAddPhotoImage.visibility = View.VISIBLE
                     binding.reportImageCard.visibility = View.GONE
                 }
-                Toast.makeText(context, currentPhotoPath, Toast.LENGTH_LONG).show()
                 image = File(currentPhotoPath)
             }
             CHOOSE_PHOTO -> if (resultCode == Activity.RESULT_OK) {
@@ -188,12 +190,9 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
     override fun handleEffect(effect: ProfileEffect) {
         when (effect) {
             is ProfileEffect.ConfirmSuccess -> {
-                Toast.makeText(context, "Task confirmed", Toast.LENGTH_SHORT).show()
                 router.executeCommand(PopUntil(TaskFragment::class))
             }
             is ProfileEffect.ReportSendSuccess -> {
-                Toast.makeText(context, "Report sent", Toast.LENGTH_SHORT).show()
-
                 router.executeCommand(PopUntil(TaskFragment::class))
             }
             is ProfileEffect.ReportSendError -> {
@@ -209,28 +208,45 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
                 p.menuInflater.inflate(R.menu.menu_popup_image_type, p.menu)
                 p.setOnMenuItemClickListener { item: MenuItem ->
                     if (item.title == "Сделать фотографию") {
-                        //получение фото через камеру
-                        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                        // Ensure that there's a camera activity to handle the intent
-                        if (takePictureIntent.resolveActivity(requireContext().packageManager) != null) {
-                            // Create the File where the photo should go
-                            var photoFile: File? = null
-                            try {
-                                photoFile = createImageFile()
-                            } catch (ignored: IOException) {
-                            }
-                            // Continue only if the File was successfully created
-                            if (photoFile != null) {
-                                val photoURI = FileProvider.getUriForFile(requireContext(),
-                                    "ru.mpei.ossapp.myapplication.fileprovider", photoFile);
-                                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                                startActivityForResult(takePictureIntent, TAKE_PHOTO)
+
+                        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) !=
+                            PackageManager.PERMISSION_GRANTED  ){
+                            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CAMERA), 0)
+                        }
+                        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) ==
+                            PackageManager.PERMISSION_GRANTED  ) {
+                            //получение фото через камеру
+                            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                            // Ensure that there's a camera activity to handle the intent
+                            if (takePictureIntent.resolveActivity(requireContext().packageManager) != null) {
+                                // Create the File where the photo should go
+                                var photoFile: File? = null
+                                try {
+                                    photoFile = createImageFile()
+                                } catch (ignored: IOException) {
+                                }
+                                // Continue only if the File was successfully created
+                                if (photoFile != null) {
+                                    val photoURI = FileProvider.getUriForFile(requireContext(),
+                                        "ru.mpei.ossapp.myapplication.fileprovider", photoFile);
+                                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                                    startActivityForResult(takePictureIntent, TAKE_PHOTO)
+                                }
                             }
                         }
                     } else {
-                        val pickPhoto = Intent(Intent.ACTION_PICK,
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                        startActivityForResult(pickPhoto, CHOOSE_PHOTO) //one can be replaced with any action code
+
+                        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                            PackageManager.PERMISSION_GRANTED  ){
+                            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+                        }
+
+                        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_GRANTED  ) {
+                            val pickPhoto = Intent(Intent.ACTION_PICK,
+                                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                            startActivityForResult(pickPhoto, CHOOSE_PHOTO) //one can be replaced with any action code
+                        }
                     }
                     true
                 }

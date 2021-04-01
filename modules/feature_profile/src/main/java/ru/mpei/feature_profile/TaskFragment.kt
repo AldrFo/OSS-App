@@ -19,7 +19,6 @@ import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
 
 class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
 
-    //    private val mSettings: SharedPreferences by inject()
     private val profileFeatureFactory: ProfileFeatureFactory by inject()
     private val router: Router by inject()
     private val mSettings: SharedPreferences by inject()

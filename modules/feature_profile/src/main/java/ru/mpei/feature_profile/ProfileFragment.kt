@@ -45,7 +45,6 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         } else {
             showLogin()
         }
-
     }
 
     override fun handleEffect(effect: ProfileEffect) = when(effect) {

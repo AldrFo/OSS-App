@@ -47,7 +47,7 @@ class AvailableTaskFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, 
             balanceAvail.text = item.price
             taskDescriptionAvail.text = if (item.taskDescription.isEmpty()) getString(R.string.no_description) else item.taskDescription
             placeAvail.text = Html.fromHtml(getString(R.string.place, item.location))
-            beginDateAvail.text = Html.fromHtml(getString(R.string.begin_date, item.startDate.substring(0, item.endDate.length - 3)))
+            beginDateAvail.text = Html.fromHtml(getString(R.string.begin_date, item.startDate.substring(0, item.startDate.length - 3)))
             endDateAvail.text = Html.fromHtml(getString(R.string.end_date, item.endDate.substring(0, item.endDate.length - 3)))
             refuseDateAvail.text = Html.fromHtml(getString(R.string.refuse_date, item.refuseInfo.substring(0, item.refuseInfo.length - 3)))
 

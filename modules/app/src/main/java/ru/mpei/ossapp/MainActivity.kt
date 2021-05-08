@@ -1,9 +1,12 @@
 package ru.mpei.ossapp
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import kekmech.ru.common_android.onActivityResult
 import kekmech.ru.common_navigation.BackButtonListener
 import kekmech.ru.common_navigation.NavigationHolder
@@ -26,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             router.executeCommand(NewRoot { MainFragment.newInstance() })
         }
+
     }
 
     override fun onResumeFragments() {
@@ -51,4 +55,6 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
+
 }

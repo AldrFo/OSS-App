@@ -107,7 +107,7 @@ class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, Pro
             placeCheck.text = Html.fromHtml(getString(R.string.place, task.location))
             beginDateCheck.text = Html.fromHtml(getString(R.string.begin_date, task.startDate.substring(0, task.startDate.length - 3)))
             endDateCheck.text = Html.fromHtml(getString(R.string.end_date, task.endDate.substring(0, task.endDate.length - 3)))
-            taskCommentCheck.text = if (task.comment.isEmpty()) getString(R.string.no_comment) else task.comment
+            taskCommentCheck.text = task.comment
             btnEditCheck.setOnClickListener {
                 val fragment = EditReportFragment(task.id, task.taskName, ReportType.EDIT)
                 router.executeCommand(AddScreenForward { fragment })

@@ -100,6 +100,36 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
             effect = ProfileEffect.TasksLoadError(event.throwable)
         )
 
+        is News.AllProductsLoaded -> Result(
+            state = state.copy(
+                isLoading = false,
+                shopAllProductsList = event.allProducts
+            ),
+            effect = ProfileEffect.AllProductsLoaded
+        )
+
+        is News.AllProductsLoadError -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.ShowError(event.throwable)
+        )
+
+        is News.PopularProductsLoaded -> Result(
+            state = state.copy(
+                isLoading = false,
+                shopPopularProductsList = event.popularProducts
+            ),
+            effect = ProfileEffect.PopularProductsLoaded
+        )
+
+        is News.PopularProductsLoadError -> Result(
+            state = state.copy(
+                isLoading = false
+            ),
+            effect = ProfileEffect.ShowError(event.throwable)
+        )
+
     }
 
     private fun processWish(event: Wish, state: ProfileState): ProfileResult = when (event) {
@@ -114,6 +144,17 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
 
         is Wish.System.InitTask -> Result(
             state = state.copy()
+        )
+
+        is Wish.System.InitShop -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            effects = emptyList(),
+            actions = listOf(
+                ProfileAction.LoadPopularProducts,
+                ProfileAction.LoadAllProducts
+            )
         )
 
         is Wish.AddPhoto -> Result(
@@ -183,6 +224,26 @@ class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, Pr
                 isLoading = true
             ),
             action = ProfileAction.LoadTasks(event.type, state.profileData.id.toString())
+        )
+
+        is Wish.OnShopPageChange -> Result(
+            state = state.copy(
+                selectedShopPage = event.position
+            )
+        )
+
+        is Wish.LoadAllProducts -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            action = ProfileAction.LoadAllProducts
+        )
+
+        is Wish.LoadPopularProducts -> Result(
+            state = state.copy(
+                isLoading = true
+            ),
+            action = ProfileAction.LoadPopularProducts
         )
     }
 }

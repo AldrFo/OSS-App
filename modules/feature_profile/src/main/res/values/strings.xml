@@ -64,4 +64,10 @@
     <string name="send_report">Отправить отчет</string>
     <string name="gallery">Из галереи</string>
     <string name="camera">Сделать снимок</string>
+    <string name="empty_shop_list">Пока что тут пусто.</string>
+    <string name="shop_popular">Популярные</string>
+    <string name="shop_all">Все</string>
+    <string name="shop">Магазин</string>
+    <string name="product_name">Наименование</string>
+    <string name="product_price">Стоимость</string>
 </resources>

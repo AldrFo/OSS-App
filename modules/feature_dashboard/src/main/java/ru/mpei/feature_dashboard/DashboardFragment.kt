@@ -95,7 +95,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
             selectorAfisha.setTextColor(selectedColor)
             selectorNews.backgroundTintList = ColorStateList.valueOf(selectedColor)
             selectorNews.setTextColor(defaultColor)
-            emptyNewsLabel.isVisible = state.eventsList.isEmpty()
+            emptyNewsLabel.isVisible = state.newsList.isEmpty()
             emptyDashboardLabel.visibility = View.GONE
         }
     }

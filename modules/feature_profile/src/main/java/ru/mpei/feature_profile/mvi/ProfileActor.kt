@@ -26,5 +26,11 @@ class ProfileActor(
 
         is ProfileAction.RefuseTask -> profileRepository.refuseTask(action.body)
             .mapEvents(ProfileEvent.News::TaskRefused, ProfileEvent.News::TaskRefuseError)
+
+        is ProfileAction.LoadAllProducts -> profileRepository.loadAllProducts()
+            .mapEvents(ProfileEvent.News::AllProductsLoaded, ProfileEvent.News::AllProductsLoadError)
+
+        is ProfileAction.LoadPopularProducts -> profileRepository.loadPopularProducts()
+            .mapEvents(ProfileEvent.News::PopularProductsLoaded, ProfileEvent.News::PopularProductsLoadError)
     }
 }

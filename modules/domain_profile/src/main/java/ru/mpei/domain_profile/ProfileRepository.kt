@@ -28,4 +28,8 @@ class ProfileRepository (
         image = image)
 
     fun refuseTask(body: ConfirmRefuseItem): Single<ResponseBody> = profileApi.refuseTask(body = body)
+
+    fun loadAllProducts(): Single<List<ProductItem>> = profileApi.loadProducts("all")
+
+    fun loadPopularProducts(): Single<List<ProductItem>> = profileApi.loadProducts("popular")
 }

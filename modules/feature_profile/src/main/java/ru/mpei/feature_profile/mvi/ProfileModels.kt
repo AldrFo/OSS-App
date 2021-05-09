@@ -21,7 +21,10 @@ data class ProfileState(
     val isAuthorized: Boolean = false,
     val paramsItem: ParamsItem = ParamsItem(),
     val tasksList: List<TaskItem> = emptyList(),
-    val takePhoto: Boolean = false
+    val takePhoto: Boolean = false,
+    val selectedShopPage: Int = 0,
+    val shopPopularProductsList: List<ProductItem> = emptyList(),
+    val shopAllProductsList: List<ProductItem> = emptyList()
 )
 
 sealed class ProfileEvent{
@@ -31,6 +34,7 @@ sealed class ProfileEvent{
             object InitLogin: Wish()
             object InitReport: Wish()
             object InitTask: Wish()
+            object InitShop: Wish()
         }
 
         data class Authorization(val id: String, val pass: String): Wish()
@@ -52,6 +56,10 @@ sealed class ProfileEvent{
         object AddPhoto: Wish()
 
         object OpenShop: Wish()
+        data class OnShopPageChange(val position: Int): Wish()
+
+        object LoadAllProducts: Wish()
+        object LoadPopularProducts: Wish()
     }
 
     sealed class News : ProfileEvent() {
@@ -73,6 +81,12 @@ sealed class ProfileEvent{
 
         data class TaskRefused(val obj: ResponseBody): News()
         data class TaskRefuseError(val throwable: Throwable): News()
+
+        data class AllProductsLoaded(val allProducts: List<ProductItem>): News()
+        data class AllProductsLoadError(val throwable: Throwable): News()
+
+        data class PopularProductsLoaded(val popularProducts: List<ProductItem>): News()
+        data class PopularProductsLoadError(val throwable: Throwable): News()
     }
 
 }
@@ -101,6 +115,10 @@ sealed class ProfileEffect{
     object AddPhoto: ProfileEffect()
 
     object OpenShop: ProfileEffect()
+
+    object AllProductsLoaded: ProfileEffect()
+    object PopularProductsLoaded: ProfileEffect()
+    data class ShowError(val throwable: Throwable): ProfileEffect()
 }
 
 sealed class ProfileAction {
@@ -110,4 +128,6 @@ sealed class ProfileAction {
     data class ConfirmTask(val body: ConfirmRefuseItem): ProfileAction()
     data class SendReport(val body: ReportItem, val imageBody: MultipartBody.Part?): ProfileAction()
     data class RefuseTask(val body: ConfirmRefuseItem): ProfileAction()
+    object LoadPopularProducts: ProfileAction()
+    object LoadAllProducts: ProfileAction()
 }

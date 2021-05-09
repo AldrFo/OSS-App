@@ -136,7 +136,8 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             }
 
             btnOpenShop.setOnClickListener {
-                feature.accept( Wish.OpenShop )
+                val fragment = ShopFragment(profileData)
+                router.executeCommand( AddScreenForward {fragment} )
             }
         }
 

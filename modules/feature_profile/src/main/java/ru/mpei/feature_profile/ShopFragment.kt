@@ -11,6 +11,7 @@ import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_kotlin.fastLazy
 import kekmech.ru.common_mvi.ui.BaseFragment
+import kekmech.ru.common_navigation.AddScreenForward
 import kekmech.ru.common_navigation.ClearBackStack
 import kekmech.ru.common_navigation.Router
 import org.koin.android.ext.android.inject
@@ -117,7 +118,14 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
     }
 
     private fun createAdapter() = BaseAdapter(
-        ProductAdapterItem()
+        ProductAdapterItem {
+            val bundle = Bundle()
+            bundle.putSerializable("data", it)
+            bundle.putSerializable("profile", profileData)
+            val fragment = ProductFragment()
+            fragment.arguments = bundle
+            router.executeCommand(AddScreenForward { fragment })
+        }
     )
 
 }

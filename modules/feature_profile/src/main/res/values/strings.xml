@@ -70,4 +70,11 @@
     <string name="shop">Магазин</string>
     <string name="product_name">Наименование</string>
     <string name="product_price">Стоимость</string>
+    <string name="buy">Купить</string>
+    <string name="product_description">Описание продукта</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="success_purchase_text">Покупка прошла успешно!<br/>У вас осталось %1$s баллов.</string>
+    <string name="purchase_text">Сейчас на вашем счету %1$s то баллов.<br/>Вы уверены, что хотите совершить покупку?</string>
+    <string name="back_to_shop">Вернуться в магазин</string>
 </resources>

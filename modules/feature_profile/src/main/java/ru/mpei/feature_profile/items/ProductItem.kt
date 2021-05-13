@@ -13,6 +13,7 @@ interface ProductViewHolder {
     fun setName(name: String)
     fun setPrice(price: String)
     fun setImage(url: String)
+    fun setOnClickListener(onClick: () -> Unit)
 }
 
 class ProductViewHolderImpl(
@@ -34,20 +35,29 @@ class ProductViewHolderImpl(
             .load(url)
             .into(binding.productPhoto)
     }
-}
 
-class ProductItemBinder() : BaseItemBinder<ProductViewHolder, ProductItem>(){
-    override fun bind(vh: ProductViewHolder, model: ProductItem, position: Int) {
-        vh.setName(model.name)
-        vh.setPrice(model.price)
-        vh.setImage(model.imageUrl)
+    override fun setOnClickListener(onClick: () -> Unit) {
+        binding.root.setOnClickListener { onClick() }
     }
 }
 
-class ProductAdapterItem():
+class ProductItemBinder(
+    private val onClick: (ProductItem) -> Unit
+) : BaseItemBinder<ProductViewHolder, ProductItem>(){
+    override fun bind(vh: ProductViewHolder, model: ProductItem, position: Int) {
+        vh.setName(model.name)
+        vh.setPrice(model.price.toString())
+        vh.setImage(model.imageUrl)
+        vh.setOnClickListener { onClick(model) }
+    }
+}
+
+class ProductAdapterItem(
+    onClick: (ProductItem) -> Unit
+):
     AdapterItem<ProductViewHolder, ProductItem>(
         isType = { it is ProductItem},
         layoutRes = R.layout.item_product,
-        itemBinder = ProductItemBinder(),
+        itemBinder = ProductItemBinder(onClick),
         viewHolderGenerator = ::ProductViewHolderImpl
     )

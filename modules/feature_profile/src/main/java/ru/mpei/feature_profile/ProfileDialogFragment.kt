@@ -18,7 +18,7 @@ import ru.mpei.feature_profile.databinding.PopupResetPasswordBinding
 
 class ProfileDialogFragment : DialogFragment() {
 
-    private val binding by viewBinding(PopupResetPasswordBinding::bind)
+    private lateinit var binding: PopupResetPasswordBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return layoutInflater.inflate(R.layout.popup_reset_password, container)
@@ -26,6 +26,7 @@ class ProfileDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = PopupResetPasswordBinding.bind(view)
         with(binding) {
             btnSendRequest.setOnClickListener {
                 emailInput.error = "Почтовый адрес введен неверно"

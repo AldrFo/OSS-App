@@ -24,6 +24,8 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     private val router: Router by inject()
     private val binding by viewBinding(FragmentProfileBinding::bind)
 
+    private var fromFragment: Boolean = false
+
     override val initEvent: ProfileEvent get() = when ( mSettings.getBoolean(APP_PREFERENCES_FLAG, false) ) {
         false -> {
             Wish.System.InitLogin
@@ -40,6 +42,12 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
     override var layoutId: Int = R.layout.fragment_profile
 
     override fun render(state: ProfileState) {
+
+        if (fromFragment) {
+            fromFragment = false
+            feature.accept(Wish.Authorization(mSettings.getString(APP_PREFERENCES_ID, "0")!!, mSettings.getString(APP_PREFERENCES_PASS, "")!!))
+        }
+
         if (state.isAuthorized){
             showProfile(state.profileData)
         } else {
@@ -117,40 +125,35 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
             inProgressBtn.setOnClickListener {
                 val fragment = TasksListFragment(TasksType.PROCESS, profileData)
+                fromFragment = true
                 router.executeCommand(AddScreenForward { fragment })
             }
 
             onCheckBtn.setOnClickListener {
                 val fragment = TasksListFragment(TasksType.CHECK, profileData)
+                fromFragment = true
                 router.executeCommand(AddScreenForward { fragment })
             }
 
             finishedBtn.setOnClickListener {
                 val fragment = TasksListFragment(TasksType.FINISHED, profileData)
+                fromFragment = true
                 router.executeCommand(AddScreenForward { fragment })
             }
 
             refusedBtn.setOnClickListener {
                 val fragment = TasksListFragment(TasksType.REFUSED, profileData)
+                fromFragment = true
                 router.executeCommand(AddScreenForward { fragment })
             }
 
             btnOpenShop.setOnClickListener {
                 val fragment = ShopFragment(profileData)
+                fromFragment = true
                 router.executeCommand( AddScreenForward {fragment} )
             }
         }
 
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(context, "PAUSE", Toast.LENGTH_LONG).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(context, "RESUME", Toast.LENGTH_LONG).show()
     }
 
     private fun saveParams(params: ParamsItem){

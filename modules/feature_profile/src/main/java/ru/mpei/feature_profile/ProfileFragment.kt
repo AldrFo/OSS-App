@@ -143,6 +143,16 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(context, "PAUSE", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(context, "RESUME", Toast.LENGTH_LONG).show()
+    }
+
     private fun saveParams(params: ParamsItem){
         mSettings.edit().putString(APP_PREFERENCES_ID, params.id).apply()
         mSettings.edit().putString(APP_PREFERENCES_PASS, params.pass).apply()

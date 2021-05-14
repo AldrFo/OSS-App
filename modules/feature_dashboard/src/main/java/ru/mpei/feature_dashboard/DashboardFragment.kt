@@ -76,7 +76,6 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
         newsAdapter.update(state.newsList)
         eventsAdapter.update(state.eventsList)
         binding.dashboardViewPager.currentItem = state.selectedPage
-
         renderTabView(state)
     }
 

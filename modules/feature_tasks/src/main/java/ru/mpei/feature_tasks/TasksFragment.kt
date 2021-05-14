@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.BoolRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import kekmech.ru.common_adapter.BaseAdapter
 import kekmech.ru.common_android.ActivityResultListener
@@ -24,6 +25,8 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     private val router: Router by inject()
     private val mSettings: SharedPreferences by inject()
     private val binding by viewBinding(FragmentTasksBinding::bind)
+
+    private var fromFragment: Boolean = false
 
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
 
@@ -46,6 +49,12 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     }
 
     override fun render(state: TasksState) {
+
+        if (fromFragment) {
+            fromFragment = false
+            feature.accept(initEvent)
+        }
+
         tasksAdapter.update(state.ListOfTasks)
         if (state.ListOfTasks.isEmpty()) {
             binding.availTasksLabel.visibility = View.VISIBLE
@@ -69,6 +78,7 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
             bundle.putSerializable("availableTaskData", it)
             val fragment = AvailableTaskFragment()
             fragment.arguments = bundle
+            fromFragment = true
             router.executeCommand(AddScreenForward { fragment/*.withResultFor(this, 12892)*/ })
         }
     )

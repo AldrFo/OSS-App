@@ -25,6 +25,8 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
     private val adapter: BaseAdapter by fastLazy { createAdapter() }
     private val binding by viewBinding(FragmentTasksListBinding::bind)
 
+    private var fromFragment: Boolean = false
+
     private val name = when(type) {
         TasksType.PROCESS -> "Выполняемые"
         TasksType.CHECK -> "На проверке"
@@ -72,6 +74,19 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
     }
 
     override fun render(state: ProfileState) {
+
+        if (fromFragment) {
+            fromFragment = false
+            feature.accept(Wish.LoadTasks(
+                when(type){
+                    TasksType.PROCESS -> "taken"
+                    TasksType.CHECK -> "inCheck"
+                    TasksType.FINISHED -> "accepted"
+                    TasksType.REFUSED -> "refused"
+                }
+            ))
+        }
+
         adapter.update(state.tasksList)
 
         if (state.tasksList.isEmpty()) {
@@ -108,6 +123,7 @@ class TasksListFragment(val type: TasksType, private val profileData: ProfileIte
             bundle.putSerializable("taskData", it)
             val fragment = TaskFragment()
             fragment.arguments = bundle
+            fromFragment = true
             router.executeCommand(AddScreenForward { fragment })
         }
     )

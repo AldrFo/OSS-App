@@ -44,23 +44,16 @@ class ProductFragment: Fragment(R.layout.fragment_product) {
                 .into(fragmentProductPhoto)
 
             btnBuy.setOnClickListener {
-                if( enoughMoney() ){
-                    if ( enoughQuantity() ) {
-                        val popup = BuyProductPopup(profile = profileData, product = productData)
-                        popup.show(parentFragmentManager, "purchaseDialog")
-                    } else {
-                        Toast.makeText(context, "К сожалению товар закончился, попробуйте еще раз позднее.", Toast.LENGTH_LONG).show()
-                    }
+                if ( enoughQuantity() ) {
+                    val popup = BuyProductPopup(profileId = profileData.id, product = productData)
+                    popup.show(parentFragmentManager, "purchaseDialog")
                 } else {
-                    Toast.makeText(context, "У вас недостаточно баллов для покупки этого товара. Выполните еще задания, чтобы купить этот товар.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "К сожалению товар закончился, попробуйте еще раз позднее.", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    private fun enoughMoney(): Boolean = (profileData.capital - productData.price >= 0)
     private fun enoughQuantity(): Boolean = (productData.quantity > 0)
-
-
 
 }

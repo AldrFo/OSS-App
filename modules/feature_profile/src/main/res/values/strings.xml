@@ -77,4 +77,5 @@
     <string name="success_purchase_text">Покупка прошла успешно! У вас осталось %1$s баллов.</string>
     <string name="purchase_text">Сейчас на вашем счету %1$s баллов. Вы уверены, что хотите совершить покупку?</string>
     <string name="back_to_shop">Вернуться в магазин</string>
+    <string name="not_enough_money">Заработайте еще %1$s баллов, чтобы приобрести желамое!</string>
 </resources>

@@ -60,5 +60,8 @@ interface ProfileApi {
     fun loadProducts(@Query("type") type: String): Single<List<ProductItem>>
 
     @POST("/Android/shop.php")
-    fun buyProduct(@Query("userId") userId: String, @Query("productId") productId: String): Call<ResponseBody>
+    fun buyProduct(@Query("userId") userId: String, @Query("productId") productId: String): Call<UserShopInfoItem>
+
+    @GET("/Android/shop.php?type=user_shop_info")
+    fun getUserShopInfo(@Query("id") id: String): Call<UserShopInfoItem>
 }

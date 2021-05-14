@@ -25,7 +25,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:layout_marginTop="5dp">
 
             <ImageView
@@ -67,7 +67,8 @@
                 android:layout_marginTop="10dp"
                 android:textSize="14sp"
                 android:fontFamily="@font/nunito"
-                android:textColor="@color/dark_blue_text" />
+                android:textColor="@color/dark_blue_text"
+                android:text="@string/purchase_text"/>
 
 
                 <Button
@@ -116,8 +117,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/label_reset_password">
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/success_purchase_icon"
@@ -132,8 +132,10 @@
 
             <TextView
                 android:id="@+id/success_purchase_text"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="15dp"
                 android:textSize="14sp"
                 android:fontFamily="@font/nunito_semibold"
@@ -141,6 +143,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/success_purchase_icon"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                android:textAlignment="center"
                 android:text="@string/success_purchase_text" />
 
             <Button
@@ -163,6 +166,51 @@
                 style="?android:attr/buttonBarButtonStyle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/not_enough_money_frame"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/not_enough_money_text"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:fontFamily="@font/nunito_semibold"
+                android:textColor="@color/mpei_blue" />
+
+            <Button
+                android:id="@+id/btn_not_enough_money"
+                app:layout_constraintTop_toBottomOf="@+id/not_enough_money_text"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:text="@string/back_to_shop"
+                android:textColor="@color/mpei_blue"
+                android:textSize="18sp"
+                android:fontFamily="@font/nunito_semibold"
+                android:textAllCaps="false"
+                android:background="@drawable/ripple_outline_button"
+                android:gravity="center_horizontal"
+                style="?android:attr/buttonBarButtonStyle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

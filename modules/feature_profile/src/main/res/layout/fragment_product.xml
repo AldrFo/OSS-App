@@ -31,6 +31,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/product_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="40dp"
@@ -39,6 +40,7 @@
         android:backgroundTint="@color/mpei_white">
 
         <ScrollView
+            android:id="@+id/product_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
@@ -46,7 +48,7 @@
             android:clipToPadding="false">
 
                 <LinearLayout
-                    android:id="@+id/process_task_layout"
+                    android:id="@+id/product_info_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -56,6 +58,7 @@
                     android:layout_marginRight="24dp">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/product_image_card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="10dp"
@@ -130,6 +133,7 @@
                         />
 
                     <Space
+                        android:id="@+id/product_space"
                         android:layout_width="match_parent"
                         android:layout_height="18dp" />
 

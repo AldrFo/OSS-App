@@ -78,4 +78,5 @@
     <string name="purchase_text">Сейчас на вашем счету %1$s баллов. Вы уверены, что хотите совершить покупку?</string>
     <string name="back_to_shop">Вернуться в магазин</string>
     <string name="not_enough_money">Заработайте еще %1$s баллов, чтобы приобрести желамое!</string>
+    <string name="server_error">Произошла ошибка на сервере. Попробуйте еще раз позднее.</string>
 </resources>

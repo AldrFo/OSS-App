@@ -48,7 +48,7 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
             }
 
             override fun onFailure(call: Call<UserShopInfoItem>, t: Throwable) {
-                TODO("Not yet implemented")
+                serverError()
             }
         })
     }
@@ -61,6 +61,7 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
                 purchaseSendFrame.visibility = View.VISIBLE
                 okFrame.visibility = View.GONE
                 notEnoughMoneyFrame.visibility = View.GONE
+                serverErrorFrame.visibility = View.GONE
 
                 Picasso.get()
                     .load(product.imageUrl)
@@ -71,7 +72,6 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
                 popupShopProductText.text = getString(R.string.purchase_text).format(currCapital.toString())
                 btnBuyProduct.setOnClickListener {
 
-
                     val buyCall = service.buyProduct(userId = profileId.toString(), productId = product.id.toString())
 
                     buyCall.enqueue(object : Callback<UserShopInfoItem> {
@@ -79,13 +79,14 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
                             okFrame.visibility = View.VISIBLE
                             purchaseSendFrame.visibility = View.GONE
                             notEnoughMoneyFrame.visibility = View.GONE
+                            serverErrorFrame.visibility = View.GONE
                             currCapital = response.body()!!.capital
                             successPurchaseText.text = getString(R.string.success_purchase_text).format(currCapital.toString())
                             btnReturnToShop.setOnClickListener { dismiss() }
                         }
 
                         override fun onFailure(call: Call<UserShopInfoItem>, t: Throwable) {
-                            Toast.makeText(context, "error", Toast.LENGTH_LONG).show()
+                            serverError()
                         }
                     })
 
@@ -96,12 +97,26 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
             } else {
                 purchaseSendFrame.visibility = View.GONE
                 okFrame.visibility = View.GONE
+                serverErrorFrame.visibility = View.GONE
                 notEnoughMoneyFrame.visibility = View.VISIBLE
                 notEnoughMoneyText.text = getString(R.string.not_enough_money).format((product.price - currCapital).toString())
                 btnNotEnoughMoney.setOnClickListener { dismiss() }
             }
 
         }
+    }
+
+    private fun serverError(){
+
+        with(binding){
+            serverErrorFrame.visibility = View.VISIBLE
+            purchaseSendFrame.visibility = View.GONE
+            okFrame.visibility = View.GONE
+            notEnoughMoneyFrame.visibility = View.GONE
+            serverErrorText.text = getString(R.string.server_error)
+            btnServerError.setOnClickListener { dismiss() }
+        }
+
     }
 
 }

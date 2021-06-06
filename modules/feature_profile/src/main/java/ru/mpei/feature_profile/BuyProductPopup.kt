@@ -8,7 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.squareup.picasso.Picasso
 import kekmech.ru.common_android.viewbinding.viewBinding
+import kekmech.ru.common_navigation.PopUntil
+import kekmech.ru.common_navigation.Router
 import okhttp3.ResponseBody
+import org.koin.android.ext.android.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +24,8 @@ import ru.mpei.domain_profile.dto.UserShopInfoItem
 import ru.mpei.feature_profile.databinding.PopupBuyProductBinding
 
 class BuyProductPopup(private val profileId: Int, private val product: ProductItem): DialogFragment() {
+
+    private val router: Router by inject()
 
     //Объект-помощник для перехода между фрагментами
     private lateinit var binding: PopupBuyProductBinding
@@ -92,6 +97,7 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
                 popupShopProductPrice.text = product.price.toString()
                 popupShopProductText.text = getString(R.string.purchase_text).format(currCapital.toString())
                 btnBuyProduct.setOnClickListener {
+                    Toast.makeText(context, profileId.toString() + " " + product.id.toString(), Toast.LENGTH_SHORT).show();
                     //При нажатии на кнопку покупки создаем и выполняем соответствующий HTTP запрос
                     val buyCall = service.buyProduct(userId = profileId.toString(), productId = product.id.toString())
 
@@ -105,7 +111,10 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
                             serverErrorFrame.visibility = View.GONE
                             currCapital = response.body()!!.capital
                             successPurchaseText.text = getString(R.string.success_purchase_text).format(currCapital.toString())
-                            btnReturnToShop.setOnClickListener { dismiss() }
+                            btnReturnToShop.setOnClickListener {
+                                router.executeCommand(PopUntil(ShopFragment::class))
+                                dismiss()
+                            }
                         }
 
                         //В случае неудачного запроса показываем разметку с сообщением об ошибке

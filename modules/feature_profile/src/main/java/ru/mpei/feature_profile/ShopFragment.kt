@@ -147,4 +147,10 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
             router.executeCommand(AddScreenForward { fragment })
         }
     )
+
+    override fun onResume() {
+        super.onResume()
+        feature.accept(Wish.LoadPopularProducts)
+        feature.accept(Wish.LoadAllProducts)
+    }
 }

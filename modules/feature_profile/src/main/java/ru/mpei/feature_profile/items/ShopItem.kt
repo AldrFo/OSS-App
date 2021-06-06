@@ -11,6 +11,7 @@ import ru.mpei.feature_profile.databinding.ItemShopBinding
 import ru.mpei.feature_profile.items.ShopItem.Companion.ALL_ITEM
 import ru.mpei.feature_profile.items.ShopItem.Companion.POPULAR_ITEM
 
+//Элемент (список) фрагмента
 data class ShopItem(
         val id: String
 ) {
@@ -20,10 +21,12 @@ data class ShopItem(
     }
 }
 
+//Интерфейс ViewHolder списка
 interface ShopViewHolder {
     fun update(shopAdapter: BaseAdapter)
 }
 
+//Реализация интерфейса
 class ShopViewHolderImpl(
     containerView: View
 ): RecyclerView.ViewHolder(containerView), ShopViewHolder{
@@ -38,6 +41,7 @@ class ShopViewHolderImpl(
     }
 }
 
+//Связыватель списка и объекта
 class ShopItemBinder(
     private val adapter: BaseAdapter
 ) : BaseItemBinder<ShopViewHolder, ShopItem>() {
@@ -47,6 +51,7 @@ class ShopItemBinder(
     }
 }
 
+//Адаптер списка популряных товаров
 class ShopPopularAdapterItem(
     adapter: BaseAdapter
 ): AdapterItem<ShopViewHolder, ShopItem>(
@@ -57,6 +62,7 @@ class ShopPopularAdapterItem(
     areItemsTheSame = {a, b -> a.id == b.id}
 )
 
+//Адаптер списка всех товаров
 class ShopAllAdapterItem(
     adapter: BaseAdapter
 ): AdapterItem<ShopViewHolder, ShopItem>(

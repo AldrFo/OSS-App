@@ -28,18 +28,24 @@ import ru.mpei.feature_profile.mvi.ProfileEvent.*
 
 class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
 
+    //Объект-помощник для перехода между фрагментами
     private val router: Router by inject()
+    //Объект-помощник для доступа к элементам разметки
     private val binding by viewBinding(FragmentShopBinding::bind)
     private val shopFeatureFactory: ProfileFeatureFactory by inject()
 
+    //ID используемой разметки
     override var layoutId = R.layout.fragment_shop
 
+    //Событие, вызываемое при инициализауии фрагмента
     override val initEvent: ProfileEvent get() = Wish.System.InitShop
 
     override fun createFeature(): ProfileFeature = shopFeatureFactory.createWithData(profileData)
 
+    //Номер текущего отображаемого списка
     private var listPos: Int = 0
 
+    //Адаптеры для имеющихся списков
     private val popularAdapter: BaseAdapter by fastLazy { createAdapter() }
     private val allAdapter: BaseAdapter by fastLazy { createAdapter() }
     private val viewPagerAdapter by fastLazy {
@@ -51,16 +57,21 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
         }
     }
 
+    //Метод, вызываемый при внутреннем создании фрагмента
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         with(binding){
 
             with(fragmentShopToolbar) {
+                //Устанавливаем иконку кнопки возврата внутри тулбара
                 setNavigationIcon(R.drawable.ic_arrow_back)
+                //Устанавливаем метод, вызываемый по нажатию кнопки возврата
                 setNavigationOnClickListener { router.executeCommand(ClearBackStack()) }
             }
 
+            //Устанавливаем адаптер для карусели списков
             shopViewPager.adapter = viewPagerAdapter
 
+            //Устанавливаем метод, вызываемый при прокрутке карусели
             shopViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
@@ -68,9 +79,12 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
                     listPos = position
                 }
             })
+
+            //Устанавливаем события при нажатии на кнопки селектора отображаемого списка
             selectorPopular.setOnClickListener { feature.accept(Wish.OnShopPageChange(0)) }
             selectorAll.setOnClickListener { feature.accept(Wish.OnShopPageChange(1)) }
 
+            //Устанавливем цветовую схему анимации обновления списка
             swipeRefresh.setColorSchemeResources(R.color.mpei_blue)
             swipeRefresh.setOnRefreshListener {
                 if (listPos == 0) {
@@ -82,14 +96,18 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
         }
     }
 
+    //Метод, вызываемый при каждом событии внутри фрагмента
     override fun render(state: ProfileState) {
+        //Устанавливаем свежие списки продуктов
         popularAdapter.update(state.shopPopularProductsList)
         allAdapter.update(state.shopAllProductsList)
+        //Устанавливаем текущий номер селектора списков
         binding.shopViewPager.currentItem = state.selectedShopPage
-
+        //Обновляем внешний вид селектора списков
         renderTabView(state)
     }
 
+    //Метод обработки эффектов внутри фрагмента
     override fun handleEffect(effect: ProfileEffect) = when(effect) {
         is ProfileEffect.AllProductsLoaded -> binding.swipeRefresh.isRefreshing = false
         is ProfileEffect.PopularProductsLoaded -> binding.swipeRefresh.isRefreshing = false
@@ -97,6 +115,7 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
         else -> {}
     }
 
+    //Метод обновления внешнего вида селектора списков
     private fun renderTabView(state: ProfileState) = with(binding) {
         val selectedColor = resources.getColor(R.color.mpei_blue)
         val defaultColor = resources.getColor(R.color.mpei_white)
@@ -117,6 +136,7 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
         }
     }
 
+    //Метод создания адаптеров списков
     private fun createAdapter() = BaseAdapter(
         ProductAdapterItem {
             val bundle = Bundle()
@@ -127,5 +147,4 @@ class ShopFragment(private val profileData: ProfileItem): BaseFragment<ProfileEv
             router.executeCommand(AddScreenForward { fragment })
         }
     )
-
 }

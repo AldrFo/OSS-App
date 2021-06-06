@@ -16,44 +16,57 @@ import ru.mpei.feature_profile.databinding.FragmentProductBinding
 
 class ProductFragment: Fragment(R.layout.fragment_product) {
 
+    //Объект-помощник для перехода между фрагментами
     private val router: Router by inject()
+    //Объект-помощник для доступа к элементам разметки
     private val binding by viewBinding(FragmentProductBinding::bind)
 
+    //Переменная с информацией о продукте
     private lateinit var productData: ProductItem
+    //Переменная с информацией о пользователе
     private lateinit var profileData: ProfileItem
 
+    //Метод, вызываемый при создании фрагмента
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Инициализируем переменные с информацией о продукте и пользователе
         productData = arguments?.get("data") as ProductItem
         profileData = arguments?.get("profile") as ProfileItem
 
         with(binding) {
             with(fragmentProductToolbar) {
+                //Устанавливаем иконку кнопки возврата внутри тулбара
                 setNavigationIcon(R.drawable.ic_arrow_back)
+                //Устанавливаем метод, вызываемый по нажатию кнопки возврата
                 setNavigationOnClickListener { router.executeCommand( PopUntil(ShopFragment::class) ) }
             }
+            //Устанавливем название продукта в надпись на тулбаре
             fragmentProductToolbarText.text = productData.name
 
+            //Устанавливаем надписи с названием, ценом и описанием продукта
             fragmentProductName.text = productData.name
             fragmentProductPrice.text = productData.price.toString()
             fragmentProductDescription.text = if (productData.description.isEmpty()) "Описание отсутствует" else productData.description
 
+            //Загружаем изображение товара
             Picasso.get()
                 .load(productData.imageUrl)
                 .into(fragmentProductPhoto)
 
+            //Устанавливаем слушатель нажатия на кнопку покупки
             btnBuy.setOnClickListener {
-                if ( enoughQuantity() ) {
+                if ( enoughQuantity() ) { //Если достаточное количество товара,то открываем диалоговое окно покупки
                     val popup = BuyProductPopup(profileId = profileData.id, product = productData)
                     popup.show(parentFragmentManager, "purchaseDialog")
-                } else {
+                } else { //Иначе показываем сообщение о нехватке товара
                     Toast.makeText(context, "К сожалению товар закончился, попробуйте еще раз позднее.", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
+    //Метод проверки достаточного количества товара
     private fun enoughQuantity(): Boolean = (productData.quantity > 0)
 
 }

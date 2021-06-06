@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="ru.mpei.feature_profile.ProfileFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/bg_blue">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mpei_blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_semibold"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/enter"/>
+
+    <ScrollView
+        android:id="@+id/ScrollViewProfile1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_list"
+            android:backgroundTint="@color/mpei_white">
+
+            <ImageView
+                android:id="@+id/loginLogo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_logo_foreground"
+                tools:ignore="ContentDescription"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:layout_marginRight="36dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:layout_marginBottom="32dp"
+                android:text="@string/oss"
+                android:textColor="@color/mpei_blue"
+                android:textSize="18sp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/mail"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginLeft="24dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mailInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:errorContentDescription="@string/error_mail"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/loginEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:hint="@string/email_example"
+                    android:ems="15"
+                    android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/password"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="24dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/selector_eye_toggle"
+                app:passwordToggleTint="@color/link"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/loginPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:ems="15"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="34dp">
+
+                <!--<CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:textColor="@color/dark_blue_text"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/remember_me"
+                    android:button="@drawable/selector_checkbox" />-->
+
+                <Space android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp" />
+
+                <TextView
+                    android:id="@+id/forgotten_password_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forgotten_password"
+                    android:textColor="@color/link"
+                    android:fontFamily="@font/nunito"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/enterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/enter_button"
+                android:background="@drawable/shape_button"
+                android:textColor="@color/mpei_white"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="11dp"
+                android:paddingTop="11dp"
+                android:layout_marginBottom="35dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:textSize="18sp"
+                android:textAllCaps="false"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/no_account"
+                    android:textColor="@color/dark_blue_text"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito" />
+
+                <TextView
+                    android:id="@+id/registerLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="@string/register"
+                    android:textColor="@color/link"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/ScrollViewProfile2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_list"
+            android:backgroundTint="@color/mpei_white">
+
+            <Button
+                android:id="@+id/exitButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_log_out"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:id="@+id/initials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue_text"
+                android:textSize="30sp"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="@string/initials"
+                android:background="@drawable/background_initials"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/dark_blue_text"
+                android:textSize="18sp"
+                android:text="@string/name_blank"
+                android:fontFamily="@font/nunito_semibold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="6dp"
+                android:textSize="14sp"
+                android:textColor="@color/dark_blue_text"
+                android:fontFamily="@font/nunito"
+                android:text="@string/my_points"/>
+
+            <TextView
+                android:id="@+id/capital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/ic_coin"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="6dp"
+                android:textColor="@color/dark_blue_text"
+                android:textSize="14sp"
+                android:fontFamily="@font/nunito"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:orientation="vertical"
+                android:divider="@drawable/separator_horizontal"
+                android:showDividers="middle"
+                android:dividerPadding="26dp"
+                android:layout_marginLeft="26dp">
+
+                <Button
+                    android:id="@+id/in_progress_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:drawablePadding="14dp"
+                    android:text="@string/in_progress"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito"
+                    android:gravity="left|center_vertical"
+                    android:background="@drawable/ripple_task_button"
+                    android:drawableLeft="@drawable/ic_task_in_progress"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/on_check_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:drawablePadding="14dp"
+                    android:text="@string/on_check"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito"
+                    android:gravity="left|center_vertical"
+                    android:background="@drawable/ripple_task_button"
+                    android:drawableLeft="@drawable/ic_task_on_review"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/finished_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:drawablePadding="14dp"
+                    android:text="@string/finished"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito"
+                    android:gravity="left|center_vertical"
+                    android:background="@drawable/ripple_task_button"
+                    android:drawableLeft="@drawable/ic_task_done"
+                    android:textAllCaps="false"/>
+
+                <Button
+                    android:id="@+id/refused_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:drawablePadding="14dp"
+                    android:text="@string/refused"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_blue_text"
+                    android:fontFamily="@font/nunito"
+                    android:gravity="left|center_vertical"
+                    android:background="@drawable/ripple_task_button"
+                    android:drawableLeft="@drawable/ic_task_cancelled"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ripple_blue_button"
+                android:text="@string/spend_points"
+                android:textColor="@color/mpei_white"
+                android:textSize="18sp"
+                android:fontFamily="@font/nunito_semibold"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:paddingRight="40dp"
+                android:paddingLeft="40dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="35dp"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

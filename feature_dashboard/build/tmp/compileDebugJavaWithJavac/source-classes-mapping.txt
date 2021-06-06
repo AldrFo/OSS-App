@@ -1,0 +1,2 @@
+ru/mpei/feature_dashboard/BuildConfig.java
+ ru.mpei.feature_dashboard.BuildConfig

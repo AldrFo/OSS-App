@@ -85,7 +85,6 @@ class  ProfileFragment: BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         }
 
         is ProfileEffect.Validate -> {
-
             validate(effect.email, effect.pass)
         }
 

@@ -1,0 +1,2 @@
+ru/mpei/feature_services/BuildConfig.java
+ ru.mpei.feature_services.BuildConfig

@@ -1,0 +1,1 @@
+C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\common_di\build\classes\kotlin\main\kekmech\ru\common_di\KoinExtKt.class;C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\common_di\build\classes\kotlin\main\kekmech\ru\common_di\ModuleProvider.class

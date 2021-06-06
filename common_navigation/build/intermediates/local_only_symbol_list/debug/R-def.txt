@@ -1,0 +1,7 @@
+R_DEF: Internal format may change without notice
+local
+anim anim_in
+anim anim_out
+color mpei_blue
+id container
+layout layout_container

@@ -1,0 +1,2 @@
+kekmech/ru/common_mvi/BuildConfig.java
+ kekmech.ru.common_mvi.BuildConfig

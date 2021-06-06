@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+array com_google_android_gms_fonts_certs
+array com_google_android_gms_fonts_certs_dev
+array com_google_android_gms_fonts_certs_prod
+array preloaded_fonts
+color bg_blue
+color dark_blue_text
+color dark_gray_hints
+color error
+color gray_blue
+color light_gray_divider
+color link
+color mpei_blue
+color mpei_blue_dark
+color mpei_white
+color mpei_white_dark
+drawable ic_smile
+font nunito
+font nunito_bold
+font nunito_semibold
+id empty_list_label
+id fragment_article_toolbar_text
+layout fragment_services
+string coming_soon
+string services

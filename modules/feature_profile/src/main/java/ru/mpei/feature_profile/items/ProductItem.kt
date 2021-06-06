@@ -1,5 +1,10 @@
 package ru.mpei.feature_profile.items
 
+//------------------------//
+//Турлюк Андрей Игоревич
+//А-08-17
+//------------------------//
+
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -9,6 +14,7 @@ import ru.mpei.domain_profile.dto.ProductItem
 import ru.mpei.feature_profile.R
 import ru.mpei.feature_profile.databinding.ItemProductBinding
 
+//Интерфейс ViewHolder для товара в вписке
 interface ProductViewHolder {
     fun setName(name: String)
     fun setPrice(price: String)
@@ -16,6 +22,7 @@ interface ProductViewHolder {
     fun setOnClickListener(onClick: () -> Unit)
 }
 
+//Реализауия описанного выще интерфейса
 class ProductViewHolderImpl(
     containerView: View
 ) : RecyclerView.ViewHolder(containerView), ProductViewHolder{
@@ -41,6 +48,7 @@ class ProductViewHolderImpl(
     }
 }
 
+//Связыватель элемента списка и товара
 class ProductItemBinder(
     private val onClick: (ProductItem) -> Unit
 ) : BaseItemBinder<ProductViewHolder, ProductItem>(){
@@ -52,6 +60,7 @@ class ProductItemBinder(
     }
 }
 
+//Элемент списка продукта для адаптера списка
 class ProductAdapterItem(
     onClick: (ProductItem) -> Unit
 ):

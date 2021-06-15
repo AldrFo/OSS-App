@@ -1,4 +1,8 @@
 package ru.mpei.feature_dashboard
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -24,16 +28,21 @@ import ru.mpei.feature_dashboard.items.NewsAdapterItem
 import ru.mpei.feature_dashboard.mvi.*
 import ru.mpei.feature_dashboard.mvi.DashboardEvent.Wish
 
+// Класс фрагмента ленты новостей и афиши
 class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, DashboardState, DashboardFeature>() {
+    // Событие при инициализации
     override val initEvent: DashboardEvent get() = Wish.System.Init
 
+    // Вспомогательные обекты для создания фичи, доступа к фрагментам, связывания разметки с калассом
     private val dashboardFeatureFactory: DashboardFeatureFactory by inject()
     private val router: Router by inject()
     private val binding by viewBinding(FragmentDashboardBinding::bind)
     override var layoutId = R.layout.fragment_dashboard
 
+    // Позиция карусели списков
     private var listPos: Int = 0
 
+    // Набор адапетров для списков
     private val newsAdapter: BaseAdapter by fastLazy { createAdapter() }
     private val eventsAdapter: BaseAdapter by fastLazy { createAdapter() }
     private val viewPagerAdapter by fastLazy {
@@ -45,12 +54,16 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
         }
     }
 
+    // Функция создания фичи
     override fun createFeature(): DashboardFeature = dashboardFeatureFactory.create()
 
+    // При внутреннем создании отображения
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         with(binding) {
+            // связываем адаптеры
             dashboardViewPager.adapter = viewPagerAdapter
 
+            // отслеживание состояния перкключателя списков
             dashboardViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
@@ -61,6 +74,7 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
             selectorAfisha.setOnClickListener { feature.accept(Wish.OnPageChange(0)) }
             selectorNews.setOnClickListener { feature.accept(Wish.OnPageChange(1)) }
 
+            // определение логики при обновлении списков
             swipeRefresh.setColorSchemeResources(R.color.mpei_blue)
             swipeRefresh.setOnRefreshListener {
                 if (listPos == 0) {
@@ -72,13 +86,17 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
         }
     }
 
+    // При пересборке отображения
     override fun render(state: DashboardState) {
+        // Обновляем списки для поддержания актуальной информации
         newsAdapter.update(state.newsList)
         eventsAdapter.update(state.eventsList)
+        // Обновляем селектор отображаемого списка
         binding.dashboardViewPager.currentItem = state.selectedPage
         renderTabView(state)
     }
 
+    // Отрисовка селектора отображаемого списка
     private fun renderTabView(state: DashboardState) = with(binding) {
         val selectedColor = resources.getColor(R.color.mpei_blue)
         val defaultColor = resources.getColor(R.color.mpei_white)
@@ -99,12 +117,14 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
         }
     }
 
+    // Обработка эффектов
     override fun handleEffect(effect: DashboardEffect) = when(effect) {
         is DashboardEffect.NewsListLoaded -> binding.swipeRefresh.isRefreshing = false
         is DashboardEffect.EventsListLoaded -> binding.swipeRefresh.isRefreshing = false
         is DashboardEffect.ShowError -> Toast.makeText(context, "Возникла проблема: "+effect.throwable.localizedMessage, Toast.LENGTH_SHORT).show()
     }
 
+    // Создание адаптеров
     private fun createAdapter() = BaseAdapter(
         NewsAdapterItem {
             val bundle = Bundle()

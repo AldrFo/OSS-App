@@ -1,9 +1,15 @@
 package ru.mpei.feature_profile.mvi
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import io.reactivex.Observable
 import kekmech.ru.common_mvi.Actor
 import ru.mpei.domain_profile.ProfileRepository
 
+// Обработчик запросов к серверу
 class ProfileActor(
         private val profileRepository: ProfileRepository,
 ) : Actor<ProfileAction, ProfileEvent>{

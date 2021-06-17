@@ -13,7 +13,7 @@ import ru.mpei.domain_news.NewsApi
 import ru.mpei.domain_news.NewsRepository
 import ru.mpei.feature_dashboard.mvi.DashboardActor
 import ru.mpei.feature_dashboard.mvi.DashboardFeatureFactory
- 
+
 // Это класс объявления бинов, которые будут доступны из всех мест кода
 object DashboardModule : ModuleProvider({
     single { get<Retrofit.Builder>().buildApi<NewsApi>() } bind NewsApi::class

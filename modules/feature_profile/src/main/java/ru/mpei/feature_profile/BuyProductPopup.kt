@@ -1,5 +1,10 @@
 package ru.mpei.feature_profile
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +12,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.squareup.picasso.Picasso
-import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_navigation.PopUntil
 import kekmech.ru.common_navigation.Router
-import okhttp3.ResponseBody
 import org.koin.android.ext.android.inject
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,11 +22,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.mpei.domain_profile.ProfileApi
 import ru.mpei.domain_profile.dto.ProductItem
-import ru.mpei.domain_profile.dto.ProfileItem
 import ru.mpei.domain_profile.dto.UserShopInfoItem
 import ru.mpei.feature_profile.databinding.PopupBuyProductBinding
 
-class BuyProductPopup(private val profileId: Int, private val product: ProductItem): DialogFragment() {
+class BuyProductPopup(private val profileId: Int, private val product: ProductItem) : DialogFragment() {
 
     private val router: Router by inject()
 
@@ -32,9 +34,9 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
 
     //Переменная для реализации HTTP запросов
     private var retrofit: Retrofit = Retrofit.Builder()
-                                        .baseUrl("http://cy37212.tmweb.ru/")
-                                        .addConverterFactory(GsonConverterFactory.create())
-                                        .build()
+        .baseUrl("http://cy37212.tmweb.ru/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
     //Переменная для создания HTTP запросов к разным адресам с разными параметрами
     private val service = retrofit.create(ProfileApi::class.java)
@@ -76,7 +78,7 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
     }
 
     //Метод, вызываемый при успешном инициализирующем запросе
-    private fun successInit(){
+    private fun successInit() {
         with(binding) {
 
             //Если у пользователя достаточно баллов для покупки
@@ -142,9 +144,9 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
     }
 
     //Метод, вызываемый вслучае ошибки при запросе к серверу
-    private fun serverError(){
+    private fun serverError() {
         //Отображаем соответствующую разметку, выводим надпись и "вешаем" на кнопку возврата метод хакрытия диалогового окна
-        with(binding){
+        with(binding) {
             serverErrorFrame.visibility = View.VISIBLE
             purchaseSendFrame.visibility = View.GONE
             okFrame.visibility = View.GONE

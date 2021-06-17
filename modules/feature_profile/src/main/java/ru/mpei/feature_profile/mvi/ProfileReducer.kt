@@ -1,5 +1,10 @@
 package ru.mpei.feature_profile.mvi
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import kekmech.ru.common_mvi.BaseReducer
 import kekmech.ru.common_mvi.Result
 import ru.mpei.domain_profile.dto.ParamsItem
@@ -8,6 +13,7 @@ import ru.mpei.feature_profile.mvi.ProfileEvent.Wish
 
 typealias ProfileResult = Result<ProfileState, ProfileEffect, ProfileAction>
 
+// Обработчик намерений и события
 class ProfileReducer : BaseReducer<ProfileState, ProfileEvent, ProfileEffect, ProfileAction>{
     override fun reduce(event: ProfileEvent, state: ProfileState): ProfileResult  = when (event) {
         is Wish -> processWish(event, state)

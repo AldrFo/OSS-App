@@ -1,9 +1,10 @@
 package ru.mpei.feature_profile.items
 
-//------------------------//
-//Турлюк Андрей Игоревич
-//А-08-17
-//------------------------//
+/**
+*Турлюк Андрей Игоревич
+*А-08-17
+*/
+
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

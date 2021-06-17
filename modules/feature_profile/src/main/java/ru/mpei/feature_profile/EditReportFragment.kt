@@ -1,5 +1,10 @@
 package ru.mpei.feature_profile
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,7 +12,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -37,38 +41,51 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+// Класс старницы редактирования отчета к заданию
 class EditReportFragment(private val taskId: String, private val taskName: String, private val type: ReportType) : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, ProfileFeature>() {
 
+    // Путь для сохранения изображений
     private lateinit var currentPhotoPath: String
 
+    // Буферная переменная хранения сделанного изображения
     private var image: File? = null;
 
+    // Вспомогательные объекты для связывания разметки и кода, доступа к сохраненным данным и перключению между вкладками
     private val binding by viewBinding(FragmentTaskReportBinding::bind)
     private val mSettings: SharedPreferences by inject()
     private val router: Router by inject()
-
     override var layoutId: Int = R.layout.fragment_task_report
 
+    // Создание объекта фичи и метод, вызываемый при инициализации класса
     private val profileFeatureFactory: ProfileFeatureFactory by inject()
     override fun createFeature(): ProfileFeature = profileFeatureFactory.create()
 
+    // Намерение при создании класса
     override val initEvent: ProfileEvent = Wish.System.InitReport
 
+    // При внутреннем создании отображения связываем поля и данные
     @SuppressLint("QueryPermissionsNeeded")
     override fun onViewCreatedInternal(view: View, savedInstanceState: Bundle?) {
         when (type) {
+            // Если мы создаем новый отчет к заданию то отображаем одну разметку
             ReportType.NEW -> {
                 with(binding) {
+                    // Изменяем набор отображаемых кнопок
                     btnSendNoReport.visibility = View.VISIBLE
                     btnSendWithReport.visibility = View.VISIBLE
                     btnSendReport.visibility = View.GONE
 
+                    // ВСтавляем название задания
+                    fragmentTaskReportName.text = taskName
+
+                    // Вешаем действие на нажатие кнопки отправки без отчета
                     btnSendNoReport.setOnClickListener {
                         val body = ConfirmRefuseItem(task_id = taskId, user_id = mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!)
                         feature.accept(Wish.ConfirmTask(body))
                     }
+                    // Вешаем действие на нажатие кнопки отправки отчета
                     btnSendWithReport.setOnClickListener {
+                        // Создаем тело зароса
                         val body: ReportItem = if (image != null) {
                             ReportItem(comment = fragmentTaskReportComment.text.toString(), user_id = mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!, task_id = taskId, file_name = image!!.name)
                         } else {
@@ -77,22 +94,31 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
 
                         var imageFileBody: MultipartBody.Part? = null
 
+                        // Проверяем наличие фото
                         if (image != null) {
                             val requestBody: RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), image!!)
                             imageFileBody = MultipartBody.Part.createFormData("image", image!!.name, requestBody)
                         }
 
+                        // Создаем намерение на отправку отчета
                         feature.accept(Wish.SendReport(body, imageFileBody))
                     }
                 }
             }
 
+            // Иначе отображаем другую разметку
             ReportType.EDIT -> {
                 with(binding) {
+
+                    // Изменяем набор отображаемых кнопок
                     btnSendReport.visibility = View.VISIBLE
                     btnSendWithReport.visibility = View.GONE
                     btnSendNoReport.visibility = View.GONE
 
+                    // ВСтавляем название задания
+                    fragmentTaskReportName.text = taskName
+
+                    // Вешаем действие на нажатие кнопки отправки отчета
                     btnSendReport.setOnClickListener {
                         val body: ReportItem = if (image != null) {
                             ReportItem(comment = fragmentTaskReportComment.text.toString(), user_id = mSettings.getString(ProfileFragment.APP_PREFERENCES_ID, "0")!!, task_id = taskId, file_name = image!!.name)
@@ -102,24 +128,27 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
 
                         var imageFileBody: MultipartBody.Part? = null
 
+                        // Проверяем сделана ли фотография
                         if (image != null) {
                             val requestBody: RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), image!!)
                             imageFileBody = MultipartBody.Part.createFormData("image", image!!.name, requestBody)
                         }
 
+                        // Отправляем отчет
                         feature.accept(Wish.SendReport(body, imageFileBody))
                     }
                 }
             }
         }
 
+        // создаем кнопку возвращения
         binding.fragmentTaskReportToolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         binding.fragmentTaskReportToolbar.setNavigationOnClickListener { router.executeCommand(PopUntil(TaskFragment::class)) }
 
         binding.fragmentTaskReportToolbarText.text = taskName
 
+        // Вешаем дейсвтие на нажатие кнопки выбора фотографии
         binding.btnAddPhotoImage.setOnClickListener {
-
             feature.accept(Wish.AddPhoto)
         }
     }
@@ -210,11 +239,11 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
                     if (item.title == "Сделать фотографию") {
 
                         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) !=
-                            PackageManager.PERMISSION_GRANTED  ){
+                            PackageManager.PERMISSION_GRANTED) {
                             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CAMERA), 0)
                         }
                         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) ==
-                            PackageManager.PERMISSION_GRANTED  ) {
+                            PackageManager.PERMISSION_GRANTED) {
                             //получение фото через камеру
                             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                             // Ensure that there's a camera activity to handle the intent
@@ -237,12 +266,12 @@ class EditReportFragment(private val taskId: String, private val taskName: Strin
                     } else {
 
                         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
-                            PackageManager.PERMISSION_GRANTED  ){
+                            PackageManager.PERMISSION_GRANTED) {
                             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
                         }
 
                         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                            PackageManager.PERMISSION_GRANTED  ) {
+                            PackageManager.PERMISSION_GRANTED) {
                             val pickPhoto = Intent(Intent.ACTION_PICK,
                                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                             startActivityForResult(pickPhoto, CHOOSE_PHOTO) //one can be replaced with any action code

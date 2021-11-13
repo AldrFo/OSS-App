@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context="ru.mpei.feature_profile.ProfileFragment"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/bg_blue">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mpei_blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_semibold"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/registration_title"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/shape_list"
+            android:backgroundTint="@color/mpei_white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/name"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/regNameTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/regName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:hint="@string/ivan"
+                    android:ems="15"
+                    android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/surname"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/regSurnameInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/regSurname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:hint="@string/ivanov"
+                    android:ems="15"
+                    android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/mail"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/regEmailInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/regMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:hint="@string/email_example"
+                    android:ems="15"
+                    android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/sex"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:textSize="12sp" />
+
+            <RadioGroup
+                android:id="@+id/regSex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:buttonTint="@drawable/radio_color"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@drawable/radio_color"
+                    android:text="@string/female" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/group"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/regGroupInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/regGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:ems="15"
+                    android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no"
+                    android:hint="@string/groupExample"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/password"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="24dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/regPasswordInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/selector_eye_toggle"
+                app:passwordToggleTint="@color/link"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/regPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:hint="@string/password_hint"
+                    android:ems="15"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/repeat_password"
+                android:textColor="@color/dark_blue_text"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="24dp"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/regRepeatPasswordInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/selector_eye_toggle"
+                app:passwordToggleTint="@color/link"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/regRepeatPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:padding="10dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/dark_blue_text"
+                    android:textColorHint="@color/dark_gray_hints"
+                    android:hint="@string/password_hint"
+                    android:ems="15"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@null"
+                    android:autofillHints="no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/register_button"
+                android:background="@drawable/shape_button"
+                android:textColor="@color/mpei_white"
+                android:layout_marginTop="24dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="11dp"
+                android:paddingTop="11dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:textSize="18sp"
+                android:textAllCaps="false"/>
+
+            <Space android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/have_account"
+                    android:textColor="@color/dark_blue_text"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/nunito" />
+
+                <TextView
+                    android:id="@+id/enterLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/login"
+                    android:textColor="@color/link"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,2 @@
+ru/mpei/domain_profile/BuildConfig.java
+ ru.mpei.domain_profile.BuildConfig

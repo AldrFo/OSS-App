@@ -9,6 +9,7 @@ import ru.mpei.domain_tasks.TasksRepository
 import ru.mpei.feature_tasks.mvi.TasksActor
 import ru.mpei.feature_tasks.mvi.TasksFeatureFactory
 
+// Это класс объявления бинов, которые будут доступны из всех мест кода
 object TasksModule : ModuleProvider({
     single { get<Retrofit.Builder>().buildApi<TasksApi>() } bind TasksApi::class
     single { TasksRepository(get()) } bind TasksRepository::class

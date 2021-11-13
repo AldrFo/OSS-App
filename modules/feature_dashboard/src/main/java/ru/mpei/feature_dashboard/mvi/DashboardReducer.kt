@@ -1,5 +1,9 @@
 package ru.mpei.feature_dashboard.mvi
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
 import kekmech.ru.common_mvi.BaseReducer
 import kekmech.ru.common_mvi.Result
 import ru.mpei.feature_dashboard.mvi.DashboardEvent.News
@@ -7,6 +11,7 @@ import ru.mpei.feature_dashboard.mvi.DashboardEvent.Wish
 
 typealias DashboardResult = Result<DashboardState, DashboardEffect, DashboardAction>
 
+// Обработчик намерений и событий
 class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEffect, DashboardAction> {
 
     override fun reduce(event: DashboardEvent, state: DashboardState): DashboardResult = when (event) {
@@ -14,6 +19,7 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
         is News -> processItems(event, state)
     }
 
+    // Обработк событий
     private fun processItems(event: News, state: DashboardState): DashboardResult = when (event) {
         is News.NewsListLoaded -> Result(
             state = state.copy(
@@ -40,6 +46,7 @@ class DashboardReducer : BaseReducer<DashboardState, DashboardEvent, DashboardEf
         )
     }
 
+    // Обработка намерений
     private fun processWish(event: Wish, state: DashboardState): DashboardResult = when (event) {
         is Wish.System.Init -> Result(
             state = state.copy(isLoading = true),

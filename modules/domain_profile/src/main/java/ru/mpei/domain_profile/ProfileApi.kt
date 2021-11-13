@@ -55,4 +55,14 @@ interface ProfileApi {
     fun refuseTask(
         @Body body: ConfirmRefuseItem
     ): Single<ResponseBody>
+
+    @GET("/Android/shop.php")
+    fun loadProducts(@Query("type") type: String): Single<List<ProductItem>>
+
+    @POST("/Android/shop.php")
+    @FormUrlEncoded
+    fun buyProduct(@Field("userId") userId: String, @Field("productId") productId: String): Call<UserShopInfoItem>
+
+    @GET("/Android/shop.php?type=user_shop_info")
+    fun getUserShopInfo(@Query("id") id: String): Call<UserShopInfoItem>
 }

@@ -1,7 +1,10 @@
 package ru.mpei.feature_dashboard.items
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseItemBinder
@@ -9,6 +12,7 @@ import ru.mpei.domain_news.dto.NewsItem
 import ru.mpei.feature_dashboard.R
 import ru.mpei.feature_dashboard.databinding.ItemArticleBinding
 
+// Интерфейс для элемента списка новостей или событий
 interface NewsViewHolder {
     fun setDate(chislo: String, month: String, hour: String)
     fun setName(name: String)
@@ -16,6 +20,7 @@ interface NewsViewHolder {
     fun setOnClickListener(onClick: () -> Unit)
 }
 
+// Реализация этого интерфейса
 class NewsViewHolderImpl(
     containerView: View
 ) : RecyclerView.ViewHolder(containerView), NewsViewHolder {
@@ -42,6 +47,7 @@ class NewsViewHolderImpl(
     }
 }
 
+// Связывание интерфейса и реализации
 class NewsItemBinder(
     private val onClick: (NewsItem) -> Unit
 ) : BaseItemBinder<NewsViewHolder, NewsItem>() {
@@ -54,6 +60,7 @@ class NewsItemBinder(
     }
 }
 
+// Создание адапетра для списка
 class NewsAdapterItem(onClick: (NewsItem) -> Unit) : AdapterItem<NewsViewHolder, NewsItem>(
     isType = { it is NewsItem },
     layoutRes = R.layout.item_article,

@@ -5,12 +5,16 @@ package ru.mpei.feature_profile
  * А-08-17
  */
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.text.TextUtils
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.AddScreenForward
@@ -57,7 +61,12 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         // Если мы перешли в профиль из другой вкладки, то вызываем процесс повторной авторизации
         if (fromFragment) {
             fromFragment = false
-            feature.accept(Wish.Authorization(mSettings.getString(APP_PREFERENCES_ID, "0")!!, mSettings.getString(APP_PREFERENCES_PASS, "")!!))
+            feature.accept(
+                Wish.Authorization(
+                    mSettings.getString(APP_PREFERENCES_ID, "0")!!,
+                    mSettings.getString(APP_PREFERENCES_PASS, "")!!
+                )
+            )
         }
 
         // Выбираем разметку для отображеия в зависимости от авторизованости пользователя
@@ -121,6 +130,10 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             // Вешаем действия при нажатии на кнопку входа
             enterButton.setOnClickListener {
                 feature.accept(Wish.ValidateFields(loginEmail.text.toString(), loginPassword.text.toString()))
+                requireActivity().currentFocus?.let {
+                    val inputMethodManager = getSystemService(requireContext(), InputMethodManager::class.java)!!
+                    inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
+                }
             }
             // Вешаем действия на нажатие кнопки сброса пароля
             forgottenPasswordText.setOnClickListener {

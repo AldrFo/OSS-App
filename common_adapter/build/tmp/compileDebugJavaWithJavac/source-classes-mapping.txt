@@ -1,0 +1,2 @@
+kekmech/ru/common_adapter/BuildConfig.java
+ kekmech.ru.common_adapter.BuildConfig

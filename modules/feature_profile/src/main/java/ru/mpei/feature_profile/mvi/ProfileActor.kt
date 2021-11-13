@@ -1,9 +1,15 @@
 package ru.mpei.feature_profile.mvi
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import io.reactivex.Observable
 import kekmech.ru.common_mvi.Actor
 import ru.mpei.domain_profile.ProfileRepository
 
+// Обработчик запросов к серверу
 class ProfileActor(
         private val profileRepository: ProfileRepository,
 ) : Actor<ProfileAction, ProfileEvent>{
@@ -26,5 +32,11 @@ class ProfileActor(
 
         is ProfileAction.RefuseTask -> profileRepository.refuseTask(action.body)
             .mapEvents(ProfileEvent.News::TaskRefused, ProfileEvent.News::TaskRefuseError)
+
+        is ProfileAction.LoadAllProducts -> profileRepository.loadAllProducts()
+            .mapEvents(ProfileEvent.News::AllProductsLoaded, ProfileEvent.News::AllProductsLoadError)
+
+        is ProfileAction.LoadPopularProducts -> profileRepository.loadPopularProducts()
+            .mapEvents(ProfileEvent.News::PopularProductsLoaded, ProfileEvent.News::PopularProductsLoadError)
     }
 }

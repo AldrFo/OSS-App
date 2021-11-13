@@ -1,0 +1,154 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="ru.mpei.ossapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:6:22-64
+12
+13    <uses-feature
+13-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:7:5-84
+14        android:name="android.hardware.camera"
+14-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:7:19-57
+15        android:required="true" />
+15-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:7:58-81
+16
+17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+17-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:8:5-81
+17-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:8:22-78
+18
+19    <application
+19-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:10:5-56:19
+20        android:name="ru.mpei.ossapp.App"
+20-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:18:9-28
+21        android:allowBackup="false"
+21-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:11:9-36
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.3.1] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\a5a65d3523e6c9a00311b34a558b44ac\core-1.3.1\AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/ic_launcher"
+24-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:12:9-43
+25        android:label="@string/app_name"
+25-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:13:9-41
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:14:9-54
+27        android:supportsRtl="true"
+27-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:15:9-35
+28        android:testOnly="true"
+29        android:theme="@style/AppTheme"
+29-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:16:9-40
+30        android:usesCleartextTraffic="true" >
+30-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:17:9-44
+31        <activity
+31-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:20:9-23:59
+32            android:name="ru.mpei.ossapp.activities.ArticleActivity"
+32-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:22:13-69
+33            android:screenOrientation="portrait"
+33-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:21:13-49
+34            android:theme="@style/AppTheme.NoActionBar" />
+34-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:23:13-56
+35        <activity
+35-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:24:9-27:59
+36            android:name="ru.mpei.ossapp.activities.TasksActivity"
+36-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:26:13-67
+37            android:screenOrientation="portrait"
+37-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:25:13-49
+38            android:theme="@style/AppTheme.NoActionBar" />
+38-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:27:13-56
+39        <activity
+39-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:28:9-37:20
+40            android:name="ru.mpei.ossapp.MainActivity"
+40-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:29:13-55
+41            android:theme="@style/AppTheme.NoActionBar"
+41-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:30:13-56
+42            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" >
+42-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:31:13-70
+43            <intent-filter>
+43-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:32:13-36:29
+44                <action android:name="android.intent.action.MAIN" />
+44-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:33:17-69
+44-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:33:25-66
+45
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:35:17-77
+46-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:35:27-74
+47            </intent-filter>
+48        </activity>
+49
+50        <meta-data
+50-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:39:9-41:57
+51            android:name="preloaded_fonts"
+51-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:40:13-43
+52            android:resource="@array/preloaded_fonts" />
+52-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:41:13-54
+53
+54        <uses-library
+54-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:43:9-45:40
+55            android:name="org.apache.http.legacy"
+55-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:44:13-50
+56            android:required="false" />
+56-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:45:13-37
+57
+58        <provider
+58-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:47:9-55:20
+59            android:name="androidx.core.content.FileProvider"
+59-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:48:13-62
+60            android:authorities="ru.mpei.ossapp.myapplication.fileprovider"
+60-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:49:13-76
+61            android:exported="false"
+61-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:50:13-37
+62            android:grantUriPermissions="true" >
+62-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:51:13-47
+63            <meta-data
+63-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:52:13-54:53
+64                android:name="android.support.FILE_PROVIDER_PATHS"
+64-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:53:17-67
+65                android:resource="@xml/file_path" />
+65-->C:\Users\xoriz.DESKTOP-FFA4BVA\AndroidStudioProjects\OSS App\app\src\main\AndroidManifest.xml:54:17-50
+66        </provider>
+67        <provider
+67-->[com.squareup.picasso:picasso:2.71828] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\6544d986fa53d9b275ceeda46dfd3444\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+68            android:name="com.squareup.picasso.PicassoProvider"
+68-->[com.squareup.picasso:picasso:2.71828] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\6544d986fa53d9b275ceeda46dfd3444\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+69            android:authorities="ru.mpei.ossapp.com.squareup.picasso"
+69-->[com.squareup.picasso:picasso:2.71828] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\6544d986fa53d9b275ceeda46dfd3444\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+70            android:exported="false" />
+70-->[com.squareup.picasso:picasso:2.71828] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\6544d986fa53d9b275ceeda46dfd3444\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+71
+72        <activity
+72-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\a4a56843458b0241405626088a574eb5\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+73            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+73-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\a4a56843458b0241405626088a574eb5\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+74            android:exported="false"
+74-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\a4a56843458b0241405626088a574eb5\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+75            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+75-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\a4a56843458b0241405626088a574eb5\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+76
+77        <meta-data
+77-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\69f3143527f03b77297f42e4967d321c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+78            android:name="com.google.android.gms.version"
+78-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\69f3143527f03b77297f42e4967d321c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+79            android:value="@integer/google_play_services_version" />
+79-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\69f3143527f03b77297f42e4967d321c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+80
+81        <provider
+81-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\845f686ad3a9cc15f61bb75f0839adef\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+82            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+82-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\845f686ad3a9cc15f61bb75f0839adef\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+83            android:authorities="ru.mpei.ossapp.lifecycle-process"
+83-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\845f686ad3a9cc15f61bb75f0839adef\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+84            android:exported="false"
+84-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\845f686ad3a9cc15f61bb75f0839adef\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+85            android:multiprocess="true" />
+85-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\xoriz.DESKTOP-FFA4BVA\.gradle\caches\transforms-2\files-2.1\845f686ad3a9cc15f61bb75f0839adef\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+86    </application>
+87
+88</manifest>

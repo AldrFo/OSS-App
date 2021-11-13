@@ -1,0 +1,434 @@
+[
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_logo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_man_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\ic_man_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back_white_24dp.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_arrow_back_white_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_services.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_services.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_test_photo.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\test_photo.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_test_photo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\test_photo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_logo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_test_photo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\test_photo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_events.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_events.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_taken_tasks_element_child.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\taken_tasks_element_child.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto_bold.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\font\\roboto_bold.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_test_photo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\test_photo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_user.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_man_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\ic_man_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_man_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_man_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_man_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_man_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo_background.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\logo_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_tasks_2.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\fragment_tasks_2.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_man.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_man.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_man_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_man_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_main.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\fragment_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_man_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\ic_man_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_articles.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\fragment_articles.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_man.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\ic_man.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_edit_report_dailog.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\edit_report_dailog.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_tasks_element.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\tasks_element.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_decline_penalty_dialog.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\decline_penalty_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_test_photo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\test_photo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_test_photo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\test_photo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_user.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\fragment_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_test_photo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\test_photo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto_thin.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\font\\roboto_thin.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_test_photo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\test_photo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_test_photo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\test_photo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_article.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\activity_article.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_path.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\xml\\file_path.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_man_round.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_man_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_test_photo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\test_photo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_decline_normal_dialog.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\decline_normal_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_profile_2.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\fragment_profile_2.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_article_element.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\article_element.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_logo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_test_photo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\test_photo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_man_background.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_man_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_finished_tasks_element_child.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\finished_tasks_element_child.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bottom_nav_color.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\bottom_nav_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back_black_24dp.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_arrow_back_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\menu_navigation.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\menu\\navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_man_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\ic_man_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_test_photo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\test_photo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_login_2.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\fragment_login_2.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_man.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_man.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_finish_dialog.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\finish_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_tasks.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\activity_tasks.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_test.jpg.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\test.jpg"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_logo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_checking_tasks_element_child.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\checking_tasks_element_child.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_logo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_tasks.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\ic_tasks.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_man.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\ic_man.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_logo.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_man_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_man_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_available_tasks_element_child.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\available_tasks_element_child.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_man_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\ic_man_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\logo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_logo_round.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\logo_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_test_photo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\test_photo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_test_photo_background.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\test_photo_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_test_photo_round.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-anydpi-v26\\test_photo_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_man.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_man.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_test_photo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\test_photo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_logo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_logo_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\logo_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\menu_choose_image_type_popup.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\menu\\choose_image_type_popup.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_others.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\layout\\fragment_others.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_man.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\ic_man.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_man_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\ic_man_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_logo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-mdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_test_photo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\test_photo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_navigation.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\drawable\\shape_navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logo.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_test_photo_foreground.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xhdpi\\test_photo_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto.xml.flat",
+        "source": "C:\\Users\\xoriz.DESKTOP-FFA4BVA\\AndroidStudioProjects\\OSS App\\app\\src\\main\\res\\font\\roboto.xml"
+    }
+]

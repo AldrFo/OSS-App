@@ -1,9 +1,15 @@
 package ru.mpei.feature_tasks.mvi
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import io.reactivex.Observable
 import kekmech.ru.common_mvi.Actor
 import ru.mpei.domain_tasks.TasksRepository
 
+// Класс исполнителя запросов на сервер
 class TasksActor(
         private val tasksRepository: TasksRepository
 ) : Actor<TasksAction, TasksEvent> {

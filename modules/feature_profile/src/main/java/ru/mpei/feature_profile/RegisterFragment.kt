@@ -1,5 +1,10 @@
 package ru.mpei.feature_profile
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,22 +24,27 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.mpei.domain_profile.ProfileApi
 import ru.mpei.feature_profile.databinding.FragmentRegistrationBinding
 
-class RegisterFragment: Fragment() {
+class RegisterFragment : Fragment() {
 
+    // Обекты для перехода между страницами и связывания разметки и кода
     private val router: Router by inject()
     private val binding by viewBinding(FragmentRegistrationBinding::bind)
 
+    // При создании отображения связываем разметку и код
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_registration, container, false)
     }
 
+    // После создания ротображения свзяываем поля и данные
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Вешаем действия при нажатии на кнопку регистрации
         binding.registerButton.setOnClickListener {
-            if (validateFields()){
+            if (validateFields()) {
 
+                // Выбираем пол
                 val gender = if (binding.radioMale.isChecked) "male" else "female"
 
                 val retrofit: Retrofit = Retrofit.Builder()
@@ -44,6 +54,7 @@ class RegisterFragment: Fragment() {
 
                 val service = retrofit.create(ProfileApi::class.java)
 
+                /// Создаем запрос к серверу на регстрацию
                 val call = with(binding) {
                     service.register(
                         email = regMail.text.toString(),
@@ -55,8 +66,9 @@ class RegisterFragment: Fragment() {
                     )
                 }
 
-                call.enqueue(object : Callback<ResponseBody>{
+                call.enqueue(object : Callback<ResponseBody> {
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        // В заивисимости от кода овтета Выводим одно из сообщений
                         when (response.code()) {
                             200 -> {
                                 Toast.makeText(context, "Сообщение с подтверждением регистрации отправлено на указанную почту. Чтобы завершить регистрацию, пройдите по вложенной ссылке.", Toast.LENGTH_LONG).show()
@@ -74,6 +86,7 @@ class RegisterFragment: Fragment() {
                         }
                     }
 
+                    // При неудачно запросе выводим сообщение об ошибке
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         Toast.makeText(context, "Проблема на сервере - попробуйте еще раз позже", Toast.LENGTH_LONG).show()
                     }
@@ -82,11 +95,13 @@ class RegisterFragment: Fragment() {
             }
         }
 
+        // Действия при нажатии кнопки возврата на страницу авторизации
         binding.enterLine.setOnClickListener {
             router.executeCommand(ClearBackStack())
         }
     }
 
+    // Метод валидации введенных данных
     private fun validateFields(): Boolean {
         with(binding) {
             val isEmailValid = regMail.text.toString().matches(Regex("""[a-zA-Z]+@mpei.ru"""))
@@ -148,10 +163,12 @@ class RegisterFragment: Fragment() {
         }
     }
 
+    // Метод валидации почтового адреса
     private fun String.isEmailValid(): Boolean {
         return this.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 
+    // Метод валидации имени
     private fun String.isNameValid(): Boolean {
         return this.isNotEmpty() && this[0].isUpperCase()
     }

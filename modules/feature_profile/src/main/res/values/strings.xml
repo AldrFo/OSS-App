@@ -64,4 +64,19 @@
     <string name="send_report">Отправить отчет</string>
     <string name="gallery">Из галереи</string>
     <string name="camera">Сделать снимок</string>
+    <string name="empty_shop_list">Пока что тут пусто.</string>
+    <string name="shop_popular">Популярные</string>
+    <string name="shop_all">Все</string>
+    <string name="shop">Магазин</string>
+    <string name="product_name">Наименование</string>
+    <string name="product_price">Стоимость</string>
+    <string name="buy">Купить</string>
+    <string name="product_description">Описание продукта</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="success_purchase_text">Покупка прошла успешно! У вас осталось %1$s баллов.</string>
+    <string name="purchase_text">Сейчас на вашем счету %1$s баллов. Вы уверены, что хотите совершить покупку?</string>
+    <string name="back_to_shop">Вернуться в магазин</string>
+    <string name="not_enough_money">Заработайте еще %1$s баллов, чтобы приобрести желамое!</string>
+    <string name="server_error">Произошла ошибка на сервере. Попробуйте еще раз позднее.</string>
 </resources>

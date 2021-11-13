@@ -3,6 +3,25 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="common_annotations" target="1.7" />
+      <module name="modules.OSS.app" target="11" />
+      <module name="modules.OSS.common_adapter" target="11" />
+      <module name="modules.OSS.common_android" target="11" />
+      <module name="modules.OSS.common_mvi" target="11" />
+      <module name="modules.OSS.common_navigation" target="11" />
+      <module name="modules.OSS.common_network" target="11" />
+      <module name="modules.OSS.domain_events" target="11" />
+      <module name="modules.OSS.domain_news" target="11" />
+      <module name="modules.OSS.domain_onboarding" target="11" />
+      <module name="modules.OSS.domain_profile" target="11" />
+      <module name="modules.OSS.domain_services" target="11" />
+      <module name="modules.OSS.domain_store" target="11" />
+      <module name="modules.OSS.domain_tasks" target="11" />
+      <module name="modules.OSS.feature_dashboard" target="11" />
+      <module name="modules.OSS.feature_onboarding" target="11" />
+      <module name="modules.OSS.feature_profile" target="11" />
+      <module name="modules.OSS.feature_services" target="11" />
+      <module name="modules.OSS.feature_store" target="11" />
+      <module name="modules.OSS.feature_tasks" target="11" />
       <module name="mpeix.app" target="11" />
       <module name="mpeix.common_adapter" target="11" />
       <module name="mpeix.common_android" target="11" />

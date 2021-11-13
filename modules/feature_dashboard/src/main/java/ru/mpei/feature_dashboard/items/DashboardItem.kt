@@ -1,5 +1,10 @@
 package ru.mpei.feature_dashboard.items
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +16,7 @@ import ru.mpei.feature_dashboard.databinding.ItemDashboardBinding
 import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_EVENTS_ITEM
 import ru.mpei.feature_dashboard.items.DashboardItem.Companion.ID_NEWS_ITEM
 
+// Класс адаптера для списка списков
 data class DashboardItem(
     val id: String
 ) {
@@ -24,6 +30,7 @@ interface DashboardViewHolder {
     fun update(newAdapter: BaseAdapter)
 }
 
+
 class DashboardViewHolderImpl(
     containerView: View
 ): RecyclerView.ViewHolder(containerView), DashboardViewHolder {
@@ -32,7 +39,11 @@ class DashboardViewHolderImpl(
 
     override fun update(newAdapter: BaseAdapter) {
         binding.recyclerView.apply {
-            if (layoutManager == null) layoutManager = LinearLayoutManager(context)
+            if (layoutManager == null) layoutManager = object : LinearLayoutManager(context) {
+                override fun isAutoMeasureEnabled(): Boolean {
+                    return false
+                }
+            }
             if (adapter == null) adapter = newAdapter
         }
     }
@@ -47,6 +58,7 @@ class DashboardItemBinder(
     }
 }
 
+// Адаптер для списка новостей
 class DashboardNewsAdapterItem(
     adapter: BaseAdapter
 ): AdapterItem<DashboardViewHolder, DashboardItem>(
@@ -57,6 +69,7 @@ class DashboardNewsAdapterItem(
     areItemsTheSame = { a, b -> a.id == b.id }
 )
 
+// Адаптер для списка событий
 class DashboardEventsAdapterItem(
     adapter: BaseAdapter
 ): AdapterItem<DashboardViewHolder, DashboardItem>(

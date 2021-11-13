@@ -1,5 +1,10 @@
 package ru.mpei.feature_profile.items
 
+/**
+ * Андрей Турлюк
+ * А-08-17
+ */
+
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
@@ -8,6 +13,7 @@ import kekmech.ru.common_adapter.BaseItemBinder
 import ru.mpei.feature_profile.R
 import ru.mpei.feature_profile.databinding.ItemTaskBinding
 
+// Интерфейс элемента списков заданий
 interface TaskViewHolder {
     fun setTaskName(name: String)
     fun setTaskPrice(price: String)
@@ -15,6 +21,7 @@ interface TaskViewHolder {
     fun setOnClickListener(onClick: () -> Unit)
 }
 
+// Реализация этого интерфейса
 class TasksViewHolderImpl(
     containerView: View
 ): RecyclerView.ViewHolder(containerView), TaskViewHolder {
@@ -39,6 +46,7 @@ class TasksViewHolderImpl(
 
 }
 
+// Связывание кода и разметки
 class TaskItemBinder(
     private val onClick: (TaskItem) -> Unit
 ) : BaseItemBinder<TaskViewHolder, TaskItem>() {
@@ -51,6 +59,7 @@ class TaskItemBinder(
     }
 }
 
+// Адаптер списка заданий
 class TaskAdapterItem(onClick: (TaskItem) -> Unit): AdapterItem<TaskViewHolder, TaskItem>(
     isType = {it is TaskItem},
     layoutRes = R.layout.item_task,

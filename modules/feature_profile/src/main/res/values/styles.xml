@@ -10,4 +10,17 @@
         //black is the color of the normal state
         <item name="colorControlNormal">@android:color/black</item>
     </style>
+
+    <style name="shop_selector_selected">
+        <item name="android:backgroundTint">@color/mpei_blue</item>
+        <item name="android:background">@drawable/shape_selector_oval</item>
+        <item name="android:textColor">@color/mpei_white</item>
+    </style>
+
+    <style name="shop_selector_unselected">
+        <item name="android:backgroundTint">@color/bg_blue</item>
+        <item name="android:background">@drawable/shape_selector_oval</item>
+        <item name="android:textColor">@color/mpei_blue</item>
+    </style>
+
 </resources>

@@ -9,6 +9,7 @@ import ru.mpei.domain_profile.ProfileRepository
 import ru.mpei.feature_profile.mvi.ProfileActor
 import ru.mpei.feature_profile.mvi.ProfileFeatureFactory
 
+// Это класс объявления бинов, которые будут доступны из всех мест кода
 object ProfileModule : ModuleProvider({
     single { get<Retrofit.Builder>().buildApi<ProfileApi>() } bind ProfileApi::class
     single { ProfileRepository(get()) } bind ProfileRepository::class

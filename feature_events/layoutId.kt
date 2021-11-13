@@ -1,0 +1,1 @@
+override var layoutId = R.layout.fragment_news

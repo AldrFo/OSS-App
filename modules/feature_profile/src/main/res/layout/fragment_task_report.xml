@@ -55,6 +55,7 @@
                 android:layout_marginRight="24dp">
 
                 <TextView
+                    android:id="@+id/fragment_task_report_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Название задания"

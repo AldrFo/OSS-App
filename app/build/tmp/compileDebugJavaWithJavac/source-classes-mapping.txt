@@ -1,0 +1,2 @@
+ru/mpei/ossapp/BuildConfig.java
+ ru.mpei.ossapp.BuildConfig

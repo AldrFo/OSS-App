@@ -134,7 +134,7 @@ class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, Pro
             placeCheck.text = Html.fromHtml(getString(R.string.place, task.location))
             beginDateCheck.text = Html.fromHtml(getString(R.string.begin_date, task.startDate.substring(0, task.startDate.length - 3)))
             endDateCheck.text = Html.fromHtml(getString(R.string.end_date, task.endDate.substring(0, task.endDate.length - 3)))
-            taskCommentCheck.text = task.comment
+            taskCommentCheck.text = if (task.comment == null || task.comment.isEmpty()) getString(R.string.no_comment) else task.comment
             // Вешаем действия при нажатии на кнопку редактирования отчета
             btnEditCheck.setOnClickListener {
                 val fragment = EditReportFragment(task.id, task.taskName, ReportType.EDIT)
@@ -152,7 +152,7 @@ class TaskFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, Pro
             placeEnded.text = Html.fromHtml(getString(R.string.place, task.location))
             beginDateEnded.text = Html.fromHtml(getString(R.string.begin_date, task.startDate.substring(0, task.startDate.length - 3)))
             endDateEnded.text = Html.fromHtml(getString(R.string.end_date, task.endDate.substring(0, task.endDate.length - 3)))
-            taskCommentEnded.text = if (task.comment.isEmpty()) getString(R.string.no_comment) else task.comment
+            taskCommentEnded.text = if (task.comment == null || task.comment.isEmpty()) getString(R.string.no_comment) else task.comment
         }
     }
 }

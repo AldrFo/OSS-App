@@ -30,6 +30,7 @@ interface DashboardViewHolder {
     fun update(newAdapter: BaseAdapter)
 }
 
+
 class DashboardViewHolderImpl(
     containerView: View
 ): RecyclerView.ViewHolder(containerView), DashboardViewHolder {
@@ -38,7 +39,11 @@ class DashboardViewHolderImpl(
 
     override fun update(newAdapter: BaseAdapter) {
         binding.recyclerView.apply {
-            if (layoutManager == null) layoutManager = LinearLayoutManager(context)
+            if (layoutManager == null) layoutManager = object : LinearLayoutManager(context) {
+                override fun isAutoMeasureEnabled(): Boolean {
+                    return false
+                }
+            }
             if (adapter == null) adapter = newAdapter
         }
     }

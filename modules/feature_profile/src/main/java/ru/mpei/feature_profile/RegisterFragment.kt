@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kekmech.ru.common_android.viewbinding.viewBinding
@@ -33,6 +34,7 @@ class RegisterFragment : Fragment() {
     // При создании отображения связываем разметку и код
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         return inflater.inflate(R.layout.fragment_registration, container, false)
     }
 
@@ -159,7 +161,10 @@ class RegisterFragment : Fragment() {
             } else {
                 radioFemale.error = null
             }
-            return isEmailValid && isGroupValid && isNameValid && isPasswordValid && isRepeatPasswordValid && isSurnameValid && isMaleChosen
+            return isEmailValid && isGroupValid
+                && isNameValid && isPasswordValid
+                && isRepeatPasswordValid
+                && isSurnameValid && isMaleChosen
         }
     }
 

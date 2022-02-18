@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputLayout
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_navigation.ClearBackStack
 import kekmech.ru.common_navigation.Router
@@ -106,55 +107,25 @@ class RegisterFragment : Fragment() {
     // Метод валидации введенных данных
     private fun validateFields(): Boolean {
         with(binding) {
-            val isEmailValid = regMail.text.toString().matches(Regex("""[a-zA-Z]+@mpei.ru"""))
+            val isEmailValid = regMail.text.toString().matches(
+                Regex("""[a-zA-Z]+@mpei.ru""")
+            )
             val isNameValid = regName.text.toString().isNameValid()
             val isSurnameValid = regSurname.text.toString().isNameValid()
-            val isGroupValid = regGroup.text.toString().matches(Regex("""[А-Я]{1,2}+-+[0-9]{1,2}+-+[0-9]{2}"""))
+            val isGroupValid = regGroup.text.toString().matches(
+                Regex("""[А-Я]{1,2}+-+[0-9]{1,2}+-+[0-9]{2}""")
+            )
             val isPasswordValid = regPassword.text.length > 7
-            val isRepeatPasswordValid = regRepeatPassword.text.toString().length > 7 && regPassword.text.toString() == regRepeatPassword.text.toString()
+            val isRepeatPasswordValid = regRepeatPassword.text.toString().length > 7
+                && regPassword.text.toString() == regRepeatPassword.text.toString()
             val isMaleChosen = radioMale.isChecked || radioFemale.isChecked
 
-            if (!isNameValid) {
-                regNameTextInputLayout.isErrorEnabled = true
-                regNameTextInputLayout.error = "Проверьте правильность написания имени"
-            } else {
-                regNameTextInputLayout.isErrorEnabled = false
-            }
-
-            if (!isSurnameValid) {
-                regSurnameInputLayout.isErrorEnabled = true
-                regSurnameInputLayout.error = "Проверьте правильность написания фамилии"
-            } else {
-                regSurnameInputLayout.isErrorEnabled = false
-            }
-
-            if (!isEmailValid) {
-                regEmailInputLayout.isErrorEnabled = true
-                regEmailInputLayout.error = "Проверьте правильность написания почты"
-            } else {
-                regEmailInputLayout.isErrorEnabled = false
-            }
-
-            if (!isGroupValid) {
-                regGroupInputLayout.isErrorEnabled = true
-                regGroupInputLayout.error = "Проверьте правильность написания группы"
-            } else {
-                regGroupInputLayout.isErrorEnabled = false
-            }
-
-            if (!isPasswordValid) {
-                regPasswordInputLayout.isErrorEnabled = true
-                regPasswordInputLayout.error = "В пароле должно быть не менее 8 символов"
-            } else {
-                regPasswordInputLayout.isErrorEnabled = false
-            }
-
-            if (!isRepeatPasswordValid) {
-                regRepeatPasswordInputLayout.isErrorEnabled = true
-                regRepeatPasswordInputLayout.error = "Пароли не совпадают"
-            } else {
-                regRepeatPasswordInputLayout.isErrorEnabled = false
-            }
+            setErrorEnabled(regNameTextInputLayout, isNameValid, "Проверьте правильность написания имени")
+            setErrorEnabled(regSurnameInputLayout, isSurnameValid, "Проверьте правильность написания фамилии")
+            setErrorEnabled(regEmailInputLayout, isEmailValid, "Проверьте правильность написания почты")
+            setErrorEnabled(regGroupInputLayout, isGroupValid, "Проверьте правильность написания группы")
+            setErrorEnabled(regPasswordInputLayout, isPasswordValid, "В пароле должно быть не менее 8 символов")
+            setErrorEnabled(regRepeatPasswordInputLayout, isRepeatPasswordValid, "Пароли не совпадают")
 
             if (!isMaleChosen) {
                 radioFemale.error = "Необходимо выбрать хотя бы одно значение"
@@ -165,6 +136,15 @@ class RegisterFragment : Fragment() {
                 && isNameValid && isPasswordValid
                 && isRepeatPasswordValid
                 && isSurnameValid && isMaleChosen
+        }
+    }
+
+    private fun setErrorEnabled(view : TextInputLayout, valid : Boolean, errorMessage : String){
+        if(!valid){
+            view.isErrorEnabled = true
+            view.error = errorMessage
+        }else{
+            view.isErrorEnabled = false
         }
     }
 

@@ -22,4 +22,5 @@ dependencies {
 
     implementation project(path: ':common_di')
     implementation project(path: ':common_network')
+    implementation project(path: ':common_kotlin')
 }

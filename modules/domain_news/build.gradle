@@ -18,4 +18,5 @@ dependencies {
 
     implementation project(path: ':common_network')
     implementation project(path: ':common_annotations')
+    implementation project(path: ':common_kotlin')
 }

@@ -2,6 +2,7 @@ package ru.mpei.domain_profile
 
 import io.reactivex.Single
 import kekmech.ru.common_annotations.EndpointUrl
+import kekmech.ru.common_kotlin.OSS_URL
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -9,21 +10,32 @@ import retrofit2.Call
 import retrofit2.http.*
 import ru.mpei.domain_profile.dto.*
 
-@EndpointUrl("http://oss-mpei.ru/")
+@EndpointUrl(OSS_URL)
 interface ProfileApi {
 
     @GET("Android/lk.php")
-    fun authorize(@Query("id") id: String, @Query("pass") pass: String): Single<ProfileItem>
+    fun authorize(
+        @Query("id") id: String,
+        @Query("pass") pass: String
+    ): Single<ProfileItem>
 
     @GET("Android/auth.php")
-    fun authenticate(@Query("email") email: String, @Query("password") password: String): Single<ParamsItem>
+    fun authenticate(
+        @Query("email") email: String,
+        @Query("password") password: String
+    ): Single<ParamsItem>
 
     @GET("Android/get_tasks.php")
-    fun loadTasks(@Query("type") type: String, @Query("id") id: String): Single<List<TaskItem>>
+    fun loadTasks(
+        @Query("type") type: String,
+        @Query("id") id: String
+    ): Single<List<TaskItem>>
 
     @FormUrlEncoded
     @POST("Android/restore_pass.php")
-    fun restorePass(@Field("email") email: String): Call<ResponseBody>
+    fun restorePass(
+        @Field("email") email: String
+    ): Call<ResponseBody>
 
     @FormUrlEncoded
     @POST("Android/register.php")
@@ -57,12 +69,19 @@ interface ProfileApi {
     ): Single<ResponseBody>
 
     @GET("/Android/shop.php")
-    fun loadProducts(@Query("type") type: String): Single<List<ProductItem>>
+    fun loadProducts(
+        @Query("type") type: String
+    ): Single<List<ProductItem>>
 
     @POST("/Android/shop.php")
     @FormUrlEncoded
-    fun buyProduct(@Field("userId") userId: String, @Field("productId") productId: String): Call<UserShopInfoItem>
+    fun buyProduct(
+        @Field("userId") userId: String,
+        @Field("productId") productId: String
+    ): Call<UserShopInfoItem>
 
     @GET("/Android/shop.php?type=user_shop_info")
-    fun getUserShopInfo(@Query("id") id: String): Call<UserShopInfoItem>
+    fun getUserShopInfo(
+        @Query("id") id: String
+    ): Call<UserShopInfoItem>
 }

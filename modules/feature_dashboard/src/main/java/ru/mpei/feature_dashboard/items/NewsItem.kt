@@ -14,9 +14,9 @@ import ru.mpei.feature_dashboard.databinding.ItemArticleBinding
 
 // Интерфейс для элемента списка новостей или событий
 interface NewsViewHolder {
-    fun setDate(chislo: String, month: String, hour: String)
-    fun setName(name: String)
-    fun setText(text: String)
+    fun setDate(chislo: String?, month: String?, hour: String?)
+    fun setName(name: String?)
+    fun setText(text: String?)
     fun setOnClickListener(onClick: () -> Unit)
 }
 
@@ -27,19 +27,19 @@ class NewsViewHolderImpl(
 
     private val binding = ItemArticleBinding.bind(containerView)
 
-    override fun setDate(chislo: String, month: String, hour: String) {
+    override fun setDate(chislo: String?, month: String?, hour: String?) {
         with(binding) {
-            itemArticleDate.text = chislo.trim(' ')
-            itemArticleMonth.text = month.trim(' ')
-            itemArticleTime.text = hour.trim(' ')
+            itemArticleDate.text = chislo?.trim(' ')
+            itemArticleMonth.text = month?.trim(' ')
+            itemArticleTime.text = hour?.trim(' ')
         }
     }
-    override fun setText(text: String) {
-        binding.itemArticleText.text = text
+    override fun setText(text: String?) {
+        binding.itemArticleText.text = text ?: ""
     }
 
-    override fun setName(name: String) {
-        binding.itemArticleName.text = name
+    override fun setName(name: String?) {
+        binding.itemArticleName.text = name ?: ""
     }
 
     override fun setOnClickListener(onClick: () -> Unit) {

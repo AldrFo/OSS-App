@@ -65,7 +65,9 @@ open class BaseAdapter(
             onBindViewHolder(holder, position)
             return
         }
+
         if(isLoading && position == getContentSize()) return
+
         val data = getItem(position)
         val type = adapterItems.first { item -> item.isType(data) }
         type.itemBinder.updateViewHolder(holder, data, position, payloads)
@@ -73,9 +75,12 @@ open class BaseAdapter(
 
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
         val position = holder.adapterPosition
+
         if (position == -1) return
+
         val type = adapterItems.first { item -> item.isType(getItem(position)) }
         type.itemBinder.detachViewHolder(holder)
+
         super.onViewDetachedFromWindow(holder)
     }
 

@@ -17,5 +17,6 @@ dependencies {
     implementation squareup.retrofit_gson
 
     implementation project(path: ':common_network')
+    implementation project(path: ':common_kotlin')
 
 }

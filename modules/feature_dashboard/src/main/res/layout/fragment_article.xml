@@ -136,7 +136,9 @@
                         android:layout_marginRight="24dp"
                         android:fontFamily="@font/nunito"
                         android:textColor="@color/dark_blue_text"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:autoLink="web"
+                        android:textColorLink="@color/mpei_blue"/>
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"

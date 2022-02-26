@@ -11,6 +11,9 @@
         <entry key="modules/feature_dashboard/src/main/res/layout/fragment_dashboard.xml" value="0.31567028985507245" />
         <entry key="modules/feature_dashboard/src/main/res/layout/item_article.xml" value="0.18206521739130435" />
         <entry key="modules/feature_dashboard/src/main/res/layout/item_dashboard.xml" value="0.31567028985507245" />
+        <entry key="modules/feature_profile/src/main/res/drawable/shape_button.xml" value="0.1425" />
+        <entry key="modules/feature_profile/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="modules/feature_profile/src/main/res/layout/fragment_registration.xml" value="0.30858592157778525" />
         <entry key="modules/feature_profile/src/main/res/layout/fragment_task_report.xml" value="0.24479166666666666" />
       </map>
     </option>

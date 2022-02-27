@@ -63,7 +63,7 @@
                     android:textColorHint="@color/dark_gray_hints"
                     android:hint="@string/ivan"
                     android:ems="15"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:textCursorDrawable="@null"
                     android:autofillHints="no" />
 
@@ -100,7 +100,7 @@
                     android:textColorHint="@color/dark_gray_hints"
                     android:hint="@string/ivanov"
                     android:ems="15"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:textCursorDrawable="@null"
                     android:autofillHints="no" />
 
@@ -211,7 +211,8 @@
                     android:textColor="@color/dark_blue_text"
                     android:textColorHint="@color/dark_gray_hints"
                     android:ems="15"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
+                    android:textAllCaps="true"
                     android:textCursorDrawable="@null"
                     android:autofillHints="no"
                     android:hint="@string/groupExample"/>

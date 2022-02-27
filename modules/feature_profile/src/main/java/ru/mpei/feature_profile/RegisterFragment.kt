@@ -6,6 +6,7 @@ package ru.mpei.feature_profile
  */
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 import kekmech.ru.common_android.viewbinding.viewBinding
+import kekmech.ru.common_kotlin.OSS_URL
 import kekmech.ru.common_navigation.ClearBackStack
 import kekmech.ru.common_navigation.Router
 import okhttp3.ResponseBody
@@ -46,12 +48,11 @@ class RegisterFragment : Fragment() {
         // Вешаем действия при нажатии на кнопку регистрации
         binding.registerButton.setOnClickListener {
             if (validateFields()) {
-
                 // Выбираем пол
                 val gender = if (binding.radioMale.isChecked) "male" else "female"
 
                 val retrofit: Retrofit = Retrofit.Builder()
-                    .baseUrl("http://cy37212.tmweb.ru/")
+                    .baseUrl(OSS_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 
@@ -59,6 +60,7 @@ class RegisterFragment : Fragment() {
 
                 /// Создаем запрос к серверу на регстрацию
                 val call = with(binding) {
+                    Log.d("OSS", regMail.text.toString())
                     service.register(
                         email = regMail.text.toString(),
                         name = regName.text.toString(),
@@ -71,27 +73,52 @@ class RegisterFragment : Fragment() {
 
                 call.enqueue(object : Callback<ResponseBody> {
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        Log.d("OSS", "isSucceful: ${response.isSuccessful}")
+                        Log.d("OSS", "message: ${response.message()}")
+                        Log.d("OSS", "body: ${response.body()}")
+                        Log.d("OSS", "code: ${response.code()}")
+                        Log.d("OSS", "${response.body()?.string()}")
                         // В заивисимости от кода овтета Выводим одно из сообщений
                         when (response.code()) {
                             200 -> {
-                                Toast.makeText(context, "Сообщение с подтверждением регистрации отправлено на указанную почту. Чтобы завершить регистрацию, пройдите по вложенной ссылке.", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    context,
+                                    "Сообщение с подтверждением регистрации отправлено на указанную почту. Чтобы завершить регистрацию, пройдите по вложенной ссылке.",
+                                    Toast.LENGTH_LONG
+                                ).show()
                                 router.executeCommand(ClearBackStack())
                             }
                             400 -> {
-                                Toast.makeText(context, "Пользователь с таким email уже зарегистрирован.", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    context,
+                                    "Пользователь с таким email уже зарегистрирован.",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                             403 -> {
-                                Toast.makeText(context, "Запрос на регистрацию пользователя с таким email уже существует. Проверьте почтовый ящик, в том числе спам", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    context,
+                                    "Запрос на регистрацию пользователя с таким email уже существует. Проверьте почтовый ящик, в том числе спам",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                             else -> {
-                                Toast.makeText(context, "Проблема на сервере - попробуйте еще раз позже", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    context,
+                                    "Проблема на сервере - попробуйте еще раз позже",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         }
                     }
 
                     // При неудачно запросе выводим сообщение об ошибке
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        Toast.makeText(context, "Проблема на сервере - попробуйте еще раз позже", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            context,
+                            "Проблема на сервере - попробуйте еще раз позже",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                 })
@@ -108,7 +135,7 @@ class RegisterFragment : Fragment() {
     private fun validateFields(): Boolean {
         with(binding) {
             val isEmailValid = regMail.text.toString().matches(
-                Regex("""[a-zA-Z]+@mpei.ru""")
+                Regex("""[a-zA-Z\\.0-9]+@mpei.ru""")
             )
             val isNameValid = regName.text.toString().isNameValid()
             val isSurnameValid = regSurname.text.toString().isNameValid()

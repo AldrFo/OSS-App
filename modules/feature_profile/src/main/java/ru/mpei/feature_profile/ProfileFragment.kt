@@ -41,7 +41,10 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
                 Wish.System.InitLogin
             }
             true -> {
-                Wish.Authorization(mSettings.getString(APP_PREFERENCES_ID, "0")!!, mSettings.getString(APP_PREFERENCES_PASS, "")!!)
+                Wish.Authorization(
+                    mSettings.getString(APP_PREFERENCES_ID, "0")!!,
+                    mSettings.getString(APP_PREFERENCES_PASS, "")!!
+                )
             }
         }
 
@@ -57,7 +60,10 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         // Если мы перешли в профиль из другой вкладки, то вызываем процесс повторной авторизации
         if (fromFragment) {
             fromFragment = false
-            feature.accept(Wish.Authorization(mSettings.getString(APP_PREFERENCES_ID, "0")!!, mSettings.getString(APP_PREFERENCES_PASS, "")!!))
+            feature.accept(Wish.Authorization(
+                mSettings.getString(APP_PREFERENCES_ID, "0")!!,
+                mSettings.getString(APP_PREFERENCES_PASS, "")!!
+            ))
         }
 
         // Выбираем разметку для отображеия в зависимости от авторизованости пользователя
@@ -78,19 +84,13 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         }
 
         // Эффект сохранения данных пользователя
-        is ProfileEffect.SaveParams -> {
-            saveParams(effect.paramsItem)
-        }
+        is ProfileEffect.SaveParams -> { saveParams(effect.paramsItem) }
 
         // Эффект ошибки аворизации
-        is ProfileEffect.AuthorizationError -> {
-            showError(AUTHORIZATION_ERROR)
-        }
+        is ProfileEffect.AuthorizationError -> { showError(AUTHORIZATION_ERROR) }
 
         // Эффект ошибки аутенификации
-        is ProfileEffect.AuthenticationError -> {
-            showError(AUTHENTICATION_ERROR)
-        }
+        is ProfileEffect.AuthenticationError -> { showError(AUTHENTICATION_ERROR) }
 
         // Эфект удаления данных о пользователе
         is ProfileEffect.ClearParams -> {
@@ -104,12 +104,9 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
         }
 
         // Эффект валидации введенных данных
-        is ProfileEffect.Validate -> {
-            validate(effect.email, effect.pass)
-        }
+        is ProfileEffect.Validate -> { validate(effect.email, effect.pass) }
 
-        else -> {
-        }
+        else -> { }
     }
 
     // Отоьбражение вкладки авторизации
@@ -129,8 +126,11 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             }
             // Вешаем действие на нажатие кнопки "зарегистрироваться"
             registerLink.setOnClickListener {
-                val fragment = RegisterFragment()
-                router.executeCommand(AddScreenForward { fragment })
+
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://oss.mpei.ru/lk.php"))
+                startActivity(browserIntent)
+                //val fragment = RegisterFragment()
+                //router.executeCommand(AddScreenForward { fragment })
             }
         }
     }
@@ -221,20 +221,28 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     // Метод валидации почтового ажреса
     private fun String.isEmailValid(): Boolean {
-        return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+        return !TextUtils.isEmpty(this)
+            && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 
     // Метод отображения ошибки
     private fun showError(reason: Int) {
         when (reason) {
             0 -> {
-                Toast.makeText(context, "Ошибка авторизации - необходимо войти повторно.", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    context,
+                    "Ошибка авторизации - необходимо войти повторно.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
             1 -> {
-                Toast.makeText(context, "Неверно введен логин или пароль.", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    context,
+                    "Неверно введен логин или пароль.",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-            else -> {
-            }
+            else -> { }
         }
     }
 

@@ -9,7 +9,7 @@ import okhttp3.ResponseBody
 import ru.mpei.domain_profile.dto.*
 
 class ProfileRepository (
-        private val profileApi: ProfileApi
+    private val profileApi: ProfileApi
 ){
 
     fun authorize(id: String, pass: String): Single<ProfileItem> = profileApi.authorize(id, pass)

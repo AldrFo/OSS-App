@@ -9,6 +9,7 @@
         <item name="windowNoTitle">true</item>
         <item name="colorControlActivated">@color/mpei_blue</item>
         <item name="colorControlNormal">@color/mpei_blue</item>
+        <item name="colorPrimaryDark">@color/mpei_blue</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

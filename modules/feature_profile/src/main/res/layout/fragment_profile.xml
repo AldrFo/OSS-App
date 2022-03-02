@@ -16,8 +16,7 @@
         android:textColor="@color/mpei_blue"
         android:textSize="18sp"
         android:fontFamily="@font/nunito_semibold"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginVertical="12dp"
         android:text="@string/enter"/>
 
     <ScrollView

@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kekmech.ru.common_navigation.BottomTab
+import ru.acediat.feature_timetable.TimetableFragment
 import ru.mpei.feature_tasks.TasksFragment
 import ru.mpei.feature_dashboard.DashboardFragment
 import ru.mpei.feature_profile.ProfileFragment
@@ -16,14 +17,15 @@ class BottomBarController(
 ) {
 
     private val childFragmentManager: FragmentManager = fragment.childFragmentManager
-    private var lastSelectedTab = BottomTab.DASHBOARD
+    private var lastSelectedTab = BottomTab.TIMETABLE
     private var bottomNavView: BottomNavigationView? = null
     private val currentTabFragment: Fragment?
         get() = childFragmentManager.fragments.firstOrNull { !it.isHidden }
-    private val backStack: BottomBarBackStack = BottomBarBackStack(firstTab = BottomTab.DASHBOARD)
+    private val backStack: BottomBarBackStack = BottomBarBackStack(firstTab = BottomTab.TIMETABLE)
 
     private val navSelectListener = BottomNavigationView.OnNavigationItemSelectedListener {  item ->
         val tab = when (item.itemId) {
+            R.id.navigation_timetable -> BottomTab.TIMETABLE
             R.id.navigation_dashboard -> BottomTab.DASHBOARD
             R.id.navigation_profile -> BottomTab.PROFILE
             R.id.navigation_tasks -> BottomTab.TASKS
@@ -79,6 +81,7 @@ class BottomBarController(
     }
 
     private fun getItemByTab(tab: BottomTab) = when (tab) {
+        BottomTab.TIMETABLE -> R.id.navigation_timetable
         BottomTab.DASHBOARD -> R.id.navigation_dashboard
         BottomTab.PROFILE -> R.id.navigation_profile
         BottomTab.TASKS -> R.id.navigation_tasks
@@ -86,6 +89,7 @@ class BottomBarController(
     }
 
     private fun createTabFragment(tab: BottomTab): Fragment = when (tab) {
+        BottomTab.TIMETABLE -> TimetableFragment()
         BottomTab.DASHBOARD -> DashboardFragment()
         BottomTab.PROFILE -> ProfileFragment()
         BottomTab.TASKS ->  TasksFragment()

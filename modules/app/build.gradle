@@ -78,4 +78,5 @@ dependencies {
     implementation project(path: ":feature_dashboard")
     implementation project(path: ":feature_profile")
     implementation project(path: ":feature_services")
+    implementation project(path: ":feature_timetable")
 }

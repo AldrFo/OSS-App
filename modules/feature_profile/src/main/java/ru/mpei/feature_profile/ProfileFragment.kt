@@ -128,12 +128,8 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             }
             // Вешаем действие на нажатие кнопки "зарегистрироваться"
             registerLink.setOnClickListener {
-
-                //TODO: Заменить на регистрацию внутри приложения, когда она будет работать
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://oss.mpei.ru/lk.php"))
-                startActivity(browserIntent)
-                //val fragment = RegisterFragment()
-                //router.executeCommand(AddScreenForward { fragment })
+                val fragment = RegisterFragment()
+                router.executeCommand(AddScreenForward { fragment })
             }
         }
     }

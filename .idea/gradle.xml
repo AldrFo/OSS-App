@@ -12,6 +12,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/domain_timetable" />
+            <option value="$PROJECT_DIR$/feature_timetable" />
             <option value="$PROJECT_DIR$/modules/app" />
             <option value="$PROJECT_DIR$/modules/common_adapter" />
             <option value="$PROJECT_DIR$/modules/common_android" />

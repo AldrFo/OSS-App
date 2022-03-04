@@ -1,10 +1,6 @@
 package ru.mpei.ossapp
 
 import android.app.Application
-import android.content.pm.PackageManager
-import android.os.Build
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.viewbinding.BuildConfig
 import kekmech.ru.common_di.modules
 import kekmech.ru.common_navigation.di.NavigationModule
@@ -28,7 +24,6 @@ class App : Application() {
         initKoin()
     }
 
-
     private fun initKoin() = startKoin {
         androidLogger()
         androidContext(this@App)
@@ -43,7 +38,6 @@ class App : Application() {
             ServicesModule
         ))
     }
-
 
     private fun initTimber() {
         if (BuildConfig.DEBUG) {

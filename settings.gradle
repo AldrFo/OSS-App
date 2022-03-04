@@ -34,3 +34,5 @@ rootProject.children.each { project ->
     assert project.projectDir.isDirectory()
     assert project.buildFile.isFile()
 }
+include ':domain_timetable'
+include ':feature_timetable'

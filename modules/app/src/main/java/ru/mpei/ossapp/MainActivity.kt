@@ -1,19 +1,16 @@
 package ru.mpei.ossapp
 
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import kekmech.ru.common_android.onActivityResult
 import kekmech.ru.common_navigation.BackButtonListener
 import kekmech.ru.common_navigation.NavigationHolder
 import kekmech.ru.common_navigation.NewRoot
 import kekmech.ru.common_navigation.Router
-import ru.mpei.ossapp.ui.main.MainFragment
 import org.koin.android.ext.android.inject
+import ru.mpei.ossapp.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

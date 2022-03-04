@@ -54,12 +54,14 @@
       <module name="OSS.domain_services" target="11" />
       <module name="OSS.domain_store" target="11" />
       <module name="OSS.domain_tasks" target="11" />
+      <module name="OSS.domain_timetable" target="11" />
       <module name="OSS.feature_dashboard" target="11" />
       <module name="OSS.feature_onboarding" target="11" />
       <module name="OSS.feature_profile" target="11" />
       <module name="OSS.feature_services" target="11" />
       <module name="OSS.feature_store" target="11" />
       <module name="OSS.feature_tasks" target="11" />
+      <module name="OSS.feature_timetable" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

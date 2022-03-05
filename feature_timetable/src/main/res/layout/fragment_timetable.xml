@@ -37,33 +37,23 @@
 
     </LinearLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <ru.acediat.feature_timetable.views.DayTabsLayout
+        android:id="@+id/daysTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_tabs"
+        android:layout_marginHorizontal="7dp"
+        android:layout_marginVertical="4dp"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="fixed"
+        app:tabBackground="@drawable/background_tab"
+        app:tabPaddingTop="4dp"
+        app:tabPaddingBottom="4dp"/>
 
-            <com.google.android.material.tabs.TabLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_tabs"
-                app:tabMode="fixed"
-                app:tabBackground="@drawable/background_tab"
-                app:tabSelectedTextColor="@color/mpei_white"
-                app:tabIndicatorHeight="0dp"
-                app:tabMinWidth="50dp">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="1" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="2" />
-
-
-            </com.google.android.material.tabs.TabLayout>
-
-    </androidx.viewpager.widget.ViewPager>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/daysViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mpei_white"/>
 
 </LinearLayout>

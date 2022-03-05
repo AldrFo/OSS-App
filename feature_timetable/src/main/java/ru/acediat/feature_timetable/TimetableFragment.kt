@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentStatePagerAdapter
 import kekmech.ru.common_android.viewbinding.viewBinding
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
 
@@ -12,13 +13,20 @@ class TimetableFragment : Fragment() {
 
     private val binding by viewBinding(FragmentTimetableBinding::bind)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_timetable, container, false)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_timetable, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.daysViewPager.adapter = DayFragmentsAdapter(
+            parentFragmentManager,
+            FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        )
+        binding.daysTabLayout.setupWithViewPager(binding.daysViewPager)
     }
 
     companion object {

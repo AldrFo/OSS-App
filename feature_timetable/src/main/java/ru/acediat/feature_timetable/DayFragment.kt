@@ -25,8 +25,7 @@ class DayFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
-        fun newInstance() {}
+        fun newInstance() : DayFragment = DayFragment()
     }
 }

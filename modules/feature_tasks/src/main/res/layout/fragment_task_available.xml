@@ -169,8 +169,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_done"
-                        android:layout_marginRight="11dp"/>
+                        android:src="@drawable/ic_done"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -179,6 +178,7 @@
                         android:textColor="@color/dark_blue_text"
                         android:layout_gravity="center_vertical"
                         android:fontFamily="@font/nunito"
+                        android:layout_marginHorizontal="11dp"
                         android:textSize="12sp"/>
 
                 </LinearLayout>

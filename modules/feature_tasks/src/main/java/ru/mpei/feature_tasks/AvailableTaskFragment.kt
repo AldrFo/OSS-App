@@ -66,7 +66,13 @@ class AvailableTaskFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, 
             // Вешаем действия при нажатии на кнопку взятия задания на выполнение
             btnTakeTaskAvail.setOnClickListener {
                 if (mSettings.getBoolean(APP_PREFERENCES_FLAG, false)) {
-                    feature.accept(Wish.TakeTask(TakeTaskItem(mSettings.getString(APP_PREFERENCES_ID, "").toString(), item.id.toString())))
+                    feature.accept(
+                        Wish.TakeTask(
+                            TakeTaskItem(
+                                mSettings.getString(APP_PREFERENCES_ID, "").toString(),
+                                item.id.toString()
+                            )
+                        ))
                 } else {
                     Toast.makeText(context, "Чтобы взять задание сначала необходимо авторизоваться!", Toast.LENGTH_SHORT).show()
                 }

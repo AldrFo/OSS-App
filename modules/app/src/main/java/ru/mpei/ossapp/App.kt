@@ -1,6 +1,7 @@
 package ru.mpei.ossapp
 
 import android.app.Application
+import android.content.Intent
 import androidx.viewbinding.BuildConfig
 import kekmech.ru.common_di.modules
 import kekmech.ru.common_navigation.di.NavigationModule
@@ -14,6 +15,7 @@ import ru.mpei.feature_profile.di.ProfileModule
 import ru.mpei.feature_services.di.ServicesModule
 import ru.mpei.ossapp.di.AppModule
 import ru.mpei.ossapp.ui.main.di.MainScreenModule
+import ru.mpei.service_notifications.NotificationService
 import timber.log.Timber
 
 class App : Application() {
@@ -22,6 +24,7 @@ class App : Application() {
         super.onCreate()
         initTimber()
         initKoin()
+        startService(Intent(this, NotificationService::class.java))
     }
 
     private fun initKoin() = startKoin {

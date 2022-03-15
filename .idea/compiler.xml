@@ -62,6 +62,7 @@
       <module name="OSS.feature_store" target="11" />
       <module name="OSS.feature_tasks" target="11" />
       <module name="OSS.feature_timetable" target="11" />
+      <module name="OSS.service_notifications" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

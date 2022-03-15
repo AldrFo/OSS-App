@@ -36,3 +36,4 @@ rootProject.children.each { project ->
 }
 include ':domain_timetable'
 include ':feature_timetable'
+include ':service_notifications'

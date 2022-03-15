@@ -9,11 +9,13 @@ import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import kekmech.ru.common_android.close
 import kekmech.ru.common_android.closeWithSuccess
 import kekmech.ru.common_android.viewbinding.viewBinding
+import kekmech.ru.common_kotlin.OSS_TAG
 import kekmech.ru.common_mvi.ui.BaseFragment
 import kekmech.ru.common_navigation.BackButtonListener
 import org.koin.android.ext.android.inject
@@ -82,22 +84,20 @@ class AvailableTaskFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, 
 
     // Метод, вызываемый при изменени состояния фичи
     override fun render(state: TasksState) {
-        if (state.isLoading) {
+        if (state.isLoading)
             binding.btnTakeTaskAvail.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.mpei_blue_dark))
-        }
     }
 
     // Обработка эффектов
     override fun handleEffect(effect: TasksEffect) {
         when (effect) {
             // Эффект взятия задания
-            is TasksEffect.TaskTaken -> {
-                successfulTake()
-            }
+            is TasksEffect.TaskTaken -> successfulTake()
+
             // Эффект отображения ошибки
-            is TasksEffect.ShowError -> {
+            is TasksEffect.ShowError ->
                 Toast.makeText(context, "Ошибка на сервере: " + effect.throwable, Toast.LENGTH_SHORT).show()
-            }
+
             else -> {}
         }
     }

@@ -5,6 +5,7 @@ package ru.mpei.feature_tasks.items
  * А-08-17
  */
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
@@ -36,6 +37,7 @@ class TasksViewHolderImpl(
         binding.availPrice.text = price
     }
 
+    @SuppressLint("SetTextI18n")
     override fun setDates(startDate: String, endDate: String) {
         binding.availDates.text = "${startDate.substring(0, startDate.length-3)} - ${endDate.substring(0, endDate.length-3)}"
     }
@@ -59,8 +61,8 @@ class TasksItemBinder(
 
 // Адаптер списка заданий
 class TasksAdapterItem(onClick: (TasksItem) -> Unit): AdapterItem<TasksViewHolder, TasksItem>(
-        isType = {it is TasksItem},
-        layoutRes = R.layout.item_tasks,
-        itemBinder = TasksItemBinder(onClick),
-        viewHolderGenerator = ::TasksViewHolderImpl
+    isType = {it is TasksItem},
+    layoutRes = R.layout.item_tasks,
+    itemBinder = TasksItemBinder(onClick),
+    viewHolderGenerator = ::TasksViewHolderImpl
 )

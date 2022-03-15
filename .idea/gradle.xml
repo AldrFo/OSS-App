@@ -36,6 +36,7 @@
             <option value="$PROJECT_DIR$/modules/feature_services" />
             <option value="$PROJECT_DIR$/modules/feature_store" />
             <option value="$PROJECT_DIR$/modules/feature_tasks" />
+            <option value="$PROJECT_DIR$/service_notifications" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

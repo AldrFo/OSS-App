@@ -12,7 +12,6 @@ import ru.mpei.feature_dashboard.DashboardFragment
 import ru.mpei.feature_profile.ProfileFragment
 import ru.mpei.feature_services.ServicesFragment
 import ru.mpei.ossapp.R
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 class BottomBarController(fragment: Fragment) {

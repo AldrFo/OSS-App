@@ -13,8 +13,7 @@ class BaseFeature<State : Any, Event : Any, Effect : Any, Action : Any>(
     initialState: State,
     private val reducer: BaseReducer<State, Event, Effect, Action>,
     private val actor: Actor<Action, Event>
-) : Feature<State, Event, Effect>,
-    DisposableDelegate by DisposableDelegateImpl() {
+) : Feature<State, Event, Effect>, DisposableDelegate by DisposableDelegateImpl() {
 
     private val scheduler = Schedulers.newThread()
 
@@ -53,8 +52,7 @@ class BaseFeature<State : Any, Event : Any, Effect : Any, Action : Any>(
             .flatMap { actor.execute(it).subscribeOn(io()) }
             .subscribe(eventsInternal::onNext) {
                 error(Exception("You must handle all errors inside actor $actor", it))
-            }
-            .bind()
+            }.bind()
 
         return this
     }

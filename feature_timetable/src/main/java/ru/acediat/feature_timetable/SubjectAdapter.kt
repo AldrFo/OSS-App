@@ -15,7 +15,7 @@ class SubjectAdapter(
     private val subjects : List<Subject>
 ) : RecyclerView.Adapter<SubjectAdapter.ViewHolder>(){
 
-    val inflater : LayoutInflater = LayoutInflater.from(context)
+    private val inflater : LayoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         val view = inflater.inflate(R.layout.item_subject, parent, false)

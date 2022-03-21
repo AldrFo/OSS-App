@@ -22,10 +22,7 @@ class TimetableFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.daysViewPager.adapter = DayFragmentsAdapter(
-            parentFragmentManager,
-            FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-        )
+        binding.daysViewPager.adapter = DaysAdapter(requireContext())
         binding.daysTabLayout.setupWithViewPager(binding.daysViewPager)
     }
 

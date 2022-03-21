@@ -1,6 +1,7 @@
 package kekmech.ru.common_mvi.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -78,8 +79,7 @@ abstract class BaseFragment<Event : Any, Effect : Any, State : Any, Feature : Mv
                 render(it)
             }, {
                 Timber.e(it)
-            })
-            .bind()
+            }).bind()
     }
 
     private fun observeEffects() {
@@ -89,8 +89,7 @@ abstract class BaseFragment<Event : Any, Effect : Any, State : Any, Feature : Mv
                 handleEffect(it)
             }, {
                 Timber.e(it)
-            })
-            .bind()
+            }).bind()
     }
 
 

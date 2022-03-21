@@ -13,9 +13,9 @@ typealias TasksFeature = Feature<TasksState, TasksEvent, TasksEffect>
 
 // Состояние фичи
 data class TasksState(
-        val isLoading: Boolean = false,
-        val ListOfTasks: List<TasksItem> = emptyList(),
-        val isTaskTaken: Boolean = false
+    val isLoading: Boolean = false,
+    val ListOfTasks: List<TasksItem> = emptyList(),
+    val isTaskTaken: Boolean = false
 )
 
 sealed class TasksEvent{

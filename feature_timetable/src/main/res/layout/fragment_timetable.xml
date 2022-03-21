@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blue"
+    android:orientation="vertical"
+    tools:context=".TimetableFragment">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="12dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="@string/timetable"
+            android:textAlignment="center"
+            android:textColor="@color/mpei_blue"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_gear"
+            android:scaleType="fitCenter"
+            android:layout_gravity="end|center"
+            android:layout_marginHorizontal="5dp"
+            android:background="@color/bg_blue"/>
+
+    </FrameLayout>
+
+    <ru.acediat.feature_timetable.views.DayTabsLayout
+        android:id="@+id/daysTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_tabs"
+        android:layout_marginHorizontal="7dp"
+        android:layout_marginVertical="4dp"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="fixed"
+        app:tabBackground="@drawable/background_tab"
+        app:tabPaddingTop="4dp"
+        app:tabPaddingBottom="4dp"
+        app:tabTextColor="@color/text_gray"
+        app:tabSelectedTextColor="@color/mpei_white"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/daysViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mpei_white"/>
+
+</LinearLayout>

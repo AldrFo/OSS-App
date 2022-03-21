@@ -7,9 +7,8 @@ package ru.mpei.feature_tasks.mvi
 import kekmech.ru.common_mvi.BaseFeature
 
 // Создатель фичи
-class TasksFeatureFactory(
-        private val actor: TasksActor
-) {
+class TasksFeatureFactory(private val actor: TasksActor) {
+
     fun create(): TasksFeature = BaseFeature(
             initialState = TasksState(),
             reducer = TasksReducer(),

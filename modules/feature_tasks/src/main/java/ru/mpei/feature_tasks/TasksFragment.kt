@@ -39,7 +39,8 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
     override fun createFeature(): TasksFeature = tasksFeatureFactory.create()
 
     // Намерение при инициализации фрагмента
-    override val initEvent: TasksEvent get() = Wish.System.Init(mSettings.getString(APP_PREFERENCES_ID, "0").toString())
+    override val initEvent: TasksEvent
+        get() = Wish.System.Init(mSettings.getString(APP_PREFERENCES_ID, "0").toString())
 
     override var layoutId: Int = R.layout.fragment_tasks
 
@@ -63,7 +64,6 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
 
     // Метод, вызываемый при обновлении состяния фичи
     override fun render(state: TasksState) {
-
         // Если мы вернулись из другого фрагмента,
         // то обновляем список для поддержания актуальной информации
         if (fromFragment) {
@@ -89,7 +89,6 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
 
         // Эффект отображения ошибки
         is TasksEffect.ShowError -> Unit
-
         else -> Unit
     }
 
@@ -101,7 +100,7 @@ class TasksFragment : BaseFragment<TasksEvent, TasksEffect, TasksState, TasksFea
             val fragment = AvailableTaskFragment()
             fragment.arguments = bundle
             fromFragment = true
-            router.executeCommand(AddScreenForward { fragment/*.withResultFor(this, 12892)*/ })
+            router.executeCommand(AddScreenForward { fragment })
         }
     )
 

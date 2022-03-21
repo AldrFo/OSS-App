@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TimetableMainText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TimetableSecondaryText" parent="TimetableMainText">
+        <item name="android:textColor">@color/text_gray</item>
+    </style>
+
+</resources>

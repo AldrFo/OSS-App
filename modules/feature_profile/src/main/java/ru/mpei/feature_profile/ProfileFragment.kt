@@ -115,6 +115,8 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             // Выбираем разметку для отображения
             ScrollViewProfile2.visibility = View.GONE
             ScrollViewProfile1.visibility = View.VISIBLE
+            profileTitle.text = getText(R.string.enter)
+            
             // Вешаем действия при нажатии на кнопку входа
             enterButton.setOnClickListener {
                 feature.accept(Wish.ValidateFields(loginEmail.text.toString(), loginPassword.text.toString()))
@@ -126,11 +128,8 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             }
             // Вешаем действие на нажатие кнопки "зарегистрироваться"
             registerLink.setOnClickListener {
-
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://oss.mpei.ru/lk.php"))
-                startActivity(browserIntent)
-                //val fragment = RegisterFragment()
-                //router.executeCommand(AddScreenForward { fragment })
+                val fragment = RegisterFragment()
+                router.executeCommand(AddScreenForward { fragment })
             }
         }
     }
@@ -141,6 +140,7 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
             // Выбираем какую разметку отобразить
             ScrollViewProfile1.visibility = View.GONE
             ScrollViewProfile2.visibility = View.VISIBLE
+            profileTitle.text = getText(R.string.profile)
 
             // СВязываем поля и данные для отображения
             initials.text = getString(R.string.initials).format(profileData.name[0], profileData.surname[0])

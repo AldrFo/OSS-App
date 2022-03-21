@@ -1,0 +1,37 @@
+apply from: "$gradleDir/android-module.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
+
+dependencies {
+
+    implementation kotlinStdLib
+    implementation androidx.coreKtx
+    implementation androidx.appcompat
+    implementation androidx.swiperefreshlayout
+    implementation project(path: ':common_navigation')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation tests.junit
+
+    implementation rx.java
+    implementation rx.android
+    implementation rx.kotlin
+
+    implementation timber
+
+    implementation koin.core
+    implementation koin.android
+
+    implementation squareup.retrofit
+    implementation squareup.retrofit_rxJava2
+    implementation squareup.retrofit_gson
+    implementation squareup.picasso
+
+    implementation 'com.google.android.material:material:1.5.0-alpha02'
+
+    implementation project(path: ':domain_timetable')
+
+    implementation project(path: ':common_di')
+    implementation project(path: ':common_android')
+    implementation project(path: ':common_kotlin')
+    implementation project(path: ':common_network')
+
+}

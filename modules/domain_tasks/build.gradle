@@ -21,6 +21,15 @@ dependencies {
     implementation squareup.retrofit_rxJava2
     implementation squareup.retrofit_gson
 
+    def room_version = "2.4.1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+
     implementation project(path: ':common_di')
     implementation project(path: ':common_mvi')
     implementation project(path: ':common_android')

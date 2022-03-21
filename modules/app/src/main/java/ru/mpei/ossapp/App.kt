@@ -24,7 +24,7 @@ class App : Application() {
         super.onCreate()
         initTimber()
         initKoin()
-        startService(Intent(this, NotificationService::class.java))
+        //startService(Intent(this, NotificationService::class.java))
     }
 
     private fun initKoin() = startKoin {

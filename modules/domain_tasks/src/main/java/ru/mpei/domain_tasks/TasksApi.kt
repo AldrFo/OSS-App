@@ -11,6 +11,8 @@ import retrofit2.http.Query
 import ru.mpei.domain_tasks.dto.TakeTaskItem
 import ru.mpei.domain_tasks.dto.TasksItem
 
+const val AVAILABLE = "available"
+
 @EndpointUrl(OSS_URL)
 interface TasksApi {
 

@@ -35,12 +35,11 @@ class NotificationSender(private val context : Context) {
 
     private var notificationId = 0
     private val manager = NotificationManagerCompat.from(context)
-    private var tasks = ArrayList<TasksItem>()
+    private var localTasks = ArrayList<TasksItem>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     private val channel = NotificationChannel(
-        "oss channel",
-        "oss",
+        "oss channel", "oss",
         NotificationManager.IMPORTANCE_DEFAULT
     )
 
@@ -60,19 +59,20 @@ class NotificationSender(private val context : Context) {
 
     init{
         Log.d(SENDER_LOG, "init notification sender...")
-        channel.description = "descr"
+        channel.description = "oss app notification channel"
         manager.createNotificationChannel(channel)
+        getLocalTasks()
     }
 
-    //TODO: Добавить работу с бд, потому что сейчас tasks всегда будет пустой
     fun startSending(){
         enabled = true
         tasksObserver = repeatWithTasks(10).subscribe({
             Log.d(SENDER_LOG, "Checking...")
-            val notifyTasks = it.filter { !tasks.contains(it) }
-            for (task in notifyTasks) {
+            val notifyTasks = it.filter { task -> !localTasks.contains(task) }
+            databaseRepository.insertTasks(notifyTasks).subscribe()
+            for (task in notifyTasks)
                 sendNotification(TaskNotification(task).getNotification(context))
-            }
+            getLocalTasks()
         }, {
             Log.e(SENDER_LOG, "ERROR!", it)
         })
@@ -94,16 +94,10 @@ class NotificationSender(private val context : Context) {
     private fun getLocalTasks() = databaseRepository.getAllTasks()
         .subscribeOn(Schedulers.io())
         .observeOn(Schedulers.io())
-        .subscribe{ tasks = it as ArrayList<TasksItem> }
+        .subscribe{ localTasks = it as ArrayList<TasksItem> }
 
     private fun sendNotification(notification : Notification) {
         Log.d(SENDER_LOG, "Sending notification...")
         manager.notify(++notificationId, notification)
-    }
-
-    private fun logTasks(message : String, tasks : List<TasksItem>){
-        Log.d(SENDER_LOG, message)
-        for(item in tasks)
-            Log.d(SENDER_LOG, item.taskName)
     }
 }

@@ -2,6 +2,7 @@ package ru.mpei.ossapp
 
 import android.app.Application
 import android.content.Intent
+import android.os.Build
 import androidx.viewbinding.BuildConfig
 import kekmech.ru.common_di.modules
 import kekmech.ru.common_navigation.di.NavigationModule
@@ -24,7 +25,12 @@ class App : Application() {
         super.onCreate()
         initTimber()
         initKoin()
-        //startService(Intent(this, NotificationService::class.java))
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        //    startForegroundService(Intent(this, NotificationService::class.java))
+        //} else {
+        //    startService(Intent(this, NotificationService::class.java))
+        //}
+        startService(Intent(this, NotificationService::class.java))
     }
 
     private fun initKoin() = startKoin {

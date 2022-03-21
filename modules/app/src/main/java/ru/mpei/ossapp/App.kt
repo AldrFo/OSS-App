@@ -25,11 +25,11 @@ class App : Application() {
         super.onCreate()
         initTimber()
         initKoin()
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        //    startForegroundService(Intent(this, NotificationService::class.java))
-        //} else {
-        //    startService(Intent(this, NotificationService::class.java))
-        //}
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(Intent(this, NotificationService::class.java))
+        } else {
+            startService(Intent(this, NotificationService::class.java))
+        }
         startService(Intent(this, NotificationService::class.java))
     }
 

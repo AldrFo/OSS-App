@@ -16,4 +16,8 @@ interface TimetableApi {
         @Query("toDate") toDate : String,
     ) : Observable<List<LessonsDTO>>
 
+    @GET("Android/get_user_group.php")
+    fun getUserGroup(
+        @Query("userId") userId : Int
+    ) : Observable<String>
 }

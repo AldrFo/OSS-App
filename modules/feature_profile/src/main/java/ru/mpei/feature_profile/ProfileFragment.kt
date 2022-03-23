@@ -192,9 +192,11 @@ class ProfileFragment : BaseFragment<ProfileEvent, ProfileEffect, ProfileState, 
 
     // Метод сохранения данных пользователя
     private fun saveParams(params: ParamsItem) {
-        mSettings.edit().putString(APP_PREFERENCES_ID, params.id).apply()
-        mSettings.edit().putString(APP_PREFERENCES_PASS, params.pass).apply()
-        mSettings.edit().putBoolean(APP_PREFERENCES_FLAG, true).apply()
+        with(mSettings.edit()) {
+            putString(APP_PREFERENCES_ID, params.id)
+            putString(APP_PREFERENCES_PASS, params.pass)
+            putBoolean(APP_PREFERENCES_FLAG, true)
+        }.apply()
     }
 
     // Метод валидации веденных данных

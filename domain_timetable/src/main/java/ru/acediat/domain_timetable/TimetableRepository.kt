@@ -28,4 +28,17 @@ class TimetableRepository(private val api: TimetableApi) {
         return week
     }
 
+    fun getUserGroupName(id : Int) : String?{
+        var groupName : String? = null
+        api.getUserGroup(id)
+            .observeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
+            .blockingSubscribe({
+                groupName = it
+            }, {
+                Log.e(OSS_TAG, "ERROR", it)
+            })
+        return groupName
+    }
+
 }

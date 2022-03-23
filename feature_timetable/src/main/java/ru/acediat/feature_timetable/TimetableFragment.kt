@@ -1,5 +1,6 @@
 package ru.acediat.feature_timetable
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,22 +16,19 @@ class TimetableFragment : Fragment() {
 
     private val binding by viewBinding(FragmentTimetableBinding::bind)
     private val repository : TimetableRepository by inject()
+    private val preferences : SharedPreferences by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_timetable, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_timetable, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.daysViewPager.adapter = DaysAdapter(requireContext(), repository.getWeekTimetable("А-07-20")!!)
+        binding.daysViewPager.adapter = DaysAdapter(
+            requireContext(),
+            repository.getWeekTimetable("А-07-20")!!
+        )
         binding.daysTabLayout.setupWithViewPager(binding.daysViewPager)
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() {}
     }
 }

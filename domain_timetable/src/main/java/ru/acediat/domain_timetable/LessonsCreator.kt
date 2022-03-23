@@ -7,6 +7,7 @@ class LessonsCreator {
     private val PRACTICE = "Практическое занятие"
     private val LECTURE = "Лекция"
     private val LAB = "Лабораторная работа"
+    private val CONSULTATION = "Консультация"
 
     fun createLessonFromDTO(lessonsDTO: LessonsDTO) : LessonItem {
         with(lessonsDTO) {
@@ -15,17 +16,19 @@ class LessonsCreator {
                 PRACTICE -> "Семинар"
                 LECTURE -> "Лекция"
                 LAB -> "Лабораторная"
+                CONSULTATION -> CONSULTATION
                 else -> "Другое"
             }
             val name = discipline
             val dayOfWeek = dayOfWeek
-            val teacherName = if(lecturer != "!Не определена !Вакансия") lecturer else ""
+            val teacherName = if(lecturer != "!Не определена !Вакансия ") lecturer else ""
             val lessonNumber = lessonNumberStart
             val place = auditorium
             val indicator = when(kindOfWork){
-                 PRACTICE -> INDICATOR_GREEN
-                 LECTURE -> INDICATOR_RED
-                 LAB -> INDICATOR_YELLOW
+                PRACTICE -> INDICATOR_GREEN
+                LECTURE -> INDICATOR_RED
+                LAB -> INDICATOR_YELLOW
+                CONSULTATION -> INDICATOR_GRAY
                 else -> INDICATOR_BLUE
             }
             return LessonItem(time, type, dayOfWeek, indicator, name, place, teacherName, lessonNumber)
@@ -37,5 +40,6 @@ class LessonsCreator {
         val INDICATOR_GREEN = 1
         val INDICATOR_YELLOW = 2
         val INDICATOR_BLUE = 3
+        val INDICATOR_GRAY = 4
     }
 }

@@ -15,7 +15,7 @@ class DaysAdapter(
 
     override fun getCount(): Int = 7
 
-    override fun getPageTitle(position: Int): CharSequence? = week.getTimetableFormatDates(position)
+    override fun getPageTitle(position: Int): CharSequence = week.getTimetableFormatDates(position)
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val recyclerView = RecyclerView(context)

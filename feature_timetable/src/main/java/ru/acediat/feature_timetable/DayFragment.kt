@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kekmech.ru.common_android.viewbinding.viewBinding
-import ru.acediat.domain_timetable.items.Subject
 import ru.acediat.feature_timetable.databinding.FragmentDayBinding
 
 class DayFragment : Fragment() {

@@ -10,6 +10,7 @@ import kekmech.ru.common_network.di.NetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import ru.acediat.feature_timetable.di.TimetableModule
 import ru.mpei.feature_tasks.di.TasksModule
 import ru.mpei.feature_dashboard.di.DashboardModule
 import ru.mpei.feature_profile.di.ProfileModule
@@ -44,7 +45,8 @@ class App : Application() {
             DashboardModule,
             TasksModule,
             ProfileModule,
-            ServicesModule
+            ServicesModule,
+            TimetableModule
         ))
     }
 

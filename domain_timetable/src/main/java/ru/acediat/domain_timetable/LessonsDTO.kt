@@ -81,7 +81,7 @@ data class LessonsDTO(
     @SerializedName("hideinCapacity")
     val hideInCapacity : Int = 0, // 1 - скрыть 0 - не скрыть
     @SerializedName("isBan")
-    val isBan : Int = 0,
+    val isBan : Boolean = false,
     @SerializedName("lessonNumberStart")
     val lessonNumberStart : Int = 0,
     @SerializedName("lessonNumberEnd")

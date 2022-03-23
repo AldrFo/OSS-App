@@ -7,24 +7,14 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-//@EndpointUrl("http://ruz.public.mpei.local/RUZService/ruzservice.svc/")
 @EndpointUrl(OSS_URL)
 interface TimetableApi {
 
-    @GET("lk/shedule.php")
+    @GET("Android/get_group_timetable.php")
     fun getPersonLessons(
-        @Query("fromdate") fromDate : String,
-        @Query("todate") toDate : String,
-        @Query("groupoid") groupOId : Int
+        @Query("group") group : String,
+        @Query("fromDate") fromDate : String,
+        @Query("toDate") toDate : String,
     ) : Observable<List<LessonsDTO>>
 
-    companion object{
-        val RECEIVER_TYPE_STUDENT = 0
-        val RECEIVER_TYPE_TEACHER = 1
-        val RECEIVER_TYPE_ROOM = 2
-        val RECEIVER_TYPE_GROUP = 3
-
-        val LANGUAGE_RUSSIAN = 1
-        val LANGUAGE_ENGLISH = 2
-    }
 }

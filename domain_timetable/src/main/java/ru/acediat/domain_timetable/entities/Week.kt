@@ -1,5 +1,6 @@
-package ru.acediat.domain_timetable
+package ru.acediat.domain_timetable.entities
 
+import ru.acediat.domain_timetable.DatePicker
 import ru.acediat.domain_timetable.items.LessonItem
 
 class Week(

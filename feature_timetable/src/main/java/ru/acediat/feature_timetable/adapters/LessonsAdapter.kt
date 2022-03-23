@@ -1,4 +1,4 @@
-package ru.acediat.feature_timetable
+package ru.acediat.feature_timetable.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ru.acediat.domain_timetable.items.LessonItem
+import ru.acediat.feature_timetable.R
 
 
 class LessonsAdapter(
@@ -17,11 +18,13 @@ class LessonsAdapter(
 ) : RecyclerView.Adapter<LessonsAdapter.ViewHolder>(){
 
     private val inflater : LayoutInflater = LayoutInflater.from(context)
-    private val indicators = arrayOf(R.drawable.shape_indicator_red,
-                                     R.drawable.shape_indicator_green,
-                                     R.drawable.shape_indicator_yellow,
-                                     R.drawable.shape_indicator_blue,
-                                     R.drawable.shape_indicator_gray)
+    private val indicators = arrayOf(
+        R.drawable.shape_indicator_red,
+        R.drawable.shape_indicator_green,
+        R.drawable.shape_indicator_yellow,
+        R.drawable.shape_indicator_blue,
+        R.drawable.shape_indicator_gray
+    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ViewHolder {
         val view = inflater.inflate(R.layout.item_lesson, parent, false)

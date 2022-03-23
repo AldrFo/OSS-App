@@ -1,8 +1,6 @@
 package ru.acediat.domain_timetable
 
-import android.util.Log
 import com.cesarferreira.tempo.*
-import kekmech.ru.common_kotlin.OSS_TAG
 import java.util.*
 
 class DatePicker {

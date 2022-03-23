@@ -1,7 +1,6 @@
 package ru.acediat.feature_timetable
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import kekmech.ru.common_android.viewbinding.viewBinding
 import org.koin.android.ext.android.inject
 import ru.acediat.domain_timetable.TimetableRepository
+import ru.acediat.feature_timetable.adapters.DaysAdapter
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
 
 class TimetableFragment : Fragment() {

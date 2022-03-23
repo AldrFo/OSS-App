@@ -1,4 +1,4 @@
-package ru.acediat.feature_timetable
+package ru.acediat.feature_timetable.adapters
 
 import android.content.Context
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
-import ru.acediat.domain_timetable.Week
+import ru.acediat.domain_timetable.entities.Week
 
 class DaysAdapter(
     private val context : Context,

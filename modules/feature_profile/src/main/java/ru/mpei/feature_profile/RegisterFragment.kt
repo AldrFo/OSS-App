@@ -60,7 +60,6 @@ class RegisterFragment : Fragment() {
 
                 /// Создаем запрос к серверу на регстрацию
                 val call = with(binding) {
-                    Log.d("OSS", regMail.text.toString())
                     service.register(
                         email = regMail.text.toString(),
                         name = regName.text.toString(),
@@ -73,11 +72,6 @@ class RegisterFragment : Fragment() {
 
                 call.enqueue(object : Callback<ResponseBody> {
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                        Log.d("OSS", "isSucceful: ${response.isSuccessful}")
-                        Log.d("OSS", "message: ${response.message()}")
-                        Log.d("OSS", "body: ${response.body()}")
-                        Log.d("OSS", "code: ${response.code()}")
-                        Log.d("OSS", "${response.body()?.string()}")
                         // В заивисимости от кода овтета Выводим одно из сообщений
                         when (response.code()) {
                             200 -> {

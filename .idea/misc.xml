@@ -10,12 +10,14 @@
         <entry key="feature_timetable/src/main/res/drawable/ic_gear.xml" value="0.1285" />
         <entry key="feature_timetable/src/main/res/drawable/shape_indicator.xml" value="0.1285" />
         <entry key="feature_timetable/src/main/res/drawable/shape_indicator_blue.xml" value="0.1285" />
+        <entry key="feature_timetable/src/main/res/drawable/shape_indicator_gray.xml" value="0.121" />
         <entry key="feature_timetable/src/main/res/drawable/shape_indicator_green.xml" value="0.1285" />
         <entry key="feature_timetable/src/main/res/drawable/shape_indicator_yellow.xml" value="0.1285" />
         <entry key="feature_timetable/src/main/res/font/nunito.xml" value="0.23796296296296296" />
         <entry key="feature_timetable/src/main/res/font/nunito_bold.xml" value="0.23796296296296296" />
         <entry key="feature_timetable/src/main/res/layout/fragment_day.xml" value="0.19927536231884058" />
         <entry key="feature_timetable/src/main/res/layout/fragment_timetable.xml" value="0.22" />
+        <entry key="feature_timetable/src/main/res/layout/item_lesson.xml" value="0.1793478260869565" />
         <entry key="feature_timetable/src/main/res/layout/item_subject.xml" value="0.25" />
         <entry key="feature_timetable/src/main/res/layout/item_tab.xml" value="0.8405426025390625" />
         <entry key="modules/app/src/main/res/layout/activity_main.xml" value="0.15295971856600993" />

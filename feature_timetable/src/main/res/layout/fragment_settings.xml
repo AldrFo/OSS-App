@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SettingsFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_blue">
+
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/bg_blue"
+            android:src="@drawable/ic_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="12dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="@string/settings"
+            android:textAlignment="center"
+            android:textColor="@color/mpei_blue"
+            android:textSize="18sp" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="@string/group_select_label"
+        android:textSize="20sp"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="@color/dark_blue_text" />
+
+    <EditText
+        android:id="@+id/groupEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:layout_marginHorizontal="12dp"
+        android:fontFamily="@font/nunito"
+        android:textColor="@color/dark_blue_text"
+        android:textColorHint="@color/dark_gray_hints"
+        android:textAllCaps="true"
+        android:hint="@string/group_select_hint"
+        android:background="@drawable/background_edit_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/group_select_description"
+        android:textSize="10sp"
+        android:fontFamily="@font/nunito" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30dp"
+        android:layout_gravity="end"
+        android:layout_margin="12dp"
+        android:background="@drawable/background_button"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/mpei_white"/>
+
+</LinearLayout>

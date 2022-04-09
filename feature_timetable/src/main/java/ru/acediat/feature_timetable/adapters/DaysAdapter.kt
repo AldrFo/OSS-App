@@ -1,20 +1,14 @@
 package ru.acediat.feature_timetable.adapters
 
 import android.content.Context
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import ru.acediat.domain_timetable.entities.Week
 import ru.acediat.feature_timetable.R
-import java.util.zip.Inflater
 
 class DaysAdapter(
     private val context : Context,

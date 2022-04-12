@@ -2,14 +2,13 @@ package ru.acediat.feature_timetable
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kekmech.ru.common_android.viewbinding.viewBinding
-import kekmech.ru.common_kotlin.OSS_TAG
 import org.koin.android.ext.android.inject
+import ru.acediat.domain_timetable.DatePicker
 import ru.acediat.domain_timetable.TimetableRepository
 import ru.acediat.feature_timetable.adapters.DaysAdapter
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
@@ -37,6 +36,7 @@ class TimetableFragment : Fragment() {
         daysAdapter = DaysAdapter(requireContext(), preferences)
         binding.timetableSettingsButton.setOnClickListener(this::onSettingsClick)
         binding.daysViewPager.adapter = daysAdapter
+        binding.daysViewPager.currentItem = DatePicker.currentDay() - 1
         binding.daysTabLayout.setupWithViewPager(binding.daysViewPager)
 
         model.week.observe(viewLifecycleOwner){

@@ -1,7 +1,5 @@
 package ru.mpei.ossapp.ui.main
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView

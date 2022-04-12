@@ -32,7 +32,6 @@ class DaysAdapter(
         = week?.getTimetableFormatDates(position) ?: "..."
 
     override fun instantiateItem(container: ViewGroup, position: Int) : Any {
-        Log.d(OSS_TAG, "item $position inst")
         if(week == null && isGroupUnknown()) {
             with(getUnknownGroupView(container)){
                 container.addView(this)

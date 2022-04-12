@@ -1,5 +1,6 @@
 package ru.acediat.domain_timetable
 
+import ru.acediat.domain_timetable.dto.LessonsDTO
 import ru.acediat.domain_timetable.items.LessonItem
 
 class LessonsCreator {

@@ -1,5 +1,7 @@
 package ru.mpei.ossapp.ui.main
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -87,7 +89,7 @@ class BottomBarController(fragment: Fragment) {
         BottomTab.SERVICES -> R.id.navigation_services
     }
 
-    private fun createTabFragment(tab: BottomTab): Fragment = when (tab) {
+    private fun createTabFragment(tab: BottomTab) : Fragment = when (tab) {
         BottomTab.TIMETABLE -> TimetableFragment()
         BottomTab.DASHBOARD -> DashboardFragment()
         BottomTab.PROFILE -> ProfileFragment()

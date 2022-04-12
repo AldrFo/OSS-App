@@ -34,7 +34,7 @@ class Week(
     fun getDayTimetable(dayNumber : Int) : ArrayList<LessonItem> = weekTimetable[dayNumber]
 
     fun getTimetableFormatDates(dayNumber : Int) : String
-        = "${getDayName(dayNumber)}\n${days[dayNumber].date}\n${getMonthName(days[dayNumber].month)}"
+        = "${getDayName(dayNumber)}\n${days[dayNumber].date}"
 
     private fun getDayName(dayNumber : Int) : String = dayNames[dayNumber]
 

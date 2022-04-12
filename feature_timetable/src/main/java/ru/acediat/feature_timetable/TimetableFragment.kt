@@ -9,18 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import kekmech.ru.common_android.viewbinding.viewBinding
 import kekmech.ru.common_kotlin.OSS_TAG
-import kekmech.ru.common_navigation.AddScreenForward
 import org.koin.android.ext.android.inject
 import ru.acediat.domain_timetable.TimetableRepository
-import ru.acediat.domain_timetable.entities.Week
 import ru.acediat.feature_timetable.adapters.DaysAdapter
 import ru.acediat.feature_timetable.databinding.FragmentTimetableBinding
+import ru.acediat.feature_timetable.models.TimetableViewModel
 
 class TimetableFragment : Fragment() {
 
     private val binding by viewBinding(FragmentTimetableBinding::bind)
     private val repository : TimetableRepository by inject()
     private val preferences : SharedPreferences by inject()
+
+    private lateinit var model : TimetableViewModel
+    private lateinit var daysAdapter: DaysAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,21 +31,25 @@ class TimetableFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        model = TimetableViewModel(activity, repository, preferences)
+
+        daysAdapter = DaysAdapter(requireContext(), preferences)
         binding.timetableSettingsButton.setOnClickListener(this::onSettingsClick)
-        binding.daysViewPager.adapter = DaysAdapter(
-            requireContext(),
-            getTimetable()!!
-        )
+        binding.daysViewPager.adapter = daysAdapter
         binding.daysTabLayout.setupWithViewPager(binding.daysViewPager)
+
+        model.week.observe(viewLifecycleOwner){
+            daysAdapter.setWeek(it)
+        }
+
+        model.group.observe(viewLifecycleOwner){
+            preferences.edit().putString("timetableGroup", it).commit()
+            model.getTimetable()
+        }
+
+        model.getGroup()
     }
 
-    private fun onSettingsClick(view : View?) {
-        activity?.supportFragmentManager?.let { AddScreenForward { SettingsFragment() }.apply(it) }
-    }
-
-    private fun getTimetable() : Week? {
-        val group = preferences.getString("timetableGroup", "А-07-20") ?: "А-07-20"
-        Log.d(OSS_TAG, group)
-        return repository.getWeekTimetable(group)
-    }
+    private fun onSettingsClick(view : View?) = model.goToSettings()
 }

@@ -1,4 +1,4 @@
-package ru.acediat.domain_timetable
+package ru.acediat.domain_timetable.dto
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

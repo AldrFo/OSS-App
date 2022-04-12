@@ -31,10 +31,9 @@ interface ProfileApi {
         @Query("id") id: String
     ): Single<List<TaskItem>>
 
-    @FormUrlEncoded
-    @POST("Android/restore_pass.php")
+    @GET("Android/restore_pass2.php")
     fun restorePass(
-        @Field("email") email: String
+        @Query("email") email : String
     ): Call<ResponseBody>
 
     @FormUrlEncoded

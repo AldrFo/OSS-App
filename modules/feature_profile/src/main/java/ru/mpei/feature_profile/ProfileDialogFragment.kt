@@ -7,10 +7,12 @@ package ru.mpei.feature_profile
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import kekmech.ru.common_kotlin.OSS_TAG
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,7 +50,7 @@ class ProfileDialogFragment : DialogFragment() {
                     // Иначе делаем запрос к серверу
                     emailInput.isErrorEnabled = false
                     val retrofit: Retrofit = Retrofit.Builder()
-                        .baseUrl("http://cy37212.tmweb.ru/")
+                        .baseUrl("https://oss.mpei.ru/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
 

@@ -29,21 +29,26 @@ data class NewsItem(
     @SerializedName("image_src")
     var imageUrl: String = ""
 ) : Serializable {
-    companion object{
-        fun getMonthNameFromNum(num : Int) : String = when (num){
-            1 -> "января"
-            2 -> "февраля"
-            3 -> "марта"
-            4 -> "апреля"
-            5 -> "мая"
-            6 -> "июня"
-            7 -> "июля"
-            8 -> "августа"
-            9 -> "сентября"
-            10 -> "октября"
-            11 -> "ноября"
-            12 -> "декабря"
-            else -> "неизвестно"
-        }
+
+    fun getChisloFromDate(date : String) : String =
+        date[date.length - 2].toString() + date[date.length - 1].toString()
+
+    fun getMonthFromDate(date : String) : String =
+        getMonthNameFromNum((date[date.length - 5].toString() + date[date.length - 4].toString()).toInt())
+
+    private fun getMonthNameFromNum(num : Int) : String = when (num){
+        1 -> "января"
+        2 -> "февраля"
+        3 -> "марта"
+        4 -> "апреля"
+        5 -> "мая"
+        6 -> "июня"
+        7 -> "июля"
+        8 -> "августа"
+        9 -> "сентября"
+        10 -> "октября"
+        11 -> "ноября"
+        12 -> "декабря"
+        else -> "неизвестно"
     }
 }

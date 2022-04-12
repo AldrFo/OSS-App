@@ -38,10 +38,15 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
                 setNavigationOnClickListener { router.executeCommand(ClearBackStack()) }
             }
             fragmentArticleToolbarText.text = it.name
-
-            fragmentArticleDate.text = it.chislo
-            fragmentArticleMonth.text = it.month
-            fragmentArticleTime.text = it.hour
+            if(it.chislo != null) {
+                fragmentArticleDate.text = it.chislo
+                fragmentArticleMonth.text = it.month
+                fragmentArticleTime.text = it.hour
+            }else{
+                fragmentArticleDate.text = it.getChisloFromDate(it.date)
+                fragmentArticleMonth.text = it.getMonthFromDate(it.date)
+                fragmentArticleTime.text = ""
+            }
 
             fragmentArticleName.text = it.name
             fragmentArticleDescription.text = it.describtion

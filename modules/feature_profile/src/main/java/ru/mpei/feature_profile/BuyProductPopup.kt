@@ -34,7 +34,7 @@ class BuyProductPopup(private val profileId: Int, private val product: ProductIt
 
     //Переменная для реализации HTTP запросов
     private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://cy37212.tmweb.ru/")
+        .baseUrl("https://oss.mpei.ru/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

@@ -212,7 +212,6 @@
                     android:textColorHint="@color/dark_gray_hints"
                     android:ems="15"
                     android:inputType="textPersonName"
-                    android:textAllCaps="true"
                     android:textCursorDrawable="@null"
                     android:autofillHints="no"
                     android:hint="@string/groupExample"/>

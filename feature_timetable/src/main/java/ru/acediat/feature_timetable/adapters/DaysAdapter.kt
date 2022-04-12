@@ -20,9 +20,15 @@ class DaysAdapter(
 ) : PagerAdapter() {
 
     private var week : Week? = null
+    private var isGroupValid = true
 
     fun setWeek(week : Week){
         this.week = week
+        notifyDataSetChanged()
+    }
+
+    fun setGroupValid(valid : Boolean){
+        isGroupValid = valid
         notifyDataSetChanged()
     }
 
@@ -76,5 +82,7 @@ class DaysAdapter(
         LayoutInflater.from(context).inflate(R.layout.item_unknown_group, container, false)
 
     private fun isGroupUnknown() =
-        !(preferences.getBoolean("isAuth", false) || preferences.getString("timetableGroup", "") ?: "" != "")
+        !(preferences.getBoolean("isAuth", false)
+            || preferences.getString("timetableGroup", "") ?: "" != "")
+            || !isGroupValid
 }

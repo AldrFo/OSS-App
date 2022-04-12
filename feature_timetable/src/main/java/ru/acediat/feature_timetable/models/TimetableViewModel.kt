@@ -21,6 +21,7 @@ class TimetableViewModel(
 
     val week = MutableLiveData<Week>()
     val group = MutableLiveData<String>()
+    val isGroupValid = MutableLiveData<Boolean>()
 
     var error : String? = null
 
@@ -34,6 +35,7 @@ class TimetableViewModel(
         }else if(preferences.getBoolean("isAuth", false)){
             getGroupFromServer()
         }
+        isGroupValid()
     }
 
     @SuppressLint("CheckResult")
@@ -63,6 +65,16 @@ class TimetableViewModel(
                 group.postValue(it.group)
             }, {
                 Log.e(OSS_TAG, "ERROR", it)
+            })
+    }
+
+    @SuppressLint("CheckResult")
+    private fun isGroupValid(){
+        repository.isGroupValid(group.value ?: "")
+            .subscribe({
+                isGroupValid.postValue(it.isGroupValid)
+            }, {
+                Log.d(OSS_TAG, "ERROR", it)
             })
     }
 

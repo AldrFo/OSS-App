@@ -39,14 +39,14 @@ class TimetableFragment : Fragment() {
         binding.daysViewPager.currentItem = DatePicker.currentDay() - 1
         binding.daysTabLayout.setupWithViewPager(binding.daysViewPager)
 
-        model.week.observe(viewLifecycleOwner){
-            daysAdapter.setWeek(it)
-        }
+        model.week.observe(viewLifecycleOwner){ daysAdapter.setWeek(it) }
 
         model.group.observe(viewLifecycleOwner){
             preferences.edit().putString("timetableGroup", it).commit()
             model.getTimetable()
         }
+
+        model.isGroupValid.observe(viewLifecycleOwner){ daysAdapter.setGroupValid(it) }
 
         model.getGroup()
     }

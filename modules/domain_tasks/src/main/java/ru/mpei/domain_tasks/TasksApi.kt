@@ -22,8 +22,14 @@ interface TasksApi {
         @Query("type") type: String
     ): Single<List<TasksItem>>
 
-    @POST("Android/take_task.php")
+    @GET("Android/take_task2.php")
     fun take(
-        @Body body: TakeTaskItem
+        @Query("task_id") taskId : Int,
+        @Query("user_id") userId : Int
+    ): Single<ResponseBody>
+
+    @POST("Android/take_task2.php")
+    fun take(
+        @Body item : TakeTaskItem
     ): Single<ResponseBody>
 }

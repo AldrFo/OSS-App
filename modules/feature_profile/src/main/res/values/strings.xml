@@ -48,7 +48,7 @@
     <string name="male">Мужчина</string>
     <string name="female">Женщина</string>
     <string name="group">Группа</string>
-    <string name="groupExample">Номер вашей группы МЭИ</string>
+    <string name="groupExample">Например: А–07–20</string>
     <string name="initials">%1$s%2$s</string>
     <string name="name_blank">%1$s %2$s</string>
     <string name="task_dates">%1$s - %2$s</string>

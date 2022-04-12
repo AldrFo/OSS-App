@@ -26,6 +26,7 @@
             android:textSize="18sp" />
 
         <ImageButton
+            android:id="@+id/timetableSettingsButton"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:src="@drawable/ic_gear"
@@ -36,20 +37,19 @@
 
     </FrameLayout>
 
-    <ru.acediat.feature_timetable.views.DayTabsLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/daysTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@drawable/background_tabs"
         android:layout_marginHorizontal="7dp"
         android:layout_marginVertical="4dp"
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
         app:tabBackground="@drawable/background_tab"
-        app:tabPaddingTop="4dp"
-        app:tabPaddingBottom="4dp"
         app:tabTextColor="@color/text_gray"
-        app:tabSelectedTextColor="@color/mpei_white"/>
+        app:tabSelectedTextColor="@color/mpei_white"
+        app:tabUnboundedRipple="false"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/daysViewPager"

@@ -54,7 +54,15 @@ class NewsItemBinder(
 
     override fun bind(vh: NewsViewHolder, model: NewsItem, position: Int) {
         vh.setName(model.name)
-        vh.setDate(model.chislo, model.month, model.hour)
+        if(model.chislo != null) {
+            vh.setDate(model.chislo, model.month, model.hour)
+        }else {
+            vh.setDate(
+                model.getChisloFromDate(model.date),
+                model.getMonthFromDate(model.date),
+                ""
+            )
+        }
         vh.setText(model.describtion)
         vh.setOnClickListener { onClick(model) }
     }

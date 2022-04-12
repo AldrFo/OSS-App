@@ -5,6 +5,7 @@ import java.io.Serializable
 
 data class NewsItem(
     var id: String = "",
+    var date : String = "",
     var name: String = "",
     var chislo: String = "",
     var month: String = "",
@@ -27,4 +28,27 @@ data class NewsItem(
     var content: String = "",
     @SerializedName("image_src")
     var imageUrl: String = ""
-) : Serializable
+) : Serializable {
+
+    fun getChisloFromDate(date : String) : String =
+        date[date.length - 2].toString() + date[date.length - 1].toString()
+
+    fun getMonthFromDate(date : String) : String =
+        getMonthNameFromNum((date[date.length - 5].toString() + date[date.length - 4].toString()).toInt())
+
+    private fun getMonthNameFromNum(num : Int) : String = when (num){
+        1 -> "января"
+        2 -> "февраля"
+        3 -> "марта"
+        4 -> "апреля"
+        5 -> "мая"
+        6 -> "июня"
+        7 -> "июля"
+        8 -> "августа"
+        9 -> "сентября"
+        10 -> "октября"
+        11 -> "ноября"
+        12 -> "декабря"
+        else -> "неизвестно"
+    }
+}

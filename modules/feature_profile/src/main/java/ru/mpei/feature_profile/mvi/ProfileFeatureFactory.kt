@@ -10,7 +10,7 @@ import ru.mpei.domain_profile.dto.ProfileItem
 
 //Создатель фичи
 class ProfileFeatureFactory(
-        private val actor: ProfileActor
+    private val actor: ProfileActor
 ) {
     fun create(): ProfileFeature = BaseFeature(
             initialState = ProfileState(),

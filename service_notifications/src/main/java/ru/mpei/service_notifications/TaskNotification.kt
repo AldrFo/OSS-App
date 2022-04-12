@@ -8,12 +8,15 @@ import ru.mpei.domain_tasks.dto.TasksItem
 class TaskNotification(private val task: TasksItem){
 
     fun getNotification(context : Context) : Notification{
+        val text = "Появилось задание \"${task.taskName}\""
+        val bigText = text + "\n" + task.taskDescription
         val builder = NotificationCompat.Builder(context, "oss channel")
             .setAutoCancel(true)
-            .setSmallIcon(R.drawable.ic_gear_n)
+            .setSmallIcon(R.drawable.ic_notify)
             .setContentTitle("Новое задание!")
-            .setContentText("Появилось задание ${task.taskName}, стоимостью ${task.price}!")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentText(text)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(bigText))
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
         return builder.build()
     }
 

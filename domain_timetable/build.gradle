@@ -20,6 +20,8 @@ dependencies {
     implementation squareup.retrofit_rxJava2
     implementation squareup.retrofit_gson
 
+    implementation 'com.github.cesarferreira:tempo:0.7.0'
+
     implementation project(path: ':common_di')
     implementation project(path: ':common_network')
     implementation project(path: ':common_kotlin')

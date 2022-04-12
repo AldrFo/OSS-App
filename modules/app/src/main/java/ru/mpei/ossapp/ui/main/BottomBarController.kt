@@ -1,10 +1,8 @@
 package ru.mpei.ossapp.ui.main
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kekmech.ru.common_kotlin.OSS_TAG
 import kekmech.ru.common_navigation.BottomTab
 import ru.acediat.feature_timetable.TimetableFragment
 import ru.mpei.feature_tasks.TasksFragment
@@ -17,14 +15,13 @@ import java.util.concurrent.TimeUnit
 class BottomBarController(fragment: Fragment) {
 
     private val childFragmentManager: FragmentManager = fragment.childFragmentManager
-    private var lastSelectedTab = BottomTab.TIMETABLE
+    private var lastSelectedTab = BottomTab.DASHBOARD
     private var bottomNavView: BottomNavigationView? = null
     private val currentTabFragment: Fragment?
         get() = childFragmentManager.fragments.firstOrNull { !it.isHidden && it.tag != null }
-    private val backStack: BottomBarBackStack = BottomBarBackStack(firstTab = BottomTab.TIMETABLE)
+    private val backStack: BottomBarBackStack = BottomBarBackStack(firstTab = BottomTab.DASHBOARD)
 
     private val navSelectListener = BottomNavigationView.OnNavigationItemSelectedListener {  item ->
-        Log.d(OSS_TAG, "===== Selection start =====")
         val tab = when (item.itemId) {
             R.id.navigation_timetable -> BottomTab.TIMETABLE
             R.id.navigation_dashboard -> BottomTab.DASHBOARD
@@ -48,7 +45,7 @@ class BottomBarController(fragment: Fragment) {
         bottomNavView.setOnNavigationItemSelectedListener(navSelectListener)
         selectTab(lastSelectedTab)
         backStack.push(lastSelectedTab)
-        if (bottomNavView.selectedItemId == R.id.navigation_timetable) {
+        if (bottomNavView.selectedItemId == R.id.navigation_dashboard) {
             containerFragment.postponeEnterTransition(300L, TimeUnit.MILLISECONDS)
         }
     }
@@ -90,7 +87,7 @@ class BottomBarController(fragment: Fragment) {
         BottomTab.SERVICES -> R.id.navigation_services
     }
 
-    private fun createTabFragment(tab: BottomTab): Fragment = when (tab) {
+    private fun createTabFragment(tab: BottomTab) : Fragment = when (tab) {
         BottomTab.TIMETABLE -> TimetableFragment()
         BottomTab.DASHBOARD -> DashboardFragment()
         BottomTab.PROFILE -> ProfileFragment()

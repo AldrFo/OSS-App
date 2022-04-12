@@ -7,6 +7,7 @@ package ru.mpei.feature_tasks.mvi
 
 import io.reactivex.Observable
 import kekmech.ru.common_mvi.Actor
+import ru.mpei.domain_tasks.AVAILABLE
 import ru.mpei.domain_tasks.TasksRepository
 
 // Класс исполнителя запросов на сервер
@@ -15,7 +16,7 @@ class TasksActor(private val tasksRepository: TasksRepository) : Actor<TasksActi
     override fun execute(action: TasksAction) : Observable<TasksEvent> =
         when (action) {
             is TasksAction.LoadTasksList ->
-                tasksRepository.observeTasks(action.id, "available")
+                tasksRepository.observeTasks(action.id, AVAILABLE)
                     .mapEvents(TasksEvent.News::TasksLoaded, TasksEvent.News::TasksLoadError)
 
             is TasksAction.TakeTask ->

@@ -6,10 +6,12 @@ package ru.mpei.feature_dashboard
  */
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import kekmech.ru.common_android.viewbinding.viewBinding
+import kekmech.ru.common_kotlin.OSS_TAG
 import kekmech.ru.common_navigation.ClearBackStack
 import kekmech.ru.common_navigation.Router
 import org.koin.android.ext.android.inject
@@ -36,10 +38,15 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
                 setNavigationOnClickListener { router.executeCommand(ClearBackStack()) }
             }
             fragmentArticleToolbarText.text = it.name
-
-            fragmentArticleDate.text = it.chislo
-            fragmentArticleMonth.text = it.month
-            fragmentArticleTime.text = it.hour
+            if(it.chislo != null) {
+                fragmentArticleDate.text = it.chislo
+                fragmentArticleMonth.text = it.month
+                fragmentArticleTime.text = it.hour
+            }else{
+                fragmentArticleDate.text = it.getChisloFromDate(it.date)
+                fragmentArticleMonth.text = it.getMonthFromDate(it.date)
+                fragmentArticleTime.text = ""
+            }
 
             fragmentArticleName.text = it.name
             fragmentArticleDescription.text = it.describtion

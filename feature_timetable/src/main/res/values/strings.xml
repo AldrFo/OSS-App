@@ -1,6 +1,16 @@
 <resources>
     <string name="timetable">Расписание</string>
+    <string name="settings">Настройки</string>
     <string name="week">Неделя</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="relax">Сегодня ничего нет :)</string>
 
+    <string name="group_select_label">Группа:</string>
+    <string name="group_select_description">Здесь вы можете выбрать группу для которой будет демонстрироваться расписание</string>
+    <string name="group_select_hint">Например: А–07–20</string>
+    <string name="save">Сохранить</string>
+    <string name="unknown_group">Расписание не найдено…</string>
+    <string name="unknown_group_description">
+        Измените группу в настройках \n
+        или авторизируйтесь.
+    </string>
 </resources>

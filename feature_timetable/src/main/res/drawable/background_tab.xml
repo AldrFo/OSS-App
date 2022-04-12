@@ -2,22 +2,32 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:state_selected="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/mpei_blue"/>
-            <corners android:radius="8dp"/>
-            <stroke
-                android:width="4dp"
-                android:color="@color/dark_bg_blue"/>
-        </shape>
+        <layer-list>
+            <item
+                android:left="4dp"
+                android:right="4dp"
+                android:top="4dp"
+                android:bottom="4dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/mpei_blue"/>
+                    <corners android:radius="8dp"/>
+                </shape>
+            </item>
+        </layer-list>
     </item>
 
     <item android:state_checked="false">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/bg_blue"/>
-            <corners android:radius="8dp"/>
-            <stroke
-                android:width="4dp"
-                android:color="@color/dark_bg_blue"/>
-        </shape>
+        <layer-list>
+            <item
+                android:left="4dp"
+                android:right="4dp"
+                android:top="4dp"
+                android:bottom="4dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/bg_blue"/>
+                    <corners android:radius="8dp"/>
+                </shape>
+            </item>
+        </layer-list>
     </item>
 </selector>

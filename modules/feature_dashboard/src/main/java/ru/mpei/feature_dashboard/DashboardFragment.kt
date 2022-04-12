@@ -121,7 +121,12 @@ class DashboardFragment : BaseFragment<DashboardEvent, DashboardEffect, Dashboar
     override fun handleEffect(effect: DashboardEffect) = when(effect) {
         is DashboardEffect.NewsListLoaded -> binding.swipeRefresh.isRefreshing = false
         is DashboardEffect.EventsListLoaded -> binding.swipeRefresh.isRefreshing = false
-        is DashboardEffect.ShowError -> Toast.makeText(context, "Возникла проблема: "+effect.throwable.localizedMessage, Toast.LENGTH_SHORT).show()
+        is DashboardEffect.ShowError ->
+            Toast.makeText(
+                context,
+                "Возникла проблема: " + effect.throwable.localizedMessage,
+                Toast.LENGTH_SHORT
+            ).show()
     }
 
     // Создание адаптеров

@@ -4,10 +4,12 @@ package ru.mpei.feature_dashboard.items
  * Андрей Турлюк
  * А-08-17
  */
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kekmech.ru.common_adapter.AdapterItem
 import kekmech.ru.common_adapter.BaseItemBinder
+import kekmech.ru.common_kotlin.OSS_TAG
 import ru.mpei.domain_news.dto.NewsItem
 import ru.mpei.feature_dashboard.R
 import ru.mpei.feature_dashboard.databinding.ItemArticleBinding
@@ -54,10 +56,20 @@ class NewsItemBinder(
 
     override fun bind(vh: NewsViewHolder, model: NewsItem, position: Int) {
         vh.setName(model.name)
-        vh.setDate(model.chislo, model.month, model.hour)
+        if(model.chislo != null)
+            vh.setDate(model.chislo, model.month, model.hour)
+        else {
+            vh.setDate(getChisloFromDate(model.date), getMonthFromDate(model.date), "")
+        }
         vh.setText(model.describtion)
         vh.setOnClickListener { onClick(model) }
     }
+
+    private fun getChisloFromDate(date : String) : String =
+        date[date.length - 2].toString() + date[date.length - 1].toString()
+
+    private fun getMonthFromDate(date : String) : String =
+        NewsItem.getMonthNameFromNum((date[date.length - 5].toString() + date[date.length - 4].toString()).toInt())
 }
 
 // Создание адапетра для списка

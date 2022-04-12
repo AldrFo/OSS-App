@@ -29,6 +29,7 @@ import java.util.concurrent.TimeUnit
 class NotificationSender(private val context : Context) {
 
     private val SENDER_LOG = "OSS_TAG_SENDER"
+    private val repeatTime = 10L
 
     var enabled = false
         private set
@@ -37,14 +38,19 @@ class NotificationSender(private val context : Context) {
     private val manager = NotificationManagerCompat.from(context)
     private var localTasks = ArrayList<TasksItem>()
 
+    private val databaseRepository = TasksDatabaseRepository(context)
+
+    private lateinit var tasksObserver : Disposable
+
     @RequiresApi(Build.VERSION_CODES.O)
     private val channel = NotificationChannel(
         "oss channel", "oss",
         NotificationManager.IMPORTANCE_DEFAULT
     )
 
-    private val userId = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
-        .getString("userId", "")!!
+    private val userId = context
+            .getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getString("userId", "")!!
 
     private var tasksRepository = TasksRepository(
         Retrofit.Builder()
@@ -53,9 +59,6 @@ class NotificationSender(private val context : Context) {
             .addConverterFactory(GsonConverterFactory.create())
             .buildApi()
     )
-    private val databaseRepository = TasksDatabaseRepository(context)
-
-    private lateinit var tasksObserver : Disposable
 
     init{
         Log.d(SENDER_LOG, "init notification sender...")
@@ -66,9 +69,12 @@ class NotificationSender(private val context : Context) {
 
     fun startSending(){
         enabled = true
-        tasksObserver = repeatWithTasks(10).subscribe({
+        tasksObserver = repeatWithTasks(repeatTime).subscribe({
             Log.d(SENDER_LOG, "Checking...")
             val notifyTasks = it.filter { task -> !localTasks.contains(task) }
+            logList(it, "getted tasks:")
+            logList(localTasks, "local tasks:")
+            logList(notifyTasks, "notify tasks:")
             databaseRepository.insertTasks(notifyTasks).subscribe()
             for (task in notifyTasks)
                 sendNotification(TaskNotification(task).getNotification(context))
@@ -88,8 +94,8 @@ class NotificationSender(private val context : Context) {
 
     private fun getNewTasks() : Single<List<TasksItem>> =
         tasksRepository.observeTasks(userId, AVAILABLE)
-        .subscribeOn(Schedulers.io())
-        .observeOn(Schedulers.computation())
+            .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.computation())
 
     private fun getLocalTasks() = databaseRepository.getAllTasks()
         .subscribeOn(Schedulers.io())
@@ -99,5 +105,12 @@ class NotificationSender(private val context : Context) {
     private fun sendNotification(notification : Notification) {
         Log.d(SENDER_LOG, "Sending notification...")
         manager.notify(++notificationId, notification)
+    }
+
+    private fun logList(list : List<TasksItem>, message : String){
+        Log.d(SENDER_LOG, message)
+        for(task in list){
+            Log.d(SENDER_LOG, task.taskName)
+        }
     }
 }

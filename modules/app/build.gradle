@@ -8,8 +8,8 @@ android {
         applicationId "ru.mpei.ossapp"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 16
-        versionName "1.4"
+        versionCode 17
+        versionName "1.4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

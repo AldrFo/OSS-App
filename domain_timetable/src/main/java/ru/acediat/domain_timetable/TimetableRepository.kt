@@ -15,6 +15,12 @@ class TimetableRepository(private val api: TimetableApi) {
             .observeOn(Schedulers.io())
             .subscribeOn(Schedulers.io())
 
+    @SuppressLint("CheckResult")
+    fun getNextWeekTimetable(group : String) : Observable<List<LessonsDTO>> =
+        api.getPersonLessons(group, DatePicker.getNextMondayRUZDate(), DatePicker.getNextSundayRUZDate())
+            .observeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
+
     fun getUserGroupName(id : Int) : Observable<GroupDTO> =
         api.getUserGroup(id)
             .observeOn(Schedulers.io())

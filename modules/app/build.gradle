@@ -8,8 +8,8 @@ android {
         applicationId "ru.mpei.ossapp"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 16
-        versionName "1.4"
+        versionCode 17
+        versionName "1.4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -81,4 +81,15 @@ dependencies {
     implementation project(path: ":feature_timetable")
 
     implementation project(path: ":service_notifications")
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.3.0')
+
+    // Declare the dependencies for the Firebase Cloud Messaging and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
+
+apply plugin: 'com.google.gms.google-services'
+

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "744773702499",
+    "project_id": "oss-mpei",
+    "storage_bucket": "oss-mpei.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744773702499:android:2d11b38ca10119bfdb3956",
+        "android_client_info": {
+          "package_name": "ru.mpei.ossapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744773702499-kn72f8t5ll84ur1iqlk9t0pnofdkrbjo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDlGMCN9dFhd-cRlTaEan3c5j-vNkrZc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744773702499-kn72f8t5ll84ur1iqlk9t0pnofdkrbjo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "744773702499-q5u8dbv6sur3k56irl9r14246aaujcr9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ru.oss-mpei.terminal",
+                "app_store_id": "1562053989"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

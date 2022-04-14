@@ -18,7 +18,11 @@ class DatePicker {
 
         fun getMondayRUZDate() : String = getMondayDate().toString(RUZ_DATE_FORMAT)
 
+        fun getNextMondayRUZDate() : String = (getMondayDate() + 7.day).toString(RUZ_DATE_FORMAT)
+
         fun getSundayRUZDate() : String = (getMondayDate() + 6.day).toString(RUZ_DATE_FORMAT)
+
+        fun getNextSundayRUZDate() : String = (getMondayDate() + 13.day).toString(RUZ_DATE_FORMAT)
 
         fun getCurrentWeekDays() : ArrayList<Date> {
             val monday = getMondayDate()

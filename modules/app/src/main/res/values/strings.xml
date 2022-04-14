@@ -27,4 +27,6 @@
     <string name="gallery">Выбрать фото из галереи</string>
     <string name="camera">Сделать фотографию</string>
     <string name="timetable">Расписание</string>
+
+    <string name="default_notification_channel_id">oss channel</string>
 </resources>

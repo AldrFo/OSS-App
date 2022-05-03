@@ -9,6 +9,7 @@
         <entry key="feature_timetable/src/main/res/drawable/background_subject.xml" value="0.1285" />
         <entry key="feature_timetable/src/main/res/drawable/background_tab.xml" value="0.1285" />
         <entry key="feature_timetable/src/main/res/drawable/background_tabs.xml" value="0.1" />
+        <entry key="feature_timetable/src/main/res/drawable/background_week_select.xml" value="0.178" />
         <entry key="feature_timetable/src/main/res/drawable/ic_back.xml" value="0.178" />
         <entry key="feature_timetable/src/main/res/drawable/ic_clocl.xml" value="0.178" />
         <entry key="feature_timetable/src/main/res/drawable/ic_gear.xml" value="0.1285" />
@@ -25,7 +26,7 @@
         <entry key="feature_timetable/src/main/res/layout/fragment_empty_group.xml" value="0.33" />
         <entry key="feature_timetable/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="feature_timetable/src/main/res/layout/fragment_timetable.xml" value="0.22" />
-        <entry key="feature_timetable/src/main/res/layout/item_lesson.xml" value="1.0081726074218753" />
+        <entry key="feature_timetable/src/main/res/layout/item_lesson.xml" value="0.4298904418945315" />
         <entry key="feature_timetable/src/main/res/layout/item_relax.xml" value="0.25873930557914404" />
         <entry key="feature_timetable/src/main/res/layout/item_subject.xml" value="0.25" />
         <entry key="feature_timetable/src/main/res/layout/item_tab.xml" value="0.8405426025390625" />

@@ -12,23 +12,18 @@ class Week(
     private val dayNames = arrayOf("ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС")
     private val monthNames =
         arrayOf("янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек")
+
     private val weekTimetable = ArrayList<ArrayList<LessonItem>>()
 
     init{
-        var day = lessonList[0].dayOfWeek
-        val dayTimetable = ArrayList<LessonItem>()
-        for(lesson in lessonList){
-            if(lesson.dayOfWeek == day){
-                dayTimetable.add(lesson)
+        val dayNumbers = getDayNumbers(lessonList)
+        for(i in 1..7){
+            if(dayNumbers.contains(i)){
+                addDayToWeekTimetable(getDayLessons(lessonList, i))
             }else{
-                addDayToWeekTimetable(dayTimetable)
-                dayTimetable.add(lesson)
-                day = lesson.dayOfWeek
+                addDayToWeekTimetable(arrayListOf())
             }
         }
-        addDayToWeekTimetable(dayTimetable)
-        while(weekTimetable.size <= 7)
-            weekTimetable.add(arrayListOf())
     }
 
     fun getDayTimetable(dayNumber : Int) : ArrayList<LessonItem> = weekTimetable[dayNumber]
@@ -43,6 +38,28 @@ class Week(
     private fun addDayToWeekTimetable(day : ArrayList<LessonItem>){
         weekTimetable.add(day.clone() as ArrayList<LessonItem>)
         day.clear()
+    }
+
+    private fun getDayLessons(lessonList: List<LessonItem>, day : Int) : ArrayList<LessonItem> {
+        val lessons = ArrayList<LessonItem>()
+        for(lesson in lessonList){
+            if(lesson.dayOfWeek == day)
+                lessons.add(lesson)
+        }
+        return lessons
+    }
+
+    private fun getDayNumbers(lessonList : List<LessonItem>) : ArrayList<Int>{
+        if(lessonList.isEmpty())
+            return arrayListOf(0)
+
+        val days = arrayListOf<Int>()
+        for(lesson in lessonList){
+            if(!days.contains(lesson.dayOfWeek))
+                days.add(lesson.dayOfWeek)
+        }
+
+        return days
     }
 
 }
